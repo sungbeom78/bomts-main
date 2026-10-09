@@ -1,0 +1,19 @@
+{
+ "reviewed_at": "2026-10-09T15:00:33.772791+00:00",
+ "pages": 14,
+ "files": {
+  "admin.html": "fce76bce0e923672f5213940006c365203b3517d3423e7031cd0f2c5e380b40b",
+  "architecture.html": "ab030272b3de1ac8a4a09d1b7ae289ff0ad36203d0ef4ddfbc2942baac7303c1",
+  "index.html": "a59d42a35eb781c1cb62979674c8dda35d29bcda5688ace16f4f9bd403efbc57",
+  "website.html": "b6daf8d62d78b9d3e3df8ad39296f871d720cc35340f7e75d5e4de5126130538",
+  "assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+  "assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5"
+ },
+ "overflow": [],
+ "sheets": [
+  "dist/manual-review/index.png",
+  "dist/manual-review/website.png",
+  "dist/manual-review/architecture.png",
+  "dist/manual-review/admin.png"
+ ]
+}

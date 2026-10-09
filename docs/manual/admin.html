@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BOMTS 로컬 개발</title><link rel="stylesheet" href="assets/manual.css"><script defer src="assets/manual.js"></script></head>
+<body data-manual="BOMTS 공개 매뉴얼" data-index="index.html" data-chapters="index.html|처음;website.html|웹사이트;architecture.html|제품 구조;admin.html|로컬 개발">
+<section class="slide" data-kind="cover" data-title="로컬 개발">
+  <div class="body"><div class="cover-grid"><div><div class="brandline">BOMTS · CONTRIBUTING</div><div class="emoji">🛠️</div><h1>로컬 개발</h1><p class="lead">공개 소스를 실행하고 검사하는 재현 가능한 최소 절차입니다.</p></div><div class="orbit"><b>DEV</b></div></div></div>
+  <aside class="notes">이 장은 기여자가 자신의 개발 환경에서 사이트를 확인하는 방법을 다룹니다. Production 배포와 운영자 권한이 필요한 절차는 포함하지 않습니다.</aside>
+</section>
+<section class="slide" data-kind="install-step" data-title="예제 환경값으로 로컬 사이트를 실행합니다">
+  <p class="kicker">로컬 실행 · 1 / 2</p><h2>예제 환경값으로 로컬 사이트를 실행합니다</h2>
+  <div class="body"><div class="terminal term"><div class="bar"><span>local</span><span>development</span></div><pre>cp .env.example .env
+docker compose up --build
+curl -fsS http://127.0.0.1:8080/healthz</pre><div class="result ok">health endpoint returns: ok</div></div><div class="callout">개발 포트가 사용 중이면 ignored <code>.env</code>의 <code>BOMTS_HTTP_PORT</code>를 바꿉니다.</div></div>
+  <aside class="notes">예제 환경 파일은 로컬 개발 기본값만 포함합니다. Compose로 정적 사이트를 실행한 뒤 health endpoint가 응답하는지 확인합니다. Production 환경값과 주소는 이 저장소에 기록하지 않습니다.</aside>
+</section>
+<section class="slide" data-kind="verify" data-title="변경 후 공개 저장소 검사를 실행합니다">
+  <p class="kicker">로컬 실행 · 2 / 2</p><h2>변경 후 공개 저장소 검사를 실행합니다</h2>
+  <div class="body"><ol class="flow"><li><b>콘텐츠</b><span>페이지·링크 확인</span></li><li><b>구성</b><span>Compose 검증</span></li><li><b>정책</b><span>보호 구역 확인</span></li><li><b>매뉴얼</b><span>렌더링 확인</span></li><li class="on"><b>보안</b><span>Secret 검사</span></li></ol><div class="terminal term"><div class="bar"><span>repository</span><span>verification</span></div><pre>./scripts/check.sh
+python .claude/skills/sk-mgm-task-state/scripts/run.py protect-check</pre></div></div>
+  <aside class="notes">사이트 변경 뒤에는 프로젝트 검사와 보호 구역 검사를 실행합니다. 새 기능이나 사용법이 바뀌면 공개 매뉴얼도 함께 고치고 렌더링 결과를 확인합니다. Public release 전에는 현재 트리와 전체 이력을 별도 Secret scanner로 검사합니다.</aside>
+</section>
+<section class="slide" data-kind="boundary" data-title="공개 개발과 Production 운영 책임을 분리합니다">
+  <p class="kicker">책임 경계</p><h2>공개 개발과 Production 운영 책임을 분리합니다</h2>
+  <div class="body"><div class="compare"><div class="good"><h3>Public 저장소</h3><ul><li>제품 소스와 공개 문구</li><li>일반화한 로컬 실행</li><li>논리 아키텍처</li><li>비밀 없는 검사</li></ul></div><div><h3>Private 인프라</h3><ul><li>실제 호스트와 네트워크</li><li>배포·백업·복구</li><li>메일·방화벽·모니터링</li><li>운영 evidence</li></ul></div></div><div class="callout warn">Production 변경은 Private runbook과 별도 승인 절차를 따릅니다.</div></div>
+  <aside class="notes">Public 저장소는 제품을 이해하고 로컬에서 검증하는 데 필요한 내용만 제공합니다. 실제 운영 환경을 재현할 수 있는 상세 정보는 Private 인프라 저장소에 둡니다. 이 경계는 Secret 유무와 별개로 공격 표면을 줄이기 위한 원칙입니다.</aside>
+</section>
+</body></html>

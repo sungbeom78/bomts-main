@@ -1,0 +1,51 @@
+# Development process runtime output
+dev-process/task/*/evidence/
+dev-process/task/*/runlog.jsonl
+dev-process/**/*.lock
+dev-process/.incident_registry.lock
+dev-process/backup/
+dev-process/local/manual-evidence/
+dev-process/report/
+
+# Generated output and local environments
+.venv/
+venv/
+__pycache__/
+dist/
+
+# Runtime configuration and credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.local
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.kdbx
+**/id_rsa*
+**/id_ed25519*
+**/.cloudflared/
+**/credentials.json
+**/service-account*.json
+**/secrets/
+**/private/
+
+# Infrastructure state and data
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+*.dump
+*.backup
+*.sql
+*.sql.gz
+*.sqlite
+*.sqlite3
+*.db
+.pgpass
+pgpass.conf
