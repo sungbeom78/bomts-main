@@ -1,5 +1,5 @@
 FROM nginx:1.27-alpine
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY nginx/default.conf /etc/nginx/templates/default.conf.template
 COPY site/ /usr/share/nginx/html/
 COPY docs/manual/ /usr/share/nginx/html/manual/
 EXPOSE 80

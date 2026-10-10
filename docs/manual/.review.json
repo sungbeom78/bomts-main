@@ -1,12 +1,12 @@
 {
- "reviewed_at": "2026-10-10T17:16:09.365862+00:00",
- "pages": 68,
+ "reviewed_at": "2026-10-10T17:43:39.625276+00:00",
+ "pages": 70,
  "files": {
   "admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
   "architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
-  "index.html": "537cee2f4497c7e3c5631574c261d00fc722eff17578295a11b624c2cc108120",
+  "index.html": "d36a12a8032a1342f6dcbea6f12e425a69ca668a4975115e8564cced672659f8",
   "local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
-  "mail.html": "2e538cffdfc8b3e06d9bf791a01894efa664cd64372bcbff95af25d15cf3fd7c",
+  "mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
   "tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
   "website.html": "ab4ee4012e54d736caaafb047458bbb7b6b407d030f852a56451a0778affd313",
   "assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",

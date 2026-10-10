@@ -4,12 +4,19 @@ services:
       context: .
     container_name: bomts_public_website
     restart: unless-stopped
+    environment:
+      BOMTS_MAIL_ORIGIN: "${BOMTS_MAIL_ORIGIN:?set BOMTS_MAIL_ORIGIN in .env}"
+      BOMTS_MAIL_HOSTNAME: "${BOMTS_MAIL_HOSTNAME:-mail.bomts.net}"
+    networks:
+      - default
+      - mail_web
     ports:
       - "127.0.0.1:3001:80"
       - "${BOMTS_HOST_NETWORK_IP:?set BOMTS_HOST_NETWORK_IP in .env}:3001:80"
     read_only: true
     tmpfs:
       - /var/cache/nginx
+      - /etc/nginx/conf.d
       - /var/run
     security_opt:
       - no-new-privileges:true
@@ -18,3 +25,8 @@ services:
       options:
         max-size: "10m"
         max-file: "5"
+
+networks:
+  mail_web:
+    external: true
+    name: bomts-mailu_webmail

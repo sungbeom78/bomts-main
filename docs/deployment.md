@@ -39,3 +39,9 @@ The repair completed on 2026-10-08. The preserved backup is `/etc/cloudflared/co
 ```bash
 ./scripts/check-decision-tunnel.sh
 ```
+
+## Internal mail management proxy
+
+The website container joins the external Docker network named bomts-mailu_webmail. Runtime .env must set BOMTS_MAIL_ORIGIN=https://front; the public example contains no host IP or credential. Nginx renders its template into the writable /etc/nginx/conf.d tmpfs while the rest of the container remains read-only.
+
+LAN requests may open /manage/, /webmail/, /admin/, /sso/, and Mailu static assets. Requests carrying the public Cloudflare client header receive 404 for those paths. A deployment is complete only after browser checks confirm both sides.
