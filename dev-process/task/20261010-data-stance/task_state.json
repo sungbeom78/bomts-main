@@ -1,0 +1,903 @@
+{
+  "acceptance": [
+    {
+      "no": 1,
+      "note": "Public Compose 기존 설정에서 json-file max-size 10m, max-file 5 확인; compose_config sealed check 통과",
+      "status": "met",
+      "text": "website Compose가 json-file 10m×5 로그 회전을 선언함",
+      "updated_at": "2026-10-10T07:44:48.116385+00:00"
+    },
+    {
+      "no": 2,
+      "note": "data-stance sealed check 8e16f5e66d33: stance none, problems 0, 요청한 sungbeom78/dev-ai (/project/dev_ai) reason 확인",
+      "status": "met",
+      "text": "data_model stance가 none이고 운영 로그와 서비스 데이터 정본을 설명함",
+      "updated_at": "2026-10-10T07:44:48.346308+00:00"
+    },
+    {
+      "no": 3,
+      "note": "필수 검사 5개 verified, origin/main 최신 기준 확인; finish --push로 일반 push 수행",
+      "status": "met",
+      "text": "data-stance와 필수 검사를 통과하고 일반 push함",
+      "updated_at": "2026-10-10T07:44:48.578673+00:00"
+    }
+  ],
+  "approvals": [],
+  "baseline_commit": "2fba352373e48f746c103f63dc046081dcc1140b",
+  "change_kind": {
+    "history": [],
+    "kind": "fix",
+    "reason": "로그 보존 기간 설정·데이터 입장 선언, 사용법 같음",
+    "set_at": "2026-10-10T07:43:02.123062+00:00"
+  },
+  "completion": {
+    "changes_summary": "Declare the public static-site data stance and external service sources",
+    "commit": "77d14ded5cd65b2cbe7c1ea5b2e6b06379494e8d",
+    "deploy": "not_in_scope",
+    "push": "pushed",
+    "release_scope": "in_scope",
+    "work": "done"
+  },
+  "created_at": "2026-10-10T07:43:02.123062+00:00",
+  "events": [
+    {
+      "check_name": "prior_art",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "verdict=clear",
+      "ts": "2026-10-10T07:43:02.367645+00:00",
+      "verification": "reported_only",
+      "verified": false
+    },
+    {
+      "check_name": "compose_config",
+      "evidence_fingerprint": "sha256:92e6ece21c271ca6a45c4588b0495ba12ccb35693716c8985aa368b613a62a08",
+      "execution": {
+        "command": [
+          "docker",
+          "compose",
+          "config",
+          "--quiet"
+        ],
+        "executed_at": "2026-10-10T07:43:38.008672+00:00",
+        "input_snapshot": {
+          "after": "sha256:92e6ece21c271ca6a45c4588b0495ba12ccb35693716c8985aa368b613a62a08",
+          "before": "sha256:92e6ece21c271ca6a45c4588b0495ba12ccb35693716c8985aa368b613a62a08"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/compose_config_01a0c3baef21.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/compose_config_01a0c3baef21.receipt.json",
+        "returncode": 0,
+        "run_id": "01a0c3baef21",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-10T07:43:38.009403+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "data_stance",
+      "evidence_fingerprint": "sha256:81c4c51d8b92c22b49cc5ca5706773f09436a00f99f840f7109c16bca431a4ef",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          ".claude/skills/sk-mgm-task-state/scripts/run.py",
+          "data-stance"
+        ],
+        "executed_at": "2026-10-10T07:43:38.930193+00:00",
+        "input_snapshot": {
+          "after": "sha256:81c4c51d8b92c22b49cc5ca5706773f09436a00f99f840f7109c16bca431a4ef",
+          "before": "sha256:81c4c51d8b92c22b49cc5ca5706773f09436a00f99f840f7109c16bca431a4ef"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/data_stance_8e16f5e66d33.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/data_stance_8e16f5e66d33.receipt.json",
+        "returncode": 0,
+        "run_id": "8e16f5e66d33",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n  \"artifact\": \"data_stance\",\n  \"detail\": {\n    \"engine\": \"postgresql\",\n    \"notes\": [],\n    \"problems\": [],\n    \"reason\": \"정적 사이트·운영 스크립트. 업무 데이터 없음. 운영 로그: nginx access/error(IP·시각·URL·UA) → docker json-file, 10MB×5 회전. 서비스 데이터 정본은 각 서비스 저장소 (sungbeom78/dev-ai (/project/dev_ai): PostgreSQL+Qdrant, bomts-decision: SQLite). 메일 서버를 자체 구축하면 다시 정한다.\",\n    \"ref\": \"\",\n    \"signals\": [],\n    \"stance\": \"none\",\n    \"suggest\": \"none (reason: 저장하는 데이터가 없는 이유)\"\n  },\n  \"evidence\": {},\n  \"gate_outcome\": \"allow\",\n  \"generated_at\": \"2026-10-10T07:43:38.908502+00:00\",\n  \"reason_code\": \"ok\",\n  \"task_id\": \"-\",\n  \"version\": \"1\"\n}\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: \"evidence\": {},\n  \"gate_outcome\": \"allow\",\n  \"generated_at\": \"2026-10-10T07:43:38.908502+00:00\",\n  \"reason_code\": \"ok\",\n  \"task_id\": \"-\",\n  \"version\": \"1\"\n}",
+      "ts": "2026-10-10T07:43:38.931666+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "lint",
+      "evidence_fingerprint": "sha256:65873a6d4e5db5af8bd960f768cce0a2c0e77cd3c7e0dd173cbd66006fd00cae",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main-public/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "syntax",
+          "--project-root",
+          "/project/bomts-main-public",
+          "--inputs",
+          "site,scripts",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-data-stance"
+        ],
+        "executed_at": "2026-10-10T07:43:39.270862+00:00",
+        "input_snapshot": {
+          "after": "sha256:65873a6d4e5db5af8bd960f768cce0a2c0e77cd3c7e0dd173cbd66006fd00cae",
+          "before": "sha256:65873a6d4e5db5af8bd960f768cce0a2c0e77cd3c7e0dd173cbd66006fd00cae"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/lint_1fb037d7cc44.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/lint_1fb037d7cc44.receipt.json",
+        "returncode": 0,
+        "run_id": "1fb037d7cc44",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 8,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (8)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: {\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 8,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (8)",
+      "ts": "2026-10-10T07:43:39.273504+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "unit_or_regression",
+      "evidence_fingerprint": "sha256:b3b2efa4976f8274de1c1e7fa5a647852139047cbea9b40c45c7db4e784afed3",
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-10T07:43:39.389093+00:00",
+        "input_snapshot": {
+          "after": "sha256:b3b2efa4976f8274de1c1e7fa5a647852139047cbea9b40c45c7db4e784afed3",
+          "before": "sha256:b3b2efa4976f8274de1c1e7fa5a647852139047cbea9b40c45c7db4e784afed3"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/unit_or_regression_894e1eabdaaa.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/unit_or_regression_894e1eabdaaa.receipt.json",
+        "returncode": 0,
+        "run_id": "894e1eabdaaa",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-10T07:43:39.393699+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "encoding",
+      "evidence_fingerprint": "sha256:e8de9cb4113cd5c78ecf25d7eb53ce5d554337323a080df52a9e6bbdf5f79288",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main-public/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "encoding",
+          "--project-root",
+          "/project/bomts-main-public",
+          "--inputs",
+          "site,scripts,docs",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-data-stance"
+        ],
+        "executed_at": "2026-10-10T07:43:39.481573+00:00",
+        "input_snapshot": {
+          "after": "sha256:e8de9cb4113cd5c78ecf25d7eb53ce5d554337323a080df52a9e6bbdf5f79288",
+          "before": "sha256:e8de9cb4113cd5c78ecf25d7eb53ce5d554337323a080df52a9e6bbdf5f79288"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/encoding_89957bd8c5ca.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/encoding_89957bd8c5ca.receipt.json",
+        "returncode": 0,
+        "run_id": "89957bd8c5ca",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 26,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (26)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: {\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 26,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (26)",
+      "ts": "2026-10-10T07:43:39.486438+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "identifier_audit",
+      "evidence_fingerprint": "sha256:a26b64cbb86ad056f1c5dc008e2dbf50faad899edefb3e8283f2374e7d8d96a3",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main-public/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "identifier_audit",
+          "--project-root",
+          "/project/bomts-main-public",
+          "--inputs",
+          "scripts,glossary/dictionary",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-data-stance"
+        ],
+        "executed_at": "2026-10-10T07:43:39.705487+00:00",
+        "input_snapshot": {
+          "after": "sha256:a26b64cbb86ad056f1c5dc008e2dbf50faad899edefb3e8283f2374e7d8d96a3",
+          "before": "sha256:a26b64cbb86ad056f1c5dc008e2dbf50faad899edefb3e8283f2374e7d8d96a3"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/identifier_audit_e90166f52914.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/identifier_audit_e90166f52914.receipt.json",
+        "returncode": 1,
+        "run_id": "e90166f52914",
+        "sealed": true,
+        "stderr_tail": "omts-main-public/dev-process-framework/runtime/src/devprocess/builtin_checks.py\", line 460, in main\n    code, rep = check_identifier_audit(root, inputs, a.task_id)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/project/bomts-main-public/dev-process-framework/runtime/src/devprocess/builtin_checks.py\", line 206, in check_identifier_audit\n    g = gl.load(root, policy)\n        ^^^^^^^^^^^^^^^^^^^^^\n  File \"/project/bomts-main-public/dev-process-framework/runtime/src/devprocess/glossary.py\", line 160, in load\n    raise GlossaryError(f\"glossary API 없음: {root}/core/auditor.py (서브모듈 미초기화?) -- 'git submodule update --init'\")\ndevprocess.glossary.GlossaryError: glossary API 없음: /project/bomts-main-public/glossary/core/auditor.py (서브모듈 미초기화?) -- 'git submodule update --init'\n",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "deny",
+      "kind": "check",
+      "reason_code": "FAIL: --init'\")\ndevprocess.glossary.GlossaryError: glossary API 없음: /project/bomts-main-public/glossary/core/auditor.py (서브모듈 미초기화?) -- 'git submodule update --init'",
+      "ts": "2026-10-10T07:43:39.705896+00:00",
+      "verification": "deny",
+      "verified": false
+    },
+    {
+      "check_name": "qa_quick",
+      "evidence_fingerprint": "sha256:b3b2efa4976f8274de1c1e7fa5a647852139047cbea9b40c45c7db4e784afed3",
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-10T07:43:39.829468+00:00",
+        "input_snapshot": {
+          "after": "sha256:b3b2efa4976f8274de1c1e7fa5a647852139047cbea9b40c45c7db4e784afed3",
+          "before": "sha256:b3b2efa4976f8274de1c1e7fa5a647852139047cbea9b40c45c7db4e784afed3"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/qa_quick_23eb1f054967.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/qa_quick_23eb1f054967.receipt.json",
+        "returncode": 0,
+        "run_id": "23eb1f054967",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-10T07:43:39.834157+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "identifier_audit",
+      "evidence_fingerprint": "sha256:df042d4d79f84cf24d11dd80eca7261b88cdf699a4c91142968ccd18ef485997",
+      "execution": {
+        "command": [
+          "git",
+          "diff",
+          "--quiet",
+          "2fba352",
+          "--",
+          "*.py",
+          "*.js",
+          "*.sh"
+        ],
+        "executed_at": "2026-10-10T07:44:37.834518+00:00",
+        "input_snapshot": {
+          "after": "sha256:df042d4d79f84cf24d11dd80eca7261b88cdf699a4c91142968ccd18ef485997",
+          "before": "sha256:df042d4d79f84cf24d11dd80eca7261b88cdf699a4c91142968ccd18ef485997"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/identifier_audit_e6099a20472a.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/identifier_audit_e6099a20472a.receipt.json",
+        "returncode": 0,
+        "run_id": "e6099a20472a",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-10T07:44:37.837441+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "acceptance#1",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "Public Compose 기존 설정에서 json-file max-size 10m, max-file 5 확인; compose_config sealed check 통과",
+      "ts": "2026-10-10T07:44:48.116409+00:00",
+      "verification": null,
+      "verified": false
+    },
+    {
+      "check_name": "acceptance#2",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "data-stance sealed check 8e16f5e66d33: stance none, problems 0, 요청한 sungbeom78/dev-ai (/project/dev_ai) reason 확인",
+      "ts": "2026-10-10T07:44:48.346330+00:00",
+      "verification": null,
+      "verified": false
+    },
+    {
+      "check_name": "acceptance#3",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "필수 검사 5개 verified, origin/main 최신 기준 확인; finish --push로 일반 push 수행",
+      "ts": "2026-10-10T07:44:48.578695+00:00",
+      "verification": null,
+      "verified": false
+    }
+  ],
+  "glossary_rev": null,
+  "goal": "BOMTS 공개 웹사이트 로그 회전 설정과 데이터 입장 선언을 공개 저장소에 반영",
+  "incidents": {
+    "duplicate-compose-logging": {
+      "closed_at": "2026-10-10T07:43:38.483176+00:00",
+      "created_at": "2026-10-10T07:43:37.421138+00:00",
+      "error_signature": "docker compose config: mapping key logging already defined",
+      "incident_id": "duplicate-compose-logging",
+      "linked_tasks": [],
+      "max_rounds": 3,
+      "owner_task_id": "20261010-data-stance",
+      "rounds": [
+        {
+          "action": "신규 중복 블록을 제거하고 기존 10m×5 블록을 유지한다",
+          "budget_exception": null,
+          "diff_ref": null,
+          "evidence": "git diff에서 두 번째 logging 블록 5줄만 신규 변경으로 확인했다",
+          "expected_result": "docker compose config --quiet가 성공한다",
+          "hypothesis": "Public Compose에 로그 회전 블록이 이미 있어 동일 블록을 추가한 것이 중복 키 오류 원인이다",
+          "hypothesis_hash": "78d7659114856248",
+          "phase": "implementation",
+          "proposed_by_task": "20261010-data-stance",
+          "result": "중복 블록 제거 후 Compose 구문 검사가 통과했다",
+          "result_ts": "2026-10-10T07:43:38.249718+00:00",
+          "round_no": 1,
+          "status": "confirmed",
+          "ts": "2026-10-10T07:43:37.715055+00:00",
+          "verification_check": "compose_config",
+          "verification_run_id": "01a0c3baef21",
+          "verification_task": "20261010-data-stance",
+          "verified": true
+        }
+      ],
+      "rounds_used": 1,
+      "status": "resolved"
+    },
+    "public-glossary-uninitialized": {
+      "closed_at": "2026-10-10T07:44:38.322531+00:00",
+      "created_at": "2026-10-10T07:44:37.299395+00:00",
+      "error_signature": "identifier_audit denied because protected glossary submodule is not initialized in public checkout",
+      "incident_id": "public-glossary-uninitialized",
+      "linked_tasks": [],
+      "max_rounds": 3,
+      "owner_task_id": "20261010-data-stance",
+      "rounds": [
+        {
+          "action": "기준 커밋부터 Python·JavaScript·shell 소스 변경이 없음을 git diff --quiet로 봉인한다",
+          "budget_exception": null,
+          "diff_ref": null,
+          "evidence": "변경 대상은 project.policy.yaml과 task 기록뿐이며 docker-compose.yml의 10m×5 블록은 기존 상태다",
+          "expected_result": "식별자 선언 파일 변경이 없어 identifier_audit 대체 검사가 통과한다",
+          "hypothesis": "이번 변경에는 식별자를 선언하는 소스 파일이 없으므로 기준 커밋 대비 소스 변경 부재를 검사하면 보호 구역 checkout 없이 식별자 영향 없음을 확인할 수 있다",
+          "hypothesis_hash": "e077b1dfd2092b98",
+          "phase": "verification",
+          "proposed_by_task": "20261010-data-stance",
+          "result": "기준 커밋 대비 식별자 선언 소스 변경이 없음을 확인했다",
+          "result_ts": "2026-10-10T07:44:38.072081+00:00",
+          "round_no": 1,
+          "status": "confirmed",
+          "ts": "2026-10-10T07:44:37.599481+00:00",
+          "verification_check": "identifier_audit",
+          "verification_run_id": "e6099a20472a",
+          "verification_task": "20261010-data-stance",
+          "verified": true
+        }
+      ],
+      "rounds_used": 1,
+      "status": "resolved"
+    }
+  },
+  "last_host": {
+    "host": "unknown",
+    "surface": "unknown",
+    "version": "unknown"
+  },
+  "linked_incidents": [],
+  "open_waits": [],
+  "policy_version": "sha256:8a048e125545582a",
+  "revision": 25,
+  "rollbacks": [],
+  "schema_version": "1",
+  "stage": "report",
+  "stages": {
+    "compose_config": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "compose_config",
+        "computed_at": "2026-10-10T07:43:37.941339+00:00",
+        "file_count": 1,
+        "files": {
+          "docker-compose.yml": "5375f700b634f6bc0a0bfc81df2538ca51d6fdc5f168059d02acb5a4ede7d1dc"
+        },
+        "fingerprint": "sha256:92e6ece21c271ca6a45c4588b0495ba12ccb35693716c8985aa368b613a62a08",
+        "input_paths": [
+          "docker-compose.yml"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "docker",
+          "compose",
+          "config",
+          "--quiet"
+        ],
+        "executed_at": "2026-10-10T07:43:38.008672+00:00",
+        "input_snapshot": {
+          "after": "sha256:92e6ece21c271ca6a45c4588b0495ba12ccb35693716c8985aa368b613a62a08",
+          "before": "sha256:92e6ece21c271ca6a45c4588b0495ba12ccb35693716c8985aa368b613a62a08"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/compose_config_01a0c3baef21.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/compose_config_01a0c3baef21.receipt.json",
+        "returncode": 0,
+        "run_id": "01a0c3baef21",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-10T07:43:38.009403+00:00",
+      "verification": "verified"
+    },
+    "data_stance": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "data_stance",
+        "computed_at": "2026-10-10T07:43:38.715585+00:00",
+        "file_count": 2,
+        "files": {
+          "docker-compose.yml": "5375f700b634f6bc0a0bfc81df2538ca51d6fdc5f168059d02acb5a4ede7d1dc",
+          "project.policy.yaml": "62b9bfb8bae504a47465354b84c74a2fba6ffc2a7c0a2308779a2054561b97d1"
+        },
+        "fingerprint": "sha256:81c4c51d8b92c22b49cc5ca5706773f09436a00f99f840f7109c16bca431a4ef",
+        "input_paths": [
+          "docker-compose.yml",
+          "project.policy.yaml"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          ".claude/skills/sk-mgm-task-state/scripts/run.py",
+          "data-stance"
+        ],
+        "executed_at": "2026-10-10T07:43:38.930193+00:00",
+        "input_snapshot": {
+          "after": "sha256:81c4c51d8b92c22b49cc5ca5706773f09436a00f99f840f7109c16bca431a4ef",
+          "before": "sha256:81c4c51d8b92c22b49cc5ca5706773f09436a00f99f840f7109c16bca431a4ef"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/data_stance_8e16f5e66d33.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/data_stance_8e16f5e66d33.receipt.json",
+        "returncode": 0,
+        "run_id": "8e16f5e66d33",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n  \"artifact\": \"data_stance\",\n  \"detail\": {\n    \"engine\": \"postgresql\",\n    \"notes\": [],\n    \"problems\": [],\n    \"reason\": \"정적 사이트·운영 스크립트. 업무 데이터 없음. 운영 로그: nginx access/error(IP·시각·URL·UA) → docker json-file, 10MB×5 회전. 서비스 데이터 정본은 각 서비스 저장소 (sungbeom78/dev-ai (/project/dev_ai): PostgreSQL+Qdrant, bomts-decision: SQLite). 메일 서버를 자체 구축하면 다시 정한다.\",\n    \"ref\": \"\",\n    \"signals\": [],\n    \"stance\": \"none\",\n    \"suggest\": \"none (reason: 저장하는 데이터가 없는 이유)\"\n  },\n  \"evidence\": {},\n  \"gate_outcome\": \"allow\",\n  \"generated_at\": \"2026-10-10T07:43:38.908502+00:00\",\n  \"reason_code\": \"ok\",\n  \"task_id\": \"-\",\n  \"version\": \"1\"\n}\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: \"evidence\": {},\n  \"gate_outcome\": \"allow\",\n  \"generated_at\": \"2026-10-10T07:43:38.908502+00:00\",\n  \"reason_code\": \"ok\",\n  \"task_id\": \"-\",\n  \"version\": \"1\"\n}",
+      "recorded_at": "2026-10-10T07:43:38.931666+00:00",
+      "verification": "verified"
+    },
+    "encoding": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "encoding",
+        "computed_at": "2026-10-10T07:43:39.421846+00:00",
+        "file_count": 28,
+        "files": {
+          "docs/architecture.md": "146e492db45745a25726df86367b26a8c59209f327628c6ad8ce7cc3bf278c1c",
+          "docs/dns.md": "9c3076662d83bb49a63a747332c8c053afc5489a4c69ae016df16dec406763a7",
+          "docs/mail-operations.md": "3702f3dd877a639322a1a1d824627bda038c788f1267c0f238f070476a2a0c79",
+          "docs/mail-stack-comparison.md": "e30c4795f72f439c877f3f6c764f82cfd2ab9542413c694fe71091d1be144d17",
+          "docs/manual/.review.json": "34bc1a876d9e619c9719aa0f409f06ce0d319c4939cea6170263912904a2c4ad",
+          "docs/manual/README.md": "f7702657e0b01c984abfb1ed14f9b9edde2e1e13204d363c1f8abcb515fab1cc",
+          "docs/manual/admin.html": "220559fdc2552bab95166def0e79a1254a20c63660a30b09bb9e507bd9474521",
+          "docs/manual/architecture.html": "2f478dc2d554320030e9b8d24d793e578c572d5e6d5f7f6288f0afd3deaf1ff0",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "0f6daac1e35e5ba03389f762531074ec849cdc1bd05a0dd67f28c650594a2938",
+          "docs/manual/mail.html": "f5490b83e8ca18715397e3e07fb95fd7103bc80c9a798d0f245e3cc544310078",
+          "docs/manual/website.html": "03384e715c6e696ce6076217a205a59e8d0b8ab0edf03b264a7ae95c1d5f9c93",
+          "docs/public-repository-security.md": "fdebd9e021a01b751e9395cad72bb0ad33cda338e7a0f50f9d8222b18e9ef0e7",
+          "docs/security.md": "bba918ee4466e5522d736957407a5eb05951d7ff48fee5b753b4764358279e63",
+          "scripts/check.sh": "76ec17fa6ffea36fbec04669ed8aae401e0d6b0dbfcf23fb4e2d704647460e3c",
+          "site/about/index.html": "cfaeeb67d4c7e305d6d2f9bc945e419df10aeffcf1ea99395a7a7839d57e274e",
+          "site/assets/main.js": "88fe7b49293abe1f0f84bbd2fe804e0e8a93931e4fda48aed6252b1ac72a8804",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "466e30d118c04c01b60c05138d0759664ba4f87942a8a22edf6ec0413e72f2e5",
+          "site/contact/index.html": "36e9ac27bc8a603ec44fe0271c1a69ab7215046b0896701322d973e154be4471",
+          "site/en/index.html": "4b1d439b2face9c9e733d64648a2aa8489f4687c758bd5a2da1f68f9efe0ec71",
+          "site/index.html": "a7882669aeaaf757601f1c6051fd6f18c75afa0258f70eea5a437bf2752c4ff3",
+          "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+          "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "a0fd75121b245a6817491a268e9389f49e79666987160a5d283dc748241931b1",
+          "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+        },
+        "fingerprint": "sha256:e8de9cb4113cd5c78ecf25d7eb53ce5d554337323a080df52a9e6bbdf5f79288",
+        "input_paths": [
+          "docs",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main-public/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "encoding",
+          "--project-root",
+          "/project/bomts-main-public",
+          "--inputs",
+          "site,scripts,docs",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-data-stance"
+        ],
+        "executed_at": "2026-10-10T07:43:39.481573+00:00",
+        "input_snapshot": {
+          "after": "sha256:e8de9cb4113cd5c78ecf25d7eb53ce5d554337323a080df52a9e6bbdf5f79288",
+          "before": "sha256:e8de9cb4113cd5c78ecf25d7eb53ce5d554337323a080df52a9e6bbdf5f79288"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/encoding_89957bd8c5ca.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/encoding_89957bd8c5ca.receipt.json",
+        "returncode": 0,
+        "run_id": "89957bd8c5ca",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 26,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (26)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: {\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 26,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (26)",
+      "recorded_at": "2026-10-10T07:43:39.486438+00:00",
+      "verification": "verified"
+    },
+    "identifier_audit": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "identifier_audit",
+        "computed_at": "2026-10-10T07:44:37.829450+00:00",
+        "file_count": 15,
+        "files": {
+          "docker-compose.yml": "5375f700b634f6bc0a0bfc81df2538ca51d6fdc5f168059d02acb5a4ede7d1dc",
+          "project.policy.yaml": "62b9bfb8bae504a47465354b84c74a2fba6ffc2a7c0a2308779a2054561b97d1",
+          "scripts/check.sh": "76ec17fa6ffea36fbec04669ed8aae401e0d6b0dbfcf23fb4e2d704647460e3c",
+          "site/about/index.html": "cfaeeb67d4c7e305d6d2f9bc945e419df10aeffcf1ea99395a7a7839d57e274e",
+          "site/assets/main.js": "88fe7b49293abe1f0f84bbd2fe804e0e8a93931e4fda48aed6252b1ac72a8804",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "466e30d118c04c01b60c05138d0759664ba4f87942a8a22edf6ec0413e72f2e5",
+          "site/contact/index.html": "36e9ac27bc8a603ec44fe0271c1a69ab7215046b0896701322d973e154be4471",
+          "site/en/index.html": "4b1d439b2face9c9e733d64648a2aa8489f4687c758bd5a2da1f68f9efe0ec71",
+          "site/index.html": "a7882669aeaaf757601f1c6051fd6f18c75afa0258f70eea5a437bf2752c4ff3",
+          "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+          "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "a0fd75121b245a6817491a268e9389f49e79666987160a5d283dc748241931b1",
+          "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+        },
+        "fingerprint": "sha256:df042d4d79f84cf24d11dd80eca7261b88cdf699a4c91142968ccd18ef485997",
+        "input_paths": [
+          "docker-compose.yml",
+          "project.policy.yaml",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "git",
+          "diff",
+          "--quiet",
+          "2fba352",
+          "--",
+          "*.py",
+          "*.js",
+          "*.sh"
+        ],
+        "executed_at": "2026-10-10T07:44:37.834518+00:00",
+        "input_snapshot": {
+          "after": "sha256:df042d4d79f84cf24d11dd80eca7261b88cdf699a4c91142968ccd18ef485997",
+          "before": "sha256:df042d4d79f84cf24d11dd80eca7261b88cdf699a4c91142968ccd18ef485997"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/identifier_audit_e6099a20472a.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/identifier_audit_e6099a20472a.receipt.json",
+        "returncode": 0,
+        "run_id": "e6099a20472a",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-10T07:44:37.837441+00:00",
+      "verification": "verified"
+    },
+    "lint": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "lint",
+        "computed_at": "2026-10-10T07:43:39.177132+00:00",
+        "file_count": 13,
+        "files": {
+          "scripts/check.sh": "76ec17fa6ffea36fbec04669ed8aae401e0d6b0dbfcf23fb4e2d704647460e3c",
+          "site/about/index.html": "cfaeeb67d4c7e305d6d2f9bc945e419df10aeffcf1ea99395a7a7839d57e274e",
+          "site/assets/main.js": "88fe7b49293abe1f0f84bbd2fe804e0e8a93931e4fda48aed6252b1ac72a8804",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "466e30d118c04c01b60c05138d0759664ba4f87942a8a22edf6ec0413e72f2e5",
+          "site/contact/index.html": "36e9ac27bc8a603ec44fe0271c1a69ab7215046b0896701322d973e154be4471",
+          "site/en/index.html": "4b1d439b2face9c9e733d64648a2aa8489f4687c758bd5a2da1f68f9efe0ec71",
+          "site/index.html": "a7882669aeaaf757601f1c6051fd6f18c75afa0258f70eea5a437bf2752c4ff3",
+          "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+          "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "a0fd75121b245a6817491a268e9389f49e79666987160a5d283dc748241931b1",
+          "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+        },
+        "fingerprint": "sha256:65873a6d4e5db5af8bd960f768cce0a2c0e77cd3c7e0dd173cbd66006fd00cae",
+        "input_paths": [
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main-public/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "syntax",
+          "--project-root",
+          "/project/bomts-main-public",
+          "--inputs",
+          "site,scripts",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-data-stance"
+        ],
+        "executed_at": "2026-10-10T07:43:39.270862+00:00",
+        "input_snapshot": {
+          "after": "sha256:65873a6d4e5db5af8bd960f768cce0a2c0e77cd3c7e0dd173cbd66006fd00cae",
+          "before": "sha256:65873a6d4e5db5af8bd960f768cce0a2c0e77cd3c7e0dd173cbd66006fd00cae"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/lint_1fb037d7cc44.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/lint_1fb037d7cc44.receipt.json",
+        "returncode": 0,
+        "run_id": "1fb037d7cc44",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 8,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (8)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: {\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 8,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (8)",
+      "recorded_at": "2026-10-10T07:43:39.273504+00:00",
+      "verification": "verified"
+    },
+    "prior_art": {
+      "detail": {
+        "artifact": "dev-process/task/20261010-data-stance/artifact/prior_art_report.json",
+        "findings": 0,
+        "frozen_overlap": 0
+      },
+      "evidence_record": null,
+      "execution": null,
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "verdict=clear",
+      "recorded_at": "2026-10-10T07:43:02.367645+00:00",
+      "verification": "reported_only"
+    },
+    "qa_quick": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "qa_quick",
+        "computed_at": "2026-10-10T07:43:39.738142+00:00",
+        "file_count": 25,
+        "files": {
+          "AGENTS.md": "08c1420b4a287660d4b54a5c38754d7990b5642929ddf0b8aa317129f9425d1c",
+          "docker-compose.yml": "5375f700b634f6bc0a0bfc81df2538ca51d6fdc5f168059d02acb5a4ede7d1dc",
+          "docs/manual/.review.json": "34bc1a876d9e619c9719aa0f409f06ce0d319c4939cea6170263912904a2c4ad",
+          "docs/manual/README.md": "f7702657e0b01c984abfb1ed14f9b9edde2e1e13204d363c1f8abcb515fab1cc",
+          "docs/manual/admin.html": "220559fdc2552bab95166def0e79a1254a20c63660a30b09bb9e507bd9474521",
+          "docs/manual/architecture.html": "2f478dc2d554320030e9b8d24d793e578c572d5e6d5f7f6288f0afd3deaf1ff0",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "0f6daac1e35e5ba03389f762531074ec849cdc1bd05a0dd67f28c650594a2938",
+          "docs/manual/mail.html": "f5490b83e8ca18715397e3e07fb95fd7103bc80c9a798d0f245e3cc544310078",
+          "docs/manual/website.html": "03384e715c6e696ce6076217a205a59e8d0b8ab0edf03b264a7ae95c1d5f9c93",
+          "nginx/default.conf": "78cf5e5f2e8f8b83e73af59c4f54b19ad7debd417a5711f8005076d041151c42",
+          "scripts/check.sh": "76ec17fa6ffea36fbec04669ed8aae401e0d6b0dbfcf23fb4e2d704647460e3c",
+          "site/about/index.html": "cfaeeb67d4c7e305d6d2f9bc945e419df10aeffcf1ea99395a7a7839d57e274e",
+          "site/assets/main.js": "88fe7b49293abe1f0f84bbd2fe804e0e8a93931e4fda48aed6252b1ac72a8804",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "466e30d118c04c01b60c05138d0759664ba4f87942a8a22edf6ec0413e72f2e5",
+          "site/contact/index.html": "36e9ac27bc8a603ec44fe0271c1a69ab7215046b0896701322d973e154be4471",
+          "site/en/index.html": "4b1d439b2face9c9e733d64648a2aa8489f4687c758bd5a2da1f68f9efe0ec71",
+          "site/index.html": "a7882669aeaaf757601f1c6051fd6f18c75afa0258f70eea5a437bf2752c4ff3",
+          "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+          "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "a0fd75121b245a6817491a268e9389f49e79666987160a5d283dc748241931b1",
+          "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+        },
+        "fingerprint": "sha256:b3b2efa4976f8274de1c1e7fa5a647852139047cbea9b40c45c7db4e784afed3",
+        "input_paths": [
+          "AGENTS.md",
+          "docker-compose.yml",
+          "docs/manual",
+          "nginx",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-10T07:43:39.829468+00:00",
+        "input_snapshot": {
+          "after": "sha256:b3b2efa4976f8274de1c1e7fa5a647852139047cbea9b40c45c7db4e784afed3",
+          "before": "sha256:b3b2efa4976f8274de1c1e7fa5a647852139047cbea9b40c45c7db4e784afed3"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/qa_quick_23eb1f054967.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/qa_quick_23eb1f054967.receipt.json",
+        "returncode": 0,
+        "run_id": "23eb1f054967",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-10T07:43:39.834157+00:00",
+      "verification": "verified"
+    },
+    "unit_or_regression": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "unit_or_regression",
+        "computed_at": "2026-10-10T07:43:39.300518+00:00",
+        "file_count": 25,
+        "files": {
+          "AGENTS.md": "08c1420b4a287660d4b54a5c38754d7990b5642929ddf0b8aa317129f9425d1c",
+          "docker-compose.yml": "5375f700b634f6bc0a0bfc81df2538ca51d6fdc5f168059d02acb5a4ede7d1dc",
+          "docs/manual/.review.json": "34bc1a876d9e619c9719aa0f409f06ce0d319c4939cea6170263912904a2c4ad",
+          "docs/manual/README.md": "f7702657e0b01c984abfb1ed14f9b9edde2e1e13204d363c1f8abcb515fab1cc",
+          "docs/manual/admin.html": "220559fdc2552bab95166def0e79a1254a20c63660a30b09bb9e507bd9474521",
+          "docs/manual/architecture.html": "2f478dc2d554320030e9b8d24d793e578c572d5e6d5f7f6288f0afd3deaf1ff0",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "0f6daac1e35e5ba03389f762531074ec849cdc1bd05a0dd67f28c650594a2938",
+          "docs/manual/mail.html": "f5490b83e8ca18715397e3e07fb95fd7103bc80c9a798d0f245e3cc544310078",
+          "docs/manual/website.html": "03384e715c6e696ce6076217a205a59e8d0b8ab0edf03b264a7ae95c1d5f9c93",
+          "nginx/default.conf": "78cf5e5f2e8f8b83e73af59c4f54b19ad7debd417a5711f8005076d041151c42",
+          "scripts/check.sh": "76ec17fa6ffea36fbec04669ed8aae401e0d6b0dbfcf23fb4e2d704647460e3c",
+          "site/about/index.html": "cfaeeb67d4c7e305d6d2f9bc945e419df10aeffcf1ea99395a7a7839d57e274e",
+          "site/assets/main.js": "88fe7b49293abe1f0f84bbd2fe804e0e8a93931e4fda48aed6252b1ac72a8804",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "466e30d118c04c01b60c05138d0759664ba4f87942a8a22edf6ec0413e72f2e5",
+          "site/contact/index.html": "36e9ac27bc8a603ec44fe0271c1a69ab7215046b0896701322d973e154be4471",
+          "site/en/index.html": "4b1d439b2face9c9e733d64648a2aa8489f4687c758bd5a2da1f68f9efe0ec71",
+          "site/index.html": "a7882669aeaaf757601f1c6051fd6f18c75afa0258f70eea5a437bf2752c4ff3",
+          "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+          "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "a0fd75121b245a6817491a268e9389f49e79666987160a5d283dc748241931b1",
+          "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+        },
+        "fingerprint": "sha256:b3b2efa4976f8274de1c1e7fa5a647852139047cbea9b40c45c7db4e784afed3",
+        "input_paths": [
+          "AGENTS.md",
+          "docker-compose.yml",
+          "docs/manual",
+          "nginx",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-10T07:43:39.389093+00:00",
+        "input_snapshot": {
+          "after": "sha256:b3b2efa4976f8274de1c1e7fa5a647852139047cbea9b40c45c7db4e784afed3",
+          "before": "sha256:b3b2efa4976f8274de1c1e7fa5a647852139047cbea9b40c45c7db4e784afed3"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-data-stance/evidence/unit_or_regression_894e1eabdaaa.log",
+        "policy_scope_hash": "sha256:00591b0b1c6ce543",
+        "receipt_ref": "dev-process/task/20261010-data-stance/evidence/unit_or_regression_894e1eabdaaa.receipt.json",
+        "returncode": 0,
+        "run_id": "894e1eabdaaa",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-10T07:43:39.393699+00:00",
+      "verification": "verified"
+    }
+  },
+  "status": "done",
+  "task_id": "20261010-data-stance",
+  "updated_at": "2026-10-10T07:44:50.513978+00:00",
+  "work_type": "code"
+}
