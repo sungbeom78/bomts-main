@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BOMTS 메일 운영</title><link rel="stylesheet" href="assets/manual.css"><script defer src="assets/manual.js"></script></head>
+<body data-manual="BOMTS 공개 매뉴얼" data-index="index.html" data-chapters="index.html|처음;mail.html|BOMTS 메일 운영;website.html|BOMTS 웹사이트 안내;architecture.html|BOMTS 제품 구조;admin.html|BOMTS 로컬 개발">
+<section class="slide" data-kind="cover" data-title="BOMTS 메일 운영">
+  <div class="body"><div class="cover-grid"><div><div class="brandline">BOMTS · Mailu · 2026-10-10</div><div class="emoji">✉️</div><h1>BOMTS 메일 운영</h1><p class="lead">메일함과 계정은 자체 운영하고, 인터넷 발신 품질은 외부 SMTP relay로 보완합니다.</p></div><div class="orbit"><b>MAIL</b></div></div></div>
+  <aside class="notes">BOMTS 메일은 Mailu 2024.06으로 구축했습니다. 인터넷 TCP 25 수신, 독립 사용자, Webmail, IMAP, POP3, Submission, 백업과 복구 시험까지 확인했습니다. 외부 메일 수신은 운영 가능하며, 발신은 가정용 회선의 PTR 부재 때문에 relay 계정 연결이 남아 있습니다.</aside>
+</section>
+<section class="slide" data-kind="status" data-title="외부 TCP 25 판정은 A이며 실제 메일을 수신했습니다">
+  <p class="kicker">현재 판정</p><h2>외부 TCP 25 판정은 A이며 실제 메일을 수신했습니다</h2>
+  <div class="body"><div class="timeline"><div class="event"><b>임시 listener</b><span>로컬·LAN 배너 확인</span></div><div class="event"><b>외부 검사</b><span>TCP 25 open</span></div><div class="event"><b>Mailu 전환</b><span>SMTP 배너 확인</span></div><div class="event"><b>실제 수신</b><span>Gmail → founder</span></div></div><div class="status-strip cards"><div class="status-box"><small>TCP 25</small><strong><span class="dot ok"></span>OPEN</strong></div><div class="status-box"><small>MX</small><strong><span class="dot ok"></span>게시</strong></div><div class="status-box"><small>MAILBOX</small><strong><span class="dot ok"></span>운영</strong></div><div class="status-box"><small>OUTBOUND</small><strong><span class="dot wait"></span>RELAY 대기</strong></div></div></div>
+  <aside class="notes">외부 검사 서비스 두 곳에서 TCP 25 open과 Mailu의 220 배너를 확인했습니다. MX 게시 후 Gmail에서 founder 주소로 보낸 실제 메시지가 Mailbox에 도착했습니다. 따라서 인터넷 inbound TCP 25를 사용할 수 있다는 A 판정입니다. 발신 relay 대기는 수신 운영을 막지 않습니다.</aside>
+</section>
+<section class="slide" data-kind="overview" data-title="운영 요구와 기능을 비교해 Mailu를 선택했습니다">
+  <p class="kicker">스택 선정</p><h2>운영 요구와 기능을 비교해 Mailu를 선택했습니다</h2>
+  <div class="body"><table class="grid"><tr><th>후보</th><th>자원·구성</th><th>BOMTS 판정</th></tr><tr><td><b>Mailu</b></td><td>통합 Compose · 관리자 · Roundcube · Fetchmail</td><td><span class="badge ok">선정</span> 요구 기능과 운영 규모 균형</td></tr><tr><td>mailcow</td><td>최소 6GiB RAM 권장 · 기능과 운영 면적 큼</td><td>현재 규모에는 무거움</td></tr><tr><td>Stalwart</td><td>가볍고 현대적 · Webmail 별도 조합</td><td>통합 운영 요구에 추가 구성 필요</td></tr></table><div class="callout">배포 버전은 Mailu <code>2024.06</code>이며 이미지 버전은 운영 변경 절차로 올립니다.</div></div>
+  <aside class="notes">Mailu는 독립 계정, quota, 다중 도메인, 표준 프로토콜, Roundcube, 외부 계정 가져오기를 하나의 Compose로 제공해 가장 적합했습니다. mailcow는 더 무겁고 Stalwart는 Webmail을 별도 통합해야 합니다.</aside>
+</section>
+<section class="slide" data-kind="internals" data-title="수신 호스트가 직접 받고 모든 메일 데이터도 자체 보관합니다">
+  <p class="kicker">구성</p><h2>수신 호스트가 직접 받고 모든 메일 데이터도 자체 보관합니다</h2>
+  <div class="body"><ol class="flow"><li><b><code>postfix</code></b><span>SMTP 수신</span></li><li><b><code>rspamd</code></b><span>spam·virus 판정</span></li><li><b><code>dovecot</code></b><span>사용자·quota 확인</span></li><li class="on"><b><code>Maildir</code></b><span>사용자별 저장</span></li></ol><div class="boundary compare"><div><h3>Self-hosted</h3><ul><li>계정·비밀번호 hash</li><li>메일함·검색 색인</li><li>Webmail·IMAP·POP3</li></ul></div><div><h3>외부 사용</h3><ul><li>DNS edge</li><li>향후 outbound relay</li><li>메일함 데이터 없음</li></ul></div></div></div>
+  <aside class="notes">외부 메일 서버가 mail.bomts.net으로 전달하면 Mailu가 수신 정책과 스팸·바이러스 검사를 적용하고 사용자 Maildir에 저장합니다. 메일함과 계정은 외부 제공자에 두지 않습니다. 향후 outbound relay를 연결해도 relay는 발송 경로만 맡고 Mailbox 데이터는 자체 수신 호스트에 남습니다.</aside>
+</section>
+<section class="slide" data-kind="config" data-title="주소마다 독립 로그인·quota·메일함을 사용합니다">
+  <p class="kicker">계정 격리</p><h2>주소마다 독립 로그인·quota·메일함을 사용합니다</h2>
+  <div class="body"><table class="grid"><tr><th>주소</th><th>권한</th><th>검증</th></tr><tr><td><code>founder@bomts.net</code></td><td>일반 사용자 · 1GB</td><td>Gmail 외부 수신 확인</td></tr><tr><td><code>disney@bomts.net</code></td><td>일반 사용자 · 1GB</td><td>고유 메시지만 IMAP 조회</td></tr><tr><td><code>netflix@bomts.net</code></td><td>일반 사용자 · 1GB</td><td>고유 메시지만 IMAP 조회</td></tr><tr><td><code>admin@bomts.net</code></td><td>관리자</td><td>일반 메일 용도와 분리</td></tr></table><div class="callout">초기 비밀번호는 Git 밖의 제한된 파일에 있으며 첫 로그인 뒤 사용자별로 바꿉니다. Catch-all은 사용하지 않습니다.</div></div>
+  <aside class="notes">founder, disney, netflix는 alias가 아니라 실제 사용자입니다. 세 사용자는 각각 고유 암호 hash, quota, Maildir을 가지며 교차 로그인이나 교차 조회가 되지 않습니다. 로컬 Submission으로 각 사용자에게 고유 제목을 전달한 뒤 IMAP에서 자신에게 온 제목만 보이는 것으로 격리를 확인했습니다.</aside>
+</section>
+<section class="slide" data-kind="usage-step" data-title="메일 클라이언트는 암호화 포트로 연결합니다">
+  <p class="kicker">사용 · 1 / 3</p><h2>메일 클라이언트는 암호화 포트로 연결합니다</h2>
+  <div class="body"><table class="grid"><tr><th>기능</th><th>서버</th><th>포트·보안</th></tr><tr><td>IMAP</td><td><code>mail.bomts.net</code></td><td>993 · SSL/TLS</td></tr><tr><td>POP3</td><td><code>mail.bomts.net</code></td><td>995 · SSL/TLS</td></tr><tr><td>SMTP Submission</td><td><code>mail.bomts.net</code></td><td>465 · SSL/TLS 또는 587 · STARTTLS</td></tr><tr><td>사용자 이름</td><td colspan="2">전체 이메일 주소 · SMTP 인증 필수</td></tr></table><div class="callout warn">인터넷 클라이언트 사용 전 네트워크 경계에서 필요한 포트를 전달해야 합니다. 평문 110·143은 제공하지 않습니다.</div></div>
+  <aside class="notes">클라이언트의 수신과 발신 서버는 모두 mail.bomts.net입니다. 로그인 이름은 founder처럼 로컬 부분만 쓰지 말고 전체 주소를 사용합니다. 서버 인증서는 Let's Encrypt로 발급되어 mail과 webmail 이름을 포함합니다. 현재 외부에는 TCP 25만 확인됐으므로 465, 587, 993, 995는 네트워크 설정 뒤 외부에서 다시 시험해야 합니다.</aside>
+</section>
+<section class="slide" data-kind="usage-step" data-title="Webmail은 Roundcube에서 사용자별로 로그인합니다">
+  <p class="kicker">사용 · 2 / 3</p><h2>Webmail은 Roundcube에서 사용자별로 로그인합니다</h2>
+  <div class="body"><div class="screen"><div class="top"><span class="t">BOMTS Mail</span><span class="tab on">Webmail</span><span class="tab">Admin</span></div><div class="in"><div class="field"><b>URL</b><span>https://webmail.bomts.net/webmail/</span></div><div class="field"><b>User</b><span>전체 이메일 주소</span></div><div class="field"><b>Password</b><span>사용자 고유 비밀번호</span></div><div class="field"><b>Logout</b><span>공용 장비에서 반드시 실행</span></div></div></div><div class="callout warn">공개 Webmail은 TCP 443 전달 후 사용합니다. 관리자 화면은 Cloudflare Access 또는 VPN으로만 공개합니다.</div></div>
+  <aside class="notes">Roundcube는 동일 Mailu 인증을 사용하므로 사용자는 자신의 Mailbox만 봅니다. LAN에서는 화면과 redirect를 확인했으며 공인 인증서도 적용했습니다. webmail.bomts.net의 외부 접속은 공유기 443 전달과 공개 DNS 설정 뒤 최종 확인해야 합니다. 관리자 경로를 일반 인터넷에 그대로 노출하지 않습니다.</aside>
+</section>
+<section class="slide" data-kind="usage-step" data-title="외부 계정은 Fetchmail로 사용자 Mailbox에 가져옵니다">
+  <p class="kicker">사용 · 3 / 3</p><h2>외부 계정은 Fetchmail로 사용자 Mailbox에 가져옵니다</h2>
+  <div class="body"><ol class="flow"><li><b>Admin</b><span>대상 사용자 선택</span></li><li><b>Fetched accounts</b><span>외부 서버·프로토콜</span></li><li><b>Secret</b><span>Git 밖에 저장</span></li><li class="on"><b>Mailbox</b><span>주기적으로 수신</span></li></ol><table class="grid"><tr><th>선택</th><th>용도</th></tr><tr><td>IMAP</td><td>폴더·읽음 상태가 필요한 이전</td></tr><tr><td>POP3</td><td>받은편지함 중심 단순 가져오기</td></tr></table></div>
+  <aside class="notes">Mailu의 Fetchmail 서비스가 활성화되어 있습니다. Naver 같은 외부 계정은 제공자가 허용한 서버 주소, 포트, 앱 비밀번호로 등록합니다. 외부 계정 비밀번호를 매뉴얼이나 Git에 적지 않습니다. 실제 등록 전에는 Naver의 POP3 또는 IMAP 사용 설정과 2단계 인증 시 앱 비밀번호 요구를 확인합니다.</aside>
+</section>
+<section class="slide" data-kind="operations" data-title="일관된 백업을 만들고 별도 위치에서 복구를 시험합니다">
+  <p class="kicker">백업·복구</p><h2>일관된 백업을 만들고 별도 위치에서 복구를 시험합니다</h2>
+  <div class="body"><table class="grid"><tr><th>단계</th><th>대상·판정</th></tr><tr><td>일관 백업</td><td>계정 DB · Mailbox · DKIM/TLS · 필터 상태</td></tr><tr><td>무결성</td><td>아카이브 SHA-256 · 개별 파일 hash</td></tr><tr><td>복구 시험</td><td>임시 위치에 해제 · 계정과 Mailbox 확인 · 자동 정리</td></tr></table><div class="callout">2026-10-10 백업과 비파괴 복구 시험 통과 · 상세 절차는 Private 인프라 운영서에서 관리</div></div>
+  <aside class="notes">백업 스크립트는 Mailu를 잠깐 정지해 파일 시점을 맞춘 뒤 persistent storage와 호스트 설정을 묶고 즉시 재기동합니다. 복구 시험은 원본을 덮어쓰지 않고 임시 위치에 풀어 전체와 개별 파일 hash를 검사합니다. 실제 재해 복구 훈련에서는 격리 호스트에서 서비스 시작과 로그인까지 추가 확인합니다.</aside>
+</section>
+<section class="slide" data-kind="operations" data-title="수신 인증은 통과했고 발신은 relay 연결이 남았습니다">
+  <p class="kicker">DNS·전달 품질</p><h2>수신 인증은 통과했고 발신은 relay 연결이 남았습니다</h2>
+  <div class="body"><table class="grid"><tr><th>항목</th><th>상태</th><th>의미</th></tr><tr><td>MX · A</td><td><span class="badge ok">게시</span></td><td>Mailu 호스트가 직접 수신</td></tr><tr><td>SPF · DKIM · DMARC</td><td><span class="badge ok">PASS</span></td><td>직접 발송 시험 인증 통과</td></tr><tr><td>PTR</td><td><span class="badge warn">없음</span></td><td>공인 IP 평판 한계</td></tr><tr><td>Gmail 전달</td><td><span class="badge warn">SPAM</span></td><td>SMTP relay 필요</td></tr></table><div class="callout warn">외부 발신은 relay 계정과 도메인 인증을 연결한 뒤 Gmail·Naver·Outlook에서 다시 합격해야 합니다.</div></div>
+  <aside class="notes">직접 발송 시험은 Gmail 서버가 수락했고 SPF, DKIM, DMARC도 모두 통과했지만 스팸으로 분류됐습니다. 현재 공인 IP에 PTR이 없어 정상적인 대화형 메일 운영 품질을 기대하기 어렵습니다. 따라서 수신은 직접 유지하고 발신만 SMTP2GO 같은 인증 relay로 전환하는 것이 현재 판정입니다.</aside>
+</section>
+<section class="slide" data-kind="step" data-title="새 도메인은 같은 스택에 독립 정책으로 추가합니다">
+  <p class="kicker">Multi-domain</p><h2>새 도메인은 같은 스택에 독립 정책으로 추가합니다</h2>
+  <div class="body"><ol class="flow"><li><b>도메인 추가</b><span>Mailu Admin</span></li><li><b>사용자 생성</b><span>고유 quota·password</span></li><li><b>DNS 게시</b><span>MX·SPF·DKIM·DMARC</span></li><li class="on"><b>왕복 시험</b><span>3대 외부 사업자</span></li></ol><div class="screen"><div class="top"><span class="t">Mailu Admin</span><span class="tab on">Mail domains</span></div><div class="in"><div class="field"><b>현재</b><span>bomts.net · 운영</span></div><div class="field"><b>다음</b><span>edubeom.com · ahnda.com</span></div><div class="field"><b>완료</b><span>도메인별 DNS와 왕복 시험 통과</span></div></div></div></div>
+  <aside class="notes">Mailu 한 설치에서 여러 도메인을 관리할 수 있습니다. 새 도메인은 기존 bomts.net의 DKIM이나 DMARC를 복사했다고 끝나지 않으며, 도메인별 key와 DNS 정책을 게시합니다. 계정을 만든 뒤 Gmail, Naver, Outlook의 수신과 발신을 모두 시험하고 나서 운영 상태로 표시합니다.</aside>
+</section>
+<section class="slide" data-kind="troubleshoot" data-title="현재 남은 두 작업을 운영 제한으로 관리합니다">
+  <p class="kicker">제한·다음 조치</p><h2>현재 남은 두 작업을 운영 제한으로 관리합니다</h2>
+  <div class="body"><table class="grid"><tr><th>증상·제한</th><th>원인</th><th>조치</th></tr><tr><td>외부 Webmail/클라이언트 미접속</td><td>25 외 포트 미전달</td><td>443·465·587·993·995 네트워크 전달 후 검사</td></tr><tr><td>외부 발신이 스팸</td><td>PTR 없는 공인 IP</td><td>SMTP2GO 계정·DKIM·SPF 연결</td></tr><tr><td>메일 미수신</td><td>DNS·25·필터·quota</td><td>MX → 배너 → SMTP log → Mailbox 순서</td></tr></table><div class="callout">수신 서비스는 운영 중입니다. 남은 항목을 끝내기 전에는 외부 Webmail과 안정적 발신을 완료로 표시하지 않습니다.</div></div>
+  <aside class="notes">현재 실제 외부 수신은 가능하지만 사용자 클라이언트용 포트는 공유기 전달이 남았습니다. 발신 relay는 제공자 계정과 자격 증명이 필요합니다. 이 두 항목은 Mailbox 데이터의 정상 여부와 분리해서 운영합니다.</aside>
+</section>
+</body></html>

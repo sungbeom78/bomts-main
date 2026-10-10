@@ -4,7 +4,7 @@ This repository contains the static website for BOMTS. It includes public produc
 content, a logical architecture description, local development configuration, and
 non-secret examples.
 
-Production infrastructure, host inventory, edge routing, mail systems, firewall rules,
+Production infrastructure, host inventory, edge routing, mail infrastructure, firewall rules,
 backup locations, recovery procedures, and raw operational evidence are maintained in
 the private `bomts-infra` repository.
 
@@ -25,6 +25,7 @@ is already in use.
 - `nginx/`: generic static-site server configuration
 - `docs/architecture.md`: logical product architecture
 - `docs/manual/`: public product and contributor manual
+- `docs/mail-operations.md`: mailbox user settings and public service status
 - `scripts/check.sh`: local repository validation
 
 ## Development standard

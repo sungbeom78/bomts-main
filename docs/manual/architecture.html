@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BOMTS 제품 구조</title><link rel="stylesheet" href="assets/manual.css"><script defer src="assets/manual.js"></script></head>
-<body data-manual="BOMTS 공개 매뉴얼" data-index="index.html" data-chapters="index.html|처음;website.html|웹사이트;architecture.html|제품 구조;admin.html|로컬 개발">
+<body data-manual="BOMTS 공개 매뉴얼" data-index="index.html" data-chapters="index.html|처음;mail.html|BOMTS 메일 운영;website.html|BOMTS 웹사이트 안내;architecture.html|BOMTS 제품 구조;admin.html|BOMTS 로컬 개발">
 <section class="slide" data-kind="cover" data-title="제품 구조">
   <div class="body"><div class="cover-grid"><div><div class="brandline">BOMTS · ARCHITECTURE</div><div class="emoji">🧩</div><h1>제품 구조</h1><p class="lead">공개 웹사이트의 논리 구성과 저장 데이터 경계를 설명합니다.</p></div><div class="orbit"><b>WEB</b></div></div></div>
   <aside class="notes">이 장은 제품 이해에 필요한 논리 구조만 제공합니다. 실제 공급자, 서버 주소, 포트, 파일시스템 경로와 운영 절차는 공격 표면을 줄이기 위해 Public 문서에서 제외합니다.</aside>
@@ -11,9 +11,9 @@
   <div class="body"><div class="route cards"><div class="node"><b>방문자</b><small>브라우저 요청</small></div><div class="arrow">→</div><div class="node"><b>웹 경계</b><small>HTTPS 전달</small></div><div class="arrow">→</div><div class="node active"><b>정적 사이트</b><small>HTML·CSS·JS·이미지</small></div></div><div class="callout">배포 환경은 이 논리 계약을 구현하지만 실제 토폴로지는 Private 인프라 문서가 소유합니다.</div></div>
   <aside class="notes">브라우저 요청은 공개 웹 경계를 거쳐 버전 관리된 정적 자산으로 전달됩니다. 이 그림은 특정 공급자나 호스트에 묶이지 않습니다. 실제 배포 어댑터와 네트워크 정보는 별도 Private 저장소에서 관리합니다.</aside>
 </section>
-<section class="slide" data-kind="sources" data-title="이 저장소에는 업무 데이터 저장소가 없습니다">
-  <p class="kicker">데이터 입장</p><h2>이 저장소에는 업무 데이터 저장소가 없습니다</h2>
-  <div class="body"><table class="grid"><tr><th>영역</th><th>처리</th><th>정본</th></tr><tr><td>페이지 콘텐츠</td><td>정적 파일로 배포</td><td><code>site/</code></td></tr><tr><td>문의</td><td>메일 앱으로 연결</td><td>사이트 저장 없음</td></tr><tr><td>운영 로그</td><td>배포 환경이 관리</td><td>Private 인프라</td></tr><tr><td>다른 BOMTS 서비스</td><td>각 서비스가 소유</td><td>각 서비스 저장소</td></tr></table><div class="callout">현재 정책은 <code>data_model.stance: none</code>입니다.</div></div>
-  <aside class="notes">페이지 콘텐츠는 Git에 있는 정적 파일이 정본입니다. 문의는 사이트가 저장하지 않습니다. 운영 로그는 업무 데이터 모델이 아니며 배포 환경에서 관리합니다. 다른 BOMTS 서비스의 데이터 구조는 각 서비스 저장소가 정본입니다.</aside>
+<section class="slide" data-kind="sources" data-title="업무 데이터 정본은 소유 서비스에 있습니다">
+  <p class="kicker">데이터 입장</p><h2>업무 데이터 정본은 소유 서비스에 있습니다</h2>
+  <div class="body"><table class="grid"><tr><th>영역</th><th>처리</th><th>정본</th></tr><tr><td>페이지 콘텐츠</td><td>정적 파일로 배포</td><td><code>site/</code></td></tr><tr><td>사이트 문의</td><td>메일 앱으로 연결</td><td>사이트 저장 없음</td></tr><tr><td>Mailu</td><td>계정·Mailbox 자체 운영</td><td>Private 인프라·persistent storage</td></tr><tr><td>다른 BOMTS 서비스</td><td>각 서비스가 소유</td><td>각 서비스 저장소</td></tr></table><div class="callout">현재 정책은 <code>data_model.stance: external</code>입니다.</div></div>
+  <aside class="notes">페이지 콘텐츠는 Git에 있는 정적 파일이 정본이고 사이트 문의는 저장하지 않습니다. Mailu 계정과 Mailbox는 Private 인프라와 호스트 저장소가 정본입니다. 다른 BOMTS 서비스의 데이터 구조도 각 서비스 저장소가 소유합니다.</aside>
 </section>
 </body></html>
