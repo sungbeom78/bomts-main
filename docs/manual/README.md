@@ -1,5 +1,5 @@
-# BOMTS public manual
+# BOMTS 매뉴얼
 
-Open `index.html` in a browser. This manual covers public product navigation, mailbox
-user settings, logical architecture, and local contribution checks. Host-specific
-production operations are documented only in the private infrastructure repository.
+- [HTML 사용 설명서](./index.html): 공개 웹사이트, 메일, 터널, 시스템 구성과 운영 인수인계
+
+이 디렉터리는 BOMTS 프로그램의 사용자·운영 매뉴얼 정본입니다. 브라우저에서 `index.html`을 열고, `P`로 발표 모드, `N`으로 강의 대본을 표시할 수 있습니다. 신규 개발, 기능 추가, 설계 변경 또는 사용법 변경 시 같은 작업에서 관련 HTML 장과 변경 이력을 갱신합니다.

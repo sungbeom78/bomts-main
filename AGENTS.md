@@ -25,6 +25,8 @@
    (none = 저장 데이터 없음 + reason / owned = 이 저장소가 정본 `db/model.json` / external = 다른 저장소 + ref, `data-stance` 로 확인).
    데이터 구조(테이블·컬럼)를 새로 정하거나 바꾸는 일은 코드보다 먼저 `sk-dev-data-modeling` 으로 정본부터 고친다
    (`task-new --work-type data_model`). 기존 DB 는 역설계로 정본을 만든다. 논리 모델과 실제 DB 생성은 사용자 승인 필수.
+   모든 데이터 자산(DB·파일·로그·벡터·캐시·백업)은 `data/catalog.json` 에 개인정보 수준·보존 기간(지우는 방법)·lineage 와 함께 적는다
+   (`data-inventory`, 없으면 `--init` 초안 -- 개인정보·보존은 사용자와 정한다).
 8. 사용설명서: 신규 개발·새 기능 추가·설계나 사용 방법 변경(`--change-kind new_project|new_feature|usage_change`)은
    `sk-dev-user-manual` 로 `docs/manual/*.html`(HTML 슬라이드: 페이지마다 도식·강의 대본, 한 단계 = 한 페이지,
    인수인계용 구성·운영 장)을 만들거나 고쳐 코드와 같은 커밋에 넣는다 (필수 검사 user_manual). 요청 시 `manual-pptx`.

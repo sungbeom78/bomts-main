@@ -1,0 +1,32 @@
+version: 1
+domain: bomts.net
+catch_all: false
+
+mailboxes:
+  - address: founder@bomts.net
+    purpose: Claude Console, Claude Startups, and critical business mail
+    access: founder-only
+  - address: admin@bomts.net
+    purpose: infrastructure notifications
+    access: administrator-only
+  - address: accounts@bomts.net
+    purpose: external service registrations
+    access: restricted
+  - address: ott@bomts.net
+    purpose: shared-service verification mail
+    access: shared-service-users-only
+
+aliases:
+  - address: contact@bomts.net
+    destination: founder@bomts.net
+  - address: disney@bomts.net
+    destination: ott@bomts.net
+  - address: netflix@bomts.net
+    destination: ott@bomts.net
+  - address: prime@bomts.net
+    destination: ott@bomts.net
+
+controls:
+  founder_password_shared: false
+  admin_publicly_exposed: false
+  admin_mfa_required: true

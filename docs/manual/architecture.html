@@ -1,19 +1,61 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BOMTS 제품 구조</title><link rel="stylesheet" href="assets/manual.css"><script defer src="assets/manual.js"></script></head>
-<body data-manual="BOMTS 공개 매뉴얼" data-index="index.html" data-chapters="index.html|처음;mail.html|BOMTS 메일 운영;website.html|BOMTS 웹사이트 안내;architecture.html|BOMTS 제품 구조;admin.html|BOMTS 로컬 개발">
-<section class="slide" data-kind="cover" data-title="제품 구조">
-  <div class="body"><div class="cover-grid"><div><div class="brandline">BOMTS · ARCHITECTURE</div><div class="emoji">🧩</div><h1>제품 구조</h1><p class="lead">공개 웹사이트의 논리 구성과 저장 데이터 경계를 설명합니다.</p></div><div class="orbit"><b>WEB</b></div></div></div>
-  <aside class="notes">이 장은 제품 이해에 필요한 논리 구조만 제공합니다. 실제 공급자, 서버 주소, 포트, 파일시스템 경로와 운영 절차는 공격 표면을 줄이기 위해 Public 문서에서 제외합니다.</aside>
+<title>BOMTS 시스템 구성</title><link rel="stylesheet" href="assets/manual.css"><script defer src="assets/manual.js"></script></head>
+<body data-manual="BOMTS 운영 매뉴얼" data-index="index.html" data-chapters="index.html|처음;mail.html|BOMTS 메일 운영;tunnel.html|BOMTS Cloudflare Tunnel;website.html|BOMTS 웹사이트;architecture.html|BOMTS 시스템 구성;admin.html|BOMTS 운영·인수인계">
+<section class="slide" data-kind="cover" data-title="시스템 구성">
+  <div class="body"><div class="cover-grid"><div><div class="brandline">BOMTS · 운영 매뉴얼 · 2026-10-11</div><div class="emoji">🧩</div><h1>시스템 구성</h1><p class="lead">외부 edge, Mini PC 서비스, 저장소 정본과 운영 증거를 한 구조로 봅니다.</p></div><div class="orbit"><b>BOMTS</b></div></div></div>
+  <aside class="notes">이 장은 BOMTS 공개 웹, 터널, 메일 시스템의 실행 위치와 데이터 흐름을 설명합니다. 공개 문서에는 논리 구조만 남기고 실제 호스트 경로, 주소, 자격 증명은 Private 인프라 저장소에서 관리합니다.</aside>
 </section>
-<section class="slide" data-kind="system" data-title="정적 자산이 공개 웹 경계를 통해 전달됩니다">
-  <p class="kicker">논리 구성</p><h2>정적 자산이 공개 웹 경계를 통해 전달됩니다</h2>
-  <div class="body"><div class="route cards"><div class="node"><b>방문자</b><small>브라우저 요청</small></div><div class="arrow">→</div><div class="node"><b>웹 경계</b><small>HTTPS 전달</small></div><div class="arrow">→</div><div class="node active"><b>정적 사이트</b><small>HTML·CSS·JS·이미지</small></div></div><div class="callout">배포 환경은 이 논리 계약을 구현하지만 실제 토폴로지는 Private 인프라 문서가 소유합니다.</div></div>
-  <aside class="notes">브라우저 요청은 공개 웹 경계를 거쳐 버전 관리된 정적 자산으로 전달됩니다. 이 그림은 특정 공급자나 호스트에 묶이지 않습니다. 실제 배포 어댑터와 네트워크 정보는 별도 Private 저장소에서 관리합니다.</aside>
+<section class="slide" data-kind="system" data-title="공개 HTTP는 터널로, SMTP는 Mailu로 들어옵니다">
+  <p class="kicker">전체 구성</p><h2>공개 HTTP는 터널로, SMTP는 Mailu로 들어옵니다</h2>
+  <div class="body"><div class="diagram"><svg viewBox="0 0 1050 360" role="img" aria-label="BOMTS 시스템 구성도"><defs><marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#14b87a"/></marker></defs><rect x="20" y="70" width="170" height="220" rx="18" fill="#edf6f0" stroke="#9eb8a8"/><text x="105" y="105" text-anchor="middle" font-weight="700">Internet</text><text x="105" y="155" text-anchor="middle">Browser</text><text x="105" y="215" text-anchor="middle">SMTP sender</text><rect x="260" y="70" width="190" height="220" rx="18" fill="#071410"/><text x="355" y="105" fill="white" text-anchor="middle" font-weight="700">Public Edge</text><text x="355" y="155" fill="white" text-anchor="middle">Cloudflare HTTP</text><text x="355" y="215" fill="#f4c67f" text-anchor="middle">SMTP direct</text><rect x="520" y="35" width="500" height="290" rx="20" fill="#f8faf8" stroke="#9eb8a8"/><text x="770" y="70" text-anchor="middle" font-weight="700">Mini PC · &lt;LAN_IP&gt;</text><rect x="560" y="105" width="180" height="70" rx="12" fill="#dcf6e7"/><text x="650" y="135" text-anchor="middle">cloudflared</text><text x="650" y="158" text-anchor="middle">systemd</text><rect x="800" y="95" width="180" height="90" rx="12" fill="#dcf6e7"/><text x="890" y="128" text-anchor="middle">Website</text><text x="890" y="152" text-anchor="middle">127.0.0.1:3001</text><rect x="800" y="215" width="180" height="70" rx="12" fill="#e7edf9"/><text x="890" y="245" text-anchor="middle">Decision</text><text x="890" y="268" text-anchor="middle">127.0.0.1:9002</text><rect x="560" y="215" width="180" height="70" rx="12" fill="#fff0d9"/><text x="650" y="245" text-anchor="middle">Mail stack</text><text x="650" y="268" text-anchor="middle">Mailu active</text><path d="M190 135 H260" stroke="#14b87a" stroke-width="4" marker-end="url(#a)"/><path d="M450 135 H560" stroke="#14b87a" stroke-width="4" marker-end="url(#a)"/><path d="M740 140 H800" stroke="#14b87a" stroke-width="4" marker-end="url(#a)"/><path d="M740 155 C780 180 760 235 800 250" fill="none" stroke="#14b87a" stroke-width="4" marker-end="url(#a)"/><path d="M190 235 H260 M450 235 H560" stroke="#e6a23c" stroke-width="4" stroke-dasharray="8 8" marker-end="url(#a)"/></svg></div></div>
+  <aside class="notes">HTTP 요청은 Cloudflare edge와 cloudflared를 거쳐 웹 또는 decision 서비스로 전달됩니다. 메일 SMTP는 Cloudflare HTTP Tunnel을 통과하지 않고 DNS-only mail 호스트의 25번으로 직접 들어와 Mailu에 저장됩니다. 발신만 전달 품질 때문에 외부 SMTP relay를 추가할 예정입니다.</aside>
 </section>
-<section class="slide" data-kind="sources" data-title="업무 데이터 정본은 소유 서비스에 있습니다">
-  <p class="kicker">데이터 입장</p><h2>업무 데이터 정본은 소유 서비스에 있습니다</h2>
-  <div class="body"><table class="grid"><tr><th>영역</th><th>처리</th><th>정본</th></tr><tr><td>페이지 콘텐츠</td><td>정적 파일로 배포</td><td><code>site/</code></td></tr><tr><td>사이트 문의</td><td>메일 앱으로 연결</td><td>사이트 저장 없음</td></tr><tr><td>Mailu</td><td>계정·Mailbox 자체 운영</td><td>Private 인프라·persistent storage</td></tr><tr><td>다른 BOMTS 서비스</td><td>각 서비스가 소유</td><td>각 서비스 저장소</td></tr></table><div class="callout">현재 정책은 <code>data_model.stance: external</code>입니다.</div></div>
-  <aside class="notes">페이지 콘텐츠는 Git에 있는 정적 파일이 정본이고 사이트 문의는 저장하지 않습니다. Mailu 계정과 Mailbox는 Private 인프라와 호스트 저장소가 정본입니다. 다른 BOMTS 서비스의 데이터 구조도 각 서비스 저장소가 소유합니다.</aside>
+<section class="slide" data-kind="layers" data-title="실행 계층마다 정본과 복구 방법이 다릅니다">
+  <p class="kicker">실행 계층</p><h2>실행 계층마다 정본과 복구 방법이 다릅니다</h2>
+  <div class="body"><table class="grid"><tr><th>계층</th><th>실행 위치</th><th>정본</th><th>복구</th></tr><tr><td>Public edge</td><td>Cloudflare</td><td>DNS·Tunnel hostname</td><td>라우팅·상태 확인</td></tr><tr><td>Tunnel</td><td>systemd</td><td>/etc/cloudflared/config.yml</td><td>backup·validate·restart</td></tr><tr><td>Website</td><td>Docker</td><td>site/·nginx/·Compose</td><td>build·health</td></tr><tr><td>Decision</td><td>127.0.0.1:9002</td><td>별도 서비스</td><td>원본 상태 확인</td></tr><tr><td>Mail</td><td>Docker Mailu</td><td>Private bomts-infra</td><td>backup·restore·health</td></tr></table></div>
+  <aside class="notes">외부 DNS와 호스트 서비스, Docker 컨테이너는 서로 다른 계층입니다. 같은 접속 실패라도 edge 설정과 로컬 컨테이너의 복구 방법이 다르므로 정본 위치를 먼저 확인합니다. Mailu 실행 선언과 물리 저장소 지도는 Private bomts-infra가 관리합니다.</aside>
+</section>
+<section class="slide" data-kind="dataflow" data-title="www 요청은 다섯 단계로 정적 파일에 도달합니다">
+  <p class="kicker">데이터 흐름 · 웹</p><h2>www 요청은 다섯 단계로 정적 파일에 도달합니다</h2>
+  <div class="body"><ol class="flow"><li><b>DNS</b><span>www.bomts.net</span></li><li><b>Cloudflare</b><span>HTTPS edge</span></li><li><b>cloudflared</b><span>ingress match</span></li><li><b>Nginx</b><span>3001→80</span></li><li class="on"><b>site file</b><span>HTML·asset 응답</span></li></ol><div class="callout">관측 결과: local health <b>ok/200</b>, public <b>200</b>.</div></div>
+  <aside class="notes">www 요청은 DNS와 Cloudflare HTTPS 처리 후 tunnel ingress에서 3001번 원본을 선택합니다. Nginx가 URL을 site 파일에 매핑해 정적 응답을 반환합니다. 로컬과 공개 결과를 함께 보면 이 전체 흐름의 어느 앞부분까지 정상인지 판단할 수 있습니다.</aside>
+</section>
+<section class="slide" data-kind="dataflow" data-title="decision 요청은 같은 터널에서 9002 원본으로 분기합니다">
+  <p class="kicker">데이터 흐름 · Decision</p><h2>decision 요청은 같은 터널에서 9002 원본으로 분기합니다</h2>
+  <div class="body"><ol class="flow"><li><b>사용자</b><span>decision.bomts.net</span></li><li><b>Cloudflare</b><span>공개 HTTPS</span></li><li><b>ingress</b><span>hostname 선택</span></li><li><b>origin</b><span>127.0.0.1:9002</span></li><li class="on"><b>응답</b><span>local·public 200</span></li></ol><div class="callout">검사 스크립트는 잘못된 <code>http://:127...</code> 값이 남아 있지 않은지도 확인합니다.</div></div>
+  <aside class="notes">decision은 www와 같은 cloudflared 프로세스를 사용하지만 별도 hostname 규칙으로 9002번에 연결됩니다. 과거 잘못된 origin 문자열을 복구했기 때문에 검사 스크립트가 올바른 값과 잘못된 값의 부재를 모두 확인합니다. 현재 로컬과 공개 응답은 200입니다.</aside>
+</section>
+<section class="slide" data-kind="dataflow" data-title="메일 수신은 MX에서 사용자 Mailbox까지 직접 흐릅니다">
+  <p class="kicker">데이터 흐름 · 메일</p><h2>메일 수신은 MX에서 사용자 Mailbox까지 직접 흐릅니다</h2>
+  <div class="body"><ol class="flow"><li><b>외부 MTA</b><span>MX 조회</span></li><li><b>Mailu SMTP</b><span>TCP 25</span></li><li><b>필터</b><span>spam·virus</span></li><li><b>사용자 판정</b><span>domain·account</span></li><li class="on"><b>Mailbox</b><span>persistent storage</span></li></ol><div class="callout">실제 Gmail 메시지가 이 경로로 founder Mailbox에 저장됐습니다.</div></div>
+  <aside class="notes">외부 발신 서버는 MX를 조회해 Mailu SMTP에 접속합니다. 수신 주소가 등록된 독립 사용자 또는 alias인지 확인하고 스팸·바이러스 검사를 거친 뒤 사용자별 Maildir에 기록합니다. 외부 수신 시험으로 이 전체 경로를 확인했습니다.</aside>
+</section>
+<section class="slide" data-kind="sources" data-title="코드·시스템·증거의 정본을 구분합니다">
+  <p class="kicker">데이터 정본</p><h2>코드·시스템·증거의 정본을 구분합니다</h2>
+  <div class="body"><table class="grid"><tr><th>정보</th><th>정본</th><th>저장소 공개 여부</th></tr><tr><td>웹 콘텐츠</td><td><code>site/</code></td><td>공개</td></tr><tr><td>웹 실행</td><td><code>docker-compose.yml</code></td><td>공개</td></tr><tr><td>터널 설정</td><td>Private 인프라</td><td>비공개</td></tr><tr><td>공개 운영 증거</td><td><code>dev-process/task/</code></td><td>비밀 제거 후</td></tr><tr><td>Mailu 선언·데이터 지도</td><td><code>bomts-infra</code></td><td>Private</td></tr><tr><td>Mailbox·비밀</td><td>호스트 persistent storage</td><td>Git 저장 금지</td></tr></table></div>
+  <aside class="notes">정본은 정보의 종류에 따라 다릅니다. 웹 코드는 Git에 있지만 cloudflared 운영 설정과 메일 데이터는 Private 인프라와 호스트에 있습니다. evidence는 실행 결과를 남기되 토큰, 비밀번호, 키가 포함되지 않은 출력만 커밋합니다.</aside>
+</section>
+<section class="slide" data-kind="overview" data-title="설정은 저장소와 호스트 경계에서 합쳐집니다">
+  <p class="kicker">설정 결합</p><h2>설정은 저장소와 호스트 경계에서 합쳐집니다</h2>
+  <div class="body"><div class="route cards"><div class="node"><b>Git</b><small>Compose·Nginx·site</small></div><div class="arrow">+</div><div class="node"><b>Host</b><small>cloudflared·storage</small></div><div class="arrow">→</div><div class="node active"><b>Runtime</b><small>Docker·systemd</small></div></div><div class="boundary compare"><div><h3>Git이 바꾸는 것</h3><ul><li>이미지와 포트</li><li>정적 콘텐츠</li><li>검사 스크립트</li></ul></div><div><h3>Host가 보유하는 것</h3><ul><li>터널 credentials</li><li>메일 비밀번호·키</li><li>실제 데이터</li></ul></div></div></div>
+  <aside class="notes">실행 상태는 Git의 선언과 호스트의 비밀 및 데이터를 함께 사용합니다. 저장소만 복원해도 터널과 메일이 자동 복구되지 않으므로 시스템 백업이 별도로 필요합니다. 반대로 호스트 설정만 있고 코드 버전이 다르면 검증 결과를 재현할 수 없습니다.</aside>
+</section>
+<section class="slide" data-kind="sources" data-title="업무 데이터 정본은 서비스 저장소별로 관리합니다">
+  <p class="kicker">데이터 지도</p><h2>업무 데이터 정본은 서비스 저장소별로 관리합니다</h2>
+  <div class="body"><table class="grid"><tr><th>서비스</th><th>엔진·저장 형태</th><th>데이터 정본</th></tr><tr><td><b>bomts-main</b></td><td>정적 파일 · Docker 운영 로그</td><td><code>project.policy.yaml</code><br><code>data/catalog.json</code></td></tr><tr><td><b>dev-ai</b></td><td>PostgreSQL · Qdrant</td><td><code>sungbeom78/dev-ai:db/model.json</code></td></tr><tr><td><b>bomts-decision</b></td><td>SQLite · Prisma</td><td><code>sungbeom78/bomts-decision:<br>prisma/schema.prisma</code></td></tr><tr><td><b>BOMTS Mail</b></td><td>Mailu account DB · Maildir · filter state</td><td><code>bomts-infra:mail/mailu/data-map.md</code></td></tr></table><div class="callout">Mailbox의 물리 경로와 계정 비밀은 Public 저장소에 기록하지 않습니다.</div></div>
+  <aside class="notes">BOMTS 메인 저장소는 업무 데이터를 직접 소유하지 않아 external 입장입니다. AI 서비스의 모델 정본은 공개 dev-ai 저장소의 db/model.json이고, 의사결정 서비스의 현재 실제 SQLite 스키마 정본은 bomts-decision의 Prisma schema입니다. Mailu의 데이터 종류와 백업 단위는 Private bomts-infra의 data-map이 정본이며, 실제 메일 내용과 계정 비밀은 호스트 저장소에만 둡니다.</aside>
+</section>
+<section class="slide" data-kind="modules" data-title="폴더별 변경 영향이 명확하게 나뉩니다">
+  <p class="kicker">모듈 지도</p><h2>폴더별 변경 영향이 명확하게 나뉩니다</h2>
+  <div class="body"><div class="filemap"><div class="tree">bomts-main/
+├── site/                 # 공개 페이지
+├── nginx/                # HTTP 정책
+├── mail/                 # 메일 목표 정책
+├── scripts/              # 운영 검사·복구
+├── docs/manual/          # 이 매뉴얼
+├── dev-process/local/    # BOMTS 규칙·증거
+└── docker-compose.yml    # website runtime</div><table class="grid"><tr><th>변경 경로</th><th>영향</th></tr><tr><td>site + nginx</td><td>www 화면·응답</td></tr><tr><td>scripts</td><td>점검·복구 절차</td></tr><tr><td>mail</td><td>계정·DNS 목표</td></tr><tr><td>docs/manual</td><td>사용·운영 인수인계</td></tr></table></div></div>
+  <aside class="notes">모듈 지도는 어느 파일을 고쳤을 때 무엇이 달라지는지 보여 줍니다. 웹 화면은 site와 Nginx, 운영 자동화는 scripts, 메일 요구 정책은 mail에 있습니다. 매뉴얼과 evidence는 실제 변경과 같은 작업에서 갱신해 설명과 실행 상태가 어긋나지 않게 합니다.</aside>
 </section>
 </body></html>

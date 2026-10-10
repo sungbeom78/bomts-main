@@ -20,11 +20,11 @@ check_commands:         # verify 가 실행할 명령. builtin:* 은 프레임�
 
 check_inputs:           # 검사별 입력 -- 바뀌면 이전 PASS 가 무효(stale)가 된다
   lint: [site, scripts]
-  unit_or_regression: [site, scripts, docs/manual, AGENTS.md, docker-compose.yml, nginx]
-  encoding: [site, scripts, docs]
+  unit_or_regression: [site, scripts, mail, docs/manual, AGENTS.md, docker-compose.yml, nginx]
+  encoding: [site, scripts, mail, docs]
   example_sync: [dev-process-framework, AGENTS.md, .agents/skills, .claude/skills, .gitignore]
   identifier_audit: [scripts, glossary/dictionary]
-  qa_quick: [site, scripts, docs/manual, AGENTS.md, docker-compose.yml, nginx]
+  qa_quick: [site, scripts, mail, docs/manual, AGENTS.md, docker-compose.yml, nginx]
 
 verification_exemptions: {}   # 예: {code: {identifier_audit: "사유"}}
 
@@ -50,8 +50,10 @@ user_manual:
   required_for_change_kinds: [new_project, new_feature, usage_change]
 
 data_model:
-  stance: none
+  stance: external
+  ref: "https://github.com/sungbeom78/dev-ai/blob/main/db/model.json"
   reason: >-
-    정적 사이트·운영 스크립트. 업무 데이터 없음. 운영 로그: nginx access/error(IP·시각·URL·UA) → docker json-file, 10MB×5 회전.
-    서비스 데이터 정본은 각 서비스 저장소 (sungbeom78/dev-ai (/project/dev_ai): PostgreSQL+Qdrant, bomts-decision: SQLite).
-    메일 서버를 자체 구축하면 다시 정한다.
+    bomts-main은 정적 사이트·운영 스크립트와 운영 로그만 보유한다. 업무 데이터 정본은 외부 서비스 저장소에 있다.
+    dev-ai의 PostgreSQL·Qdrant 정본은 sungbeom78/dev-ai의 db/model.json이고,
+    bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다.
+    Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.

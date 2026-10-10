@@ -49,3 +49,7 @@ dist/
 *.db
 .pgpass
 pgpass.conf
+
+# dev-process-framework (init_project)
+glossary/build/
+dist/manual-review/

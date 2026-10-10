@@ -1,19 +1,46 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BOMTS 공개 매뉴얼</title><link rel="stylesheet" href="assets/manual.css"><script defer src="assets/manual.js"></script></head>
-<body data-manual="BOMTS 공개 매뉴얼" data-index="index.html" data-chapters="index.html|처음;mail.html|BOMTS 메일 운영;website.html|BOMTS 웹사이트 안내;architecture.html|BOMTS 제품 구조;admin.html|BOMTS 로컬 개발">
-<section class="slide" data-kind="cover" data-title="BOMTS 공개 매뉴얼">
-  <div class="body"><div class="cover-grid"><div><div class="brandline">BOMTS · PUBLIC GUIDE</div><div class="emoji">🧭</div><h1>BOMTS 공개 매뉴얼</h1><p class="lead">제품 페이지와 Self-hosted 메일을 사용하고 공개 소스를 검증하는 방법을 설명합니다.</p></div><div class="orbit"><b>BOMTS</b></div></div></div>
-  <aside class="notes">이 매뉴얼은 공개 저장소 독자를 위한 안내입니다. 제품 페이지, 메일 사용자 기능, 논리 구조와 로컬 개발 절차를 다룹니다. 실제 배포 환경과 운영 인수인계 자료는 Private 인프라 저장소에서 관리합니다.</aside>
+<title>BOMTS 운영 매뉴얼</title><link rel="stylesheet" href="assets/manual.css"><script defer src="assets/manual.js"></script></head>
+<body data-manual="BOMTS 운영 매뉴얼" data-index="index.html" data-chapters="index.html|처음;mail.html|BOMTS 메일 운영;tunnel.html|BOMTS Cloudflare Tunnel;website.html|BOMTS 웹사이트;architecture.html|BOMTS 시스템 구성;admin.html|BOMTS 운영·인수인계">
+<section class="slide" data-kind="cover" data-title="BOMTS 운영 매뉴얼">
+  <div class="body"><div class="cover-grid"><div><div class="brandline">BOMTS · 운영 매뉴얼 · 2026-10-11</div><div class="emoji">🧭</div><h1>BOMTS 운영 매뉴얼</h1><p class="lead">공개 웹사이트·터널·Self-hosted 메일을 검증된 운영 절차와 함께 인수인계합니다.</p></div><div class="orbit"><b>BOMTS</b></div></div></div>
+  <aside class="notes">이 매뉴얼은 BOMTS 공개 서비스의 현재 상태를 설명합니다. 웹사이트와 decision 서비스에 더해 Mailu가 외부 SMTP를 직접 수신합니다. 실제 호스트 구조와 비밀번호, 토큰, 개인키는 Public 매뉴얼에 기록하지 않습니다.</aside>
 </section>
-<section class="slide" data-kind="overview" data-title="공개 사이트는 제품 정보와 연락 경로를 제공합니다">
-  <p class="kicker">제품 개요</p><h2>공개 사이트는 제품 정보와 연락 경로를 제공합니다</h2>
-  <div class="body"><div class="cards"><div class="card"><i>🏠</i><b>소개</b><span>BOMTS와 운영자의 경험</span></div><div class="card"><i>🧠</i><b>제품</b><span>AI 기반 분석·의사결정 방향</span></div><div class="card"><i>✉️</i><b>연락</b><span>공개 이메일 링크</span></div><div class="card"><i>🌐</i><b>언어</b><span>한국어·영어 진입점</span></div></div><div class="callout">문의 링크는 방문자의 메일 앱을 열며 이 저장소의 사이트가 입력 내용을 저장하지 않습니다.</div></div>
-  <aside class="notes">웹사이트는 정적 페이지 모음입니다. 소개와 제품 방향을 읽고 공개 이메일 주소로 연락할 수 있습니다. 서버 측 문의 폼과 로그인 기능이 없으므로 방문자가 입력한 업무 데이터를 저장하지 않습니다.</aside>
+<section class="slide" data-kind="overview" data-title="세 역할이 같은 운영 상태를 봅니다">
+  <p class="kicker">읽는 방법</p><h2>세 역할이 같은 운영 상태를 봅니다</h2>
+  <div class="body"><div class="route cards"><div class="node"><b>사용자</b><small>www·decision 접속</small></div><div class="arrow">→</div><div class="node active"><b>운영자</b><small>health·터널·백업 확인</small></div><div class="arrow">→</div><div class="node"><b>개발자</b><small>저장소·검사·매뉴얼 갱신</small></div></div><div class="callout">공개 코드는 <code>bomts-main</code>, 실제 호스트 설정과 원시 증거는 Private <code>bomts-infra</code>가 정본입니다.</div></div>
+  <aside class="notes">일반 사용자는 공개 URL이 응답하는지만 확인합니다. 운영자는 로컬 원본과 터널을 나눠 점검하고, 개발자는 변경과 검증 기록을 남깁니다. 세 역할이 같은 증거를 보게 해 추측으로 상태를 판단하지 않도록 구성했습니다.</aside>
 </section>
-<section class="slide" data-kind="navigation" data-title="필요한 안내로 바로 이동합니다">
-  <p class="kicker">문서 지도</p><h2>필요한 안내로 바로 이동합니다</h2>
-  <div class="body"><div class="route cards"><a class="card" href="mail.html"><i>✉️</i><b>메일 사용</b><span>계정·클라이언트·현재 제한</span></a><a class="card" href="website.html"><i>🖥️</i><b>웹사이트</b><span>페이지와 이용 흐름</span></a><a class="card" href="architecture.html"><i>🧩</i><b>제품 구조</b><span>논리 구성과 데이터 경계</span></a><a class="card" href="admin.html"><i>🛠️</i><b>로컬 개발</b><span>실행·검사·기여 범위</span></a></div><div class="callout warn">실제 호스트·네트워크·백업 경로와 복구 명령은 Public 문서에 포함하지 않습니다.</div></div>
-  <aside class="notes">메일 장은 사용 가능한 계정과 표준 접속 방법을 설명합니다. 웹사이트 장은 방문자가 보는 페이지를, 제품 구조 장은 논리 흐름을 다룹니다. 실제 인프라와 운영 evidence는 별도 Private 저장소가 정본입니다.</aside>
+<section class="slide" data-kind="status" data-title="웹·터널·메일 수신이 운영 중입니다">
+  <p class="kicker">현재 상태</p><h2>웹·터널·메일 수신이 운영 중입니다</h2>
+  <div class="body"><div class="status-strip cards"><div class="status-box"><small>PUBLIC WEB</small><strong><span class="dot ok"></span>www 200</strong></div><div class="status-box"><small>DECISION</small><strong><span class="dot ok"></span>public 200</strong></div><div class="status-box"><small>CLOUDFLARED</small><strong><span class="dot ok"></span>active</strong></div><div class="status-box"><small>MAIL INBOUND</small><strong><span class="dot ok"></span>실수신</strong></div></div><div class="callout warn">Mailbox와 외부 수신은 운영 중이며, 일반 발신과 외부 Webmail은 남은 작업을 완료한 뒤 개방합니다.</div></div>
+  <aside class="notes">외부 TCP 25와 Mailu 배너를 확인했고 실제 Gmail 메시지가 founder Mailbox에 도착했습니다. 독립 계정과 로컬 Webmail·IMAP·POP3·Submission도 동작합니다. 다만 직접 발신이 Gmail 스팸으로 분류되어 SMTP relay가 필요하고, 외부 클라이언트 포트는 공유기 전달이 남았습니다.</aside>
+</section>
+<section class="slide" data-kind="start-step" data-title="1단계 — 컨테이너 상태를 확인합니다">
+  <p class="kicker">시작하기 · 1 / 2</p><h2>1단계 — 컨테이너 상태를 확인합니다</h2>
+  <div class="body"><div class="terminal term"><div class="bar"><span>project root</span><span>read-only</span></div><pre>cd /project/bomts-main
+docker compose ps</pre><div class="result ok">bomts_public_website · Up · healthy · 127.0.0.1:3001→80</div></div><div class="callout">정상 기준: <code>website</code>가 <b>healthy</b>이고 3001은 loopback에만 바인딩됩니다.</div></div>
+  <aside class="notes">프로젝트 루트에서 Compose 상태를 확인합니다. 실제 출력에는 bomts_public_website가 healthy로 표시됐고 호스트 3001번이 컨테이너 80번으로 연결됐습니다. 컨테이너가 없거나 unhealthy라면 운영 장의 배포 절차부터 확인합니다.</aside>
+</section>
+<section class="slide" data-kind="start-step" data-title="2단계 — 로컬과 공개 응답을 차례로 확인합니다">
+  <p class="kicker">시작하기 · 2 / 2</p><h2>2단계 — 로컬과 공개 응답을 차례로 확인합니다</h2>
+  <div class="body"><div class="terminal term"><div class="bar"><span>health check</span><span>2026-10-08</span></div><pre>curl -fsS http://127.0.0.1:3001/healthz
+curl -o /dev/null -w '%{http_code}' https://www.bomts.net/</pre><div class="result ok">ok · 200</div></div><ol class="flow"><li class="on"><b>로컬 200</b><span>Nginx 원본 정상</span></li><li class="on"><b>공개 200</b><span>터널 경로 정상</span></li></ol></div>
+  <aside class="notes">항상 로컬 원본을 먼저 확인하고 공개 주소를 확인합니다. 실제 재실행 결과는 healthz 본문 ok와 공개 HTTP 200이었습니다. 로컬만 성공하면 터널 장을 보고, 로컬도 실패하면 웹사이트 또는 운영 장을 확인합니다.</aside>
+</section>
+<section class="slide" data-kind="chapters" data-title="업무별 장에서 바로 시작합니다">
+  <p class="kicker">장 목록</p><h2>업무별 장에서 바로 시작합니다</h2>
+  <div class="body"><div class="cards"><a class="card" href="website.html"><i>🌐</i><b>웹사이트</b><span>페이지·배포·health</span></a><a class="card" href="tunnel.html"><i>🔗</i><b>터널</b><span>라우팅·검증·복구</span></a><a class="card" href="mail.html"><i>✉️</i><b>메일</b><span>계정·접속·백업·relay</span></a><a class="card" href="architecture.html"><i>🧩</i><b>시스템 구성</b><span>흐름·경계·정본</span></a><a class="card" href="admin.html"><i>🛠️</i><b>운영·인수인계</b><span>설치·백업·장애 대응</span></a></div></div>
+  <aside class="notes">웹사이트 장은 공개 페이지를 운영하거나 내용을 바꿀 때 사용합니다. 터널 장은 로컬은 정상인데 공개 접속이 실패할 때 보고, 메일 장은 계정 사용, 외부 계정 가져오기, 백업, 발신 relay 상태를 설명합니다. 시스템 구성과 운영 장은 인수인계 시 함께 읽습니다.</aside>
+</section>
+<section class="slide" data-kind="limits" data-title="현재 제한을 먼저 확인해야 오해가 없습니다">
+  <p class="kicker">제한 사항</p><h2>현재 제한을 먼저 확인해야 오해가 없습니다</h2>
+  <div class="body"><table class="grid"><tr><th>영역</th><th>현재 제한</th><th>다음 확인</th></tr><tr><td>메일 수신</td><td>없음 · 실제 외부 수신 통과</td><td>지속적인 큐·용량 관찰</td></tr><tr><td>메일 발신</td><td>직접 발송이 Gmail spam</td><td>SMTP relay 3사업자 시험</td></tr><tr><td>외부 사용자 접속</td><td>클라이언트 포트 미전달</td><td>443·465·587·993·995 외부 검사</td></tr><tr><td>TLS 갱신</td><td>user linger 비활성</td><td>관리자 1회 설정</td></tr></table><div class="callout warn">수신 완료와 발신·외부 Webmail 완료를 구분해 운영합니다.</div></div>
+  <aside class="notes">Mailu의 외부 수신과 Mailbox 저장은 확인됐습니다. 남은 항목은 발신 relay 제공자 계정, 공유기 클라이언트 포트 전달, 인증서 갱신 사용자의 linger 설정입니다. 각 항목은 완료 후 별도의 외부 시험으로 상태를 갱신합니다.</aside>
+</section>
+<section class="slide" data-kind="changes" data-title="Self-hosted 메일 운영을 시작했습니다">
+  <p class="kicker">변경 이력</p><h2>Self-hosted 메일 운영을 시작했습니다</h2>
+  <div class="body"><table class="grid"><tr><th>날짜</th><th>변경</th><th>작업</th></tr><tr><td>2026-10-11</td><td>external 데이터 입장·자산 카탈로그·서비스별 정본 지도 확정</td><td><code>20261010-public-data-governance-sync</code></td></tr><tr><td>2026-10-10</td><td>TCP 25 A 판정, Mailu·독립 계정·DNS·TLS·실수신·백업/복구</td><td><code>20261008-mail-self-hosting</code></td></tr><tr><td>2026-10-09</td><td>전체 Git history Secret 감사, placeholder 설정, <code>bomts-infra</code> 분리 기준 추가</td><td><code>20261009-public-repository-secret-audit</code></td></tr><tr><td>2026-10-08</td><td>새 품질 기준으로 전 장 재작성, 실제 운영 출력 재수집, 메일 Self-hosting 대기 상태 반영</td><td><code>20261008-manual-rewrite</code></td></tr></table></div>
+  <aside class="notes">이번 변경은 bomts-main이 업무 데이터를 직접 소유하지 않고 서비스별 정본을 참조한다는 external 입장을 확정했습니다. AI 데이터 모델은 dev-ai의 db/model.json, 의사결정 SQLite 스키마는 bomts-decision의 Prisma schema를 봅니다. 운영 로그와 메일 자산의 개인정보 수준·보존 방식은 data/catalog.json에서 확인합니다.</aside>
 </section>
 </body></html>

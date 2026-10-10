@@ -1,0 +1,160 @@
+{
+  "catalog_version": "1",
+  "system": "bomts-main",
+  "owner": "Sungbeom Ahn / BOMTS operator",
+  "assets": [
+    {
+      "id": "web_log",
+      "kind": "log",
+      "location": "Docker json-file for bomts_public_website",
+      "format": "jsonl",
+      "description": "Nginx access/error 운영 로그. 요청·오류 추적과 보안 분석에 사용한다.",
+      "structure": "unstructured",
+      "pii": {
+        "level": "indirect",
+        "fields": ["client_ip", "request_time", "url", "user_agent", "referrer", "error_context"],
+        "purpose": "장애·보안·접근 분석"
+      },
+      "retention": {
+        "period": "until_deleted",
+        "mechanism": "Docker json-file max-size=10m, max-file=5가 약 50MiB 범위에서 오래된 파일부터 자동 삭제한다. 트래픽에 따라 실제 기간은 달라진다."
+      },
+      "lineage": {
+        "inputs": [],
+        "process": "bomts_public_website Nginx가 stdout/stderr로 기록하고 Docker가 json-file로 저장"
+      },
+      "produced_by": ["docker-compose.yml", "nginx/default.conf"]
+    },
+    {
+      "id": "service_policy",
+      "kind": "config",
+      "location": "mail/address-policy.yaml",
+      "format": "yaml",
+      "description": "메일 도메인·독립 Mailbox·alias·접근 정책의 공개 가능한 선언이다.",
+      "structure": "semi_structured",
+      "pii": {
+        "level": "personal",
+        "fields": ["mailbox_email", "alias_email"],
+        "purpose": "메일 계정·alias·접근 정책 관리"
+      },
+      "retention": {
+        "period": "permanent",
+        "mechanism": "정책 변경을 Git 이력으로 보존한다.",
+        "basis": "메일 서비스 계정·주소 정책과 변경 감사"
+      },
+      "lineage": {
+        "inputs": ["ext:bomts-infra Mailu account administration"],
+        "process": "운영 계정 정책에서 비밀값을 제외한 주소·권한 규칙만 동기화"
+      }
+    },
+    {
+      "id": "message_data",
+      "kind": "file",
+      "location": "Private bomts-infra가 관리하는 Mailu persistent storage (물리 경로 제외)",
+      "description": "독립 Mailbox의 수신·발신 메시지와 첨부 파일이다.",
+      "structure": "unstructured",
+      "pii": {
+        "level": "sensitive",
+        "fields": ["sender", "recipient", "subject", "body", "attachments"],
+        "purpose": "자체 운영 Mailbox 제공",
+        "protection": "사용자별 인증·접근 분리, 호스트 저장소 권한 제한, 백업 접근 제한"
+      },
+      "retention": {
+        "period": "until_deleted",
+        "mechanism": "사용자·관리자의 메시지 삭제와 계정 폐기 절차로 제거한다."
+      },
+      "lineage": {
+        "inputs": ["ext:Internet SMTP and authenticated mail clients"],
+        "process": "Mailu가 SMTP·IMAP·Webmail 요청을 사용자별 Mailbox에 저장"
+      }
+    },
+    {
+      "id": "service_backup",
+      "kind": "backup",
+      "location": "Private bomts-infra Mailu backup set (물리 경로 제외)",
+      "description": "Mailbox·계정 DB·필터 상태를 복구하기 위한 일관 백업이다.",
+      "structure": "unstructured",
+      "pii": {
+        "level": "sensitive",
+        "fields": ["mailbox_content", "account_database", "filter_state"],
+        "purpose": "재해 복구와 변경 rollback",
+        "protection": "암호화 백업과 운영자 접근 제한"
+      },
+      "retention": {
+        "period": "P30D",
+        "mechanism": "일일 증분·주간 전체 백업 후 30일 초과본을 prune한다."
+      },
+      "lineage": {
+        "inputs": ["message_data"],
+        "process": "Private bomts-infra의 Mailu 백업·복구 절차"
+      }
+    },
+    {
+      "id": "system_config",
+      "kind": "config",
+      "location": "Private bomts-infra and host tunnel configuration (path and credentials excluded)",
+      "description": "Cloudflare ingress와 호스트 서비스 연결을 위한 비공개 운영 설정이다.",
+      "structure": "semi_structured",
+      "pii": {
+        "level": "none"
+      },
+      "retention": {
+        "period": "until_deleted",
+        "mechanism": "승인된 설정으로 교체하고 이전본은 암호화 백업 정책에 따라 제거한다."
+      },
+      "lineage": {
+        "inputs": ["ext:Cloudflare account configuration"],
+        "process": "Private bomts-infra 운영 절차가 호스트 설정에 적용"
+      }
+    },
+    {
+      "id": "provider_log",
+      "kind": "log",
+      "location": "Cloudflare account logs and Analytics (local copy 없음)",
+      "description": "Cloudflare edge의 장애·보안·트래픽 분석 기록이다.",
+      "structure": "unstructured",
+      "pii": {
+        "level": "indirect",
+        "fields": ["client_ip", "request_time", "url", "user_agent"],
+        "purpose": "edge 장애·보안·트래픽 분석"
+      },
+      "retention": {
+        "period": "session",
+        "mechanism": "bomts-main에는 사본을 저장하지 않고 계정 UI/API 조회 세션에서만 사용한다. Provider 측 보존 기간은 계정 확인 후 갱신한다."
+      },
+      "lineage": {
+        "inputs": ["ext:Cloudflare edge requests"],
+        "process": "Cloudflare가 edge 요청을 수집하고 계정 UI/Analytics로 제공"
+      }
+    },
+    {
+      "id": "audit_evidence",
+      "kind": "file",
+      "location": "dev-process/task/**",
+      "format": "json, jsonl, md",
+      "description": "개발 변경·사용자 승인·검증 결과의 감사 기록이며 비밀값은 제거한다.",
+      "structure": "semi_structured",
+      "pii": {
+        "level": "indirect",
+        "fields": ["ip_address", "hostname", "email_address"],
+        "purpose": "변경·승인·검증 감사"
+      },
+      "retention": {
+        "period": "permanent",
+        "mechanism": "검증 receipt와 작업 보고서를 Git 이력으로 보존한다.",
+        "basis": "개발 표준 준수와 변경 감사"
+      },
+      "lineage": {
+        "inputs": ["ext:dev-process task execution"],
+        "process": "dev-process-framework가 task 상태·검증 receipt·보고서를 생성"
+      },
+      "produced_by": ["dev-process/task/**"]
+    }
+  ],
+  "ignore": [
+    {
+      "pattern": "data/catalog.json",
+      "reason": "데이터 자산을 설명하는 카탈로그 정본 자체이며 운영 데이터가 아니다."
+    }
+  ]
+}

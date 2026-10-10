@@ -1,27 +1,92 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BOMTS 로컬 개발</title><link rel="stylesheet" href="assets/manual.css"><script defer src="assets/manual.js"></script></head>
-<body data-manual="BOMTS 공개 매뉴얼" data-index="index.html" data-chapters="index.html|처음;mail.html|BOMTS 메일 운영;website.html|BOMTS 웹사이트 안내;architecture.html|BOMTS 제품 구조;admin.html|BOMTS 로컬 개발">
-<section class="slide" data-kind="cover" data-title="로컬 개발">
-  <div class="body"><div class="cover-grid"><div><div class="brandline">BOMTS · CONTRIBUTING</div><div class="emoji">🛠️</div><h1>로컬 개발</h1><p class="lead">공개 소스를 실행하고 검사하는 재현 가능한 최소 절차입니다.</p></div><div class="orbit"><b>DEV</b></div></div></div>
-  <aside class="notes">이 장은 기여자가 자신의 개발 환경에서 사이트를 확인하는 방법을 다룹니다. Production 배포와 운영자 권한이 필요한 절차는 포함하지 않습니다.</aside>
+<title>BOMTS 운영·인수인계</title><link rel="stylesheet" href="assets/manual.css"><script defer src="assets/manual.js"></script></head>
+<body data-manual="BOMTS 운영 매뉴얼" data-index="index.html" data-chapters="index.html|처음;mail.html|BOMTS 메일 운영;tunnel.html|BOMTS Cloudflare Tunnel;website.html|BOMTS 웹사이트;architecture.html|BOMTS 시스템 구성;admin.html|BOMTS 운영·인수인계">
+<section class="slide" data-kind="cover" data-title="운영·인수인계">
+  <div class="body"><div class="cover-grid"><div><div class="brandline">BOMTS · 운영 매뉴얼 · 2026-10-11</div><div class="emoji">🛠️</div><h1>운영·인수인계</h1><p class="lead">설치·검증·배포·백업·공개 전 보안 검사를 같은 기준으로 수행합니다.</p></div><div class="orbit"><b>BOMTS</b></div></div></div>
+  <aside class="notes">이 장은 새 운영자가 BOMTS 공개 서비스를 재현하고 점검할 수 있도록 구성했습니다. 단계 페이지의 정상 결과는 이번 작업에서 실제로 실행한 값입니다. 시스템 비밀은 명령 예시나 evidence에 포함하지 않습니다.</aside>
 </section>
-<section class="slide" data-kind="install-step" data-title="예제 환경값으로 로컬 사이트를 실행합니다">
-  <p class="kicker">로컬 실행 · 1 / 2</p><h2>예제 환경값으로 로컬 사이트를 실행합니다</h2>
-  <div class="body"><div class="terminal term"><div class="bar"><span>local</span><span>development</span></div><pre>cp .env.example .env
-docker compose up --build
-curl -fsS http://127.0.0.1:8080/healthz</pre><div class="result ok">health endpoint returns: ok</div></div><div class="callout">개발 포트가 사용 중이면 ignored <code>.env</code>의 <code>BOMTS_HTTP_PORT</code>를 바꿉니다.</div></div>
-  <aside class="notes">예제 환경 파일은 로컬 개발 기본값만 포함합니다. Compose로 정적 사이트를 실행한 뒤 health endpoint가 응답하는지 확인합니다. Production 환경값과 주소는 이 저장소에 기록하지 않습니다.</aside>
+<section class="slide" data-kind="install-step" data-title="설치 1 — 저장소와 서브모듈 포인터를 확인합니다">
+  <p class="kicker">설치 · 1 / 4</p><h2>설치 1 — 저장소와 서브모듈 포인터를 확인합니다</h2>
+  <div class="body"><div class="terminal term"><div class="bar"><span>source</span><span>actual output</span></div><pre>cd /project/bomts-main
+git submodule status
+git -C dev-process-framework log --oneline -1</pre><div class="result ok">dev-process-framework 6fb4262 · glossary 2f3aa5a<br>6fb4262 chore: data-expert-framework 0.4.1</div></div><div class="callout">서브모듈 내부는 수정하지 않고 부모 저장소의 포인터만 사용합니다.</div></div>
+  <aside class="notes">프로젝트 루트와 두 공유 서브모듈 포인터를 먼저 확인합니다. 실제 출력에서 프레임워크는 6fb4262이고 glossary는 2f3aa5a였습니다. 보호 구역 내부가 수정돼 있으면 배포나 문서 작업보다 먼저 중단하고 보고합니다.</aside>
 </section>
-<section class="slide" data-kind="verify" data-title="변경 후 공개 저장소 검사를 실행합니다">
-  <p class="kicker">로컬 실행 · 2 / 2</p><h2>변경 후 공개 저장소 검사를 실행합니다</h2>
-  <div class="body"><ol class="flow"><li><b>콘텐츠</b><span>페이지·링크 확인</span></li><li><b>구성</b><span>Compose 검증</span></li><li><b>정책</b><span>보호 구역 확인</span></li><li><b>매뉴얼</b><span>렌더링 확인</span></li><li class="on"><b>보안</b><span>Secret 검사</span></li></ol><div class="terminal term"><div class="bar"><span>repository</span><span>verification</span></div><pre>./scripts/check.sh
-python .claude/skills/sk-mgm-task-state/scripts/run.py protect-check</pre></div></div>
-  <aside class="notes">사이트 변경 뒤에는 프로젝트 검사와 보호 구역 검사를 실행합니다. 새 기능이나 사용법이 바뀌면 공개 매뉴얼도 함께 고치고 렌더링 결과를 확인합니다. Public release 전에는 현재 트리와 전체 이력을 별도 Secret scanner로 검사합니다.</aside>
+<section class="slide" data-kind="install-step" data-title="설치 2 — Docker와 Compose 실행 조건을 확인합니다">
+  <p class="kicker">설치 · 2 / 4</p><h2>설치 2 — Docker와 Compose 실행 조건을 확인합니다</h2>
+  <div class="body"><div class="terminal term"><div class="bar"><span>runtime</span><span>actual output</span></div><pre>docker --version
+docker compose version
+free -h</pre><div class="result ok">Docker 28.5.1 · Compose v2.40.2<br>Memory 15 GiB total · 13 GiB available</div></div><div class="callout">Ubuntu 24.04 · CPU thread 4 · project filesystem available 102G</div></div>
+  <aside class="notes">Mini PC의 Docker와 Compose 버전, 메모리와 저장공간을 확인합니다. 이번 재수집에서는 Docker 28.5.1과 Compose 2.40.2가 설치돼 있고 사용 가능한 메모리가 약 13GiB였습니다. Mailu를 추가한 뒤에도 같은 기준으로 자원과 컨테이너 health를 관찰합니다.</aside>
 </section>
-<section class="slide" data-kind="boundary" data-title="공개 개발과 Production 운영 책임을 분리합니다">
-  <p class="kicker">책임 경계</p><h2>공개 개발과 Production 운영 책임을 분리합니다</h2>
-  <div class="body"><div class="compare"><div class="good"><h3>Public 저장소</h3><ul><li>제품 소스와 공개 문구</li><li>일반화한 로컬 실행</li><li>논리 아키텍처</li><li>비밀 없는 검사</li></ul></div><div><h3>Private 인프라</h3><ul><li>실제 호스트와 네트워크</li><li>배포·백업·복구</li><li>메일·방화벽·모니터링</li><li>운영 evidence</li></ul></div></div><div class="callout warn">Production 변경은 Private runbook과 별도 승인 절차를 따릅니다.</div></div>
-  <aside class="notes">Public 저장소는 제품을 이해하고 로컬에서 검증하는 데 필요한 내용만 제공합니다. 실제 운영 환경을 재현할 수 있는 상세 정보는 Private 인프라 저장소에 둡니다. 이 경계는 Secret 유무와 별개로 공격 표면을 줄이기 위한 원칙입니다.</aside>
+<section class="slide" data-kind="install-step" data-title="설치 3 — Compose 구성이 유효한지 먼저 검사합니다">
+  <p class="kicker">설치 · 3 / 4</p><h2>설치 3 — Compose 구성이 유효한지 먼저 검사합니다</h2>
+  <div class="body"><div class="terminal term"><div class="bar"><span>compose</span><span>actual output</span></div><pre>docker compose config --quiet
+printf 'compose_config=OK
+'</pre><div class="result ok">compose_config=OK</div></div><div class="callout">오류가 없을 때만 다음 단계의 build와 up을 실행합니다.</div></div>
+  <aside class="notes">Compose 파일은 컨테이너를 건드리기 전에 config 명령으로 문법과 병합 결과를 검증합니다. 실제 실행은 오류 없이 끝나고 명시적인 OK 표식을 남겼습니다. 실패하면 YAML과 환경 변수 참조를 고친 뒤 같은 검사를 다시 수행합니다.</aside>
+</section>
+<section class="slide" data-kind="install-step" data-title="설치 4 — 웹 이미지를 빌드하고 health를 확인합니다">
+  <p class="kicker">설치 · 4 / 4</p><h2>설치 4 — 웹 이미지를 빌드하고 health를 확인합니다</h2>
+  <div class="body"><div class="terminal term"><div class="bar"><span>deploy</span><span>actual output</span></div><pre>docker compose up -d --build
+curl -fsS http://127.0.0.1:3001/healthz</pre><div class="result ok">bomts-main-website Built<br>bomts_public_website Running<br>ok · public_status=200</div></div><div class="callout">배포 완료 기준은 컨테이너 Running만이 아니라 로컬 ok와 공개 200입니다.</div></div>
+  <aside class="notes">2026년 10월 8일 같은 명령을 재실행해 이미지 빌드와 컨테이너 실행을 확인했습니다. 로컬 healthz는 ok, 공개 www는 200을 반환했습니다. 공개 확인이 실패하면 다음 배포를 반복하지 않고 터널 장애 구간을 조사합니다.</aside>
+</section>
+<section class="slide" data-kind="config" data-title="운영 설정은 위치와 권한을 함께 관리합니다">
+  <p class="kicker">설정 · 1 / 2</p><h2>운영 설정은 위치와 권한을 함께 관리합니다</h2>
+  <div class="body"><table class="grid"><tr><th>설정</th><th>위치</th><th>권한·범위</th></tr><tr><td>웹 포트·보안</td><td><code>docker-compose.yml</code></td><td>Public Git·loopback 3001</td></tr><tr><td>HTTP 라우팅</td><td><code>nginx/default.conf</code></td><td>Public Git·컨테이너</td></tr><tr><td>터널 ingress</td><td><code>bomts-infra/cloudflare/</code></td><td>Private Git·root</td></tr><tr><td>실제 환경값</td><td><code>bomts-infra/environments/</code></td><td>Private Git·운영자</td></tr><tr><td>원시 운영 증거</td><td><code>bomts-infra/evidence/</code></td><td>Private Git·비밀 검사</td></tr></table></div>
+  <aside class="notes">공개 저장소에는 웹 코드와 placeholder 설정만 둡니다. 터널 ingress, 실제 IP, 방화벽 규칙과 원시 명령 출력은 Private bomts-infra에 둡니다. 두 저장소 모두 plaintext 비밀은 금지하고 비밀 관리자 참조나 암호화 파일만 사용합니다.</aside>
+</section>
+<section class="slide" data-kind="security" data-title="비밀 값은 매뉴얼과 evidence 경계 밖에 둡니다">
+  <p class="kicker">설정 · 2 / 2</p><h2>비밀 값은 매뉴얼과 evidence 경계 밖에 둡니다</h2>
+  <div class="body"><div class="boundary compare"><div><h3>Public 기록 가능</h3><ul><li>공개 URL과 기능 설명</li><li>placeholder 환경 변수명</li><li>일반화한 구성도</li><li>비밀 없는 검사 결과</li></ul></div><div><h3>Private 또는 저장 금지</h3><ul><li>실제 IP·터널·방화벽 설정</li><li>메일·DB password</li><li>DKIM private key</li><li>Cloudflare API token</li></ul></div></div><div class="callout warn">Git history에 들어간 비밀은 삭제만 하지 말고 즉시 폐기·재발급합니다.</div></div>
+  <aside class="notes">Public에는 사용자가 알아야 할 기능과 placeholder만 둡니다. 실제 서버 토폴로지는 bomts-infra로 분리하고 인증 값은 그 Private 저장소에도 plaintext로 넣지 않습니다. 비밀이 커밋된 적이 있으면 현재 파일에서 지워도 과거 commit에서 읽을 수 있으므로 먼저 credential을 회전합니다.</aside>
+</section>
+<section class="slide" data-kind="deploy" data-title="배포는 검사·빌드·로컬·공개 확인으로 끝납니다">
+  <p class="kicker">배포 · 1 / 2</p><h2>배포는 검사·빌드·로컬·공개 확인으로 끝납니다</h2>
+  <div class="body"><ol class="flow"><li><b>검사</b><span><code>./scripts/check.sh</code></span></li><li><b>빌드</b><span><code>compose up -d --build</code></span></li><li><b>로컬</b><span>healthz ok</span></li><li><b>공개</b><span>www 200</span></li><li class="on"><b>기록</b><span>task evidence</span></li></ol><div class="callout">입력 파일이 바뀌면 이전 검증은 stale이므로 마지막 변경 뒤 다시 검사합니다.</div></div>
+  <aside class="notes">배포 전에 프로젝트 검사를 통과하고 새 이미지를 빌드합니다. 실행 뒤에는 컨테이너 상태만 보지 않고 로컬과 공개 응답을 순서대로 확인합니다. 마지막 파일 변경 뒤 얻은 검증만 현재 상태의 증거로 인정합니다.</aside>
+</section>
+<section class="slide" data-kind="overview" data-title="프레임워크 업데이트와 제품 배포를 분리합니다">
+  <p class="kicker">배포 · 2 / 2</p><h2>프레임워크 업데이트와 제품 배포를 분리합니다</h2>
+  <div class="body"><div class="compare"><div class="good"><h3>제품 변경</h3><p><code>site/ · nginx/ · scripts/ · docs/</code></p><small>BOMTS task에서 구현·검증·finish</small></div><div class="good"><h3>프레임워크 갱신</h3><p><code>update_framework.py</code></p><small>대상 버전 사전 승인·gitlink만 변경</small></div></div><div class="callout warn"><code>dev-process-framework/</code>와 <code>glossary/</code> 내부는 BOMTS에서 수정하지 않습니다.</div></div>
+  <aside class="notes">제품 배포와 공유 프레임워크 갱신은 목적과 승인 규칙이 다릅니다. BOMTS 변경은 부모 저장소에서 수행하지만 프레임워크 내부 파일은 어떤 경우에도 이 프로젝트에서 고치지 않습니다. 새 upstream 버전의 gitlink 반영도 대상 버전을 제시하고 사용자 승인을 먼저 받습니다.</aside>
+</section>
+<section class="slide" data-kind="backup" data-title="코드·터널·메일 데이터를 서로 다른 방식으로 복구합니다">
+  <p class="kicker">백업·복구</p><h2>코드·터널·메일 데이터를 서로 다른 방식으로 복구합니다</h2>
+  <div class="body"><table class="grid"><tr><th>대상</th><th>백업</th><th>복구 확인</th></tr><tr><td>공개 코드·Compose</td><td>Public Git remote</td><td>checkout 후 check·build</td></tr><tr><td>cloudflared config</td><td>Private infra + 암호화 백업</td><td>validate·restart·public 200</td></tr><tr><td>원시 운영 evidence</td><td>Private <code>bomts-infra</code></td><td>명령 시각·출력 확인</td></tr><tr><td>메일 데이터</td><td>Private 일관 백업</td><td>hash·Mailbox·계정 확인</td></tr></table><div class="callout">백업 파일 존재만으로 복구 완료라고 판단하지 않습니다.</div></div>
+  <aside class="notes">코드는 Git으로 복원하지만 시스템 설정과 데이터는 별도 백업이 필요합니다. cloudflared 백업은 복원 후 validate와 공개 200까지 확인해야 하고, 메일은 실제 Mailbox 열람까지 검증해야 합니다. 복구 테스트 결과와 시각을 evidence에 남깁니다.</aside>
+</section>
+<section class="slide" data-kind="troubleshoot" data-title="웹 장애는 로컬 health부터 판별합니다">
+  <p class="kicker">장애 대응 · 1 / 2</p><h2>웹 장애는 로컬 health부터 판별합니다</h2>
+  <div class="body"><table class="grid"><tr><th>관측</th><th>판정</th><th>첫 조치</th></tr><tr><td>compose 서비스 없음</td><td>미배포</td><td><code>compose config</code> 후 up</td></tr><tr><td>container unhealthy</td><td>Nginx/이미지 문제</td><td>logs·health 확인</td></tr><tr><td>local health 실패</td><td>3001 원본 문제</td><td>포트·컨테이너 확인</td></tr><tr><td>local ok·public 502</td><td>터널 문제</td><td>cloudflared validate·status</td></tr></table></div>
+  <aside class="notes">웹 장애는 Docker 상태와 로컬 health를 먼저 확인합니다. local health가 실패하면 Cloudflare 설정을 바꿔도 복구되지 않습니다. local ok인데 공개가 실패할 때만 cloudflared와 hostname ingress를 조사합니다.</aside>
+</section>
+<section class="slide" data-kind="operations" data-title="웹 운영 로그는 10MiB 파일 5개로 회전합니다">
+  <p class="kicker">로그·보존</p><h2>웹 운영 로그는 10MiB 파일 5개로 회전합니다</h2>
+  <div class="body"><div class="split"><div><table class="grid"><tr><th>항목</th><th>값</th></tr><tr><td>내용·저장</td><td>access/error · IP·시각·URL·UA<br>Docker <code>json-file</code></td></tr><tr><td>회전·추정</td><td><code>10m × 5</code> · 약 50MiB<br>12.5KiB/일 → 약 4,203일</td></tr><tr><td>Cloudflare</td><td>로컬 사본 없음 · 계정 확인 대기</td></tr></table></div><div class="terminal term"><div class="bar"><span>operator</span><span>read-only</span></div><pre>docker inspect bomts_public_website --format '{{.LogPath}}'
+docker logs --since 24h --tail 200 bomts_public_website</pre></div></div><div class="callout warn">정본: <code>data/catalog.json</code> · 크기 회전이라 실제 보존 일수는 달라집니다.</div></div>
+  <aside class="notes">Nginx access와 error 로그는 컨테이너 표준 출력과 오류로 전달되고 Docker json-file에 저장됩니다. 측정 시점의 컨테이너는 27.26시간 동안 14,169바이트를 기록해 하루 평균 약 12,475바이트였습니다. 50MiB를 같은 속도로 채우면 약 4,203일이지만 JSON 메타데이터와 트래픽 변동을 제외한 단순 환산이므로 보장 기간이 아닙니다. 조회할 때 IP와 User-Agent가 개인정보가 될 수 있어 원시 로그를 공개 문서나 Git에 복사하지 않습니다.</aside>
+</section>
+<section class="slide" data-kind="troubleshoot" data-title="터널·메일은 경계 조건을 분리해 판정합니다">
+  <p class="kicker">장애 대응 · 2 / 2</p><h2>터널·메일은 경계 조건을 분리해 판정합니다</h2>
+  <div class="body"><table class="grid"><tr><th>영역</th><th>증상</th><th>조치</th></tr><tr><td>터널</td><td>validate 실패</td><td>backup과 후보 설정 비교</td></tr><tr><td>Decision</td><td>9002 local 실패</td><td>원본 서비스 복구</td></tr><tr><td>메일 수신</td><td>외부 25 timeout</td><td>포워딩·WAN IP 후 재검사</td></tr><tr><td>메일 발신</td><td>스팸/거부</td><td>SPF·DKIM·DMARC·relay 검토</td></tr></table></div>
+  <aside class="notes">터널은 HTTP 원본과 ingress를 나눠 보고, 메일은 NAT 수신과 발신 평판을 나눠 봅니다. 외부 25 timeout만으로 ISP 차단을 단정하지 않고 공유기 포워딩 상태를 먼저 확인합니다. 발신 문제는 PTR과 인증 결과를 근거로 relay 전환을 판단합니다.</aside>
+</section>
+<section class="slide" data-kind="handover" data-title="인수인계는 실행 상태와 대기 항목을 함께 넘깁니다">
+  <p class="kicker">인수인계</p><h2>인수인계는 실행 상태와 대기 항목을 함께 넘깁니다</h2>
+  <div class="body"><div class="checklist cards"><div class="checkitem">www local·public 200 확인</div><div class="checkitem">decision local·public 200 확인</div><div class="checkitem">cloudflared validate OK·active</div><div class="checkitem">config backup 위치 확인</div><div class="checkitem">Mailu health·SMTP 25 확인</div><div class="checkitem">최근 일관 백업·복구 시험 확인</div><div class="checkitem pending">outbound relay·외부 client port 인계</div><div class="checkitem">비밀이 evidence에 없는지 확인</div><div class="checkitem">Git과 task 상태 확인</div></div></div>
+  <aside class="notes">인수인계 시 정상 서비스뿐 아니라 아직 끝나지 않은 작업을 같이 전달합니다. Mailu는 실제 외부 수신과 복구 시험이 완료됐고, 발신 relay와 외부 Webmail·클라이언트 포트가 다음 행동입니다. 비밀 값이 문서와 evidence에 포함되지 않았는지도 마지막으로 확인합니다.</aside>
+</section>
+<section class="slide" data-kind="security" data-title="공개 전 현재 파일과 전체 이력을 모두 검사합니다">
+  <p class="kicker">Public release</p><h2>공개 전 현재 파일과 전체 이력을 모두 검사합니다</h2>
+  <div class="body"><ol class="flow"><li><b>현재 파일</b><span>tracked·untracked 후보</span></li><li><b>전체 이력</b><span>reachable commit 전부</span></li><li><b>판정</b><span>후보를 실제 Secret과 오탐으로 분류</span></li><li class="on"><b>공개</b><span>0 confirmed secrets</span></li></ol><table class="grid"><tr><th>2026-10-09 실제 검사</th><th>결과</th></tr><tr><td>TruffleHog history·worktree</td><td>credential 0건</td></tr><tr><td>Gitleaks history</td><td>22건 모두 SHA-256 fingerprint 오탐</td></tr><tr><td>민감 파일명 이력</td><td>.env·private key·credential JSON 0건</td></tr></table><div class="callout warn">기존 운영 이력은 Private에 보존하고 Public 첫 push는 정제된 snapshot을 다시 검사합니다.</div></div>
+  <aside class="notes">현재 파일만 깨끗해도 과거 커밋에 비밀이 있으면 공개할 수 없습니다. 두 독립 도구와 민감 파일명 검사를 함께 실행하고 후보의 유형과 경로를 확인합니다. 이번 검사에서 실제 credential은 없었지만 운영 토폴로지가 과거 이력에 있어 Public에는 정제된 snapshot을 올리는 절차가 남았습니다.</aside>
+</section>
+<section class="slide" data-kind="reference" data-title="개발 절차는 공용 프레임워크 매뉴얼을 봅니다">
+  <p class="kicker">개발 작업 절차</p><h2>개발 절차는 공용 프레임워크 매뉴얼을 봅니다</h2>
+  <div class="body"><div class="cards"><a class="card" href="../../dev-process-framework/docs/manual/index.html"><i>📚</i><b>프레임워크 매뉴얼</b><span>전체 개발 표준</span></a><a class="card" href="../../dev-process-framework/docs/manual/task.html"><i>✅</i><b>Task 매뉴얼</b><span>작업 상태·검증·완료</span></a><a class="card" href="../../dev-process/local/rules.md"><i>🔒</i><b>BOMTS 전용 규칙</b><span>보호 서브모듈 승인 규칙</span></a></div><div class="callout">BOMTS 매뉴얼에는 개발 절차를 복제하지 않고 정본 링크만 유지합니다.</div></div>
+  <aside class="notes">개발 작업 절차는 여러 프로젝트가 함께 쓰는 프레임워크 매뉴얼이 정본입니다. Task의 생성과 검증, 완료 방법은 task 장을 열어 확인합니다. BOMTS에만 적용되는 더 엄격한 서브모듈 규칙은 프로젝트 전용 rules 파일을 먼저 읽습니다.</aside>
 </section>
 </body></html>
