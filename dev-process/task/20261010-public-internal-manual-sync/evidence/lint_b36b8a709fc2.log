@@ -1,0 +1,15 @@
+$ /project/bomts-main/.venv/bin/python /project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py syntax --project-root /project/bomts-main-public-sync --inputs site,scripts --require-lf true --task-id 20261010-public-internal-manual-sync
+returncode: 0
+--- stdout ---
+{
+ "check": "syntax",
+ "status": "PASS",
+ "checked_files": 8,
+ "errors": [],
+ "unchecked_js": [],
+ "note": ""
+}
+PASS: syntax (8)
+
+--- stderr ---
+

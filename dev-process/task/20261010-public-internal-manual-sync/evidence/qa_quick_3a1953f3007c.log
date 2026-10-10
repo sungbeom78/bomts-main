@@ -1,0 +1,7 @@
+$ ./scripts/check.sh
+returncode: 1
+--- stdout ---
+
+--- stderr ---
+error while interpolating services.website.ports.[]: required variable BOMTS_HOST_NETWORK_IP is missing a value: set BOMTS_HOST_NETWORK_IP in .env
+

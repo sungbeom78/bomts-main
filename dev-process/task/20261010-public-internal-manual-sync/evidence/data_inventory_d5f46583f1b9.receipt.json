@@ -1,0 +1,82 @@
+{
+  "check_name": "data_inventory",
+  "task_id": "20261010-public-internal-manual-sync",
+  "execution": {
+    "run_id": "d5f46583f1b9",
+    "command": [
+      "/project/bomts-main/.venv/bin/python",
+      "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+      "data_inventory",
+      "--project-root",
+      "/project/bomts-main-public-sync",
+      "--inputs",
+      "",
+      "--require-lf",
+      "true",
+      "--task-id",
+      "20261010-public-internal-manual-sync"
+    ],
+    "returncode": 0,
+    "executed_at": "2026-10-10T17:17:03.897866+00:00",
+    "log_ref": "dev-process/task/20261010-public-internal-manual-sync/evidence/data_inventory_d5f46583f1b9.log",
+    "input_snapshot": {
+      "before": "sha256:7b3ea1012e769244bd92470e1b5ab5eb68e22567ec8ae904838fe4a797b91149",
+      "after": "sha256:7b3ea1012e769244bd92470e1b5ab5eb68e22567ec8ae904838fe4a797b91149"
+    },
+    "inputs_changed_during_run": false,
+    "policy_scope_hash": "sha256:806dbeb9496f4241",
+    "sealed": true,
+    "stdout_tail": "데이터 카탈로그: data/catalog.json\n자산 7개, 데이터 흔적 0개, 개인정보: indirect web_log, provider_log, audit_evidence; personal service_policy; sensitive message_data, service_backup\n  결과: 이상 없음\n{\n \"check\": \"data_inventory\",\n \"status\": \"PASS\",\n \"system\": \"bomts-main\",\n \"assets\": 7,\n \"uncovered\": [],\n \"problems\": [],\n \"warnings\": [],\n \"pii\": {\n  \"none\": [\n   \"system_config\"\n  ],\n  \"indirect\": [\n   \"web_log\",\n   \"provider_log\",\n   \"audit_evidence\"\n  ],\n  \"personal\": [\n   \"service_policy\"\n  ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory\n",
+    "stderr_tail": ""
+  },
+  "evidence_record": {
+    "check_name": "data_inventory",
+    "input_paths": [
+      ".dockerignore",
+      ".env.example",
+      "Dockerfile",
+      "data/catalog.json",
+      "docker-compose.yml",
+      "docs/architecture.md",
+      "docs/deployment.md",
+      "docs/manual/.review.json",
+      "docs/manual/admin.html",
+      "docs/manual/architecture.html",
+      "docs/manual/index.html",
+      "docs/manual/local-manual.html",
+      "docs/manual/mail.html",
+      "docs/manual/tunnel.html",
+      "docs/manual/website.html",
+      "nginx/default.conf",
+      "project.policy.yaml",
+      "site/assets/main.js",
+      "site/assets/styles.css"
+    ],
+    "file_count": 19,
+    "files": {
+      ".dockerignore": "63034d3340ac8efcfccec09a558d25142f588264d272fdd962309abcb08824c1",
+      ".env.example": "e915fd910981fe6651aae1083dcc9b5e1be389f34dd8b315bbab67d0c92eaeaf",
+      "Dockerfile": "0c4a6f11b86130ccadb86b31e437e4d77ca4fa6d08eaa99ba026cccdda26c417",
+      "data/catalog.json": "e39bbeabc4097f6e5aebe493fe5f6fd7d304f5c1e669df4b4b48942c7c367bf3",
+      "docker-compose.yml": "873bf86b8a2bc77ced962c86045f56d3da67842679b93badb1d68ccb18085e29",
+      "docs/architecture.md": "453e5662d57202efb4921d4b7a87bc650dd61ce2bc85213aaae41df5b182a54b",
+      "docs/deployment.md": "6f97bebea1ad6fb1c41abf1ea894cd94461680a4a8cf384f2667441cd072c2f8",
+      "docs/manual/.review.json": "5519b39d63f0c3c1b499dac682ffc0eb92cf31bd53a99ac758f822ade75c2153",
+      "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+      "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+      "docs/manual/index.html": "537cee2f4497c7e3c5631574c261d00fc722eff17578295a11b624c2cc108120",
+      "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+      "docs/manual/mail.html": "2e538cffdfc8b3e06d9bf791a01894efa664cd64372bcbff95af25d15cf3fd7c",
+      "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+      "docs/manual/website.html": "ab4ee4012e54d736caaafb047458bbb7b6b407d030f852a56451a0778affd313",
+      "nginx/default.conf": "be0d04760815f8a34eb3610581775d1ca9190f00eed3ca686e7922fe1e0751e8",
+      "project.policy.yaml": "f0c7aa60c1675786317b5099146cc83ba1e6d6ce63f8da9ca1c166593c2a9bdf",
+      "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+      "site/assets/styles.css": "a1b5a69c2038daa19bbaf62b0d0cff3b24b66e959bba3e8149956655c2fc8bce"
+    },
+    "fingerprint": "sha256:7b3ea1012e769244bd92470e1b5ab5eb68e22567ec8ae904838fe4a797b91149",
+    "missing_paths": [],
+    "computed_at": "2026-10-10T17:17:03.638346+00:00"
+  },
+  "input_independent": false
+}

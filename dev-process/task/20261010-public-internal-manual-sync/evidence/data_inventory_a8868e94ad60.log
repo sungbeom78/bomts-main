@@ -1,0 +1,39 @@
+$ /project/bomts-main/.venv/bin/python /project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py data_inventory --project-root /project/bomts-main-public-sync --inputs  --require-lf true --task-id 20261010-public-internal-manual-sync
+returncode: 0
+--- stdout ---
+데이터 카탈로그: data/catalog.json
+자산 7개, 데이터 흔적 0개, 개인정보: indirect web_log, provider_log, audit_evidence; personal service_policy; sensitive message_data, service_backup
+  결과: 이상 없음
+{
+ "check": "data_inventory",
+ "status": "PASS",
+ "system": "bomts-main",
+ "assets": 7,
+ "uncovered": [],
+ "problems": [],
+ "warnings": [],
+ "pii": {
+  "none": [
+   "system_config"
+  ],
+  "indirect": [
+   "web_log",
+   "provider_log",
+   "audit_evidence"
+  ],
+  "personal": [
+   "service_policy"
+  ],
+  "sensitive": [
+   "message_data",
+   "service_backup"
+  ],
+  "unique_id": []
+ },
+ "catalog": "data/catalog.json",
+ "exists": true
+}
+PASS: data_inventory
+
+--- stderr ---
+

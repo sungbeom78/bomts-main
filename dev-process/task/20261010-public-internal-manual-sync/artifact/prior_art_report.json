@@ -1,0 +1,29 @@
+{
+  "task_id": "20261010-public-internal-manual-sync",
+  "keywords": [
+    "internal manual navigation LAN 매뉴얼 관리"
+  ],
+  "files": [
+    ".dockerignore",
+    ".env.example",
+    "Dockerfile",
+    "docker-compose.yml",
+    "nginx/default.conf",
+    "site/assets/main.js",
+    "site/assets/styles.css",
+    "docs/deployment.md",
+    "docs/architecture.md",
+    "docs/manual"
+  ],
+  "days": 30,
+  "checked_at": "2026-10-10T17:14:58.133937+00:00",
+  "sources": {
+    "change_log": "CHANGELOG.md",
+    "sot": null,
+    "module_index": null
+  },
+  "findings": [],
+  "frozen_overlap": [],
+  "active_task_overlap": [],
+  "verdict": "clear"
+}

@@ -1,0 +1,9 @@
+$ /project/bomts-main/.venv/bin/python /tmp/check-bomts-public-sync-browser.py
+returncode: 0
+--- stdout ---
+PASS: Chromium LAN buttons=매뉴얼,관리; LAN documents=200; public buttons=0; public manual=404
+/project/bomts-main-public-sync/dist/internal-manual-navigation/lan-home.png
+/project/bomts-main-public-sync/dist/internal-manual-navigation/public-home.png
+
+--- stderr ---
+

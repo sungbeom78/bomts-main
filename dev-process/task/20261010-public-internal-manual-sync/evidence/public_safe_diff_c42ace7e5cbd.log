@@ -1,0 +1,7 @@
+$ python3 /tmp/check-bomts-public-sync-safe.py
+returncode: 0
+--- stdout ---
+PASS: public change has no tracked .env, actual private/public IP, private key, or non-placeholder credential
+
+--- stderr ---
+

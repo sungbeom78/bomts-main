@@ -1,0 +1,14 @@
+$ /project/bomts-main/.venv/bin/python /project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py encoding --project-root /project/bomts-main-public-sync --inputs site,scripts,mail,docs --require-lf true --task-id 20261010-public-internal-manual-sync
+returncode: 0
+--- stdout ---
+{
+ "check": "encoding",
+ "status": "PASS",
+ "checked_files": 32,
+ "require_lf": true,
+ "problems": []
+}
+PASS: encoding (32)
+
+--- stderr ---
+

@@ -1,0 +1,59 @@
+{
+  "check_name": "lint",
+  "task_id": "20261010-public-internal-manual-sync",
+  "execution": {
+    "run_id": "b36b8a709fc2",
+    "command": [
+      "/project/bomts-main/.venv/bin/python",
+      "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+      "syntax",
+      "--project-root",
+      "/project/bomts-main-public-sync",
+      "--inputs",
+      "site,scripts",
+      "--require-lf",
+      "true",
+      "--task-id",
+      "20261010-public-internal-manual-sync"
+    ],
+    "returncode": 0,
+    "executed_at": "2026-10-10T17:16:44.371400+00:00",
+    "log_ref": "dev-process/task/20261010-public-internal-manual-sync/evidence/lint_b36b8a709fc2.log",
+    "input_snapshot": {
+      "before": "sha256:fcd26f40cc7df4432ad5d1327dd9d623b306c624686a2226cb053eeed2bbabba",
+      "after": "sha256:fcd26f40cc7df4432ad5d1327dd9d623b306c624686a2226cb053eeed2bbabba"
+    },
+    "inputs_changed_during_run": false,
+    "policy_scope_hash": "sha256:806dbeb9496f4241",
+    "sealed": true,
+    "stdout_tail": "{\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 8,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (8)\n",
+    "stderr_tail": ""
+  },
+  "evidence_record": {
+    "check_name": "lint",
+    "input_paths": [
+      "scripts",
+      "site"
+    ],
+    "file_count": 13,
+    "files": {
+      "scripts/check.sh": "76ec17fa6ffea36fbec04669ed8aae401e0d6b0dbfcf23fb4e2d704647460e3c",
+      "site/about/index.html": "cfaeeb67d4c7e305d6d2f9bc945e419df10aeffcf1ea99395a7a7839d57e274e",
+      "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+      "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+      "site/assets/styles.css": "a1b5a69c2038daa19bbaf62b0d0cff3b24b66e959bba3e8149956655c2fc8bce",
+      "site/contact/index.html": "36e9ac27bc8a603ec44fe0271c1a69ab7215046b0896701322d973e154be4471",
+      "site/en/index.html": "4b1d439b2face9c9e733d64648a2aa8489f4687c758bd5a2da1f68f9efe0ec71",
+      "site/index.html": "a7882669aeaaf757601f1c6051fd6f18c75afa0258f70eea5a437bf2752c4ff3",
+      "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+      "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+      "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+      "site/sitemap.xml": "a0fd75121b245a6817491a268e9389f49e79666987160a5d283dc748241931b1",
+      "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+    },
+    "fingerprint": "sha256:fcd26f40cc7df4432ad5d1327dd9d623b306c624686a2226cb053eeed2bbabba",
+    "missing_paths": [],
+    "computed_at": "2026-10-10T17:16:44.271908+00:00"
+  },
+  "input_independent": false
+}

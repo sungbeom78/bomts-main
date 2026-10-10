@@ -1,0 +1,68 @@
+{
+  "check_name": "container_build",
+  "task_id": "20261010-public-internal-manual-sync",
+  "execution": {
+    "run_id": "e4619e9a324b",
+    "command": [
+      "bash",
+      "/tmp/check-bomts-public-sync-build.sh"
+    ],
+    "returncode": 0,
+    "executed_at": "2026-10-10T17:16:34.312549+00:00",
+    "log_ref": "dev-process/task/20261010-public-internal-manual-sync/evidence/container_build_e4619e9a324b.log",
+    "input_snapshot": {
+      "before": "sha256:2dbb85450a878049fd99e676af52f03b5b7a528b7004e4bc04198578099c8183",
+      "after": "sha256:2dbb85450a878049fd99e676af52f03b5b7a528b7004e4bc04198578099c8183"
+    },
+    "inputs_changed_during_run": false,
+    "policy_scope_hash": "sha256:806dbeb9496f4241",
+    "sealed": true,
+    "stdout_tail": "sha256:158884ca2dc87e262460f633eff3508309b7370aeef2c6f7f095d0e033cd65d2\nPASS: public source compose config and container image build\n",
+    "stderr_tail": ""
+  },
+  "evidence_record": {
+    "check_name": "container_build",
+    "input_paths": [
+      ".dockerignore",
+      "Dockerfile",
+      "docker-compose.yml",
+      "docs/manual",
+      "nginx/default.conf",
+      "site"
+    ],
+    "file_count": 27,
+    "files": {
+      ".dockerignore": "63034d3340ac8efcfccec09a558d25142f588264d272fdd962309abcb08824c1",
+      "Dockerfile": "0c4a6f11b86130ccadb86b31e437e4d77ca4fa6d08eaa99ba026cccdda26c417",
+      "docker-compose.yml": "873bf86b8a2bc77ced962c86045f56d3da67842679b93badb1d68ccb18085e29",
+      "docs/manual/.review.json": "5519b39d63f0c3c1b499dac682ffc0eb92cf31bd53a99ac758f822ade75c2153",
+      "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+      "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+      "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+      "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+      "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+      "docs/manual/index.html": "537cee2f4497c7e3c5631574c261d00fc722eff17578295a11b624c2cc108120",
+      "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+      "docs/manual/mail.html": "2e538cffdfc8b3e06d9bf791a01894efa664cd64372bcbff95af25d15cf3fd7c",
+      "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+      "docs/manual/website.html": "ab4ee4012e54d736caaafb047458bbb7b6b407d030f852a56451a0778affd313",
+      "nginx/default.conf": "be0d04760815f8a34eb3610581775d1ca9190f00eed3ca686e7922fe1e0751e8",
+      "site/about/index.html": "cfaeeb67d4c7e305d6d2f9bc945e419df10aeffcf1ea99395a7a7839d57e274e",
+      "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+      "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+      "site/assets/styles.css": "a1b5a69c2038daa19bbaf62b0d0cff3b24b66e959bba3e8149956655c2fc8bce",
+      "site/contact/index.html": "36e9ac27bc8a603ec44fe0271c1a69ab7215046b0896701322d973e154be4471",
+      "site/en/index.html": "4b1d439b2face9c9e733d64648a2aa8489f4687c758bd5a2da1f68f9efe0ec71",
+      "site/index.html": "a7882669aeaaf757601f1c6051fd6f18c75afa0258f70eea5a437bf2752c4ff3",
+      "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+      "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+      "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+      "site/sitemap.xml": "a0fd75121b245a6817491a268e9389f49e79666987160a5d283dc748241931b1",
+      "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+    },
+    "fingerprint": "sha256:2dbb85450a878049fd99e676af52f03b5b7a528b7004e4bc04198578099c8183",
+    "missing_paths": [],
+    "computed_at": "2026-10-10T17:16:28.896208+00:00"
+  },
+  "input_independent": false
+}

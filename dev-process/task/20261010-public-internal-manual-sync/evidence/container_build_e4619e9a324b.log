@@ -1,0 +1,8 @@
+$ bash /tmp/check-bomts-public-sync-build.sh
+returncode: 0
+--- stdout ---
+sha256:158884ca2dc87e262460f633eff3508309b7370aeef2c6f7f095d0e033cd65d2
+PASS: public source compose config and container image build
+
+--- stderr ---
+
