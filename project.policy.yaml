@@ -50,8 +50,8 @@ user_manual:
   required_for_change_kinds: [new_project, new_feature, usage_change]
 
 data_model:
-  stance: external
-  ref: "sungbeom78/bomts-infra:mail/mailu/data-map.md"
+  stance: none
   reason: >-
-    정적 웹사이트는 업무 데이터를 저장하지 않는다. Self-hosted Mailu의 계정·Mailbox·메일 상태는 Private bomts-infra 데이터 지도와
-    persistent storage가 정본이며, 다른 BOMTS 서비스의 데이터는 각 소유 저장소에서 관리한다.
+    정적 사이트·운영 스크립트. 업무 데이터 없음. 운영 로그: nginx access/error(IP·시각·URL·UA) → docker json-file, 10MB×5 회전.
+    서비스 데이터 정본은 각 서비스 저장소 (sungbeom78/dev-ai (/project/dev_ai): PostgreSQL+Qdrant, bomts-decision: SQLite).
+    메일 서버를 자체 구축하면 다시 정한다.
