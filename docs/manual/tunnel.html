@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BOMTS Cloudflare Tunnel</title><link rel="stylesheet" href="assets/manual.css"><script defer src="assets/manual.js"></script></head>
-<body data-manual="BOMTS 운영 매뉴얼" data-index="index.html" data-chapters="index.html|처음;mail.html|BOMTS 메일 운영;tunnel.html|BOMTS Cloudflare Tunnel;website.html|BOMTS 웹사이트;architecture.html|BOMTS 시스템 구성;admin.html|BOMTS 운영·인수인계">
+<body data-manual="BOMTS 운영 매뉴얼" data-index="index.html" data-chapters="index.html|처음;local-manual.html|BOMTS 내부 매뉴얼;mail.html|BOMTS 메일 운영;tunnel.html|BOMTS Cloudflare Tunnel;website.html|BOMTS 웹사이트;architecture.html|BOMTS 시스템 구성;admin.html|BOMTS 운영·인수인계">
 <section class="slide" data-kind="cover" data-title="Cloudflare Tunnel">
   <div class="body"><div class="cover-grid"><div><div class="brandline">BOMTS · 운영 매뉴얼 · 2026-10-08</div><div class="emoji">🔗</div><h1>Cloudflare Tunnel</h1><p class="lead">공개 호스트 이름을 Mini PC의 loopback 서비스로 안전하게 연결합니다.</p></div><div class="orbit"><b>BOMTS</b></div></div></div>
   <aside class="notes">이 장은 cloudflared 서비스와 www·decision 라우팅을 점검하는 방법을 설명합니다. 설정 정본은 시스템의 /etc/cloudflared/config.yml이며 저장소에는 비밀 값을 복사하지 않습니다. 변경이 필요하면 백업과 검증을 먼저 수행합니다.</aside>
