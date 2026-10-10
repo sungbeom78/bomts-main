@@ -1,0 +1,7 @@
+$ bash /tmp/check-bomts-mail-source-parity.sh
+returncode: 0
+--- stdout ---
+PASS: public candidate files match the deployed reviewed source
+
+--- stderr ---
+

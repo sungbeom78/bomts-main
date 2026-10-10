@@ -1,0 +1,7 @@
+$ bash /tmp/check-bomts-mail-source-parity.sh
+returncode: 0
+--- stdout ---
+PASS: candidate matches deployed source plus its public-sync audit link
+
+--- stderr ---
+

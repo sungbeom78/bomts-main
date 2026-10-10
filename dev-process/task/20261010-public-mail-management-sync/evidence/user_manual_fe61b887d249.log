@@ -1,0 +1,73 @@
+$ /project/bomts-main/.venv/bin/python /project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py user_manual --project-root /project/bomts-main-public-sync --inputs  --require-lf true --task-id 20261010-public-mail-management-sync
+returncode: 0
+--- stdout ---
+OK: 사용설명서 7개 장 (docs/manual)
+{
+ "check": "user_manual",
+ "status": "PASS",
+ "dir": "docs/manual",
+ "audience": "engineer",
+ "change_kind": "new_feature",
+ "problems": [],
+ "chapters": [
+  {
+   "file": "docs/manual/index.html",
+   "name": "index",
+   "title": "BOMTS 운영 매뉴얼",
+   "role": "index",
+   "slides": 8
+  },
+  {
+   "file": "docs/manual/local-manual.html",
+   "name": "local-manual",
+   "title": "BOMTS 내부 매뉴얼",
+   "role": "feature",
+   "slides": 7
+  },
+  {
+   "file": "docs/manual/mail.html",
+   "name": "mail",
+   "title": "BOMTS 메일 운영",
+   "role": "feature",
+   "slides": 14
+  },
+  {
+   "file": "docs/manual/tunnel.html",
+   "name": "tunnel",
+   "title": "BOMTS Cloudflare Tunnel",
+   "role": "feature",
+   "slides": 8
+  },
+  {
+   "file": "docs/manual/website.html",
+   "name": "website",
+   "title": "BOMTS 웹사이트",
+   "role": "feature",
+   "slides": 7
+  },
+  {
+   "file": "docs/manual/architecture.html",
+   "name": "architecture",
+   "title": "BOMTS 시스템 구성",
+   "role": "architecture",
+   "slides": 10
+  },
+  {
+   "file": "docs/manual/admin.html",
+   "name": "admin",
+   "title": "BOMTS 운영·인수인계",
+   "role": "admin",
+   "slides": 16
+  }
+ ],
+ "slides": 70,
+ "manual_changed": [
+  "docs/manual/.review.json",
+  "docs/manual/index.html",
+  "docs/manual/mail.html"
+ ]
+}
+PASS: user_manual (7)
+
+--- stderr ---
+

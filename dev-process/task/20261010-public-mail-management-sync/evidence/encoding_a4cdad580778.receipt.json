@@ -1,0 +1,83 @@
+{
+  "check_name": "encoding",
+  "task_id": "20261010-public-mail-management-sync",
+  "execution": {
+    "run_id": "a4cdad580778",
+    "command": [
+      "/project/bomts-main/.venv/bin/python",
+      "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+      "encoding",
+      "--project-root",
+      "/project/bomts-main-public-sync",
+      "--inputs",
+      "site,scripts,mail,docs",
+      "--require-lf",
+      "true",
+      "--task-id",
+      "20261010-public-mail-management-sync"
+    ],
+    "returncode": 0,
+    "executed_at": "2026-10-10T17:44:11.621459+00:00",
+    "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/encoding_a4cdad580778.log",
+    "input_snapshot": {
+      "before": "sha256:808d6bb640cb23a9e2c4dcec55c290f0add9861feae12ef5a06c98fdab609601",
+      "after": "sha256:808d6bb640cb23a9e2c4dcec55c290f0add9861feae12ef5a06c98fdab609601"
+    },
+    "inputs_changed_during_run": false,
+    "policy_scope_hash": "sha256:806dbeb9496f4241",
+    "sealed": true,
+    "stdout_tail": "{\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 33,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (33)\n",
+    "stderr_tail": ""
+  },
+  "evidence_record": {
+    "check_name": "encoding",
+    "input_paths": [
+      "docs",
+      "mail",
+      "scripts",
+      "site"
+    ],
+    "file_count": 35,
+    "files": {
+      "docs/architecture.md": "86a47ff613ad5cd88784e9de7e0a2bc72661a5e0624ee6202085d0aa2d48d9e0",
+      "docs/deployment.md": "23a875a820024b8030efb7c160f2d3ea2b2056c78eb1404cb24ee326d9566275",
+      "docs/dns.md": "9c3076662d83bb49a63a747332c8c053afc5489a4c69ae016df16dec406763a7",
+      "docs/mail-operations.md": "c907bb19077bdac6d13f048ada395bc80e98903a78c2b62dc30e35bcc76764e6",
+      "docs/mail-stack-comparison.md": "e30c4795f72f439c877f3f6c764f82cfd2ab9542413c694fe71091d1be144d17",
+      "docs/manual/.review.json": "b7c8df1952eae0a1be7db0345855f83ed1b4614017d74d13444c71401261a964",
+      "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+      "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+      "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+      "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+      "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+      "docs/manual/index.html": "d36a12a8032a1342f6dcbea6f12e425a69ca668a4975115e8564cced672659f8",
+      "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+      "docs/manual/mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
+      "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+      "docs/manual/website.html": "ab4ee4012e54d736caaafb047458bbb7b6b407d030f852a56451a0778affd313",
+      "docs/public-repository-security.md": "fdebd9e021a01b751e9395cad72bb0ad33cda338e7a0f50f9d8222b18e9ef0e7",
+      "docs/security.md": "bba918ee4466e5522d736957407a5eb05951d7ff48fee5b753b4764358279e63",
+      "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+      "mail/address-policy.yaml": "e69e74d1032ca521985868db1488efe4f92148560dcbd3691ea02c3139e8054d",
+      "mail/provider-onboarding.md": "bb427654ccbde59565787284ae8e7a84370e47b71f4f9e71017046e2ffff08fc",
+      "scripts/check.sh": "76ec17fa6ffea36fbec04669ed8aae401e0d6b0dbfcf23fb4e2d704647460e3c",
+      "site/about/index.html": "cfaeeb67d4c7e305d6d2f9bc945e419df10aeffcf1ea99395a7a7839d57e274e",
+      "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+      "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+      "site/assets/styles.css": "c3298fddff98a390aa1dac9578e4cd539e72fcedc9853f6050e15b78d90cfdc3",
+      "site/contact/index.html": "36e9ac27bc8a603ec44fe0271c1a69ab7215046b0896701322d973e154be4471",
+      "site/en/index.html": "4b1d439b2face9c9e733d64648a2aa8489f4687c758bd5a2da1f68f9efe0ec71",
+      "site/index.html": "a7882669aeaaf757601f1c6051fd6f18c75afa0258f70eea5a437bf2752c4ff3",
+      "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99",
+      "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+      "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+      "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+      "site/sitemap.xml": "a0fd75121b245a6817491a268e9389f49e79666987160a5d283dc748241931b1",
+      "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+    },
+    "fingerprint": "sha256:808d6bb640cb23a9e2c4dcec55c290f0add9861feae12ef5a06c98fdab609601",
+    "missing_paths": [],
+    "computed_at": "2026-10-10T17:44:11.558822+00:00"
+  },
+  "input_independent": false
+}

@@ -1,0 +1,7 @@
+$ bash /tmp/check-bomts-mail-runtime-sync.sh
+returncode: 0
+--- stdout ---
+PASS: LAN portal and login pages 200; public management paths 404
+
+--- stderr ---
+

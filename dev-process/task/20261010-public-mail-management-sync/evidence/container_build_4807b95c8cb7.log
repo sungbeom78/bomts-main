@@ -1,0 +1,47 @@
+$ docker compose build website
+returncode: 0
+--- stdout ---
+#1 [internal] load local bake definitions
+#1 reading from stdin 549B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 343B done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/nginx:1.27-alpine
+#3 DONE 0.9s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 328B done
+#4 DONE 0.1s
+
+#5 [1/4] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 12.82kB 0.0s done
+#6 DONE 0.1s
+
+#7 [2/4] COPY nginx/default.conf /etc/nginx/templates/default.conf.template
+#7 CACHED
+
+#8 [3/4] COPY site/ /usr/share/nginx/html/
+#8 CACHED
+
+#9 [4/4] COPY docs/manual/ /usr/share/nginx/html/manual/
+#9 DONE 0.9s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 0.4s done
+#10 writing image sha256:d781cae4852b82c1491ba9a94faec1d26f69967304175772ec07c07b26843ec3 0.0s done
+#10 naming to docker.io/library/bomts-main-public-sync-website 0.1s done
+#10 DONE 0.7s
+
+#11 resolving provenance for metadata file
+#11 DONE 0.0s
+
+--- stderr ---
+ bomts-main-public-sync-website  Built
+

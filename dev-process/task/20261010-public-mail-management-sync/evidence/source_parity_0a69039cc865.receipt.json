@@ -1,0 +1,57 @@
+{
+  "check_name": "source_parity",
+  "task_id": "20261010-public-mail-management-sync",
+  "execution": {
+    "run_id": "0a69039cc865",
+    "command": [
+      "bash",
+      "/tmp/check-bomts-mail-source-parity.sh"
+    ],
+    "returncode": 0,
+    "executed_at": "2026-10-10T17:42:46.217757+00:00",
+    "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/source_parity_0a69039cc865.log",
+    "input_snapshot": {
+      "before": "sha256:830b732f225a6843458704d09dbedbfe3507d9be164a0bfe23fded8a150558c3",
+      "after": "sha256:830b732f225a6843458704d09dbedbfe3507d9be164a0bfe23fded8a150558c3"
+    },
+    "inputs_changed_during_run": false,
+    "policy_scope_hash": "sha256:806dbeb9496f4241",
+    "sealed": true,
+    "stdout_tail": "PASS: public candidate files match the deployed reviewed source\n",
+    "stderr_tail": ""
+  },
+  "evidence_record": {
+    "check_name": "source_parity",
+    "input_paths": [
+      ".env.example",
+      "Dockerfile",
+      "docker-compose.yml",
+      "docs/architecture.md",
+      "docs/deployment.md",
+      "docs/mail-operations.md",
+      "docs/manual/index.html",
+      "docs/manual/mail.html",
+      "nginx/default.conf",
+      "site/assets/styles.css",
+      "site/manage/index.html"
+    ],
+    "file_count": 11,
+    "files": {
+      ".env.example": "49090a6ccf7cb83b995d71e42be82c2ec29ee4ce2a186acbe32e30cfbab659c8",
+      "Dockerfile": "56d7764a44885ba6fa05ea98465e3f4c1189ae5a5d608dc8056c8206d9aa5457",
+      "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+      "docs/architecture.md": "86a47ff613ad5cd88784e9de7e0a2bc72661a5e0624ee6202085d0aa2d48d9e0",
+      "docs/deployment.md": "23a875a820024b8030efb7c160f2d3ea2b2056c78eb1404cb24ee326d9566275",
+      "docs/mail-operations.md": "c907bb19077bdac6d13f048ada395bc80e98903a78c2b62dc30e35bcc76764e6",
+      "docs/manual/index.html": "6810cfa2dc24029e2bac9dc0cf7be904ddc114e528fa6b27b8198b494598c861",
+      "docs/manual/mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
+      "nginx/default.conf": "2b746b971098cf8fc78ac10808a38fd7d984aed74f5b0c9a3df2ef848751b13d",
+      "site/assets/styles.css": "c3298fddff98a390aa1dac9578e4cd539e72fcedc9853f6050e15b78d90cfdc3",
+      "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99"
+    },
+    "fingerprint": "sha256:830b732f225a6843458704d09dbedbfe3507d9be164a0bfe23fded8a150558c3",
+    "missing_paths": [],
+    "computed_at": "2026-10-10T17:42:46.152162+00:00"
+  },
+  "input_independent": false
+}

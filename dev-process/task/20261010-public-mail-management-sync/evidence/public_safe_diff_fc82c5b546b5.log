@@ -1,0 +1,7 @@
+$ bash /tmp/check-bomts-mail-public-safe-sync.sh
+returncode: 0
+--- stdout ---
+PASS: .env ignored; public diff contains no actual IP, private key, or secret pattern
+
+--- stderr ---
+

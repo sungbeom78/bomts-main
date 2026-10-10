@@ -1,0 +1,6 @@
+$ ./scripts/check.sh
+returncode: 0
+--- stdout ---
+
+--- stderr ---
+

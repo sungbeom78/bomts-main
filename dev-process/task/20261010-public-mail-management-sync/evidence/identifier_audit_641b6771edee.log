@@ -1,0 +1,23 @@
+$ /project/bomts-main/.venv/bin/python /project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py identifier_audit --project-root /project/bomts-main-public-sync --inputs scripts,glossary/dictionary --require-lf true --task-id 20261010-public-mail-management-sync
+returncode: 0
+--- stdout ---
+{
+ "check": "identifier_audit",
+ "status": "PASS",
+ "baseline_commit": "643111f217d57e2902b26a3b2abed91540d90231",
+ "glossary_revision": "2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd",
+ "pinned_revision": "2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd",
+ "enforcement": {
+  "new_or_renamed": "strict",
+  "legacy": "advisory"
+ },
+ "new_declarations": 0,
+ "legacy_declarations": 0,
+ "new_violations": [],
+ "legacy_advisories": [],
+ "verdict": "PASS"
+}
+PASS: identifier_audit
+
+--- stderr ---
+

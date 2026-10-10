@@ -1,0 +1,43 @@
+{
+  "check_name": "mail_portal_runtime",
+  "task_id": "20261010-public-mail-management-sync",
+  "execution": {
+    "run_id": "723f334f1d4a",
+    "command": [
+      "bash",
+      "/tmp/check-bomts-mail-runtime-sync.sh"
+    ],
+    "returncode": 0,
+    "executed_at": "2026-10-10T17:42:47.448875+00:00",
+    "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/mail_portal_runtime_723f334f1d4a.log",
+    "input_snapshot": {
+      "before": "sha256:a80756032bcf5418c7bfa005de3c59f04221ac76e0e3371cbe5cc678460c68a6",
+      "after": "sha256:a80756032bcf5418c7bfa005de3c59f04221ac76e0e3371cbe5cc678460c68a6"
+    },
+    "inputs_changed_during_run": false,
+    "policy_scope_hash": "sha256:806dbeb9496f4241",
+    "sealed": true,
+    "stdout_tail": "PASS: LAN portal and login pages 200; public management paths 404\n",
+    "stderr_tail": ""
+  },
+  "evidence_record": {
+    "check_name": "mail_portal_runtime",
+    "input_paths": [
+      "Dockerfile",
+      "docker-compose.yml",
+      "nginx/default.conf",
+      "site/manage/index.html"
+    ],
+    "file_count": 4,
+    "files": {
+      "Dockerfile": "56d7764a44885ba6fa05ea98465e3f4c1189ae5a5d608dc8056c8206d9aa5457",
+      "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+      "nginx/default.conf": "2b746b971098cf8fc78ac10808a38fd7d984aed74f5b0c9a3df2ef848751b13d",
+      "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99"
+    },
+    "fingerprint": "sha256:a80756032bcf5418c7bfa005de3c59f04221ac76e0e3371cbe5cc678460c68a6",
+    "missing_paths": [],
+    "computed_at": "2026-10-10T17:42:46.486726+00:00"
+  },
+  "input_independent": false
+}

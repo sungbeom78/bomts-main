@@ -1,0 +1,1885 @@
+{
+  "acceptance": [
+    {
+      "no": 1,
+      "note": "봉인 검사 mail_portal_runtime 723f334f1d4a: LAN /manage/·Webmail·Admin 최종 화면 200",
+      "status": "met",
+      "text": "내부 네트워크에서 관리 포털과 Webmail·Mail Admin 경로에 접근 가능",
+      "updated_at": "2026-10-10T17:44:18.997922+00:00"
+    },
+    {
+      "no": 2,
+      "note": "봉인 검사 mail_portal_runtime 723f334f1d4a: www.bomts.net의 /manage/·/webmail/·/admin/ 모두 404",
+      "status": "met",
+      "text": "공개 인터넷에서는 관리·메일 프록시 경로가 404로 차단됨",
+      "updated_at": "2026-10-10T17:44:19.256810+00:00"
+    },
+    {
+      "no": 3,
+      "note": "site/manage/index.html 및 docs/manual/mail.html에 Fetchmail, 외부 클라이언트, 쉼표 기반 계정별 복수 Auto-forward와 Keep copy 안내; Mailu 전달 실수신 검증 완료",
+      "status": "met",
+      "text": "계정별 복수 자동 포워딩과 외부 메일 연동 방법이 웹 페이지와 매뉴얼에 안내됨",
+      "updated_at": "2026-10-10T17:44:19.522348+00:00"
+    },
+    {
+      "no": 4,
+      "note": "봉인 검사 public_safe_diff 519e8692bc30: .env 미추적, 실제 IP·개인키·secret 패턴 없음",
+      "status": "met",
+      "text": "공개 커밋에 비밀값과 실제 운영 주소가 포함되지 않음",
+      "updated_at": "2026-10-10T17:44:19.793148+00:00"
+    }
+  ],
+  "approvals": [],
+  "baseline_commit": "643111f217d57e2902b26a3b2abed91540d90231",
+  "change_kind": {
+    "history": [],
+    "kind": "new_feature",
+    "reason": "내부 전용 메일 관리 화면과 사용 흐름 추가",
+    "set_at": "2026-10-10T17:40:54.812482+00:00"
+  },
+  "completion": {
+    "changes_summary": "feat: publish internal mail management portal",
+    "commit": "7a47522ccaf1651cbaa54b55ac6e651f2d502799",
+    "deploy": "not_in_scope",
+    "push": "pushed",
+    "release_scope": "in_scope",
+    "work": "done"
+  },
+  "created_at": "2026-10-10T17:40:54.812482+00:00",
+  "events": [
+    {
+      "check_name": "prior_art",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "verdict=clear",
+      "ts": "2026-10-10T17:40:59.047451+00:00",
+      "verification": "reported_only",
+      "verified": false
+    },
+    {
+      "check_name": "container_build",
+      "evidence_fingerprint": "sha256:1c71d7b4aff2a600c8cabf79b8990025f949066c7bc3992e54157180b8aee9ef",
+      "execution": {
+        "command": [
+          "docker",
+          "compose",
+          "build",
+          "website"
+        ],
+        "executed_at": "2026-10-10T17:42:18.592872+00:00",
+        "input_snapshot": {
+          "after": "sha256:1c71d7b4aff2a600c8cabf79b8990025f949066c7bc3992e54157180b8aee9ef",
+          "before": "sha256:1c71d7b4aff2a600c8cabf79b8990025f949066c7bc3992e54157180b8aee9ef"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/container_build_3f48d4dbb6e8.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/container_build_3f48d4dbb6e8.receipt.json",
+        "returncode": 0,
+        "run_id": "3f48d4dbb6e8",
+        "sealed": true,
+        "stderr_tail": " bomts-main-public-sync-website  Built\n",
+        "stdout_tail": "sferring context: 328B done\n#4 DONE 0.1s\n\n#5 [1/4] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10\n#5 DONE 0.0s\n\n#6 [internal] load build context\n#6 transferring context: 45.22kB 0.0s done\n#6 DONE 0.1s\n\n#7 [2/4] COPY nginx/default.conf /etc/nginx/templates/default.conf.template\n#7 CACHED\n\n#8 [3/4] COPY site/ /usr/share/nginx/html/\n#8 CACHED\n\n#9 [4/4] COPY docs/manual/ /usr/share/nginx/html/manual/\n#9 DONE 1.0s\n\n#10 exporting to image\n#10 exporting layers\n#10 exporting layers 0.4s done\n#10 writing image sha256:80248baa3b124792a91f2dae53638aa60f1a2eac951e47332e2537855da77675 0.0s done\n#10 naming to docker.io/library/bomts-main-public-sync-website 0.1s done\n#10 DONE 0.7s\n\n#11 resolving provenance for metadata file\n#11 DONE 0.2s\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: bomts-main-public-sync-website  Built",
+      "ts": "2026-10-10T17:42:18.598182+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "public_safe_diff",
+      "evidence_fingerprint": "sha256:830b732f225a6843458704d09dbedbfe3507d9be164a0bfe23fded8a150558c3",
+      "execution": {
+        "command": [
+          "bash",
+          "/tmp/check-bomts-mail-public-safe-sync.sh"
+        ],
+        "executed_at": "2026-10-10T17:42:45.896571+00:00",
+        "input_snapshot": {
+          "after": "sha256:830b732f225a6843458704d09dbedbfe3507d9be164a0bfe23fded8a150558c3",
+          "before": "sha256:830b732f225a6843458704d09dbedbfe3507d9be164a0bfe23fded8a150558c3"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/public_safe_diff_fc82c5b546b5.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/public_safe_diff_fc82c5b546b5.receipt.json",
+        "returncode": 0,
+        "run_id": "fc82c5b546b5",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS: .env ignored; public diff contains no actual IP, private key, or secret pattern\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: PASS: .env ignored; public diff contains no actual IP, private key, or secret pattern",
+      "ts": "2026-10-10T17:42:45.899088+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "source_parity",
+      "evidence_fingerprint": "sha256:830b732f225a6843458704d09dbedbfe3507d9be164a0bfe23fded8a150558c3",
+      "execution": {
+        "command": [
+          "bash",
+          "/tmp/check-bomts-mail-source-parity.sh"
+        ],
+        "executed_at": "2026-10-10T17:42:46.217757+00:00",
+        "input_snapshot": {
+          "after": "sha256:830b732f225a6843458704d09dbedbfe3507d9be164a0bfe23fded8a150558c3",
+          "before": "sha256:830b732f225a6843458704d09dbedbfe3507d9be164a0bfe23fded8a150558c3"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/source_parity_0a69039cc865.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/source_parity_0a69039cc865.receipt.json",
+        "returncode": 0,
+        "run_id": "0a69039cc865",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS: public candidate files match the deployed reviewed source\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: PASS: public candidate files match the deployed reviewed source",
+      "ts": "2026-10-10T17:42:46.220222+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "mail_portal_runtime",
+      "evidence_fingerprint": "sha256:a80756032bcf5418c7bfa005de3c59f04221ac76e0e3371cbe5cc678460c68a6",
+      "execution": {
+        "command": [
+          "bash",
+          "/tmp/check-bomts-mail-runtime-sync.sh"
+        ],
+        "executed_at": "2026-10-10T17:42:47.448875+00:00",
+        "input_snapshot": {
+          "after": "sha256:a80756032bcf5418c7bfa005de3c59f04221ac76e0e3371cbe5cc678460c68a6",
+          "before": "sha256:a80756032bcf5418c7bfa005de3c59f04221ac76e0e3371cbe5cc678460c68a6"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/mail_portal_runtime_723f334f1d4a.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/mail_portal_runtime_723f334f1d4a.receipt.json",
+        "returncode": 0,
+        "run_id": "723f334f1d4a",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS: LAN portal and login pages 200; public management paths 404\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: PASS: LAN portal and login pages 200; public management paths 404",
+      "ts": "2026-10-10T17:42:47.450121+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "lint",
+      "evidence_fingerprint": "sha256:5a42347f48a347bb82466c9d4d78511079ea88d9b210685703187b607bdc535c",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "syntax",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:43:00.153240+00:00",
+        "input_snapshot": {
+          "after": "sha256:5a42347f48a347bb82466c9d4d78511079ea88d9b210685703187b607bdc535c",
+          "before": "sha256:5a42347f48a347bb82466c9d4d78511079ea88d9b210685703187b607bdc535c"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/lint_e0305115aae6.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/lint_e0305115aae6.receipt.json",
+        "returncode": 0,
+        "run_id": "e0305115aae6",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 9,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (9)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: {\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 9,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (9)",
+      "ts": "2026-10-10T17:43:00.155999+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "unit_or_regression",
+      "evidence_fingerprint": "sha256:3f97d0bc1137a09bd2bd788df2e6ff90410d91a69760d6d3a7da4f6337eff41b",
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-10T17:43:00.274248+00:00",
+        "input_snapshot": {
+          "after": "sha256:3f97d0bc1137a09bd2bd788df2e6ff90410d91a69760d6d3a7da4f6337eff41b",
+          "before": "sha256:3f97d0bc1137a09bd2bd788df2e6ff90410d91a69760d6d3a7da4f6337eff41b"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/unit_or_regression_0349f8a3c050.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/unit_or_regression_0349f8a3c050.receipt.json",
+        "returncode": 0,
+        "run_id": "0349f8a3c050",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-10T17:43:00.279925+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "encoding",
+      "evidence_fingerprint": "sha256:40cc37f61bb06cdd1a4122edba44a4793a58ada519528e71ddc4eba4f036d6e2",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "encoding",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts,mail,docs",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:43:00.371852+00:00",
+        "input_snapshot": {
+          "after": "sha256:40cc37f61bb06cdd1a4122edba44a4793a58ada519528e71ddc4eba4f036d6e2",
+          "before": "sha256:40cc37f61bb06cdd1a4122edba44a4793a58ada519528e71ddc4eba4f036d6e2"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/encoding_2794479ffcce.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/encoding_2794479ffcce.receipt.json",
+        "returncode": 0,
+        "run_id": "2794479ffcce",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 33,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (33)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: {\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 33,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (33)",
+      "ts": "2026-10-10T17:43:00.382706+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "identifier_audit",
+      "evidence_fingerprint": "sha256:f538bd736cdf6a9cb5bd11dbf16fbc8821dd5853b092d6e2fde4860f918f9316",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "identifier_audit",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "scripts,glossary/dictionary",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:43:00.694649+00:00",
+        "input_snapshot": {
+          "after": "sha256:f538bd736cdf6a9cb5bd11dbf16fbc8821dd5853b092d6e2fde4860f918f9316",
+          "before": "sha256:f538bd736cdf6a9cb5bd11dbf16fbc8821dd5853b092d6e2fde4860f918f9316"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/identifier_audit_641b6771edee.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/identifier_audit_641b6771edee.receipt.json",
+        "returncode": 0,
+        "run_id": "641b6771edee",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"identifier_audit\",\n \"status\": \"PASS\",\n \"baseline_commit\": \"643111f217d57e2902b26a3b2abed91540d90231\",\n \"glossary_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"pinned_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"enforcement\": {\n  \"new_or_renamed\": \"strict\",\n  \"legacy\": \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit",
+      "ts": "2026-10-10T17:43:00.702400+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "qa_quick",
+      "evidence_fingerprint": "sha256:3f97d0bc1137a09bd2bd788df2e6ff90410d91a69760d6d3a7da4f6337eff41b",
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-10T17:43:00.821309+00:00",
+        "input_snapshot": {
+          "after": "sha256:3f97d0bc1137a09bd2bd788df2e6ff90410d91a69760d6d3a7da4f6337eff41b",
+          "before": "sha256:3f97d0bc1137a09bd2bd788df2e6ff90410d91a69760d6d3a7da4f6337eff41b"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/qa_quick_17d6b07d2877.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/qa_quick_17d6b07d2877.receipt.json",
+        "returncode": 0,
+        "run_id": "17d6b07d2877",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-10T17:43:00.826910+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "user_manual",
+      "evidence_fingerprint": "sha256:a650a2807a63bb18b5119229affec19eccbd756743b05fa56672be03625ab988",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "user_manual",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:43:01.191169+00:00",
+        "input_snapshot": {
+          "after": "sha256:a650a2807a63bb18b5119229affec19eccbd756743b05fa56672be03625ab988",
+          "before": "sha256:a650a2807a63bb18b5119229affec19eccbd756743b05fa56672be03625ab988"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/user_manual_9756104895df.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/user_manual_9756104895df.receipt.json",
+        "returncode": 1,
+        "run_id": "9756104895df",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "le\": \"docs/manual/tunnel.html\",\n   \"name\": \"tunnel\",\n   \"title\": \"BOMTS Cloudflare Tunnel\",\n   \"role\": \"feature\",\n   \"slides\": 8\n  },\n  {\n   \"file\": \"docs/manual/website.html\",\n   \"name\": \"website\",\n   \"title\": \"BOMTS 웹사이트\",\n   \"role\": \"feature\",\n   \"slides\": 7\n  },\n  {\n   \"file\": \"docs/manual/architecture.html\",\n   \"name\": \"architecture\",\n   \"title\": \"BOMTS 시스템 구성\",\n   \"role\": \"architecture\",\n   \"slides\": 10\n  },\n  {\n   \"file\": \"docs/manual/admin.html\",\n   \"name\": \"admin\",\n   \"title\": \"BOMTS 운영·인수인계\",\n   \"role\": \"admin\",\n   \"slides\": 16\n  }\n ],\n \"slides\": 70,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/mail.html\"\n ]\n}\nFAIL: 1건 -- index.html '바뀐 점'(data-kind=\"changes\")에 이번 작업 기록 없음 -- task id '20261010-public-mail-management-sync' 를 함께 적는다\n"
+      },
+      "gate_outcome": "deny",
+      "kind": "check",
+      "reason_code": "FAIL: tml\",\n  \"docs/manual/mail.html\"\n ]\n}\nFAIL: 1건 -- index.html '바뀐 점'(data-kind=\"changes\")에 이번 작업 기록 없음 -- task id '20261010-public-mail-management-sync' 를 함께 적는다",
+      "ts": "2026-10-10T17:43:01.191621+00:00",
+      "verification": "deny",
+      "verified": false
+    },
+    {
+      "check_name": "data_stance",
+      "evidence_fingerprint": "sha256:46743cb1cef32690b0bd3f8b23cee8617a86acd9c018ddbbd3d280460111c832",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_stance",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:43:01.430392+00:00",
+        "input_snapshot": {
+          "after": "sha256:46743cb1cef32690b0bd3f8b23cee8617a86acd9c018ddbbd3d280460111c832",
+          "before": "sha256:46743cb1cef32690b0bd3f8b23cee8617a86acd9c018ddbbd3d280460111c832"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/data_stance_a06b36b422aa.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/data_stance_a06b36b422aa.receipt.json",
+        "returncode": 0,
+        "run_id": "a06b36b422aa",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "son이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.  ref: https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\n저장소 흔적 0개 (ORM 모델·Prisma·마이그레이션·DB 파일·DB 컨테이너 없음)\n  결과: 이상 없음\n{\n \"check\": \"data_stance\",\n \"status\": \"PASS\",\n \"stance\": \"external\",\n \"reason\": \"bomts-main은 정적 사이트·운영 스크립트와 운영 로그만 보유한다. 업무 데이터 정본은 외부 서비스 저장소에 있다. dev-ai의 PostgreSQL·Qdrant 정본은 sungbeom78/dev-ai의 db/model.json이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.\",\n \"ref\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ef\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance",
+      "ts": "2026-10-10T17:43:01.433165+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "data_inventory",
+      "evidence_fingerprint": "sha256:6f9d60d44aa94241de5465101fcae791134bf8f957327ce2f77dc26bc8572a9e",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_inventory",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:43:01.772411+00:00",
+        "input_snapshot": {
+          "after": "sha256:6f9d60d44aa94241de5465101fcae791134bf8f957327ce2f77dc26bc8572a9e",
+          "before": "sha256:6f9d60d44aa94241de5465101fcae791134bf8f957327ce2f77dc26bc8572a9e"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/data_inventory_9eac7a5d9719.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/data_inventory_9eac7a5d9719.receipt.json",
+        "returncode": 0,
+        "run_id": "9eac7a5d9719",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "데이터 카탈로그: data/catalog.json\n자산 7개, 데이터 흔적 0개, 개인정보: indirect web_log, provider_log, audit_evidence; personal service_policy; sensitive message_data, service_backup\n  결과: 이상 없음\n{\n \"check\": \"data_inventory\",\n \"status\": \"PASS\",\n \"system\": \"bomts-main\",\n \"assets\": 7,\n \"uncovered\": [],\n \"problems\": [],\n \"warnings\": [],\n \"pii\": {\n  \"none\": [\n   \"system_config\"\n  ],\n  \"indirect\": [\n   \"web_log\",\n   \"provider_log\",\n   \"audit_evidence\"\n  ],\n  \"personal\": [\n   \"service_policy\"\n  ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory",
+      "ts": "2026-10-10T17:43:01.775513+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "user_manual",
+      "evidence_fingerprint": "sha256:69bd728cdc158a8acd375f0f2f2047c99705666a135a788c1e7efe1e5a388e3a",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "user_manual",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:43:48.255227+00:00",
+        "input_snapshot": {
+          "after": "sha256:69bd728cdc158a8acd375f0f2f2047c99705666a135a788c1e7efe1e5a388e3a",
+          "before": "sha256:69bd728cdc158a8acd375f0f2f2047c99705666a135a788c1e7efe1e5a388e3a"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/user_manual_05c8b56bd7df.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/user_manual_05c8b56bd7df.receipt.json",
+        "returncode": 0,
+        "run_id": "05c8b56bd7df",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ",\n   \"name\": \"mail\",\n   \"title\": \"BOMTS 메일 운영\",\n   \"role\": \"feature\",\n   \"slides\": 14\n  },\n  {\n   \"file\": \"docs/manual/tunnel.html\",\n   \"name\": \"tunnel\",\n   \"title\": \"BOMTS Cloudflare Tunnel\",\n   \"role\": \"feature\",\n   \"slides\": 8\n  },\n  {\n   \"file\": \"docs/manual/website.html\",\n   \"name\": \"website\",\n   \"title\": \"BOMTS 웹사이트\",\n   \"role\": \"feature\",\n   \"slides\": 7\n  },\n  {\n   \"file\": \"docs/manual/architecture.html\",\n   \"name\": \"architecture\",\n   \"title\": \"BOMTS 시스템 구성\",\n   \"role\": \"architecture\",\n   \"slides\": 10\n  },\n  {\n   \"file\": \"docs/manual/admin.html\",\n   \"name\": \"admin\",\n   \"title\": \"BOMTS 운영·인수인계\",\n   \"role\": \"admin\",\n   \"slides\": 16\n  }\n ],\n \"slides\": 70,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/mail.html\"\n ]\n}\nPASS: user_manual (7)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: : 16\n  }\n ],\n \"slides\": 70,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/mail.html\"\n ]\n}\nPASS: user_manual (7)",
+      "ts": "2026-10-10T17:43:48.259115+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "public_safe_diff",
+      "evidence_fingerprint": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760",
+      "execution": {
+        "command": [
+          "bash",
+          "/tmp/check-bomts-mail-public-safe-sync.sh"
+        ],
+        "executed_at": "2026-10-10T17:44:03.671689+00:00",
+        "input_snapshot": {
+          "after": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760",
+          "before": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/public_safe_diff_519e8692bc30.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/public_safe_diff_519e8692bc30.receipt.json",
+        "returncode": 0,
+        "run_id": "519e8692bc30",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS: .env ignored; public diff contains no actual IP, private key, or secret pattern\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: PASS: .env ignored; public diff contains no actual IP, private key, or secret pattern",
+      "ts": "2026-10-10T17:44:03.674172+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "source_parity",
+      "evidence_fingerprint": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760",
+      "execution": {
+        "command": [
+          "bash",
+          "/tmp/check-bomts-mail-source-parity.sh"
+        ],
+        "executed_at": "2026-10-10T17:44:03.974572+00:00",
+        "input_snapshot": {
+          "after": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760",
+          "before": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/source_parity_c70f7a775420.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/source_parity_c70f7a775420.receipt.json",
+        "returncode": 0,
+        "run_id": "c70f7a775420",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS: candidate matches deployed source plus its public-sync audit link\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: PASS: candidate matches deployed source plus its public-sync audit link",
+      "ts": "2026-10-10T17:44:03.977032+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "container_build",
+      "evidence_fingerprint": "sha256:6955d962f031120cf50137adc0b9a6a8de89f5f785764714f811e49356ae893a",
+      "execution": {
+        "command": [
+          "docker",
+          "compose",
+          "build",
+          "website"
+        ],
+        "executed_at": "2026-10-10T17:44:08.712583+00:00",
+        "input_snapshot": {
+          "after": "sha256:6955d962f031120cf50137adc0b9a6a8de89f5f785764714f811e49356ae893a",
+          "before": "sha256:6955d962f031120cf50137adc0b9a6a8de89f5f785764714f811e49356ae893a"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/container_build_4807b95c8cb7.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/container_build_4807b95c8cb7.receipt.json",
+        "returncode": 0,
+        "run_id": "4807b95c8cb7",
+        "sealed": true,
+        "stderr_tail": " bomts-main-public-sync-website  Built\n",
+        "stdout_tail": "sferring context: 328B done\n#4 DONE 0.1s\n\n#5 [1/4] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10\n#5 DONE 0.0s\n\n#6 [internal] load build context\n#6 transferring context: 12.82kB 0.0s done\n#6 DONE 0.1s\n\n#7 [2/4] COPY nginx/default.conf /etc/nginx/templates/default.conf.template\n#7 CACHED\n\n#8 [3/4] COPY site/ /usr/share/nginx/html/\n#8 CACHED\n\n#9 [4/4] COPY docs/manual/ /usr/share/nginx/html/manual/\n#9 DONE 0.9s\n\n#10 exporting to image\n#10 exporting layers\n#10 exporting layers 0.4s done\n#10 writing image sha256:d781cae4852b82c1491ba9a94faec1d26f69967304175772ec07c07b26843ec3 0.0s done\n#10 naming to docker.io/library/bomts-main-public-sync-website 0.1s done\n#10 DONE 0.7s\n\n#11 resolving provenance for metadata file\n#11 DONE 0.0s\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: bomts-main-public-sync-website  Built",
+      "ts": "2026-10-10T17:44:08.719517+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "lint",
+      "evidence_fingerprint": "sha256:5a42347f48a347bb82466c9d4d78511079ea88d9b210685703187b607bdc535c",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "syntax",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:44:11.355497+00:00",
+        "input_snapshot": {
+          "after": "sha256:5a42347f48a347bb82466c9d4d78511079ea88d9b210685703187b607bdc535c",
+          "before": "sha256:5a42347f48a347bb82466c9d4d78511079ea88d9b210685703187b607bdc535c"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/lint_43772a0de32b.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/lint_43772a0de32b.receipt.json",
+        "returncode": 0,
+        "run_id": "43772a0de32b",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 9,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (9)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: {\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 9,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (9)",
+      "ts": "2026-10-10T17:44:11.358320+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "unit_or_regression",
+      "evidence_fingerprint": "sha256:863de4835a354d82f4135953f3c54877b5c882e6d80d84c13097e8ea4ee81394",
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-10T17:44:11.523815+00:00",
+        "input_snapshot": {
+          "after": "sha256:863de4835a354d82f4135953f3c54877b5c882e6d80d84c13097e8ea4ee81394",
+          "before": "sha256:863de4835a354d82f4135953f3c54877b5c882e6d80d84c13097e8ea4ee81394"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/unit_or_regression_a89468326a7c.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/unit_or_regression_a89468326a7c.receipt.json",
+        "returncode": 0,
+        "run_id": "a89468326a7c",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-10T17:44:11.529455+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "encoding",
+      "evidence_fingerprint": "sha256:808d6bb640cb23a9e2c4dcec55c290f0add9861feae12ef5a06c98fdab609601",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "encoding",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts,mail,docs",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:44:11.621459+00:00",
+        "input_snapshot": {
+          "after": "sha256:808d6bb640cb23a9e2c4dcec55c290f0add9861feae12ef5a06c98fdab609601",
+          "before": "sha256:808d6bb640cb23a9e2c4dcec55c290f0add9861feae12ef5a06c98fdab609601"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/encoding_a4cdad580778.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/encoding_a4cdad580778.receipt.json",
+        "returncode": 0,
+        "run_id": "a4cdad580778",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 33,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (33)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: {\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 33,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (33)",
+      "ts": "2026-10-10T17:44:11.627451+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "identifier_audit",
+      "evidence_fingerprint": "sha256:f538bd736cdf6a9cb5bd11dbf16fbc8821dd5853b092d6e2fde4860f918f9316",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "identifier_audit",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "scripts,glossary/dictionary",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:44:11.937010+00:00",
+        "input_snapshot": {
+          "after": "sha256:f538bd736cdf6a9cb5bd11dbf16fbc8821dd5853b092d6e2fde4860f918f9316",
+          "before": "sha256:f538bd736cdf6a9cb5bd11dbf16fbc8821dd5853b092d6e2fde4860f918f9316"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/identifier_audit_f3fa36f21404.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/identifier_audit_f3fa36f21404.receipt.json",
+        "returncode": 0,
+        "run_id": "f3fa36f21404",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"identifier_audit\",\n \"status\": \"PASS\",\n \"baseline_commit\": \"643111f217d57e2902b26a3b2abed91540d90231\",\n \"glossary_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"pinned_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"enforcement\": {\n  \"new_or_renamed\": \"strict\",\n  \"legacy\": \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit",
+      "ts": "2026-10-10T17:44:11.951629+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "qa_quick",
+      "evidence_fingerprint": "sha256:863de4835a354d82f4135953f3c54877b5c882e6d80d84c13097e8ea4ee81394",
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-10T17:44:12.098213+00:00",
+        "input_snapshot": {
+          "after": "sha256:863de4835a354d82f4135953f3c54877b5c882e6d80d84c13097e8ea4ee81394",
+          "before": "sha256:863de4835a354d82f4135953f3c54877b5c882e6d80d84c13097e8ea4ee81394"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/qa_quick_720d394f68bc.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/qa_quick_720d394f68bc.receipt.json",
+        "returncode": 0,
+        "run_id": "720d394f68bc",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-10T17:44:12.103801+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "user_manual",
+      "evidence_fingerprint": "sha256:69bd728cdc158a8acd375f0f2f2047c99705666a135a788c1e7efe1e5a388e3a",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "user_manual",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:44:12.437922+00:00",
+        "input_snapshot": {
+          "after": "sha256:69bd728cdc158a8acd375f0f2f2047c99705666a135a788c1e7efe1e5a388e3a",
+          "before": "sha256:69bd728cdc158a8acd375f0f2f2047c99705666a135a788c1e7efe1e5a388e3a"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/user_manual_fe61b887d249.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/user_manual_fe61b887d249.receipt.json",
+        "returncode": 0,
+        "run_id": "fe61b887d249",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ",\n   \"name\": \"mail\",\n   \"title\": \"BOMTS 메일 운영\",\n   \"role\": \"feature\",\n   \"slides\": 14\n  },\n  {\n   \"file\": \"docs/manual/tunnel.html\",\n   \"name\": \"tunnel\",\n   \"title\": \"BOMTS Cloudflare Tunnel\",\n   \"role\": \"feature\",\n   \"slides\": 8\n  },\n  {\n   \"file\": \"docs/manual/website.html\",\n   \"name\": \"website\",\n   \"title\": \"BOMTS 웹사이트\",\n   \"role\": \"feature\",\n   \"slides\": 7\n  },\n  {\n   \"file\": \"docs/manual/architecture.html\",\n   \"name\": \"architecture\",\n   \"title\": \"BOMTS 시스템 구성\",\n   \"role\": \"architecture\",\n   \"slides\": 10\n  },\n  {\n   \"file\": \"docs/manual/admin.html\",\n   \"name\": \"admin\",\n   \"title\": \"BOMTS 운영·인수인계\",\n   \"role\": \"admin\",\n   \"slides\": 16\n  }\n ],\n \"slides\": 70,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/mail.html\"\n ]\n}\nPASS: user_manual (7)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: : 16\n  }\n ],\n \"slides\": 70,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/mail.html\"\n ]\n}\nPASS: user_manual (7)",
+      "ts": "2026-10-10T17:44:12.443012+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "data_stance",
+      "evidence_fingerprint": "sha256:9b305157c8e2d426ec5911041af4fe5bca4f77d926cdb778736b815fe06e44ed",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_stance",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:44:12.711153+00:00",
+        "input_snapshot": {
+          "after": "sha256:9b305157c8e2d426ec5911041af4fe5bca4f77d926cdb778736b815fe06e44ed",
+          "before": "sha256:9b305157c8e2d426ec5911041af4fe5bca4f77d926cdb778736b815fe06e44ed"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/data_stance_4691a9d53686.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/data_stance_4691a9d53686.receipt.json",
+        "returncode": 0,
+        "run_id": "4691a9d53686",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "son이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.  ref: https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\n저장소 흔적 0개 (ORM 모델·Prisma·마이그레이션·DB 파일·DB 컨테이너 없음)\n  결과: 이상 없음\n{\n \"check\": \"data_stance\",\n \"status\": \"PASS\",\n \"stance\": \"external\",\n \"reason\": \"bomts-main은 정적 사이트·운영 스크립트와 운영 로그만 보유한다. 업무 데이터 정본은 외부 서비스 저장소에 있다. dev-ai의 PostgreSQL·Qdrant 정본은 sungbeom78/dev-ai의 db/model.json이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.\",\n \"ref\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ef\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance",
+      "ts": "2026-10-10T17:44:12.713910+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "data_inventory",
+      "evidence_fingerprint": "sha256:beb4f470465010172fd0794723738f13ad885fd12917aa74dd58098e0da5417b",
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_inventory",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:44:13.050356+00:00",
+        "input_snapshot": {
+          "after": "sha256:beb4f470465010172fd0794723738f13ad885fd12917aa74dd58098e0da5417b",
+          "before": "sha256:beb4f470465010172fd0794723738f13ad885fd12917aa74dd58098e0da5417b"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/data_inventory_f662088ffbca.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/data_inventory_f662088ffbca.receipt.json",
+        "returncode": 0,
+        "run_id": "f662088ffbca",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "데이터 카탈로그: data/catalog.json\n자산 7개, 데이터 흔적 0개, 개인정보: indirect web_log, provider_log, audit_evidence; personal service_policy; sensitive message_data, service_backup\n  결과: 이상 없음\n{\n \"check\": \"data_inventory\",\n \"status\": \"PASS\",\n \"system\": \"bomts-main\",\n \"assets\": 7,\n \"uncovered\": [],\n \"problems\": [],\n \"warnings\": [],\n \"pii\": {\n  \"none\": [\n   \"system_config\"\n  ],\n  \"indirect\": [\n   \"web_log\",\n   \"provider_log\",\n   \"audit_evidence\"\n  ],\n  \"personal\": [\n   \"service_policy\"\n  ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory",
+      "ts": "2026-10-10T17:44:13.053313+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "acceptance#1",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "봉인 검사 mail_portal_runtime 723f334f1d4a: LAN /manage/·Webmail·Admin 최종 화면 200",
+      "ts": "2026-10-10T17:44:18.997955+00:00",
+      "verification": null,
+      "verified": false
+    },
+    {
+      "check_name": "acceptance#2",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "봉인 검사 mail_portal_runtime 723f334f1d4a: www.bomts.net의 /manage/·/webmail/·/admin/ 모두 404",
+      "ts": "2026-10-10T17:44:19.256832+00:00",
+      "verification": null,
+      "verified": false
+    },
+    {
+      "check_name": "acceptance#3",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "site/manage/index.html 및 docs/manual/mail.html에 Fetchmail, 외부 클라이언트, 쉼표 기반 계정별 복수 Auto-forward와 Keep copy 안내; Mailu 전달 실수신 검증 완료",
+      "ts": "2026-10-10T17:44:19.522371+00:00",
+      "verification": null,
+      "verified": false
+    },
+    {
+      "check_name": "acceptance#4",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "봉인 검사 public_safe_diff 519e8692bc30: .env 미추적, 실제 IP·개인키·secret 패턴 없음",
+      "ts": "2026-10-10T17:44:19.793171+00:00",
+      "verification": null,
+      "verified": false
+    }
+  ],
+  "glossary_rev": null,
+  "goal": "내부 네트워크에서 메일함·메일 관리·매뉴얼에 접근하는 웹 포털을 공개 소스에 반영",
+  "incidents": {
+    "manual-changes-task-link": {
+      "cause": "own_change",
+      "cause_history": [
+        {
+          "cause": "own_change",
+          "evidence": "공개 동기화 task를 새로 만들었지만 복사한 changes 행에는 운영 원 작업 id만 있어 현재 task id 검사에 실패",
+          "investigation": {
+            "data_changes": "해당 없음: HTML 변경 이력 메타데이터이며 DB·운영 데이터 변화 없음",
+            "logs": "dev-process/task/20261010-public-mail-management-sync/evidence/user_manual_9756104895df.log 첫 오류: index.html changes에 task id 20261010-public-mail-management-sync 없음",
+            "recent_changes": "docs/manual/index.html 신규 행은 20261010-mail-management-portal만 기록; 공개 동기화 task id 누락",
+            "search": "rg 결과 현재 task id 0건, 운영 원 작업 id 1건; 검사 메시지가 현재 task id 병기를 요구",
+            "system_state": "bomts_public_website healthy, 디스크 4% 사용; 실행환경 이상 없음"
+          },
+          "ts": "2026-10-10T17:43:19.062972+00:00"
+        }
+      ],
+      "closed_at": "2026-10-10T17:43:56.429638+00:00",
+      "created_at": "2026-10-10T17:43:18.793484+00:00",
+      "error_signature": "user_manual missing current task id in changes slide",
+      "events": [
+        {
+          "by_task": "20261010-public-mail-management-sync",
+          "kind": "classify_",
+          "ts": "2026-10-10T17:43:19.062996+00:00"
+        }
+      ],
+      "incident_id": "manual-changes-task-link",
+      "linked_tasks": [],
+      "max_rounds": 3,
+      "owner_task_id": "20261010-public-mail-management-sync",
+      "rounds": [
+        {
+          "action": "기존 운영 작업 id를 보존하면서 공개 동기화 task id를 같은 변경 이력 셀에 병기하고 매뉴얼을 재렌더링",
+          "budget_exception": null,
+          "diff_ref": null,
+          "evidence": "user_manual 로그와 rg가 현재 task id 부재를 직접 확인",
+          "expected_result": "user_manual 검사가 현재 task 변경 기록을 찾아 통과",
+          "hypothesis": "changes 행이 운영 작업만 가리켜 공개 동기화 작업과 연결되지 않았다",
+          "hypothesis_hash": "8a74f93bf3bbd58f",
+          "phase": "current_change",
+          "plan_no": 1,
+          "proposed_by_task": "20261010-public-mail-management-sync",
+          "result": "변경 이력에 운영 task와 공개 동기화 task를 함께 기록했고 manual-review 넘침 0, user_manual PASS",
+          "result_ts": "2026-10-10T17:43:56.159078+00:00",
+          "round_no": 1,
+          "status": "confirmed",
+          "ts": "2026-10-10T17:43:26.613050+00:00",
+          "verification_check": "user_manual",
+          "verification_run_id": "05c8b56bd7df",
+          "verification_task": "20261010-public-mail-management-sync",
+          "verified": true
+        }
+      ],
+      "rounds_used": 1,
+      "status": "resolved"
+    }
+  },
+  "last_host": {
+    "host": "unknown",
+    "surface": "unknown",
+    "version": "unknown"
+  },
+  "linked_incidents": [],
+  "open_waits": [],
+  "policy_version": "sha256:3323a3f8dd8e8397",
+  "revision": 38,
+  "rollbacks": [],
+  "schema_version": "1",
+  "stage": "report",
+  "stages": {
+    "container_build": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "container_build",
+        "computed_at": "2026-10-10T17:44:04.238643+00:00",
+        "file_count": 28,
+        "files": {
+          ".env.example": "49090a6ccf7cb83b995d71e42be82c2ec29ee4ce2a186acbe32e30cfbab659c8",
+          "Dockerfile": "56d7764a44885ba6fa05ea98465e3f4c1189ae5a5d608dc8056c8206d9aa5457",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/manual/.review.json": "b7c8df1952eae0a1be7db0345855f83ed1b4614017d74d13444c71401261a964",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+          "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "d36a12a8032a1342f6dcbea6f12e425a69ca668a4975115e8564cced672659f8",
+          "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+          "docs/manual/mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
+          "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+          "docs/manual/website.html": "ab4ee4012e54d736caaafb047458bbb7b6b407d030f852a56451a0778affd313",
+          "nginx/default.conf": "2b746b971098cf8fc78ac10808a38fd7d984aed74f5b0c9a3df2ef848751b13d",
+          "site/about/index.html": "cfaeeb67d4c7e305d6d2f9bc945e419df10aeffcf1ea99395a7a7839d57e274e",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "c3298fddff98a390aa1dac9578e4cd539e72fcedc9853f6050e15b78d90cfdc3",
+          "site/contact/index.html": "36e9ac27bc8a603ec44fe0271c1a69ab7215046b0896701322d973e154be4471",
+          "site/en/index.html": "4b1d439b2face9c9e733d64648a2aa8489f4687c758bd5a2da1f68f9efe0ec71",
+          "site/index.html": "a7882669aeaaf757601f1c6051fd6f18c75afa0258f70eea5a437bf2752c4ff3",
+          "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99",
+          "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+          "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "a0fd75121b245a6817491a268e9389f49e79666987160a5d283dc748241931b1",
+          "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+        },
+        "fingerprint": "sha256:6955d962f031120cf50137adc0b9a6a8de89f5f785764714f811e49356ae893a",
+        "input_paths": [
+          ".env.example",
+          "Dockerfile",
+          "docker-compose.yml",
+          "docs/manual",
+          "nginx/default.conf",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "docker",
+          "compose",
+          "build",
+          "website"
+        ],
+        "executed_at": "2026-10-10T17:44:08.712583+00:00",
+        "input_snapshot": {
+          "after": "sha256:6955d962f031120cf50137adc0b9a6a8de89f5f785764714f811e49356ae893a",
+          "before": "sha256:6955d962f031120cf50137adc0b9a6a8de89f5f785764714f811e49356ae893a"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/container_build_4807b95c8cb7.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/container_build_4807b95c8cb7.receipt.json",
+        "returncode": 0,
+        "run_id": "4807b95c8cb7",
+        "sealed": true,
+        "stderr_tail": " bomts-main-public-sync-website  Built\n",
+        "stdout_tail": "sferring context: 328B done\n#4 DONE 0.1s\n\n#5 [1/4] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10\n#5 DONE 0.0s\n\n#6 [internal] load build context\n#6 transferring context: 12.82kB 0.0s done\n#6 DONE 0.1s\n\n#7 [2/4] COPY nginx/default.conf /etc/nginx/templates/default.conf.template\n#7 CACHED\n\n#8 [3/4] COPY site/ /usr/share/nginx/html/\n#8 CACHED\n\n#9 [4/4] COPY docs/manual/ /usr/share/nginx/html/manual/\n#9 DONE 0.9s\n\n#10 exporting to image\n#10 exporting layers\n#10 exporting layers 0.4s done\n#10 writing image sha256:d781cae4852b82c1491ba9a94faec1d26f69967304175772ec07c07b26843ec3 0.0s done\n#10 naming to docker.io/library/bomts-main-public-sync-website 0.1s done\n#10 DONE 0.7s\n\n#11 resolving provenance for metadata file\n#11 DONE 0.0s\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: bomts-main-public-sync-website  Built",
+      "recorded_at": "2026-10-10T17:44:08.719517+00:00",
+      "verification": "verified"
+    },
+    "data_inventory": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "data_inventory",
+        "computed_at": "2026-10-10T17:44:12.778331+00:00",
+        "file_count": 14,
+        "files": {
+          ".env.example": "49090a6ccf7cb83b995d71e42be82c2ec29ee4ce2a186acbe32e30cfbab659c8",
+          "Dockerfile": "56d7764a44885ba6fa05ea98465e3f4c1189ae5a5d608dc8056c8206d9aa5457",
+          "data/catalog.json": "e39bbeabc4097f6e5aebe493fe5f6fd7d304f5c1e669df4b4b48942c7c367bf3",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/architecture.md": "86a47ff613ad5cd88784e9de7e0a2bc72661a5e0624ee6202085d0aa2d48d9e0",
+          "docs/deployment.md": "23a875a820024b8030efb7c160f2d3ea2b2056c78eb1404cb24ee326d9566275",
+          "docs/mail-operations.md": "c907bb19077bdac6d13f048ada395bc80e98903a78c2b62dc30e35bcc76764e6",
+          "docs/manual/.review.json": "b7c8df1952eae0a1be7db0345855f83ed1b4614017d74d13444c71401261a964",
+          "docs/manual/index.html": "d36a12a8032a1342f6dcbea6f12e425a69ca668a4975115e8564cced672659f8",
+          "docs/manual/mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
+          "nginx/default.conf": "2b746b971098cf8fc78ac10808a38fd7d984aed74f5b0c9a3df2ef848751b13d",
+          "project.policy.yaml": "f0c7aa60c1675786317b5099146cc83ba1e6d6ce63f8da9ca1c166593c2a9bdf",
+          "site/assets/styles.css": "c3298fddff98a390aa1dac9578e4cd539e72fcedc9853f6050e15b78d90cfdc3",
+          "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99"
+        },
+        "fingerprint": "sha256:beb4f470465010172fd0794723738f13ad885fd12917aa74dd58098e0da5417b",
+        "input_paths": [
+          ".env.example",
+          "Dockerfile",
+          "data/catalog.json",
+          "docker-compose.yml",
+          "docs/architecture.md",
+          "docs/deployment.md",
+          "docs/mail-operations.md",
+          "docs/manual/.review.json",
+          "docs/manual/index.html",
+          "docs/manual/mail.html",
+          "nginx/default.conf",
+          "project.policy.yaml",
+          "site/assets/styles.css",
+          "site/manage/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_inventory",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:44:13.050356+00:00",
+        "input_snapshot": {
+          "after": "sha256:beb4f470465010172fd0794723738f13ad885fd12917aa74dd58098e0da5417b",
+          "before": "sha256:beb4f470465010172fd0794723738f13ad885fd12917aa74dd58098e0da5417b"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/data_inventory_f662088ffbca.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/data_inventory_f662088ffbca.receipt.json",
+        "returncode": 0,
+        "run_id": "f662088ffbca",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "데이터 카탈로그: data/catalog.json\n자산 7개, 데이터 흔적 0개, 개인정보: indirect web_log, provider_log, audit_evidence; personal service_policy; sensitive message_data, service_backup\n  결과: 이상 없음\n{\n \"check\": \"data_inventory\",\n \"status\": \"PASS\",\n \"system\": \"bomts-main\",\n \"assets\": 7,\n \"uncovered\": [],\n \"problems\": [],\n \"warnings\": [],\n \"pii\": {\n  \"none\": [\n   \"system_config\"\n  ],\n  \"indirect\": [\n   \"web_log\",\n   \"provider_log\",\n   \"audit_evidence\"\n  ],\n  \"personal\": [\n   \"service_policy\"\n  ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory",
+      "recorded_at": "2026-10-10T17:44:13.053313+00:00",
+      "verification": "verified"
+    },
+    "data_stance": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "data_stance",
+        "computed_at": "2026-10-10T17:44:12.518222+00:00",
+        "file_count": 13,
+        "files": {
+          ".env.example": "49090a6ccf7cb83b995d71e42be82c2ec29ee4ce2a186acbe32e30cfbab659c8",
+          "Dockerfile": "56d7764a44885ba6fa05ea98465e3f4c1189ae5a5d608dc8056c8206d9aa5457",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/architecture.md": "86a47ff613ad5cd88784e9de7e0a2bc72661a5e0624ee6202085d0aa2d48d9e0",
+          "docs/deployment.md": "23a875a820024b8030efb7c160f2d3ea2b2056c78eb1404cb24ee326d9566275",
+          "docs/mail-operations.md": "c907bb19077bdac6d13f048ada395bc80e98903a78c2b62dc30e35bcc76764e6",
+          "docs/manual/.review.json": "b7c8df1952eae0a1be7db0345855f83ed1b4614017d74d13444c71401261a964",
+          "docs/manual/index.html": "d36a12a8032a1342f6dcbea6f12e425a69ca668a4975115e8564cced672659f8",
+          "docs/manual/mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
+          "nginx/default.conf": "2b746b971098cf8fc78ac10808a38fd7d984aed74f5b0c9a3df2ef848751b13d",
+          "project.policy.yaml": "f0c7aa60c1675786317b5099146cc83ba1e6d6ce63f8da9ca1c166593c2a9bdf",
+          "site/assets/styles.css": "c3298fddff98a390aa1dac9578e4cd539e72fcedc9853f6050e15b78d90cfdc3",
+          "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99"
+        },
+        "fingerprint": "sha256:9b305157c8e2d426ec5911041af4fe5bca4f77d926cdb778736b815fe06e44ed",
+        "input_paths": [
+          ".env.example",
+          "Dockerfile",
+          "docker-compose.yml",
+          "docs/architecture.md",
+          "docs/deployment.md",
+          "docs/mail-operations.md",
+          "docs/manual/.review.json",
+          "docs/manual/index.html",
+          "docs/manual/mail.html",
+          "nginx/default.conf",
+          "project.policy.yaml",
+          "site/assets/styles.css",
+          "site/manage/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_stance",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:44:12.711153+00:00",
+        "input_snapshot": {
+          "after": "sha256:9b305157c8e2d426ec5911041af4fe5bca4f77d926cdb778736b815fe06e44ed",
+          "before": "sha256:9b305157c8e2d426ec5911041af4fe5bca4f77d926cdb778736b815fe06e44ed"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/data_stance_4691a9d53686.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/data_stance_4691a9d53686.receipt.json",
+        "returncode": 0,
+        "run_id": "4691a9d53686",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "son이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.  ref: https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\n저장소 흔적 0개 (ORM 모델·Prisma·마이그레이션·DB 파일·DB 컨테이너 없음)\n  결과: 이상 없음\n{\n \"check\": \"data_stance\",\n \"status\": \"PASS\",\n \"stance\": \"external\",\n \"reason\": \"bomts-main은 정적 사이트·운영 스크립트와 운영 로그만 보유한다. 업무 데이터 정본은 외부 서비스 저장소에 있다. dev-ai의 PostgreSQL·Qdrant 정본은 sungbeom78/dev-ai의 db/model.json이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.\",\n \"ref\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: ef\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance",
+      "recorded_at": "2026-10-10T17:44:12.713910+00:00",
+      "verification": "verified"
+    },
+    "encoding": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "encoding",
+        "computed_at": "2026-10-10T17:44:11.558822+00:00",
+        "file_count": 35,
+        "files": {
+          "docs/architecture.md": "86a47ff613ad5cd88784e9de7e0a2bc72661a5e0624ee6202085d0aa2d48d9e0",
+          "docs/deployment.md": "23a875a820024b8030efb7c160f2d3ea2b2056c78eb1404cb24ee326d9566275",
+          "docs/dns.md": "9c3076662d83bb49a63a747332c8c053afc5489a4c69ae016df16dec406763a7",
+          "docs/mail-operations.md": "c907bb19077bdac6d13f048ada395bc80e98903a78c2b62dc30e35bcc76764e6",
+          "docs/mail-stack-comparison.md": "e30c4795f72f439c877f3f6c764f82cfd2ab9542413c694fe71091d1be144d17",
+          "docs/manual/.review.json": "b7c8df1952eae0a1be7db0345855f83ed1b4614017d74d13444c71401261a964",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+          "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "d36a12a8032a1342f6dcbea6f12e425a69ca668a4975115e8564cced672659f8",
+          "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+          "docs/manual/mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
+          "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+          "docs/manual/website.html": "ab4ee4012e54d736caaafb047458bbb7b6b407d030f852a56451a0778affd313",
+          "docs/public-repository-security.md": "fdebd9e021a01b751e9395cad72bb0ad33cda338e7a0f50f9d8222b18e9ef0e7",
+          "docs/security.md": "bba918ee4466e5522d736957407a5eb05951d7ff48fee5b753b4764358279e63",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "e69e74d1032ca521985868db1488efe4f92148560dcbd3691ea02c3139e8054d",
+          "mail/provider-onboarding.md": "bb427654ccbde59565787284ae8e7a84370e47b71f4f9e71017046e2ffff08fc",
+          "scripts/check.sh": "76ec17fa6ffea36fbec04669ed8aae401e0d6b0dbfcf23fb4e2d704647460e3c",
+          "site/about/index.html": "cfaeeb67d4c7e305d6d2f9bc945e419df10aeffcf1ea99395a7a7839d57e274e",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "c3298fddff98a390aa1dac9578e4cd539e72fcedc9853f6050e15b78d90cfdc3",
+          "site/contact/index.html": "36e9ac27bc8a603ec44fe0271c1a69ab7215046b0896701322d973e154be4471",
+          "site/en/index.html": "4b1d439b2face9c9e733d64648a2aa8489f4687c758bd5a2da1f68f9efe0ec71",
+          "site/index.html": "a7882669aeaaf757601f1c6051fd6f18c75afa0258f70eea5a437bf2752c4ff3",
+          "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99",
+          "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+          "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "a0fd75121b245a6817491a268e9389f49e79666987160a5d283dc748241931b1",
+          "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+        },
+        "fingerprint": "sha256:808d6bb640cb23a9e2c4dcec55c290f0add9861feae12ef5a06c98fdab609601",
+        "input_paths": [
+          "docs",
+          "mail",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "encoding",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts,mail,docs",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:44:11.621459+00:00",
+        "input_snapshot": {
+          "after": "sha256:808d6bb640cb23a9e2c4dcec55c290f0add9861feae12ef5a06c98fdab609601",
+          "before": "sha256:808d6bb640cb23a9e2c4dcec55c290f0add9861feae12ef5a06c98fdab609601"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/encoding_a4cdad580778.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/encoding_a4cdad580778.receipt.json",
+        "returncode": 0,
+        "run_id": "a4cdad580778",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 33,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (33)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: {\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 33,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (33)",
+      "recorded_at": "2026-10-10T17:44:11.627451+00:00",
+      "verification": "verified"
+    },
+    "identifier_audit": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "identifier_audit",
+        "computed_at": "2026-10-10T17:44:11.666188+00:00",
+        "file_count": 12,
+        "files": {
+          "glossary/dictionary/areas.json": "d53d9f69b6e35f03257adaad3e524f2b36e66a0d0940666e703268ebfe10bd2c",
+          "glossary/dictionary/banned.json": "dd202b9aeda9c61cf59001295c3813aaa84a229308dbbaafbc3ede5129e866fd",
+          "glossary/dictionary/compounds.json": "fc0c5d5688bb7cf289c23443fc24a416ff97ca6340686c8b4730e99d503280ac",
+          "glossary/dictionary/drafts.json": "c59effa1d6f42d1426ed919a5f02643229e23ee018e5252a68acc9c18c53a35b",
+          "glossary/dictionary/pending_words.json": "e52f0d0a7eb548de632aa2282b5ce1b5c21bbfb3433220a77dc086ffd047fe1e",
+          "glossary/dictionary/tech_abbreviations.json": "bcbd3292e0affd52abe551ee8c3dc0145853f7b57b28c587037b7d7351379d28",
+          "glossary/dictionary/terms.json": "a5d5b4a0c766128f2c4a3d5b679cbf107f66f57088af6f3d2b9778368368e142",
+          "glossary/dictionary/terms_legacy.json": "b04da63a1213456df7552364c2e10945d4531d6c73e5a7090576bb537e6470ac",
+          "glossary/dictionary/unit_tokens.json": "f5b12bc6445c04cd6ceca6b78f02047c0e09f95b3a4631615dfb3b0b6c65b48a",
+          "glossary/dictionary/words.json": "ec18782a7a5f641bcd3bb446957f89f205bc235fbc62a57d6faa8fa20a211032",
+          "glossary/dictionary/words__derived_terms.json": "e5fd7aa65fb825e0bce9c786c3769f6ca699437e8c266b064538ba545ee993bc",
+          "scripts/check.sh": "76ec17fa6ffea36fbec04669ed8aae401e0d6b0dbfcf23fb4e2d704647460e3c"
+        },
+        "fingerprint": "sha256:f538bd736cdf6a9cb5bd11dbf16fbc8821dd5853b092d6e2fde4860f918f9316",
+        "input_paths": [
+          "glossary/dictionary",
+          "scripts"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "identifier_audit",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "scripts,glossary/dictionary",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:44:11.937010+00:00",
+        "input_snapshot": {
+          "after": "sha256:f538bd736cdf6a9cb5bd11dbf16fbc8821dd5853b092d6e2fde4860f918f9316",
+          "before": "sha256:f538bd736cdf6a9cb5bd11dbf16fbc8821dd5853b092d6e2fde4860f918f9316"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/identifier_audit_f3fa36f21404.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/identifier_audit_f3fa36f21404.receipt.json",
+        "returncode": 0,
+        "run_id": "f3fa36f21404",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"identifier_audit\",\n \"status\": \"PASS\",\n \"baseline_commit\": \"643111f217d57e2902b26a3b2abed91540d90231\",\n \"glossary_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"pinned_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"enforcement\": {\n  \"new_or_renamed\": \"strict\",\n  \"legacy\": \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit",
+      "recorded_at": "2026-10-10T17:44:11.951629+00:00",
+      "verification": "verified"
+    },
+    "lint": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "lint",
+        "computed_at": "2026-10-10T17:44:11.258556+00:00",
+        "file_count": 14,
+        "files": {
+          "scripts/check.sh": "76ec17fa6ffea36fbec04669ed8aae401e0d6b0dbfcf23fb4e2d704647460e3c",
+          "site/about/index.html": "cfaeeb67d4c7e305d6d2f9bc945e419df10aeffcf1ea99395a7a7839d57e274e",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "c3298fddff98a390aa1dac9578e4cd539e72fcedc9853f6050e15b78d90cfdc3",
+          "site/contact/index.html": "36e9ac27bc8a603ec44fe0271c1a69ab7215046b0896701322d973e154be4471",
+          "site/en/index.html": "4b1d439b2face9c9e733d64648a2aa8489f4687c758bd5a2da1f68f9efe0ec71",
+          "site/index.html": "a7882669aeaaf757601f1c6051fd6f18c75afa0258f70eea5a437bf2752c4ff3",
+          "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99",
+          "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+          "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "a0fd75121b245a6817491a268e9389f49e79666987160a5d283dc748241931b1",
+          "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+        },
+        "fingerprint": "sha256:5a42347f48a347bb82466c9d4d78511079ea88d9b210685703187b607bdc535c",
+        "input_paths": [
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "syntax",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:44:11.355497+00:00",
+        "input_snapshot": {
+          "after": "sha256:5a42347f48a347bb82466c9d4d78511079ea88d9b210685703187b607bdc535c",
+          "before": "sha256:5a42347f48a347bb82466c9d4d78511079ea88d9b210685703187b607bdc535c"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/lint_43772a0de32b.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/lint_43772a0de32b.receipt.json",
+        "returncode": 0,
+        "run_id": "43772a0de32b",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 9,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (9)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: {\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 9,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (9)",
+      "recorded_at": "2026-10-10T17:44:11.358320+00:00",
+      "verification": "verified"
+    },
+    "mail_portal_runtime": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "mail_portal_runtime",
+        "computed_at": "2026-10-10T17:42:46.486726+00:00",
+        "file_count": 4,
+        "files": {
+          "Dockerfile": "56d7764a44885ba6fa05ea98465e3f4c1189ae5a5d608dc8056c8206d9aa5457",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "nginx/default.conf": "2b746b971098cf8fc78ac10808a38fd7d984aed74f5b0c9a3df2ef848751b13d",
+          "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99"
+        },
+        "fingerprint": "sha256:a80756032bcf5418c7bfa005de3c59f04221ac76e0e3371cbe5cc678460c68a6",
+        "input_paths": [
+          "Dockerfile",
+          "docker-compose.yml",
+          "nginx/default.conf",
+          "site/manage/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "bash",
+          "/tmp/check-bomts-mail-runtime-sync.sh"
+        ],
+        "executed_at": "2026-10-10T17:42:47.448875+00:00",
+        "input_snapshot": {
+          "after": "sha256:a80756032bcf5418c7bfa005de3c59f04221ac76e0e3371cbe5cc678460c68a6",
+          "before": "sha256:a80756032bcf5418c7bfa005de3c59f04221ac76e0e3371cbe5cc678460c68a6"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/mail_portal_runtime_723f334f1d4a.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/mail_portal_runtime_723f334f1d4a.receipt.json",
+        "returncode": 0,
+        "run_id": "723f334f1d4a",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS: LAN portal and login pages 200; public management paths 404\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: PASS: LAN portal and login pages 200; public management paths 404",
+      "recorded_at": "2026-10-10T17:42:47.450121+00:00",
+      "verification": "verified"
+    },
+    "prior_art": {
+      "detail": {
+        "artifact": "dev-process/task/20261010-public-mail-management-sync/artifact/prior_art_report.json",
+        "findings": 0,
+        "frozen_overlap": 0
+      },
+      "evidence_record": null,
+      "execution": null,
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "verdict=clear",
+      "recorded_at": "2026-10-10T17:40:59.047451+00:00",
+      "verification": "reported_only"
+    },
+    "public_safe_diff": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "public_safe_diff",
+        "computed_at": "2026-10-10T17:44:03.650237+00:00",
+        "file_count": 11,
+        "files": {
+          ".env.example": "49090a6ccf7cb83b995d71e42be82c2ec29ee4ce2a186acbe32e30cfbab659c8",
+          "Dockerfile": "56d7764a44885ba6fa05ea98465e3f4c1189ae5a5d608dc8056c8206d9aa5457",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/architecture.md": "86a47ff613ad5cd88784e9de7e0a2bc72661a5e0624ee6202085d0aa2d48d9e0",
+          "docs/deployment.md": "23a875a820024b8030efb7c160f2d3ea2b2056c78eb1404cb24ee326d9566275",
+          "docs/mail-operations.md": "c907bb19077bdac6d13f048ada395bc80e98903a78c2b62dc30e35bcc76764e6",
+          "docs/manual/index.html": "d36a12a8032a1342f6dcbea6f12e425a69ca668a4975115e8564cced672659f8",
+          "docs/manual/mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
+          "nginx/default.conf": "2b746b971098cf8fc78ac10808a38fd7d984aed74f5b0c9a3df2ef848751b13d",
+          "site/assets/styles.css": "c3298fddff98a390aa1dac9578e4cd539e72fcedc9853f6050e15b78d90cfdc3",
+          "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99"
+        },
+        "fingerprint": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760",
+        "input_paths": [
+          ".env.example",
+          "Dockerfile",
+          "docker-compose.yml",
+          "docs/architecture.md",
+          "docs/deployment.md",
+          "docs/mail-operations.md",
+          "docs/manual/index.html",
+          "docs/manual/mail.html",
+          "nginx/default.conf",
+          "site/assets/styles.css",
+          "site/manage/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "bash",
+          "/tmp/check-bomts-mail-public-safe-sync.sh"
+        ],
+        "executed_at": "2026-10-10T17:44:03.671689+00:00",
+        "input_snapshot": {
+          "after": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760",
+          "before": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/public_safe_diff_519e8692bc30.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/public_safe_diff_519e8692bc30.receipt.json",
+        "returncode": 0,
+        "run_id": "519e8692bc30",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS: .env ignored; public diff contains no actual IP, private key, or secret pattern\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: PASS: .env ignored; public diff contains no actual IP, private key, or secret pattern",
+      "recorded_at": "2026-10-10T17:44:03.674172+00:00",
+      "verification": "verified"
+    },
+    "qa_quick": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "qa_quick",
+        "computed_at": "2026-10-10T17:44:12.000210+00:00",
+        "file_count": 31,
+        "files": {
+          "AGENTS.md": "430ee5771d2d563639d2e4b01b5aab6c6987a1c8650716bf52b4cbdcf9f65ff1",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/manual/.review.json": "b7c8df1952eae0a1be7db0345855f83ed1b4614017d74d13444c71401261a964",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+          "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "d36a12a8032a1342f6dcbea6f12e425a69ca668a4975115e8564cced672659f8",
+          "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+          "docs/manual/mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
+          "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+          "docs/manual/website.html": "ab4ee4012e54d736caaafb047458bbb7b6b407d030f852a56451a0778affd313",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "e69e74d1032ca521985868db1488efe4f92148560dcbd3691ea02c3139e8054d",
+          "mail/provider-onboarding.md": "bb427654ccbde59565787284ae8e7a84370e47b71f4f9e71017046e2ffff08fc",
+          "nginx/default.conf": "2b746b971098cf8fc78ac10808a38fd7d984aed74f5b0c9a3df2ef848751b13d",
+          "scripts/check.sh": "76ec17fa6ffea36fbec04669ed8aae401e0d6b0dbfcf23fb4e2d704647460e3c",
+          "site/about/index.html": "cfaeeb67d4c7e305d6d2f9bc945e419df10aeffcf1ea99395a7a7839d57e274e",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "c3298fddff98a390aa1dac9578e4cd539e72fcedc9853f6050e15b78d90cfdc3",
+          "site/contact/index.html": "36e9ac27bc8a603ec44fe0271c1a69ab7215046b0896701322d973e154be4471",
+          "site/en/index.html": "4b1d439b2face9c9e733d64648a2aa8489f4687c758bd5a2da1f68f9efe0ec71",
+          "site/index.html": "a7882669aeaaf757601f1c6051fd6f18c75afa0258f70eea5a437bf2752c4ff3",
+          "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99",
+          "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+          "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "a0fd75121b245a6817491a268e9389f49e79666987160a5d283dc748241931b1",
+          "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+        },
+        "fingerprint": "sha256:863de4835a354d82f4135953f3c54877b5c882e6d80d84c13097e8ea4ee81394",
+        "input_paths": [
+          "AGENTS.md",
+          "docker-compose.yml",
+          "docs/manual",
+          "mail",
+          "nginx",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-10T17:44:12.098213+00:00",
+        "input_snapshot": {
+          "after": "sha256:863de4835a354d82f4135953f3c54877b5c882e6d80d84c13097e8ea4ee81394",
+          "before": "sha256:863de4835a354d82f4135953f3c54877b5c882e6d80d84c13097e8ea4ee81394"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/qa_quick_720d394f68bc.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/qa_quick_720d394f68bc.receipt.json",
+        "returncode": 0,
+        "run_id": "720d394f68bc",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-10T17:44:12.103801+00:00",
+      "verification": "verified"
+    },
+    "source_parity": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "source_parity",
+        "computed_at": "2026-10-10T17:44:03.934203+00:00",
+        "file_count": 11,
+        "files": {
+          ".env.example": "49090a6ccf7cb83b995d71e42be82c2ec29ee4ce2a186acbe32e30cfbab659c8",
+          "Dockerfile": "56d7764a44885ba6fa05ea98465e3f4c1189ae5a5d608dc8056c8206d9aa5457",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/architecture.md": "86a47ff613ad5cd88784e9de7e0a2bc72661a5e0624ee6202085d0aa2d48d9e0",
+          "docs/deployment.md": "23a875a820024b8030efb7c160f2d3ea2b2056c78eb1404cb24ee326d9566275",
+          "docs/mail-operations.md": "c907bb19077bdac6d13f048ada395bc80e98903a78c2b62dc30e35bcc76764e6",
+          "docs/manual/index.html": "d36a12a8032a1342f6dcbea6f12e425a69ca668a4975115e8564cced672659f8",
+          "docs/manual/mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
+          "nginx/default.conf": "2b746b971098cf8fc78ac10808a38fd7d984aed74f5b0c9a3df2ef848751b13d",
+          "site/assets/styles.css": "c3298fddff98a390aa1dac9578e4cd539e72fcedc9853f6050e15b78d90cfdc3",
+          "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99"
+        },
+        "fingerprint": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760",
+        "input_paths": [
+          ".env.example",
+          "Dockerfile",
+          "docker-compose.yml",
+          "docs/architecture.md",
+          "docs/deployment.md",
+          "docs/mail-operations.md",
+          "docs/manual/index.html",
+          "docs/manual/mail.html",
+          "nginx/default.conf",
+          "site/assets/styles.css",
+          "site/manage/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "bash",
+          "/tmp/check-bomts-mail-source-parity.sh"
+        ],
+        "executed_at": "2026-10-10T17:44:03.974572+00:00",
+        "input_snapshot": {
+          "after": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760",
+          "before": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/source_parity_c70f7a775420.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/source_parity_c70f7a775420.receipt.json",
+        "returncode": 0,
+        "run_id": "c70f7a775420",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS: candidate matches deployed source plus its public-sync audit link\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: PASS: candidate matches deployed source plus its public-sync audit link",
+      "recorded_at": "2026-10-10T17:44:03.977032+00:00",
+      "verification": "verified"
+    },
+    "unit_or_regression": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "unit_or_regression",
+        "computed_at": "2026-10-10T17:44:11.387615+00:00",
+        "file_count": 31,
+        "files": {
+          "AGENTS.md": "430ee5771d2d563639d2e4b01b5aab6c6987a1c8650716bf52b4cbdcf9f65ff1",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/manual/.review.json": "b7c8df1952eae0a1be7db0345855f83ed1b4614017d74d13444c71401261a964",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+          "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "d36a12a8032a1342f6dcbea6f12e425a69ca668a4975115e8564cced672659f8",
+          "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+          "docs/manual/mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
+          "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+          "docs/manual/website.html": "ab4ee4012e54d736caaafb047458bbb7b6b407d030f852a56451a0778affd313",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "e69e74d1032ca521985868db1488efe4f92148560dcbd3691ea02c3139e8054d",
+          "mail/provider-onboarding.md": "bb427654ccbde59565787284ae8e7a84370e47b71f4f9e71017046e2ffff08fc",
+          "nginx/default.conf": "2b746b971098cf8fc78ac10808a38fd7d984aed74f5b0c9a3df2ef848751b13d",
+          "scripts/check.sh": "76ec17fa6ffea36fbec04669ed8aae401e0d6b0dbfcf23fb4e2d704647460e3c",
+          "site/about/index.html": "cfaeeb67d4c7e305d6d2f9bc945e419df10aeffcf1ea99395a7a7839d57e274e",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "c3298fddff98a390aa1dac9578e4cd539e72fcedc9853f6050e15b78d90cfdc3",
+          "site/contact/index.html": "36e9ac27bc8a603ec44fe0271c1a69ab7215046b0896701322d973e154be4471",
+          "site/en/index.html": "4b1d439b2face9c9e733d64648a2aa8489f4687c758bd5a2da1f68f9efe0ec71",
+          "site/index.html": "a7882669aeaaf757601f1c6051fd6f18c75afa0258f70eea5a437bf2752c4ff3",
+          "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99",
+          "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+          "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "a0fd75121b245a6817491a268e9389f49e79666987160a5d283dc748241931b1",
+          "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+        },
+        "fingerprint": "sha256:863de4835a354d82f4135953f3c54877b5c882e6d80d84c13097e8ea4ee81394",
+        "input_paths": [
+          "AGENTS.md",
+          "docker-compose.yml",
+          "docs/manual",
+          "mail",
+          "nginx",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-10T17:44:11.523815+00:00",
+        "input_snapshot": {
+          "after": "sha256:863de4835a354d82f4135953f3c54877b5c882e6d80d84c13097e8ea4ee81394",
+          "before": "sha256:863de4835a354d82f4135953f3c54877b5c882e6d80d84c13097e8ea4ee81394"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/unit_or_regression_a89468326a7c.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/unit_or_regression_a89468326a7c.receipt.json",
+        "returncode": 0,
+        "run_id": "a89468326a7c",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-10T17:44:11.529455+00:00",
+      "verification": "verified"
+    },
+    "user_manual": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "user_manual",
+        "computed_at": "2026-10-10T17:44:12.148042+00:00",
+        "file_count": 20,
+        "files": {
+          ".env.example": "49090a6ccf7cb83b995d71e42be82c2ec29ee4ce2a186acbe32e30cfbab659c8",
+          "Dockerfile": "56d7764a44885ba6fa05ea98465e3f4c1189ae5a5d608dc8056c8206d9aa5457",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/architecture.md": "86a47ff613ad5cd88784e9de7e0a2bc72661a5e0624ee6202085d0aa2d48d9e0",
+          "docs/deployment.md": "23a875a820024b8030efb7c160f2d3ea2b2056c78eb1404cb24ee326d9566275",
+          "docs/mail-operations.md": "c907bb19077bdac6d13f048ada395bc80e98903a78c2b62dc30e35bcc76764e6",
+          "docs/manual/.review.json": "b7c8df1952eae0a1be7db0345855f83ed1b4614017d74d13444c71401261a964",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+          "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "d36a12a8032a1342f6dcbea6f12e425a69ca668a4975115e8564cced672659f8",
+          "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+          "docs/manual/mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
+          "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+          "docs/manual/website.html": "ab4ee4012e54d736caaafb047458bbb7b6b407d030f852a56451a0778affd313",
+          "nginx/default.conf": "2b746b971098cf8fc78ac10808a38fd7d984aed74f5b0c9a3df2ef848751b13d",
+          "site/assets/styles.css": "c3298fddff98a390aa1dac9578e4cd539e72fcedc9853f6050e15b78d90cfdc3",
+          "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99"
+        },
+        "fingerprint": "sha256:69bd728cdc158a8acd375f0f2f2047c99705666a135a788c1e7efe1e5a388e3a",
+        "input_paths": [
+          ".env.example",
+          "Dockerfile",
+          "docker-compose.yml",
+          "docs/architecture.md",
+          "docs/deployment.md",
+          "docs/mail-operations.md",
+          "docs/manual",
+          "nginx/default.conf",
+          "site/assets/styles.css",
+          "site/manage/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main/.venv/bin/python",
+          "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "user_manual",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261010-public-mail-management-sync"
+        ],
+        "executed_at": "2026-10-10T17:44:12.437922+00:00",
+        "input_snapshot": {
+          "after": "sha256:69bd728cdc158a8acd375f0f2f2047c99705666a135a788c1e7efe1e5a388e3a",
+          "before": "sha256:69bd728cdc158a8acd375f0f2f2047c99705666a135a788c1e7efe1e5a388e3a"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/user_manual_fe61b887d249.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/user_manual_fe61b887d249.receipt.json",
+        "returncode": 0,
+        "run_id": "fe61b887d249",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ",\n   \"name\": \"mail\",\n   \"title\": \"BOMTS 메일 운영\",\n   \"role\": \"feature\",\n   \"slides\": 14\n  },\n  {\n   \"file\": \"docs/manual/tunnel.html\",\n   \"name\": \"tunnel\",\n   \"title\": \"BOMTS Cloudflare Tunnel\",\n   \"role\": \"feature\",\n   \"slides\": 8\n  },\n  {\n   \"file\": \"docs/manual/website.html\",\n   \"name\": \"website\",\n   \"title\": \"BOMTS 웹사이트\",\n   \"role\": \"feature\",\n   \"slides\": 7\n  },\n  {\n   \"file\": \"docs/manual/architecture.html\",\n   \"name\": \"architecture\",\n   \"title\": \"BOMTS 시스템 구성\",\n   \"role\": \"architecture\",\n   \"slides\": 10\n  },\n  {\n   \"file\": \"docs/manual/admin.html\",\n   \"name\": \"admin\",\n   \"title\": \"BOMTS 운영·인수인계\",\n   \"role\": \"admin\",\n   \"slides\": 16\n  }\n ],\n \"slides\": 70,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/mail.html\"\n ]\n}\nPASS: user_manual (7)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 3,
+      "input_independent": false,
+      "reason_code": "PASS: : 16\n  }\n ],\n \"slides\": 70,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/mail.html\"\n ]\n}\nPASS: user_manual (7)",
+      "recorded_at": "2026-10-10T17:44:12.443012+00:00",
+      "verification": "verified"
+    }
+  },
+  "status": "done",
+  "task_id": "20261010-public-mail-management-sync",
+  "updated_at": "2026-10-10T17:44:35.826019+00:00",
+  "work_type": "code"
+}

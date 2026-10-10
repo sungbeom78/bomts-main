@@ -1,0 +1,58 @@
+{
+  "check_name": "identifier_audit",
+  "task_id": "20261010-public-mail-management-sync",
+  "execution": {
+    "run_id": "f3fa36f21404",
+    "command": [
+      "/project/bomts-main/.venv/bin/python",
+      "/project/bomts-main/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+      "identifier_audit",
+      "--project-root",
+      "/project/bomts-main-public-sync",
+      "--inputs",
+      "scripts,glossary/dictionary",
+      "--require-lf",
+      "true",
+      "--task-id",
+      "20261010-public-mail-management-sync"
+    ],
+    "returncode": 0,
+    "executed_at": "2026-10-10T17:44:11.937010+00:00",
+    "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/identifier_audit_f3fa36f21404.log",
+    "input_snapshot": {
+      "before": "sha256:f538bd736cdf6a9cb5bd11dbf16fbc8821dd5853b092d6e2fde4860f918f9316",
+      "after": "sha256:f538bd736cdf6a9cb5bd11dbf16fbc8821dd5853b092d6e2fde4860f918f9316"
+    },
+    "inputs_changed_during_run": false,
+    "policy_scope_hash": "sha256:806dbeb9496f4241",
+    "sealed": true,
+    "stdout_tail": "{\n \"check\": \"identifier_audit\",\n \"status\": \"PASS\",\n \"baseline_commit\": \"643111f217d57e2902b26a3b2abed91540d90231\",\n \"glossary_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"pinned_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"enforcement\": {\n  \"new_or_renamed\": \"strict\",\n  \"legacy\": \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit\n",
+    "stderr_tail": ""
+  },
+  "evidence_record": {
+    "check_name": "identifier_audit",
+    "input_paths": [
+      "glossary/dictionary",
+      "scripts"
+    ],
+    "file_count": 12,
+    "files": {
+      "glossary/dictionary/areas.json": "d53d9f69b6e35f03257adaad3e524f2b36e66a0d0940666e703268ebfe10bd2c",
+      "glossary/dictionary/banned.json": "dd202b9aeda9c61cf59001295c3813aaa84a229308dbbaafbc3ede5129e866fd",
+      "glossary/dictionary/compounds.json": "fc0c5d5688bb7cf289c23443fc24a416ff97ca6340686c8b4730e99d503280ac",
+      "glossary/dictionary/drafts.json": "c59effa1d6f42d1426ed919a5f02643229e23ee018e5252a68acc9c18c53a35b",
+      "glossary/dictionary/pending_words.json": "e52f0d0a7eb548de632aa2282b5ce1b5c21bbfb3433220a77dc086ffd047fe1e",
+      "glossary/dictionary/tech_abbreviations.json": "bcbd3292e0affd52abe551ee8c3dc0145853f7b57b28c587037b7d7351379d28",
+      "glossary/dictionary/terms.json": "a5d5b4a0c766128f2c4a3d5b679cbf107f66f57088af6f3d2b9778368368e142",
+      "glossary/dictionary/terms_legacy.json": "b04da63a1213456df7552364c2e10945d4531d6c73e5a7090576bb537e6470ac",
+      "glossary/dictionary/unit_tokens.json": "f5b12bc6445c04cd6ceca6b78f02047c0e09f95b3a4631615dfb3b0b6c65b48a",
+      "glossary/dictionary/words.json": "ec18782a7a5f641bcd3bb446957f89f205bc235fbc62a57d6faa8fa20a211032",
+      "glossary/dictionary/words__derived_terms.json": "e5fd7aa65fb825e0bce9c786c3769f6ca699437e8c266b064538ba545ee993bc",
+      "scripts/check.sh": "76ec17fa6ffea36fbec04669ed8aae401e0d6b0dbfcf23fb4e2d704647460e3c"
+    },
+    "fingerprint": "sha256:f538bd736cdf6a9cb5bd11dbf16fbc8821dd5853b092d6e2fde4860f918f9316",
+    "missing_paths": [],
+    "computed_at": "2026-10-10T17:44:11.666188+00:00"
+  },
+  "input_independent": false
+}

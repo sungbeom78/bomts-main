@@ -1,0 +1,57 @@
+{
+  "check_name": "public_safe_diff",
+  "task_id": "20261010-public-mail-management-sync",
+  "execution": {
+    "run_id": "519e8692bc30",
+    "command": [
+      "bash",
+      "/tmp/check-bomts-mail-public-safe-sync.sh"
+    ],
+    "returncode": 0,
+    "executed_at": "2026-10-10T17:44:03.671689+00:00",
+    "log_ref": "dev-process/task/20261010-public-mail-management-sync/evidence/public_safe_diff_519e8692bc30.log",
+    "input_snapshot": {
+      "before": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760",
+      "after": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760"
+    },
+    "inputs_changed_during_run": false,
+    "policy_scope_hash": "sha256:806dbeb9496f4241",
+    "sealed": true,
+    "stdout_tail": "PASS: .env ignored; public diff contains no actual IP, private key, or secret pattern\n",
+    "stderr_tail": ""
+  },
+  "evidence_record": {
+    "check_name": "public_safe_diff",
+    "input_paths": [
+      ".env.example",
+      "Dockerfile",
+      "docker-compose.yml",
+      "docs/architecture.md",
+      "docs/deployment.md",
+      "docs/mail-operations.md",
+      "docs/manual/index.html",
+      "docs/manual/mail.html",
+      "nginx/default.conf",
+      "site/assets/styles.css",
+      "site/manage/index.html"
+    ],
+    "file_count": 11,
+    "files": {
+      ".env.example": "49090a6ccf7cb83b995d71e42be82c2ec29ee4ce2a186acbe32e30cfbab659c8",
+      "Dockerfile": "56d7764a44885ba6fa05ea98465e3f4c1189ae5a5d608dc8056c8206d9aa5457",
+      "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+      "docs/architecture.md": "86a47ff613ad5cd88784e9de7e0a2bc72661a5e0624ee6202085d0aa2d48d9e0",
+      "docs/deployment.md": "23a875a820024b8030efb7c160f2d3ea2b2056c78eb1404cb24ee326d9566275",
+      "docs/mail-operations.md": "c907bb19077bdac6d13f048ada395bc80e98903a78c2b62dc30e35bcc76764e6",
+      "docs/manual/index.html": "d36a12a8032a1342f6dcbea6f12e425a69ca668a4975115e8564cced672659f8",
+      "docs/manual/mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
+      "nginx/default.conf": "2b746b971098cf8fc78ac10808a38fd7d984aed74f5b0c9a3df2ef848751b13d",
+      "site/assets/styles.css": "c3298fddff98a390aa1dac9578e4cd539e72fcedc9853f6050e15b78d90cfdc3",
+      "site/manage/index.html": "b5f38ff27e7de44104ad5406225fc61764f32c9bfff166aee410a14719a24f99"
+    },
+    "fingerprint": "sha256:f21e093f95841e8ebc31f8e4caae33ebace4cbd24a05301850d153eb6e584760",
+    "missing_paths": [],
+    "computed_at": "2026-10-10T17:44:03.650237+00:00"
+  },
+  "input_independent": false
+}
