@@ -1,0 +1,676 @@
+{
+  "acceptance": [
+    {
+      "no": 1,
+      "note": "첨부 원본과 site 파일을 cmp로 비교했고 53 bytes 및 SHA-256 5cd33965...가 동일함",
+      "status": "met",
+      "text": "Google이 제공한 검증 파일이 원본과 동일한 내용으로 사이트 루트에 있다",
+      "updated_at": "2026-10-11T10:07:42.511160+00:00"
+    },
+    {
+      "no": 2,
+      "note": "로컬 127.0.0.1:3001과 공개 HTTPS URL 모두 HTTP 200, 두 응답을 원본과 cmp하여 동일 확인",
+      "status": "met",
+      "text": "로컬과 https://www.bomts.net/google16ad3deed6bb0ce2.html 이 정확한 검증 문자열을 HTTP 200으로 반환한다",
+      "updated_at": "2026-10-11T10:07:42.752939+00:00"
+    },
+    {
+      "no": 3,
+      "note": "docs/google-search-console.md와 manual website/index 갱신, manual-review 73쪽 overflow 0 및 미리보기 육안 확인",
+      "status": "met",
+      "text": "Search Console 문서와 웹사이트 운영 매뉴얼에 HTML 파일 검증 경로가 반영된다",
+      "updated_at": "2026-10-11T10:07:42.991967+00:00"
+    },
+    {
+      "no": 4,
+      "note": "필수 검사 8개 verified, 운영 컨테이너 healthy; finish --push로 commit과 origin/main 반영을 같은 릴리스 단계에서 수행",
+      "status": "met",
+      "text": "필수 검사가 모두 통과하고 운영 배포와 origin/main push가 완료된다",
+      "updated_at": "2026-10-11T10:07:43.227326+00:00"
+    }
+  ],
+  "approvals": [],
+  "change_kind": {
+    "history": [],
+    "kind": "usage_change",
+    "reason": "검색 소유권 확인 URL과 운영 절차가 추가됨",
+    "set_at": "2026-10-11T10:05:26.508039+00:00"
+  },
+  "completion": {
+    "changes_summary": "feat: add Google Search Console verification file",
+    "commit": "74fce07d5f8cbbb575c238185823dc324cbc985d",
+    "deploy": "not_in_scope",
+    "push": "pushed",
+    "release_scope": "in_scope",
+    "work": "done"
+  },
+  "generated_at": "2026-10-11T10:07:46.948781+00:00",
+  "incidents": [],
+  "result_state": "completed",
+  "rollbacks": [],
+  "stages": {
+    "data_inventory": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "data_inventory",
+        "computed_at": "2026-10-11T10:07:02.328472+00:00",
+        "file_count": 8,
+        "files": {
+          "data/catalog.json": "e39bbeabc4097f6e5aebe493fe5f6fd7d304f5c1e669df4b4b48942c7c367bf3",
+          "docs/google-search-console.md": "c3e090f6eb67fc856482b0d2b2ec6ca2c720259504a6f2a930289a5d526fecb5",
+          "docs/manual/.review.json": "84b24f39db83b588ec99d11fce219ad99bef0a02631207eab354958f51341a1a",
+          "docs/manual/index.html": "3627e815fb8c791380c79fc48bb1bea7f09681ac45a55310d526b1c02b99e17d",
+          "docs/manual/website.html": "cca9289935e06d480586563910c834884494111fd063b8cc7d5a15d160d2038f",
+          "project.policy.yaml": "f0c7aa60c1675786317b5099146cc83ba1e6d6ce63f8da9ca1c166593c2a9bdf",
+          "scripts/check.sh": "d9bde423abf46020a80832eca506575e3eac85c160332b7c246687cc7ca1133b",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0"
+        },
+        "fingerprint": "sha256:9f43c23e53f76ca2919a35f3654e9038ca485e5a85354b432bba31b3eae2917f",
+        "input_paths": [
+          "data/catalog.json",
+          "docs/google-search-console.md",
+          "docs/manual/.review.json",
+          "docs/manual/index.html",
+          "docs/manual/website.html",
+          "project.policy.yaml",
+          "scripts/check.sh",
+          "site/google16ad3deed6bb0ce2.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_inventory",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-search-console-verification"
+        ],
+        "executed_at": "2026-10-11T10:07:02.591006+00:00",
+        "input_snapshot": {
+          "after": "sha256:9f43c23e53f76ca2919a35f3654e9038ca485e5a85354b432bba31b3eae2917f",
+          "before": "sha256:9f43c23e53f76ca2919a35f3654e9038ca485e5a85354b432bba31b3eae2917f"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-search-console-verification/evidence/data_inventory_cf8e818ff55c.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-search-console-verification/evidence/data_inventory_cf8e818ff55c.receipt.json",
+        "returncode": 0,
+        "run_id": "cf8e818ff55c",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "데이터 카탈로그: data/catalog.json\n자산 7개, 데이터 흔적 0개, 개인정보: indirect web_log, provider_log, audit_evidence; personal service_policy; sensitive message_data, service_backup\n  결과: 이상 없음\n{\n \"check\": \"data_inventory\",\n \"status\": \"PASS\",\n \"system\": \"bomts-main\",\n \"assets\": 7,\n \"uncovered\": [],\n \"problems\": [],\n \"warnings\": [],\n \"pii\": {\n  \"none\": [\n   \"system_config\"\n  ],\n  \"indirect\": [\n   \"web_log\",\n   \"provider_log\",\n   \"audit_evidence\"\n  ],\n  \"personal\": [\n   \"service_policy\"\n  ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory",
+      "recorded_at": "2026-10-11T10:07:02.592927+00:00",
+      "verification": "verified"
+    },
+    "data_stance": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "data_stance",
+        "computed_at": "2026-10-11T10:07:02.068963+00:00",
+        "file_count": 7,
+        "files": {
+          "docs/google-search-console.md": "c3e090f6eb67fc856482b0d2b2ec6ca2c720259504a6f2a930289a5d526fecb5",
+          "docs/manual/.review.json": "84b24f39db83b588ec99d11fce219ad99bef0a02631207eab354958f51341a1a",
+          "docs/manual/index.html": "3627e815fb8c791380c79fc48bb1bea7f09681ac45a55310d526b1c02b99e17d",
+          "docs/manual/website.html": "cca9289935e06d480586563910c834884494111fd063b8cc7d5a15d160d2038f",
+          "project.policy.yaml": "f0c7aa60c1675786317b5099146cc83ba1e6d6ce63f8da9ca1c166593c2a9bdf",
+          "scripts/check.sh": "d9bde423abf46020a80832eca506575e3eac85c160332b7c246687cc7ca1133b",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0"
+        },
+        "fingerprint": "sha256:7c165dfc81c650470a7120f3d606889fdf33231a060e8b8a623971d2da432fce",
+        "input_paths": [
+          "docs/google-search-console.md",
+          "docs/manual/.review.json",
+          "docs/manual/index.html",
+          "docs/manual/website.html",
+          "project.policy.yaml",
+          "scripts/check.sh",
+          "site/google16ad3deed6bb0ce2.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_stance",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-search-console-verification"
+        ],
+        "executed_at": "2026-10-11T10:07:02.259467+00:00",
+        "input_snapshot": {
+          "after": "sha256:7c165dfc81c650470a7120f3d606889fdf33231a060e8b8a623971d2da432fce",
+          "before": "sha256:7c165dfc81c650470a7120f3d606889fdf33231a060e8b8a623971d2da432fce"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-search-console-verification/evidence/data_stance_ac87c1ca7229.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-search-console-verification/evidence/data_stance_ac87c1ca7229.receipt.json",
+        "returncode": 0,
+        "run_id": "ac87c1ca7229",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "son이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.  ref: https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\n저장소 흔적 0개 (ORM 모델·Prisma·마이그레이션·DB 파일·DB 컨테이너 없음)\n  결과: 이상 없음\n{\n \"check\": \"data_stance\",\n \"status\": \"PASS\",\n \"stance\": \"external\",\n \"reason\": \"bomts-main은 정적 사이트·운영 스크립트와 운영 로그만 보유한다. 업무 데이터 정본은 외부 서비스 저장소에 있다. dev-ai의 PostgreSQL·Qdrant 정본은 sungbeom78/dev-ai의 db/model.json이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.\",\n \"ref\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: ef\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance",
+      "recorded_at": "2026-10-11T10:07:02.261255+00:00",
+      "verification": "verified"
+    },
+    "encoding": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "encoding",
+        "computed_at": "2026-10-11T10:07:01.107172+00:00",
+        "file_count": 44,
+        "files": {
+          "docs/architecture.md": "474fef6a7f0cbfe177007d1550ba3c5590ac1a9a70391ddd7756a39dc5e8d9b8",
+          "docs/bomts-decision-public-readiness.md": "6fb80eca3c4d1b3560bc215f03ad49f364fd0c457bb2ea0f221bbe24a23c4276",
+          "docs/claude-startup-application.md": "523dce220f2b437c29ba6ed244494de4813d011f38d0b6aa27079e9464c9bb4e",
+          "docs/deployment.md": "23a875a820024b8030efb7c160f2d3ea2b2056c78eb1404cb24ee326d9566275",
+          "docs/dns.md": "9c3076662d83bb49a63a747332c8c053afc5489a4c69ae016df16dec406763a7",
+          "docs/google-search-console.md": "c3e090f6eb67fc856482b0d2b2ec6ca2c720259504a6f2a930289a5d526fecb5",
+          "docs/mail-operations.md": "828164481557d81431b33750aa98c0a5f78af586bd2bbe8bf1d65bbb3fa62552",
+          "docs/mail-stack-comparison.md": "e30c4795f72f439c877f3f6c764f82cfd2ab9542413c694fe71091d1be144d17",
+          "docs/manual/.review.json": "84b24f39db83b588ec99d11fce219ad99bef0a02631207eab354958f51341a1a",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+          "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "3627e815fb8c791380c79fc48bb1bea7f09681ac45a55310d526b1c02b99e17d",
+          "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+          "docs/manual/mail.html": "2f291e7dffd3991e6d38be25c9e7fadf81c9e4e76acc9c490dfc69277e314e3c",
+          "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+          "docs/manual/website.html": "cca9289935e06d480586563910c834884494111fd063b8cc7d5a15d160d2038f",
+          "docs/public-repository-security.md": "fdebd9e021a01b751e9395cad72bb0ad33cda338e7a0f50f9d8222b18e9ef0e7",
+          "docs/security.md": "bba918ee4466e5522d736957407a5eb05951d7ff48fee5b753b4764358279e63",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "0236b3ff61b0a00fa7bb68944a849de5346c96a0933b5831fd9dbb0fff1a9f21",
+          "mail/provider-onboarding.md": "e50baeab44a0ad3c4f74aa9b9817db4730958d42bd641bb1eeb3bd0d054bf309",
+          "scripts/check.sh": "d9bde423abf46020a80832eca506575e3eac85c160332b7c246687cc7ca1133b",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/manage/index.html": "be2c0492ce354999821f35c0aa265aadbbc4794878186f93ce85dde083deb846",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:5053dc67aac6667f3df8393c3507b0d11d92a60449a5554384fdd8f9c9712c80",
+        "input_paths": [
+          "docs",
+          "mail",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "encoding",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts,mail,docs",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-search-console-verification"
+        ],
+        "executed_at": "2026-10-11T10:07:01.170684+00:00",
+        "input_snapshot": {
+          "after": "sha256:5053dc67aac6667f3df8393c3507b0d11d92a60449a5554384fdd8f9c9712c80",
+          "before": "sha256:5053dc67aac6667f3df8393c3507b0d11d92a60449a5554384fdd8f9c9712c80"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-search-console-verification/evidence/encoding_aa944308eb22.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-search-console-verification/evidence/encoding_aa944308eb22.receipt.json",
+        "returncode": 0,
+        "run_id": "aa944308eb22",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 42,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (42)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: {\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 42,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (42)",
+      "recorded_at": "2026-10-11T10:07:01.177982+00:00",
+      "verification": "verified"
+    },
+    "identifier_audit": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "identifier_audit",
+        "computed_at": "2026-10-11T10:07:01.215671+00:00",
+        "file_count": 12,
+        "files": {
+          "glossary/dictionary/areas.json": "d53d9f69b6e35f03257adaad3e524f2b36e66a0d0940666e703268ebfe10bd2c",
+          "glossary/dictionary/banned.json": "dd202b9aeda9c61cf59001295c3813aaa84a229308dbbaafbc3ede5129e866fd",
+          "glossary/dictionary/compounds.json": "fc0c5d5688bb7cf289c23443fc24a416ff97ca6340686c8b4730e99d503280ac",
+          "glossary/dictionary/drafts.json": "c59effa1d6f42d1426ed919a5f02643229e23ee018e5252a68acc9c18c53a35b",
+          "glossary/dictionary/pending_words.json": "e52f0d0a7eb548de632aa2282b5ce1b5c21bbfb3433220a77dc086ffd047fe1e",
+          "glossary/dictionary/tech_abbreviations.json": "bcbd3292e0affd52abe551ee8c3dc0145853f7b57b28c587037b7d7351379d28",
+          "glossary/dictionary/terms.json": "a5d5b4a0c766128f2c4a3d5b679cbf107f66f57088af6f3d2b9778368368e142",
+          "glossary/dictionary/terms_legacy.json": "b04da63a1213456df7552364c2e10945d4531d6c73e5a7090576bb537e6470ac",
+          "glossary/dictionary/unit_tokens.json": "f5b12bc6445c04cd6ceca6b78f02047c0e09f95b3a4631615dfb3b0b6c65b48a",
+          "glossary/dictionary/words.json": "ec18782a7a5f641bcd3bb446957f89f205bc235fbc62a57d6faa8fa20a211032",
+          "glossary/dictionary/words__derived_terms.json": "e5fd7aa65fb825e0bce9c786c3769f6ca699437e8c266b064538ba545ee993bc",
+          "scripts/check.sh": "d9bde423abf46020a80832eca506575e3eac85c160332b7c246687cc7ca1133b"
+        },
+        "fingerprint": "sha256:fd640f2e142c4121ce6b79f3e45de66510ca40b3d89493e34ff61619825e9f95",
+        "input_paths": [
+          "glossary/dictionary",
+          "scripts"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "identifier_audit",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "scripts,glossary/dictionary",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-search-console-verification"
+        ],
+        "executed_at": "2026-10-11T10:07:01.477504+00:00",
+        "input_snapshot": {
+          "after": "sha256:fd640f2e142c4121ce6b79f3e45de66510ca40b3d89493e34ff61619825e9f95",
+          "before": "sha256:fd640f2e142c4121ce6b79f3e45de66510ca40b3d89493e34ff61619825e9f95"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-search-console-verification/evidence/identifier_audit_267340238a4f.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-search-console-verification/evidence/identifier_audit_267340238a4f.receipt.json",
+        "returncode": 0,
+        "run_id": "267340238a4f",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"identifier_audit\",\n \"status\": \"PASS\",\n \"baseline_commit\": \"a4e7fde908d8c827cb39b444b0ee11b5b0a9eff9\",\n \"glossary_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"pinned_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"enforcement\": {\n  \"new_or_renamed\": \"strict\",\n  \"legacy\": \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit",
+      "recorded_at": "2026-10-11T10:07:01.490750+00:00",
+      "verification": "verified"
+    },
+    "lint": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "lint",
+        "computed_at": "2026-10-11T10:07:00.784893+00:00",
+        "file_count": 20,
+        "files": {
+          "scripts/check.sh": "d9bde423abf46020a80832eca506575e3eac85c160332b7c246687cc7ca1133b",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/manage/index.html": "be2c0492ce354999821f35c0aa265aadbbc4794878186f93ce85dde083deb846",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:931e43023f397fb9bafb075911ff2591f8681cd19c4a9203a27f9309cabdf343",
+        "input_paths": [
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "syntax",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-search-console-verification"
+        ],
+        "executed_at": "2026-10-11T10:07:00.886691+00:00",
+        "input_snapshot": {
+          "after": "sha256:931e43023f397fb9bafb075911ff2591f8681cd19c4a9203a27f9309cabdf343",
+          "before": "sha256:931e43023f397fb9bafb075911ff2591f8681cd19c4a9203a27f9309cabdf343"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-search-console-verification/evidence/lint_f7d168cab7c4.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-search-console-verification/evidence/lint_f7d168cab7c4.receipt.json",
+        "returncode": 0,
+        "run_id": "f7d168cab7c4",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 15,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (15)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: {\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 15,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (15)",
+      "recorded_at": "2026-10-11T10:07:00.890553+00:00",
+      "verification": "verified"
+    },
+    "prior_art": {
+      "detail": {
+        "artifact": "dev-process/task/20261011-search-console-verification/artifact/prior_art_report.json",
+        "findings": 0,
+        "frozen_overlap": 0
+      },
+      "evidence_record": null,
+      "execution": null,
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "verdict=clear",
+      "recorded_at": "2026-10-11T10:05:26.768977+00:00",
+      "verification": "reported_only"
+    },
+    "qa_quick": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "qa_quick",
+        "computed_at": "2026-10-11T10:07:01.539281+00:00",
+        "file_count": 37,
+        "files": {
+          "AGENTS.md": "430ee5771d2d563639d2e4b01b5aab6c6987a1c8650716bf52b4cbdcf9f65ff1",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/manual/.review.json": "84b24f39db83b588ec99d11fce219ad99bef0a02631207eab354958f51341a1a",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+          "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "3627e815fb8c791380c79fc48bb1bea7f09681ac45a55310d526b1c02b99e17d",
+          "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+          "docs/manual/mail.html": "2f291e7dffd3991e6d38be25c9e7fadf81c9e4e76acc9c490dfc69277e314e3c",
+          "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+          "docs/manual/website.html": "cca9289935e06d480586563910c834884494111fd063b8cc7d5a15d160d2038f",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "0236b3ff61b0a00fa7bb68944a849de5346c96a0933b5831fd9dbb0fff1a9f21",
+          "mail/provider-onboarding.md": "e50baeab44a0ad3c4f74aa9b9817db4730958d42bd641bb1eeb3bd0d054bf309",
+          "nginx/default.conf": "b3406d33efd99379cb9346a0b93ec8becf451d3863640965125bb6a0b64f3a09",
+          "scripts/check.sh": "d9bde423abf46020a80832eca506575e3eac85c160332b7c246687cc7ca1133b",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/manage/index.html": "be2c0492ce354999821f35c0aa265aadbbc4794878186f93ce85dde083deb846",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:f347ec77c6d930798c9c7b2a9ac7b75b30f379fdc4c6e0481b6e29c31b38888f",
+        "input_paths": [
+          "AGENTS.md",
+          "docker-compose.yml",
+          "docs/manual",
+          "mail",
+          "nginx",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-11T10:07:01.687886+00:00",
+        "input_snapshot": {
+          "after": "sha256:f347ec77c6d930798c9c7b2a9ac7b75b30f379fdc4c6e0481b6e29c31b38888f",
+          "before": "sha256:f347ec77c6d930798c9c7b2a9ac7b75b30f379fdc4c6e0481b6e29c31b38888f"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-search-console-verification/evidence/qa_quick_36d97b741234.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-search-console-verification/evidence/qa_quick_36d97b741234.receipt.json",
+        "returncode": 0,
+        "run_id": "36d97b741234",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-11T10:07:01.694460+00:00",
+      "verification": "verified"
+    },
+    "unit_or_regression": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "unit_or_regression",
+        "computed_at": "2026-10-11T10:07:00.919398+00:00",
+        "file_count": 37,
+        "files": {
+          "AGENTS.md": "430ee5771d2d563639d2e4b01b5aab6c6987a1c8650716bf52b4cbdcf9f65ff1",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/manual/.review.json": "84b24f39db83b588ec99d11fce219ad99bef0a02631207eab354958f51341a1a",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+          "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "3627e815fb8c791380c79fc48bb1bea7f09681ac45a55310d526b1c02b99e17d",
+          "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+          "docs/manual/mail.html": "2f291e7dffd3991e6d38be25c9e7fadf81c9e4e76acc9c490dfc69277e314e3c",
+          "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+          "docs/manual/website.html": "cca9289935e06d480586563910c834884494111fd063b8cc7d5a15d160d2038f",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "0236b3ff61b0a00fa7bb68944a849de5346c96a0933b5831fd9dbb0fff1a9f21",
+          "mail/provider-onboarding.md": "e50baeab44a0ad3c4f74aa9b9817db4730958d42bd641bb1eeb3bd0d054bf309",
+          "nginx/default.conf": "b3406d33efd99379cb9346a0b93ec8becf451d3863640965125bb6a0b64f3a09",
+          "scripts/check.sh": "d9bde423abf46020a80832eca506575e3eac85c160332b7c246687cc7ca1133b",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/manage/index.html": "be2c0492ce354999821f35c0aa265aadbbc4794878186f93ce85dde083deb846",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:f347ec77c6d930798c9c7b2a9ac7b75b30f379fdc4c6e0481b6e29c31b38888f",
+        "input_paths": [
+          "AGENTS.md",
+          "docker-compose.yml",
+          "docs/manual",
+          "mail",
+          "nginx",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-11T10:07:01.068255+00:00",
+        "input_snapshot": {
+          "after": "sha256:f347ec77c6d930798c9c7b2a9ac7b75b30f379fdc4c6e0481b6e29c31b38888f",
+          "before": "sha256:f347ec77c6d930798c9c7b2a9ac7b75b30f379fdc4c6e0481b6e29c31b38888f"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-search-console-verification/evidence/unit_or_regression_5e809625bdf5.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-search-console-verification/evidence/unit_or_regression_5e809625bdf5.receipt.json",
+        "returncode": 0,
+        "run_id": "5e809625bdf5",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-11T10:07:01.074883+00:00",
+      "verification": "verified"
+    },
+    "user_manual": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "user_manual",
+        "computed_at": "2026-10-11T10:07:01.733530+00:00",
+        "file_count": 14,
+        "files": {
+          "docs/google-search-console.md": "c3e090f6eb67fc856482b0d2b2ec6ca2c720259504a6f2a930289a5d526fecb5",
+          "docs/manual/.review.json": "84b24f39db83b588ec99d11fce219ad99bef0a02631207eab354958f51341a1a",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+          "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "3627e815fb8c791380c79fc48bb1bea7f09681ac45a55310d526b1c02b99e17d",
+          "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+          "docs/manual/mail.html": "2f291e7dffd3991e6d38be25c9e7fadf81c9e4e76acc9c490dfc69277e314e3c",
+          "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+          "docs/manual/website.html": "cca9289935e06d480586563910c834884494111fd063b8cc7d5a15d160d2038f",
+          "scripts/check.sh": "d9bde423abf46020a80832eca506575e3eac85c160332b7c246687cc7ca1133b",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0"
+        },
+        "fingerprint": "sha256:5e59f9c34765392dee17cb33f0705c3dcd83b180a2cc2da4a909a1f0214704a2",
+        "input_paths": [
+          "docs/google-search-console.md",
+          "docs/manual",
+          "scripts/check.sh",
+          "site/google16ad3deed6bb0ce2.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "user_manual",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-search-console-verification"
+        ],
+        "executed_at": "2026-10-11T10:07:02.024483+00:00",
+        "input_snapshot": {
+          "after": "sha256:5e59f9c34765392dee17cb33f0705c3dcd83b180a2cc2da4a909a1f0214704a2",
+          "before": "sha256:5e59f9c34765392dee17cb33f0705c3dcd83b180a2cc2da4a909a1f0214704a2"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-search-console-verification/evidence/user_manual_3e70ac13a401.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-search-console-verification/evidence/user_manual_3e70ac13a401.receipt.json",
+        "returncode": 0,
+        "run_id": "3e70ac13a401",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "  \"name\": \"mail\",\n   \"title\": \"BOMTS 메일 운영\",\n   \"role\": \"feature\",\n   \"slides\": 15\n  },\n  {\n   \"file\": \"docs/manual/tunnel.html\",\n   \"name\": \"tunnel\",\n   \"title\": \"BOMTS Cloudflare Tunnel\",\n   \"role\": \"feature\",\n   \"slides\": 8\n  },\n  {\n   \"file\": \"docs/manual/website.html\",\n   \"name\": \"website\",\n   \"title\": \"BOMTS 웹사이트\",\n   \"role\": \"feature\",\n   \"slides\": 9\n  },\n  {\n   \"file\": \"docs/manual/architecture.html\",\n   \"name\": \"architecture\",\n   \"title\": \"BOMTS 시스템 구성\",\n   \"role\": \"architecture\",\n   \"slides\": 10\n  },\n  {\n   \"file\": \"docs/manual/admin.html\",\n   \"name\": \"admin\",\n   \"title\": \"BOMTS 운영·인수인계\",\n   \"role\": \"admin\",\n   \"slides\": 16\n  }\n ],\n \"slides\": 73,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/website.html\"\n ]\n}\nPASS: user_manual (7)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: 6\n  }\n ],\n \"slides\": 73,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/website.html\"\n ]\n}\nPASS: user_manual (7)",
+      "recorded_at": "2026-10-11T10:07:02.027309+00:00",
+      "verification": "verified"
+    }
+  },
+  "summary": {
+    "actual_changes": "feat: add Google Search Console verification file",
+    "business_meaning": "Google Search Console HTML 소유권 확인 파일을 공개 사이트 루트에 배포한다",
+    "change_and_recovery_history": "복구 사건 없음",
+    "operational_status": "work=done, commit=74fce07d5f8cbbb575c238185823dc324cbc985d, push=pushed, deploy=not_in_scope",
+    "remaining_issues": "없음",
+    "user_manual": "고침 (설계·사용 방법 변경) -- 검사 verified, 위치 docs/manual/index.html",
+    "verification_evidence": "data_inventory=allow[verified]; data_stance=allow[verified]; encoding=allow[verified]; identifier_audit=allow[verified]; lint=allow[verified]; prior_art=allow[reported_only]; qa_quick=allow[verified]; unit_or_regression=allow[verified]; user_manual=allow[verified]"
+  },
+  "task_id": "20261011-search-console-verification",
+  "verdict": {
+    "open_incidents": [],
+    "open_waits": [],
+    "stale_checks": [],
+    "unverified_checks": []
+  }
+}

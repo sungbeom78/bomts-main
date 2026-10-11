@@ -1,0 +1,26 @@
+{
+  "task_id": "20261011-search-console-verification",
+  "keywords": [
+    "Google Search Console",
+    "verification",
+    "sitemap",
+    "website"
+  ],
+  "files": [
+    "site/google16ad3deed6bb0ce2.html",
+    "docs/google-search-console.md",
+    "docs/manual/website.html",
+    "scripts/check.sh"
+  ],
+  "days": 30,
+  "checked_at": "2026-10-11T10:05:26.768542+00:00",
+  "sources": {
+    "change_log": "CHANGELOG.md",
+    "sot": null,
+    "module_index": null
+  },
+  "findings": [],
+  "frozen_overlap": [],
+  "active_task_overlap": [],
+  "verdict": "clear"
+}
