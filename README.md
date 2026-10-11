@@ -31,6 +31,8 @@ is already in use.
 - `site/`: Korean and English public pages
 - `nginx/`: generic static-site server configuration
 - `docs/architecture.md`: logical product architecture
+- `docs/google-search-console.md`: sitemap submission and indexing procedure
+- `docs/bomts-decision-public-readiness.md`: read-only public-release security audit
 - `docs/manual/`: public product and contributor manual
 - `docs/mail-operations.md`: mailbox user settings and public service status
 - `scripts/check.sh`: local repository validation
