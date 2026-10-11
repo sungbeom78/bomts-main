@@ -12,6 +12,7 @@ test -f site/privacy/index.html
 test -f site/terms/index.html
 test -f site/robots.txt
 test -f site/sitemap.xml
+test -f site/google16ad3deed6bb0ce2.html
 test -f docs/architecture.md
 test -f docs/manual/index.html
 test -f docs/manual/website.html
@@ -38,6 +39,7 @@ grep -q '2026년 10월 9일' site/about/index.html
 grep -q 'October 9, 2026' site/en/about/index.html
 grep -q 'April 2026' README.md
 grep -q 'Sitemap: https://www.bomts.net/sitemap.xml' site/robots.txt
+test "$(cat site/google16ad3deed6bb0ce2.html)" = 'google-site-verification: google16ad3deed6bb0ce2.html'
 
 ! grep -R -q '사업자 및 개인정보 보호 책임자 정보는 실제 정보 확인 후 보완됩니다' site
 ! grep -R -q '관할, 사업자 정보 등 법적 필수 항목은 실제 운영 주체 확인 후 보완됩니다' site
