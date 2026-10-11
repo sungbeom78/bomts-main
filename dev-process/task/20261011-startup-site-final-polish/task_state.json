@@ -1,0 +1,1791 @@
+{
+  "acceptance": [
+    {
+      "no": 1,
+      "note": "한·영 About에서 방어적 문구 grep 0, March/April/October Timeline 렌더링과 문구 확인",
+      "status": "met",
+      "text": "한글·영문 About Timeline이 방어적 표현 없이 실제 개발 이력만 자연스럽게 설명한다",
+      "updated_at": "2026-10-11T09:51:22.666285+00:00"
+    },
+    {
+      "no": 2,
+      "note": "영문 4개 경로 생성, 6개 영문 페이지 Navigation/Footer 링크 검사와 로컬 HTTP 200 확인",
+      "status": "met",
+      "text": "영문 Product·Contact·Privacy·Terms가 생성되고 영문 Navigation·Footer가 영문 경로로 연결된다",
+      "updated_at": "2026-10-11T09:51:22.909829+00:00"
+    },
+    {
+      "no": 3,
+      "note": "placeholder grep 0, 6개 ko/en canonical·hreflang·og:url assertions, sitemap·robots 검사 통과",
+      "status": "met",
+      "text": "Privacy·Terms placeholder가 제거되고 metadata·canonical·hreflang·sitemap·robots 및 공식 사실이 일관된다",
+      "updated_at": "2026-10-11T09:51:23.152950+00:00"
+    },
+    {
+      "no": 4,
+      "note": "bomts-decision 현재 파일·6 commit/140 blob을 읽기 전용 감사; Gitleaks·TruffleHog 각 현재/전체이력 0건, 별도 위험 검토 후 PUBLIC_SAFE=false; status fingerprint 불변",
+      "status": "met",
+      "text": "bomts-decision 작업 트리와 전체 Git history를 비밀·개인정보·내부 운영정보 관점에서 읽기 전용 검사하고 Public 전환 없이 PUBLIC_SAFE 판정을 낸다",
+      "updated_at": "2026-10-11T09:51:23.392374+00:00"
+    },
+    {
+      "no": 5,
+      "note": "manual-review 73쪽 overflow 0 및 육안 확인, 운영 재배포 후 container healthy, HTTPS 14경로 200, 운영 12페이지×2 viewport 링크·overflow 검사 통과; finish --push로 원격 반영을 같은 릴리스 단계에서 수행",
+      "status": "met",
+      "text": "사이트·매뉴얼을 렌더링해 모바일·링크·넘침을 확인하고 운영 배포·HTTPS 200·push까지 완료한다",
+      "updated_at": "2026-10-11T09:52:41.941449+00:00"
+    }
+  ],
+  "approvals": [],
+  "baseline_commit": "17207e6d89d87effb2176fe2dc83eb97a2aa6014",
+  "change_kind": {
+    "history": [],
+    "kind": "usage_change",
+    "reason": "공개 사이트 영문 사용자 경로와 표현 방식 변경",
+    "set_at": "2026-10-11T09:33:40.161796+00:00"
+  },
+  "completion": {
+    "changes_summary": "feat: complete BOMTS English public site",
+    "commit": "985420c17afeaa7a635fb70c81dbc0d133b23994",
+    "deploy": "not_in_scope",
+    "push": "pushed",
+    "release_scope": "in_scope",
+    "work": "done"
+  },
+  "created_at": "2026-10-11T09:33:40.161796+00:00",
+  "events": [
+    {
+      "check_name": "prior_art",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "verdict=caution",
+      "ts": "2026-10-11T09:33:50.868035+00:00",
+      "verification": "reported_only",
+      "verified": false
+    },
+    {
+      "check_name": "prior_art",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "verdict=caution",
+      "ts": "2026-10-11T09:34:06.374215+00:00",
+      "verification": "reported_only",
+      "verified": false
+    },
+    {
+      "check_name": "prior_art_cli",
+      "evidence_fingerprint": "sha256:e089f288a554282f04fd35f9ab079b37b86f6ff54aca4c54dc0c2a08d799bddb",
+      "execution": {
+        "command": [
+          ".venv/bin/python",
+          ".agents/skills/sk-mgm-task-state/scripts/run.py",
+          "prior-art",
+          "--task-id",
+          "20261011-startup-site-final-polish",
+          "--keywords",
+          "Claude Startups,About,Timeline,English pages,SEO,sitemap,privacy,terms,security audit"
+        ],
+        "executed_at": "2026-10-11T09:34:06.418351+00:00",
+        "input_snapshot": {
+          "after": "sha256:e089f288a554282f04fd35f9ab079b37b86f6ff54aca4c54dc0c2a08d799bddb",
+          "before": "sha256:e089f288a554282f04fd35f9ab079b37b86f6ff54aca4c54dc0c2a08d799bddb"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/prior_art_cli_3165e3c4d4d3.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/prior_art_cli_3165e3c4d4d3.receipt.json",
+        "returncode": 0,
+        "run_id": "3165e3c4d4d3",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "ocs: Founder·설립 시점·개발 Timeline과 Public 저장소 시작일을 공개 사이트에 명확히 표시 (task 20261011-public-startup-verifiability)\",\n        \"relation\": \"related\",\n        \"source\": \"CHANGELOG.md\"\n      }\n    ],\n    \"frozen_overlap\": [],\n    \"keywords\": [\n      \"Claude Startups\",\n      \"About\",\n      \"Timeline\",\n      \"English pages\",\n      \"SEO\",\n      \"sitemap\",\n      \"privacy\",\n      \"terms\",\n      \"security audit\"\n    ],\n    \"sources\": {\n      \"change_log\": \"CHANGELOG.md\",\n      \"module_index\": null,\n      \"sot\": null\n    },\n    \"task_id\": \"20261011-startup-site-final-polish\",\n    \"verdict\": \"caution\"\n  },\n  \"evidence\": {},\n  \"gate_outcome\": \"allow\",\n  \"generated_at\": \"2026-10-11T09:34:06.393017+00:00\",\n  \"reason_code\": \"verdict=caution\",\n  \"task_id\": \"20261011-startup-site-final-polish\",\n  \"version\": \"1\"\n}\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: \"generated_at\": \"2026-10-11T09:34:06.393017+00:00\",\n  \"reason_code\": \"verdict=caution\",\n  \"task_id\": \"20261011-startup-site-final-polish\",\n  \"version\": \"1\"\n}",
+      "ts": "2026-10-11T09:34:06.421494+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "github_metadata",
+      "evidence_fingerprint": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "execution": {
+        "command": [
+          "python3",
+          "/tmp/check_bomts_decision_metadata.py"
+        ],
+        "executed_at": "2026-10-11T09:40:30.666539+00:00",
+        "input_snapshot": {
+          "after": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "before": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/github_metadata_53897173e665.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/github_metadata_53897173e665.receipt.json",
+        "returncode": 0,
+        "run_id": "53897173e665",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS: private repository identity and April 1 metadata basis recorded\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: PASS: private repository identity and April 1 metadata basis recorded",
+      "ts": "2026-10-11T09:40:30.669487+00:00",
+      "verification": "empty_inputs",
+      "verified": false
+    },
+    {
+      "check_name": "github_metadata",
+      "evidence_fingerprint": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "execution": {
+        "command": [
+          "python3",
+          "/tmp/check_bomts_decision_metadata.py"
+        ],
+        "executed_at": "2026-10-11T09:40:44.282162+00:00",
+        "input_snapshot": {
+          "after": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "before": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/github_metadata_5891e7c5852e.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/github_metadata_5891e7c5852e.receipt.json",
+        "returncode": 0,
+        "run_id": "5891e7c5852e",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS: private repository identity and April 1 metadata basis recorded\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: PASS: private repository identity and April 1 metadata basis recorded",
+      "ts": "2026-10-11T09:40:44.282655+00:00",
+      "verification": "empty_inputs",
+      "verified": false
+    },
+    {
+      "check_name": "github_metadata",
+      "evidence_fingerprint": "sha256:fdb8c38ec8cee1a3453a1c8d7e0c8c4e55c1b956fdc67ac0ec7449d6bb120b01",
+      "execution": {
+        "command": [
+          "python3",
+          "/tmp/check_bomts_decision_metadata.py"
+        ],
+        "executed_at": "2026-10-11T09:44:42.808252+00:00",
+        "input_snapshot": {
+          "after": "sha256:fdb8c38ec8cee1a3453a1c8d7e0c8c4e55c1b956fdc67ac0ec7449d6bb120b01",
+          "before": "sha256:fdb8c38ec8cee1a3453a1c8d7e0c8c4e55c1b956fdc67ac0ec7449d6bb120b01"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/github_metadata_fd4e2c1cf13b.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/github_metadata_fd4e2c1cf13b.receipt.json",
+        "returncode": 0,
+        "run_id": "fd4e2c1cf13b",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS: repository identity, April 1 commit, Private audit record, and PUBLIC_SAFE=false verified\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: PASS: repository identity, April 1 commit, Private audit record, and PUBLIC_SAFE=false verified",
+      "ts": "2026-10-11T09:44:42.808972+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "user_manual",
+      "evidence_fingerprint": "sha256:343f0863f4d2bb4c9add51554a77d39b19703e33b000bc912ade4da8b59d2d58",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "user_manual",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:47:51.432822+00:00",
+        "input_snapshot": {
+          "after": "sha256:343f0863f4d2bb4c9add51554a77d39b19703e33b000bc912ade4da8b59d2d58",
+          "before": "sha256:343f0863f4d2bb4c9add51554a77d39b19703e33b000bc912ade4da8b59d2d58"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/user_manual_f8573f6f5bad.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/user_manual_f8573f6f5bad.receipt.json",
+        "returncode": 1,
+        "run_id": "f8573f6f5bad",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "ile\": \"docs/manual/tunnel.html\",\n   \"name\": \"tunnel\",\n   \"title\": \"BOMTS Cloudflare Tunnel\",\n   \"role\": \"feature\",\n   \"slides\": 8\n  },\n  {\n   \"file\": \"docs/manual/website.html\",\n   \"name\": \"website\",\n   \"title\": \"BOMTS 웹사이트\",\n   \"role\": \"feature\",\n   \"slides\": 9\n  },\n  {\n   \"file\": \"docs/manual/architecture.html\",\n   \"name\": \"architecture\",\n   \"title\": \"BOMTS 시스템 구성\",\n   \"role\": \"architecture\",\n   \"slides\": 10\n  },\n  {\n   \"file\": \"docs/manual/admin.html\",\n   \"name\": \"admin\",\n   \"title\": \"BOMTS 운영·인수인계\",\n   \"role\": \"admin\",\n   \"slides\": 16\n  }\n ],\n \"slides\": 73,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/website.html\"\n ]\n}\nFAIL: 1건 -- website.html #4 'About에서 BOMTS 기본 정보와 개발 흐름을 확인합니다' (step): 단계 페이지는 화면(.screen)·실제 캡처(img)·터미널(.term) 중 하나\n"
+      },
+      "gate_outcome": "deny",
+      "kind": "check",
+      "reason_code": "FAIL: html\",\n  \"docs/manual/website.html\"\n ]\n}\nFAIL: 1건 -- website.html #4 'About에서 BOMTS 기본 정보와 개발 흐름을 확인합니다' (step): 단계 페이지는 화면(.screen)·실제 캡처(img)·터미널(.term) 중 하나",
+      "ts": "2026-10-11T09:47:51.433320+00:00",
+      "verification": "deny",
+      "verified": false
+    },
+    {
+      "check_name": "user_manual",
+      "evidence_fingerprint": "sha256:62b7a1c629837e6eb9b0b3056070cf7f590dcb362f31c2ceccca3683afc88340",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "user_manual",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:48:33.797501+00:00",
+        "input_snapshot": {
+          "after": "sha256:62b7a1c629837e6eb9b0b3056070cf7f590dcb362f31c2ceccca3683afc88340",
+          "before": "sha256:62b7a1c629837e6eb9b0b3056070cf7f590dcb362f31c2ceccca3683afc88340"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/user_manual_1b3a05370e23.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/user_manual_1b3a05370e23.receipt.json",
+        "returncode": 0,
+        "run_id": "1b3a05370e23",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "  \"name\": \"mail\",\n   \"title\": \"BOMTS 메일 운영\",\n   \"role\": \"feature\",\n   \"slides\": 15\n  },\n  {\n   \"file\": \"docs/manual/tunnel.html\",\n   \"name\": \"tunnel\",\n   \"title\": \"BOMTS Cloudflare Tunnel\",\n   \"role\": \"feature\",\n   \"slides\": 8\n  },\n  {\n   \"file\": \"docs/manual/website.html\",\n   \"name\": \"website\",\n   \"title\": \"BOMTS 웹사이트\",\n   \"role\": \"feature\",\n   \"slides\": 9\n  },\n  {\n   \"file\": \"docs/manual/architecture.html\",\n   \"name\": \"architecture\",\n   \"title\": \"BOMTS 시스템 구성\",\n   \"role\": \"architecture\",\n   \"slides\": 10\n  },\n  {\n   \"file\": \"docs/manual/admin.html\",\n   \"name\": \"admin\",\n   \"title\": \"BOMTS 운영·인수인계\",\n   \"role\": \"admin\",\n   \"slides\": 16\n  }\n ],\n \"slides\": 73,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/website.html\"\n ]\n}\nPASS: user_manual (7)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: 6\n  }\n ],\n \"slides\": 73,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/website.html\"\n ]\n}\nPASS: user_manual (7)",
+      "ts": "2026-10-11T09:48:33.803017+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "lint",
+      "evidence_fingerprint": "sha256:54e1b7e08eb29ebee335c6b6f05cee5371244489eb5066f41c6b0ba0de55e4d4",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "syntax",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:48:56.869469+00:00",
+        "input_snapshot": {
+          "after": "sha256:54e1b7e08eb29ebee335c6b6f05cee5371244489eb5066f41c6b0ba0de55e4d4",
+          "before": "sha256:54e1b7e08eb29ebee335c6b6f05cee5371244489eb5066f41c6b0ba0de55e4d4"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/lint_60012d460026.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/lint_60012d460026.receipt.json",
+        "returncode": 0,
+        "run_id": "60012d460026",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 14,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (14)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: {\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 14,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (14)",
+      "ts": "2026-10-11T09:48:56.873222+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "unit_or_regression",
+      "evidence_fingerprint": "sha256:a5723b6a4db28f9c60127138308989b26882840cfd3e93fc6e1c9971360ac05b",
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-11T09:48:57.040321+00:00",
+        "input_snapshot": {
+          "after": "sha256:a5723b6a4db28f9c60127138308989b26882840cfd3e93fc6e1c9971360ac05b",
+          "before": "sha256:a5723b6a4db28f9c60127138308989b26882840cfd3e93fc6e1c9971360ac05b"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/unit_or_regression_f9f88f1a2384.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/unit_or_regression_f9f88f1a2384.receipt.json",
+        "returncode": 0,
+        "run_id": "f9f88f1a2384",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-11T09:48:57.046946+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "encoding",
+      "evidence_fingerprint": "sha256:212fcbce4d15127fec282ba4ad94aaddc0e121060af7f4a76e44e9fd05c20afa",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "encoding",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts,mail,docs",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:48:57.155961+00:00",
+        "input_snapshot": {
+          "after": "sha256:212fcbce4d15127fec282ba4ad94aaddc0e121060af7f4a76e44e9fd05c20afa",
+          "before": "sha256:212fcbce4d15127fec282ba4ad94aaddc0e121060af7f4a76e44e9fd05c20afa"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/encoding_0c40fded5ae8.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/encoding_0c40fded5ae8.receipt.json",
+        "returncode": 0,
+        "run_id": "0c40fded5ae8",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 41,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (41)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: {\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 41,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (41)",
+      "ts": "2026-10-11T09:48:57.164687+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "identifier_audit",
+      "evidence_fingerprint": "sha256:fd63a3da6e9384d48819fdc8ec152aaab43f12a5c18b72ce76fca8931e379c65",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "identifier_audit",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "scripts,glossary/dictionary",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:48:57.456767+00:00",
+        "input_snapshot": {
+          "after": "sha256:fd63a3da6e9384d48819fdc8ec152aaab43f12a5c18b72ce76fca8931e379c65",
+          "before": "sha256:fd63a3da6e9384d48819fdc8ec152aaab43f12a5c18b72ce76fca8931e379c65"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/identifier_audit_503ba4f7e504.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/identifier_audit_503ba4f7e504.receipt.json",
+        "returncode": 0,
+        "run_id": "503ba4f7e504",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"identifier_audit\",\n \"status\": \"PASS\",\n \"baseline_commit\": \"17207e6d89d87effb2176fe2dc83eb97a2aa6014\",\n \"glossary_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"pinned_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"enforcement\": {\n  \"new_or_renamed\": \"strict\",\n  \"legacy\": \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit",
+      "ts": "2026-10-11T09:48:57.466660+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "qa_quick",
+      "evidence_fingerprint": "sha256:a5723b6a4db28f9c60127138308989b26882840cfd3e93fc6e1c9971360ac05b",
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-11T09:48:57.650749+00:00",
+        "input_snapshot": {
+          "after": "sha256:a5723b6a4db28f9c60127138308989b26882840cfd3e93fc6e1c9971360ac05b",
+          "before": "sha256:a5723b6a4db28f9c60127138308989b26882840cfd3e93fc6e1c9971360ac05b"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/qa_quick_81117e8120d9.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/qa_quick_81117e8120d9.receipt.json",
+        "returncode": 0,
+        "run_id": "81117e8120d9",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-11T09:48:57.658223+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "user_manual",
+      "evidence_fingerprint": "sha256:62b7a1c629837e6eb9b0b3056070cf7f590dcb362f31c2ceccca3683afc88340",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "user_manual",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:48:58.010235+00:00",
+        "input_snapshot": {
+          "after": "sha256:62b7a1c629837e6eb9b0b3056070cf7f590dcb362f31c2ceccca3683afc88340",
+          "before": "sha256:62b7a1c629837e6eb9b0b3056070cf7f590dcb362f31c2ceccca3683afc88340"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/user_manual_eb9318847faf.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/user_manual_eb9318847faf.receipt.json",
+        "returncode": 0,
+        "run_id": "eb9318847faf",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "  \"name\": \"mail\",\n   \"title\": \"BOMTS 메일 운영\",\n   \"role\": \"feature\",\n   \"slides\": 15\n  },\n  {\n   \"file\": \"docs/manual/tunnel.html\",\n   \"name\": \"tunnel\",\n   \"title\": \"BOMTS Cloudflare Tunnel\",\n   \"role\": \"feature\",\n   \"slides\": 8\n  },\n  {\n   \"file\": \"docs/manual/website.html\",\n   \"name\": \"website\",\n   \"title\": \"BOMTS 웹사이트\",\n   \"role\": \"feature\",\n   \"slides\": 9\n  },\n  {\n   \"file\": \"docs/manual/architecture.html\",\n   \"name\": \"architecture\",\n   \"title\": \"BOMTS 시스템 구성\",\n   \"role\": \"architecture\",\n   \"slides\": 10\n  },\n  {\n   \"file\": \"docs/manual/admin.html\",\n   \"name\": \"admin\",\n   \"title\": \"BOMTS 운영·인수인계\",\n   \"role\": \"admin\",\n   \"slides\": 16\n  }\n ],\n \"slides\": 73,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/website.html\"\n ]\n}\nPASS: user_manual (7)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: 6\n  }\n ],\n \"slides\": 73,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/website.html\"\n ]\n}\nPASS: user_manual (7)",
+      "ts": "2026-10-11T09:48:58.015687+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "data_stance",
+      "evidence_fingerprint": "sha256:4d5eedb3838a1d8b8b226f2ca2b1615edfb3e74209ff4559e627b3884e0906b5",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_stance",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:48:58.259618+00:00",
+        "input_snapshot": {
+          "after": "sha256:4d5eedb3838a1d8b8b226f2ca2b1615edfb3e74209ff4559e627b3884e0906b5",
+          "before": "sha256:4d5eedb3838a1d8b8b226f2ca2b1615edfb3e74209ff4559e627b3884e0906b5"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/data_stance_c6bab3e0cc2c.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/data_stance_c6bab3e0cc2c.receipt.json",
+        "returncode": 0,
+        "run_id": "c6bab3e0cc2c",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "son이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.  ref: https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\n저장소 흔적 0개 (ORM 모델·Prisma·마이그레이션·DB 파일·DB 컨테이너 없음)\n  결과: 이상 없음\n{\n \"check\": \"data_stance\",\n \"status\": \"PASS\",\n \"stance\": \"external\",\n \"reason\": \"bomts-main은 정적 사이트·운영 스크립트와 운영 로그만 보유한다. 업무 데이터 정본은 외부 서비스 저장소에 있다. dev-ai의 PostgreSQL·Qdrant 정본은 sungbeom78/dev-ai의 db/model.json이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.\",\n \"ref\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ef\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance",
+      "ts": "2026-10-11T09:48:58.264036+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "data_inventory",
+      "evidence_fingerprint": "sha256:9619eef62529bf41aa619c96be233ba17ffde621e7e4e800cd8c4644f939a9bc",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_inventory",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:48:58.583371+00:00",
+        "input_snapshot": {
+          "after": "sha256:9619eef62529bf41aa619c96be233ba17ffde621e7e4e800cd8c4644f939a9bc",
+          "before": "sha256:9619eef62529bf41aa619c96be233ba17ffde621e7e4e800cd8c4644f939a9bc"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/data_inventory_43d87d58cbaa.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/data_inventory_43d87d58cbaa.receipt.json",
+        "returncode": 0,
+        "run_id": "43d87d58cbaa",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "데이터 카탈로그: data/catalog.json\n자산 7개, 데이터 흔적 0개, 개인정보: indirect web_log, provider_log, audit_evidence; personal service_policy; sensitive message_data, service_backup\n  결과: 이상 없음\n{\n \"check\": \"data_inventory\",\n \"status\": \"PASS\",\n \"system\": \"bomts-main\",\n \"assets\": 7,\n \"uncovered\": [],\n \"problems\": [],\n \"warnings\": [],\n \"pii\": {\n  \"none\": [\n   \"system_config\"\n  ],\n  \"indirect\": [\n   \"web_log\",\n   \"provider_log\",\n   \"audit_evidence\"\n  ],\n  \"personal\": [\n   \"service_policy\"\n  ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory",
+      "ts": "2026-10-11T09:48:58.587874+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "acceptance#1",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "한·영 About에서 방어적 문구 grep 0, March/April/October Timeline 렌더링과 문구 확인",
+      "ts": "2026-10-11T09:51:22.666307+00:00",
+      "verification": null,
+      "verified": false
+    },
+    {
+      "check_name": "acceptance#2",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "영문 4개 경로 생성, 6개 영문 페이지 Navigation/Footer 링크 검사와 로컬 HTTP 200 확인",
+      "ts": "2026-10-11T09:51:22.909852+00:00",
+      "verification": null,
+      "verified": false
+    },
+    {
+      "check_name": "acceptance#3",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "placeholder grep 0, 6개 ko/en canonical·hreflang·og:url assertions, sitemap·robots 검사 통과",
+      "ts": "2026-10-11T09:51:23.152976+00:00",
+      "verification": null,
+      "verified": false
+    },
+    {
+      "check_name": "acceptance#4",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "bomts-decision 현재 파일·6 commit/140 blob을 읽기 전용 감사; Gitleaks·TruffleHog 각 현재/전체이력 0건, 별도 위험 검토 후 PUBLIC_SAFE=false; status fingerprint 불변",
+      "ts": "2026-10-11T09:51:23.392397+00:00",
+      "verification": null,
+      "verified": false
+    },
+    {
+      "check_name": "acceptance#5",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "manual-review 73쪽 overflow 0 및 육안 확인, 운영 재배포 후 container healthy, HTTPS 14경로 200, 운영 12페이지×2 viewport 링크·overflow 검사 통과; finish --push로 원격 반영을 같은 릴리스 단계에서 수행",
+      "ts": "2026-10-11T09:52:41.941471+00:00",
+      "verification": null,
+      "verified": false
+    }
+  ],
+  "glossary_rev": null,
+  "goal": "Claude Startups 재신청 전 공개 사이트 문구·영문 경로·검색 메타데이터를 완성하고 bomts-decision 공개 가능성을 읽기 전용 감사한다",
+  "incidents": {
+    "github-metadata-check-quoting-20261011": {
+      "cause": "own_change",
+      "cause_history": [
+        {
+          "cause": "own_change",
+          "evidence": "devprocess argparse received words from inline Python code as its own arguments",
+          "investigation": {
+            "data_changes": "해당 없음: check invocation rejected",
+            "logs": "unrecognized arguments: private repository identity and April 1 metadata basis recorded",
+            "recent_changes": "inline -c command used nested shell quotes",
+            "search": "use a temporary Python file to remove nested quoting",
+            "system_state": "metadata evidence JSON exists and is valid; no repository mutation"
+          },
+          "ts": "2026-10-11T09:40:24.622969+00:00"
+        }
+      ],
+      "closed_at": "2026-10-11T09:44:50.542261+00:00",
+      "created_at": "2026-10-11T09:40:24.384730+00:00",
+      "error_signature": "check-run command quoting split Python assertion",
+      "events": [
+        {
+          "by_task": "20261011-startup-site-final-polish",
+          "kind": "classify_",
+          "ts": "2026-10-11T09:40:24.622990+00:00"
+        }
+      ],
+      "incident_id": "github-metadata-check-quoting-20261011",
+      "linked_tasks": [],
+      "max_rounds": 3,
+      "owner_task_id": "20261011-startup-site-final-polish",
+      "rounds": [
+        {
+          "action": "임시 Python 검증 파일을 만들고 단순 명령으로 check-run",
+          "budget_exception": null,
+          "diff_ref": null,
+          "evidence": "오류가 check-run 바깥 인자 파싱에서 발생",
+          "expected_result": "github_metadata verified receipt",
+          "hypothesis": "검사 코드를 임시 파일로 분리하면 check-run 인자 파싱이 안정적이다",
+          "hypothesis_hash": "3c144d97f28b1ed1",
+          "phase": "verification",
+          "plan_no": 1,
+          "proposed_by_task": "20261011-startup-site-final-polish",
+          "result": "임시 파일 의존성과 잘못된 --inputs 옵션 때문에 재현 검사 실패",
+          "result_ts": "2026-10-11T09:44:42.248395+00:00",
+          "round_no": 1,
+          "status": "rejected",
+          "ts": "2026-10-11T09:40:24.992451+00:00",
+          "verification_check": null,
+          "verification_run_id": null,
+          "verification_task": "20261011-startup-site-final-polish",
+          "verified": false
+        },
+        {
+          "action": "임시 메타데이터 파일 의존성을 제거하고 저장소/보고서 직접 검증 후 check-run",
+          "budget_exception": null,
+          "diff_ref": null,
+          "evidence": "check-run --help에서 옵션명이 --input-paths임을 확인했고 임시 GitHub JSON이 현재 세션에 없음",
+          "expected_result": "github_metadata 검사 verified receipt",
+          "hypothesis": "검사 스크립트가 Git remote·최초 commit·추적된 감사 보고서를 직접 확인하고 올바른 --input-paths를 쓰면 봉인된 receipt가 생성된다",
+          "hypothesis_hash": "1409070195acb198",
+          "phase": "connected_flow",
+          "plan_no": 1,
+          "proposed_by_task": "20261011-startup-site-final-polish",
+          "result": "올바른 --input-paths와 직접 검증 스크립트로 github_metadata 봉인 검사 통과",
+          "result_ts": "2026-10-11T09:44:50.313856+00:00",
+          "round_no": 2,
+          "status": "confirmed",
+          "ts": "2026-10-11T09:44:42.516013+00:00",
+          "verification_check": "github_metadata",
+          "verification_run_id": "fd4e2c1cf13b",
+          "verification_task": "20261011-startup-site-final-polish",
+          "verified": true
+        }
+      ],
+      "rounds_used": 2,
+      "status": "resolved"
+    },
+    "github-metadata-cli-missing-20261011": {
+      "cause": "environment",
+      "cause_history": [
+        {
+          "cause": "environment",
+          "evidence": "shell returned /bin/bash: gh: command not found; Git repository read-only scans completed independently",
+          "investigation": {
+            "data_changes": "해당 없음: API metadata 조회만 실패",
+            "logs": "audit command line 26: gh: command not found",
+            "recent_changes": "해당 없음: 읽기 전용 감사이며 저장소 파일 변경 없음",
+            "search": "which gh 결과 없음; GitHub connector/API를 Plan B로 사용 가능",
+            "system_state": "git and Docker scanners available; bomts-decision status fingerprint preserved; GitHub remote configured"
+          },
+          "ts": "2026-10-11T09:38:55.426925+00:00"
+        }
+      ],
+      "closed_at": "2026-10-11T09:44:51.025587+00:00",
+      "created_at": "2026-10-11T09:38:55.189483+00:00",
+      "error_signature": "gh: command not found while reading bomts-decision repository metadata",
+      "events": [
+        {
+          "by_task": "20261011-startup-site-final-polish",
+          "kind": "classify_",
+          "ts": "2026-10-11T09:38:55.426952+00:00"
+        },
+        {
+          "by_task": "20261011-startup-site-final-polish",
+          "kind": "plan_b_",
+          "ts": "2026-10-11T09:38:55.723299+00:00"
+        },
+        {
+          "by_task": "20261011-startup-site-final-polish",
+          "kind": "retry_",
+          "ts": "2026-10-11T09:44:50.766338+00:00"
+        }
+      ],
+      "incident_id": "github-metadata-cli-missing-20261011",
+      "linked_tasks": [],
+      "max_rounds": 3,
+      "owner_task_id": "20261011-startup-site-final-polish",
+      "plans": [
+        {
+          "approach": "연결된 GitHub 도구로 sungbeom78/bomts-decision repository metadata를 읽기 전용 조회",
+          "changes_acceptance": false,
+          "no": 2,
+          "reason": "gh CLI가 설치되지 않았으며 저장소 생성일은 Git 객체가 아니라 GitHub metadata에 있음",
+          "retries_before": [],
+          "started_at": "2026-10-11T09:38:55.723278+00:00",
+          "user_quote": null
+        }
+      ],
+      "retries": [
+        {
+          "no": 1,
+          "note": "gh 대신 GitHub connector로 Private 상태를 확인하고 로컬 Git 최초 commit 및 추적 보고서를 github_metadata 검사로 봉인",
+          "result": "ok",
+          "since": "2026-10-11T09:38:55.426925+00:00",
+          "ts": "2026-10-11T09:44:50.766316+00:00",
+          "verification_check": "github_metadata",
+          "verification_run_id": "fd4e2c1cf13b",
+          "verification_task": "20261011-startup-site-final-polish",
+          "waited_seconds": 30
+        }
+      ],
+      "rounds": [],
+      "rounds_used": 0,
+      "status": "resolved"
+    },
+    "manual-review-system-python-playwright-20261011": {
+      "cause": "environment",
+      "cause_history": [
+        {
+          "cause": "environment",
+          "evidence": "system python3 cannot import Playwright, while .venv/bin/python rendered all site pages with Chromium immediately before this check",
+          "investigation": {
+            "data_changes": "해당 없음: HTML 렌더링 검사이며 데이터 변경 없음",
+            "logs": "manual-review reason_code=missing_dependency: pip install playwright",
+            "recent_changes": "manual HTML changed; dependency files and framework unchanged",
+            "search": "manual-review invocation inherits the Python interpreter used to launch run.py; use project venv",
+            "system_state": "project .venv exists; .venv/bin/python Playwright Chromium launch passed; system python3 module absent"
+          },
+          "ts": "2026-10-11T09:46:25.381705+00:00"
+        }
+      ],
+      "closed_at": "2026-10-11T09:48:49.915836+00:00",
+      "created_at": "2026-10-11T09:46:25.158640+00:00",
+      "error_signature": "manual-review missing playwright under system python3",
+      "events": [
+        {
+          "by_task": "20261011-startup-site-final-polish",
+          "kind": "classify_",
+          "ts": "2026-10-11T09:46:25.381726+00:00"
+        },
+        {
+          "by_task": "20261011-startup-site-final-polish",
+          "kind": "plan_b_",
+          "ts": "2026-10-11T09:46:25.636410+00:00"
+        },
+        {
+          "by_task": "20261011-startup-site-final-polish",
+          "kind": "retry_",
+          "ts": "2026-10-11T09:48:49.605346+00:00"
+        }
+      ],
+      "incident_id": "manual-review-system-python-playwright-20261011",
+      "linked_tasks": [],
+      "max_rounds": 3,
+      "owner_task_id": "20261011-startup-site-final-polish",
+      "plans": [
+        {
+          "approach": "run manual-review with .venv/bin/python where Playwright and Chromium were already verified",
+          "changes_acceptance": false,
+          "no": 2,
+          "reason": "system interpreter and project virtualenv have different installed modules",
+          "retries_before": [],
+          "started_at": "2026-10-11T09:46:25.636390+00:00",
+          "user_quote": null
+        }
+      ],
+      "retries": [
+        {
+          "no": 1,
+          "note": "project venv로 manual-review 73쪽 overflow 0 및 user_manual 봉인 검사 통과",
+          "result": "ok",
+          "since": "2026-10-11T09:46:25.381705+00:00",
+          "ts": "2026-10-11T09:48:49.605325+00:00",
+          "verification_check": "user_manual",
+          "verification_run_id": "1b3a05370e23",
+          "verification_task": "20261011-startup-site-final-polish",
+          "waited_seconds": 30
+        }
+      ],
+      "rounds": [],
+      "rounds_used": 0,
+      "status": "resolved"
+    },
+    "prior-art-cli-arg-20261011": {
+      "cause": "own_change",
+      "cause_history": [
+        {
+          "cause": "own_change",
+          "evidence": "prior-art --help requires --keywords and does not define --query",
+          "investigation": {
+            "data_changes": "해당 없음: command rejected before analysis",
+            "logs": "argparse: required argument --keywords",
+            "recent_changes": "해당 없음: source change before invocation not started",
+            "search": "CLI usage output explicitly lists --keywords",
+            "system_state": "task was created normally; repository remains unchanged"
+          },
+          "ts": "2026-10-11T09:33:50.269331+00:00"
+        }
+      ],
+      "closed_at": "2026-10-11T09:34:12.116452+00:00",
+      "created_at": "2026-10-11T09:33:50.031118+00:00",
+      "error_signature": "prior-art: required --keywords, unsupported --query",
+      "events": [
+        {
+          "by_task": "20261011-startup-site-final-polish",
+          "kind": "classify_",
+          "ts": "2026-10-11T09:33:50.269351+00:00"
+        }
+      ],
+      "incident_id": "prior-art-cli-arg-20261011",
+      "linked_tasks": [],
+      "max_rounds": 3,
+      "owner_task_id": "20261011-startup-site-final-polish",
+      "rounds": [
+        {
+          "action": "prior-art를 지원되는 --keywords 인자로 실행",
+          "budget_exception": null,
+          "diff_ref": null,
+          "evidence": "CLI usage grammar",
+          "expected_result": "prior_art artifact gate allow",
+          "hypothesis": "--keywords로 다시 실행하면 prior-art가 기록된다",
+          "hypothesis_hash": "f844cf2735a8c0a0",
+          "phase": "analyze",
+          "plan_no": 1,
+          "proposed_by_task": "20261011-startup-site-final-polish",
+          "result": "지원 인자 --keywords로 prior-art 실행 증거 receipt 3165e3c4d4d3 봉인",
+          "result_ts": "2026-10-11T09:34:11.863365+00:00",
+          "round_no": 1,
+          "status": "confirmed",
+          "ts": "2026-10-11T09:33:50.625619+00:00",
+          "verification_check": "prior_art_cli",
+          "verification_run_id": "3165e3c4d4d3",
+          "verification_task": "20261011-startup-site-final-polish",
+          "verified": true
+        }
+      ],
+      "rounds_used": 1,
+      "status": "resolved"
+    },
+    "website-manual-timeline-overflow-20261011": {
+      "cause": "own_change",
+      "cause_history": [
+        {
+          "cause": "own_change",
+          "evidence": "manual-review identified website.html slide 4 added in this change; screenshot shows 2-column compare wrapping the third timeline card into a constrained screen box",
+          "investigation": {
+            "data_changes": "해당 없음: static manual HTML only",
+            "logs": "overflow: website.html #4 'About에서 BOMTS 기본 정보와 개발 흐름을 확인합니다': 상자 안 내용이 잘림",
+            "recent_changes": "current diff changed website.html slide 4 timeline from previous content",
+            "search": "manual.css .compare is fixed two columns; .timeline is intended for timeline cards",
+            "system_state": "Playwright Chromium renders all 73 manual slides; only website slide 4 has overflow"
+          },
+          "ts": "2026-10-11T09:47:11.630606+00:00"
+        }
+      ],
+      "closed_at": "2026-10-11T09:48:49.365278+00:00",
+      "created_at": "2026-10-11T09:47:11.393295+00:00",
+      "error_signature": "manual-review website.html slide 4 clipped content",
+      "events": [
+        {
+          "by_task": "20261011-startup-site-final-polish",
+          "kind": "classify_",
+          "ts": "2026-10-11T09:47:11.630626+00:00"
+        }
+      ],
+      "incident_id": "website-manual-timeline-overflow-20261011",
+      "linked_tasks": [],
+      "max_rounds": 3,
+      "owner_task_id": "20261011-startup-site-final-polish",
+      "rounds": [
+        {
+          "action": "replace compare screen with a three-column timeline component",
+          "budget_exception": null,
+          "diff_ref": null,
+          "evidence": "manual.css defines .compare as two columns and screenshot shows third event on a second row",
+          "expected_result": "manual-review overflow 0 on website.html slide 4",
+          "hypothesis": "2-column compare wrapper causes the third event to wrap and clip",
+          "hypothesis_hash": "47bf6b57f5bc314c",
+          "phase": "current_change",
+          "plan_no": 1,
+          "proposed_by_task": "20261011-startup-site-final-polish",
+          "result": "3열 timeline으로 overflow 0은 달성했으나 step 페이지의 .screen 품질 규칙 위반",
+          "result_ts": "2026-10-11T09:48:05.530355+00:00",
+          "round_no": 1,
+          "status": "partially_confirmed",
+          "ts": "2026-10-11T09:47:11.964889+00:00",
+          "verification_check": null,
+          "verification_run_id": null,
+          "verification_task": "20261011-startup-site-final-polish",
+          "verified": false
+        },
+        {
+          "action": "wrap compact timeline in screen and rerun render plus user_manual verification",
+          "budget_exception": null,
+          "diff_ref": null,
+          "evidence": "first fix manual-review overflow 0; user_manual only failure is missing .screen/img/.term on slide 4",
+          "expected_result": "manual-review overflow 0 and user_manual verified",
+          "hypothesis": "compact 3-column timeline을 screen wrapper에 넣으면 화면 표현 규칙과 overflow 0을 동시에 만족한다",
+          "hypothesis_hash": "3d7ae048d5089184",
+          "phase": "connected_flow",
+          "plan_no": 1,
+          "proposed_by_task": "20261011-startup-site-final-polish",
+          "result": "compact timeline을 screen에 넣어 manual-review 73쪽 overflow 0, 육안 확인 정상, user_manual verified",
+          "result_ts": "2026-10-11T09:48:49.120282+00:00",
+          "round_no": 2,
+          "status": "confirmed",
+          "ts": "2026-10-11T09:48:05.857654+00:00",
+          "verification_check": "user_manual",
+          "verification_run_id": "1b3a05370e23",
+          "verification_task": "20261011-startup-site-final-polish",
+          "verified": true
+        }
+      ],
+      "rounds_used": 2,
+      "status": "resolved"
+    }
+  },
+  "last_host": {
+    "host": "unknown",
+    "surface": "unknown",
+    "version": "unknown"
+  },
+  "linked_incidents": [],
+  "open_waits": [],
+  "policy_version": "sha256:3323a3f8dd8e8397",
+  "revision": 59,
+  "rollbacks": [],
+  "schema_version": "1",
+  "stage": "report",
+  "stages": {
+    "data_inventory": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "data_inventory",
+        "computed_at": "2026-10-11T09:48:58.321748+00:00",
+        "file_count": 22,
+        "files": {
+          "README.md": "2c12484453b9c31960168492bf607abbaf5a0831230a8a8fbf07153a9efce7e5",
+          "data/catalog.json": "e39bbeabc4097f6e5aebe493fe5f6fd7d304f5c1e669df4b4b48942c7c367bf3",
+          "docs/bomts-decision-public-readiness.md": "6fb80eca3c4d1b3560bc215f03ad49f364fd0c457bb2ea0f221bbe24a23c4276",
+          "docs/google-search-console.md": "de7c198c88fa7015f4778804dc2a3446b9c74c5746d10f6697af526b2cf9fd5b",
+          "docs/manual/.review.json": "f8d46d4d1d62d30cb543b9e5437599ffe4cb54398c0c39f158010b320536e310",
+          "docs/manual/index.html": "594b90e395e0f7cd864b4ab5121c04420635b56e9d696437e70ee11fdbec3f0c",
+          "docs/manual/website.html": "42ab6e6b19b2eb194e78947001d0f083f438efcc62ed9096ace87324d599f2f1",
+          "project.policy.yaml": "f0c7aa60c1675786317b5099146cc83ba1e6d6ce63f8da9ca1c166593c2a9bdf",
+          "scripts/check.sh": "ce5f5750be742684f776063ff74a1e580afdcc2da6a9b1e2992e0d86755d3bc1",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:9619eef62529bf41aa619c96be233ba17ffde621e7e4e800cd8c4644f939a9bc",
+        "input_paths": [
+          "README.md",
+          "data/catalog.json",
+          "docs/bomts-decision-public-readiness.md",
+          "docs/google-search-console.md",
+          "docs/manual/.review.json",
+          "docs/manual/index.html",
+          "docs/manual/website.html",
+          "project.policy.yaml",
+          "scripts/check.sh",
+          "site/about/index.html",
+          "site/contact/index.html",
+          "site/en/about/index.html",
+          "site/en/contact/index.html",
+          "site/en/index.html",
+          "site/en/privacy/index.html",
+          "site/en/product/index.html",
+          "site/en/terms/index.html",
+          "site/index.html",
+          "site/privacy/index.html",
+          "site/product/index.html",
+          "site/sitemap.xml",
+          "site/terms/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_inventory",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:48:58.583371+00:00",
+        "input_snapshot": {
+          "after": "sha256:9619eef62529bf41aa619c96be233ba17ffde621e7e4e800cd8c4644f939a9bc",
+          "before": "sha256:9619eef62529bf41aa619c96be233ba17ffde621e7e4e800cd8c4644f939a9bc"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/data_inventory_43d87d58cbaa.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/data_inventory_43d87d58cbaa.receipt.json",
+        "returncode": 0,
+        "run_id": "43d87d58cbaa",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "데이터 카탈로그: data/catalog.json\n자산 7개, 데이터 흔적 0개, 개인정보: indirect web_log, provider_log, audit_evidence; personal service_policy; sensitive message_data, service_backup\n  결과: 이상 없음\n{\n \"check\": \"data_inventory\",\n \"status\": \"PASS\",\n \"system\": \"bomts-main\",\n \"assets\": 7,\n \"uncovered\": [],\n \"problems\": [],\n \"warnings\": [],\n \"pii\": {\n  \"none\": [\n   \"system_config\"\n  ],\n  \"indirect\": [\n   \"web_log\",\n   \"provider_log\",\n   \"audit_evidence\"\n  ],\n  \"personal\": [\n   \"service_policy\"\n  ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory",
+      "recorded_at": "2026-10-11T09:48:58.587874+00:00",
+      "verification": "verified"
+    },
+    "data_stance": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "data_stance",
+        "computed_at": "2026-10-11T09:48:58.065195+00:00",
+        "file_count": 21,
+        "files": {
+          "README.md": "2c12484453b9c31960168492bf607abbaf5a0831230a8a8fbf07153a9efce7e5",
+          "docs/bomts-decision-public-readiness.md": "6fb80eca3c4d1b3560bc215f03ad49f364fd0c457bb2ea0f221bbe24a23c4276",
+          "docs/google-search-console.md": "de7c198c88fa7015f4778804dc2a3446b9c74c5746d10f6697af526b2cf9fd5b",
+          "docs/manual/.review.json": "f8d46d4d1d62d30cb543b9e5437599ffe4cb54398c0c39f158010b320536e310",
+          "docs/manual/index.html": "594b90e395e0f7cd864b4ab5121c04420635b56e9d696437e70ee11fdbec3f0c",
+          "docs/manual/website.html": "42ab6e6b19b2eb194e78947001d0f083f438efcc62ed9096ace87324d599f2f1",
+          "project.policy.yaml": "f0c7aa60c1675786317b5099146cc83ba1e6d6ce63f8da9ca1c166593c2a9bdf",
+          "scripts/check.sh": "ce5f5750be742684f776063ff74a1e580afdcc2da6a9b1e2992e0d86755d3bc1",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:4d5eedb3838a1d8b8b226f2ca2b1615edfb3e74209ff4559e627b3884e0906b5",
+        "input_paths": [
+          "README.md",
+          "docs/bomts-decision-public-readiness.md",
+          "docs/google-search-console.md",
+          "docs/manual/.review.json",
+          "docs/manual/index.html",
+          "docs/manual/website.html",
+          "project.policy.yaml",
+          "scripts/check.sh",
+          "site/about/index.html",
+          "site/contact/index.html",
+          "site/en/about/index.html",
+          "site/en/contact/index.html",
+          "site/en/index.html",
+          "site/en/privacy/index.html",
+          "site/en/product/index.html",
+          "site/en/terms/index.html",
+          "site/index.html",
+          "site/privacy/index.html",
+          "site/product/index.html",
+          "site/sitemap.xml",
+          "site/terms/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_stance",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:48:58.259618+00:00",
+        "input_snapshot": {
+          "after": "sha256:4d5eedb3838a1d8b8b226f2ca2b1615edfb3e74209ff4559e627b3884e0906b5",
+          "before": "sha256:4d5eedb3838a1d8b8b226f2ca2b1615edfb3e74209ff4559e627b3884e0906b5"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/data_stance_c6bab3e0cc2c.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/data_stance_c6bab3e0cc2c.receipt.json",
+        "returncode": 0,
+        "run_id": "c6bab3e0cc2c",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "son이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.  ref: https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\n저장소 흔적 0개 (ORM 모델·Prisma·마이그레이션·DB 파일·DB 컨테이너 없음)\n  결과: 이상 없음\n{\n \"check\": \"data_stance\",\n \"status\": \"PASS\",\n \"stance\": \"external\",\n \"reason\": \"bomts-main은 정적 사이트·운영 스크립트와 운영 로그만 보유한다. 업무 데이터 정본은 외부 서비스 저장소에 있다. dev-ai의 PostgreSQL·Qdrant 정본은 sungbeom78/dev-ai의 db/model.json이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.\",\n \"ref\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: ef\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance",
+      "recorded_at": "2026-10-11T09:48:58.264036+00:00",
+      "verification": "verified"
+    },
+    "encoding": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "encoding",
+        "computed_at": "2026-10-11T09:48:57.078926+00:00",
+        "file_count": 43,
+        "files": {
+          "docs/architecture.md": "474fef6a7f0cbfe177007d1550ba3c5590ac1a9a70391ddd7756a39dc5e8d9b8",
+          "docs/bomts-decision-public-readiness.md": "6fb80eca3c4d1b3560bc215f03ad49f364fd0c457bb2ea0f221bbe24a23c4276",
+          "docs/claude-startup-application.md": "523dce220f2b437c29ba6ed244494de4813d011f38d0b6aa27079e9464c9bb4e",
+          "docs/deployment.md": "23a875a820024b8030efb7c160f2d3ea2b2056c78eb1404cb24ee326d9566275",
+          "docs/dns.md": "9c3076662d83bb49a63a747332c8c053afc5489a4c69ae016df16dec406763a7",
+          "docs/google-search-console.md": "de7c198c88fa7015f4778804dc2a3446b9c74c5746d10f6697af526b2cf9fd5b",
+          "docs/mail-operations.md": "828164481557d81431b33750aa98c0a5f78af586bd2bbe8bf1d65bbb3fa62552",
+          "docs/mail-stack-comparison.md": "e30c4795f72f439c877f3f6c764f82cfd2ab9542413c694fe71091d1be144d17",
+          "docs/manual/.review.json": "f8d46d4d1d62d30cb543b9e5437599ffe4cb54398c0c39f158010b320536e310",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+          "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "594b90e395e0f7cd864b4ab5121c04420635b56e9d696437e70ee11fdbec3f0c",
+          "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+          "docs/manual/mail.html": "2f291e7dffd3991e6d38be25c9e7fadf81c9e4e76acc9c490dfc69277e314e3c",
+          "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+          "docs/manual/website.html": "42ab6e6b19b2eb194e78947001d0f083f438efcc62ed9096ace87324d599f2f1",
+          "docs/public-repository-security.md": "fdebd9e021a01b751e9395cad72bb0ad33cda338e7a0f50f9d8222b18e9ef0e7",
+          "docs/security.md": "bba918ee4466e5522d736957407a5eb05951d7ff48fee5b753b4764358279e63",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "0236b3ff61b0a00fa7bb68944a849de5346c96a0933b5831fd9dbb0fff1a9f21",
+          "mail/provider-onboarding.md": "e50baeab44a0ad3c4f74aa9b9817db4730958d42bd641bb1eeb3bd0d054bf309",
+          "scripts/check.sh": "ce5f5750be742684f776063ff74a1e580afdcc2da6a9b1e2992e0d86755d3bc1",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/manage/index.html": "be2c0492ce354999821f35c0aa265aadbbc4794878186f93ce85dde083deb846",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:212fcbce4d15127fec282ba4ad94aaddc0e121060af7f4a76e44e9fd05c20afa",
+        "input_paths": [
+          "docs",
+          "mail",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "encoding",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts,mail,docs",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:48:57.155961+00:00",
+        "input_snapshot": {
+          "after": "sha256:212fcbce4d15127fec282ba4ad94aaddc0e121060af7f4a76e44e9fd05c20afa",
+          "before": "sha256:212fcbce4d15127fec282ba4ad94aaddc0e121060af7f4a76e44e9fd05c20afa"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/encoding_0c40fded5ae8.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/encoding_0c40fded5ae8.receipt.json",
+        "returncode": 0,
+        "run_id": "0c40fded5ae8",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 41,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (41)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: {\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 41,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (41)",
+      "recorded_at": "2026-10-11T09:48:57.164687+00:00",
+      "verification": "verified"
+    },
+    "github_metadata": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "github_metadata",
+        "computed_at": "2026-10-11T09:44:42.773036+00:00",
+        "file_count": 1,
+        "files": {
+          "docs/bomts-decision-public-readiness.md": "6fb80eca3c4d1b3560bc215f03ad49f364fd0c457bb2ea0f221bbe24a23c4276"
+        },
+        "fingerprint": "sha256:fdb8c38ec8cee1a3453a1c8d7e0c8c4e55c1b956fdc67ac0ec7449d6bb120b01",
+        "input_paths": [
+          "docs/bomts-decision-public-readiness.md"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "python3",
+          "/tmp/check_bomts_decision_metadata.py"
+        ],
+        "executed_at": "2026-10-11T09:44:42.808252+00:00",
+        "input_snapshot": {
+          "after": "sha256:fdb8c38ec8cee1a3453a1c8d7e0c8c4e55c1b956fdc67ac0ec7449d6bb120b01",
+          "before": "sha256:fdb8c38ec8cee1a3453a1c8d7e0c8c4e55c1b956fdc67ac0ec7449d6bb120b01"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/github_metadata_fd4e2c1cf13b.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/github_metadata_fd4e2c1cf13b.receipt.json",
+        "returncode": 0,
+        "run_id": "fd4e2c1cf13b",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS: repository identity, April 1 commit, Private audit record, and PUBLIC_SAFE=false verified\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 3,
+      "input_independent": false,
+      "reason_code": "PASS: PASS: repository identity, April 1 commit, Private audit record, and PUBLIC_SAFE=false verified",
+      "recorded_at": "2026-10-11T09:44:42.808972+00:00",
+      "verification": "verified"
+    },
+    "identifier_audit": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "identifier_audit",
+        "computed_at": "2026-10-11T09:48:57.197648+00:00",
+        "file_count": 12,
+        "files": {
+          "glossary/dictionary/areas.json": "d53d9f69b6e35f03257adaad3e524f2b36e66a0d0940666e703268ebfe10bd2c",
+          "glossary/dictionary/banned.json": "dd202b9aeda9c61cf59001295c3813aaa84a229308dbbaafbc3ede5129e866fd",
+          "glossary/dictionary/compounds.json": "fc0c5d5688bb7cf289c23443fc24a416ff97ca6340686c8b4730e99d503280ac",
+          "glossary/dictionary/drafts.json": "c59effa1d6f42d1426ed919a5f02643229e23ee018e5252a68acc9c18c53a35b",
+          "glossary/dictionary/pending_words.json": "e52f0d0a7eb548de632aa2282b5ce1b5c21bbfb3433220a77dc086ffd047fe1e",
+          "glossary/dictionary/tech_abbreviations.json": "bcbd3292e0affd52abe551ee8c3dc0145853f7b57b28c587037b7d7351379d28",
+          "glossary/dictionary/terms.json": "a5d5b4a0c766128f2c4a3d5b679cbf107f66f57088af6f3d2b9778368368e142",
+          "glossary/dictionary/terms_legacy.json": "b04da63a1213456df7552364c2e10945d4531d6c73e5a7090576bb537e6470ac",
+          "glossary/dictionary/unit_tokens.json": "f5b12bc6445c04cd6ceca6b78f02047c0e09f95b3a4631615dfb3b0b6c65b48a",
+          "glossary/dictionary/words.json": "ec18782a7a5f641bcd3bb446957f89f205bc235fbc62a57d6faa8fa20a211032",
+          "glossary/dictionary/words__derived_terms.json": "e5fd7aa65fb825e0bce9c786c3769f6ca699437e8c266b064538ba545ee993bc",
+          "scripts/check.sh": "ce5f5750be742684f776063ff74a1e580afdcc2da6a9b1e2992e0d86755d3bc1"
+        },
+        "fingerprint": "sha256:fd63a3da6e9384d48819fdc8ec152aaab43f12a5c18b72ce76fca8931e379c65",
+        "input_paths": [
+          "glossary/dictionary",
+          "scripts"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "identifier_audit",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "scripts,glossary/dictionary",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:48:57.456767+00:00",
+        "input_snapshot": {
+          "after": "sha256:fd63a3da6e9384d48819fdc8ec152aaab43f12a5c18b72ce76fca8931e379c65",
+          "before": "sha256:fd63a3da6e9384d48819fdc8ec152aaab43f12a5c18b72ce76fca8931e379c65"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/identifier_audit_503ba4f7e504.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/identifier_audit_503ba4f7e504.receipt.json",
+        "returncode": 0,
+        "run_id": "503ba4f7e504",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"identifier_audit\",\n \"status\": \"PASS\",\n \"baseline_commit\": \"17207e6d89d87effb2176fe2dc83eb97a2aa6014\",\n \"glossary_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"pinned_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"enforcement\": {\n  \"new_or_renamed\": \"strict\",\n  \"legacy\": \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit",
+      "recorded_at": "2026-10-11T09:48:57.466660+00:00",
+      "verification": "verified"
+    },
+    "lint": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "lint",
+        "computed_at": "2026-10-11T09:48:56.768708+00:00",
+        "file_count": 19,
+        "files": {
+          "scripts/check.sh": "ce5f5750be742684f776063ff74a1e580afdcc2da6a9b1e2992e0d86755d3bc1",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/manage/index.html": "be2c0492ce354999821f35c0aa265aadbbc4794878186f93ce85dde083deb846",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:54e1b7e08eb29ebee335c6b6f05cee5371244489eb5066f41c6b0ba0de55e4d4",
+        "input_paths": [
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "syntax",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:48:56.869469+00:00",
+        "input_snapshot": {
+          "after": "sha256:54e1b7e08eb29ebee335c6b6f05cee5371244489eb5066f41c6b0ba0de55e4d4",
+          "before": "sha256:54e1b7e08eb29ebee335c6b6f05cee5371244489eb5066f41c6b0ba0de55e4d4"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/lint_60012d460026.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/lint_60012d460026.receipt.json",
+        "returncode": 0,
+        "run_id": "60012d460026",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 14,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (14)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: {\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 14,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (14)",
+      "recorded_at": "2026-10-11T09:48:56.873222+00:00",
+      "verification": "verified"
+    },
+    "prior_art": {
+      "detail": {
+        "artifact": "dev-process/task/20261011-startup-site-final-polish/artifact/prior_art_report.json",
+        "findings": 1,
+        "frozen_overlap": 0
+      },
+      "evidence_record": null,
+      "execution": null,
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "verdict=caution",
+      "recorded_at": "2026-10-11T09:34:06.374215+00:00",
+      "verification": "reported_only"
+    },
+    "prior_art_cli": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "prior_art_cli",
+        "computed_at": "2026-10-11T09:34:06.169826+00:00",
+        "file_count": 16,
+        "files": {
+          "CHANGELOG.md": "e24a6a5dddc7608ed3520b66ea873518e74713bc9d3b995b1fb4ee54726dc46b",
+          "README.md": "d5ac10e8a2ad49dfb1c5e43c20f6090a92a5c1fab75ba4c4c43ae66403954266",
+          "site/about/index.html": "c764385255d3c8c83ecacb881b058821059583e2bbcec1839ddfb9eba8d9632f",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "4f3f5e8f0d57dea586213a6c9c5ca527d4c83880a332555aada8733fc9b9d94e",
+          "site/en/about/index.html": "601953c0536c5eb0760f8fc94ee27da93710df704d754f922a715882ecdb03ba",
+          "site/en/index.html": "df146d8ce6e08725405d84f7f881c43033136f7692ee317db67b8f4f87efcfd5",
+          "site/index.html": "e27f0ac4ddd5c660e42a503a2f0c06f8f40df60d5faa7a01d7fb3a6b5c77c60a",
+          "site/manage/index.html": "be2c0492ce354999821f35c0aa265aadbbc4794878186f93ce85dde083deb846",
+          "site/privacy/index.html": "e40660e32d2b2c8ad01e878aced4c555dde20862a4e4783de44d95abf7cbbfb3",
+          "site/product/index.html": "9ee0064e96e92c1b9d85e39bdb0886638160268407238ed80a7bd619df44590d",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "c9f9e74be2c1960dfcf17d098db58349a9e859386a87fdda25d63d3a24b34560",
+          "site/terms/index.html": "a9e5fcb9cb5d721607769dad7808b36cbcca40d89e153911f82b58c7016cf45d"
+        },
+        "fingerprint": "sha256:e089f288a554282f04fd35f9ab079b37b86f6ff54aca4c54dc0c2a08d799bddb",
+        "input_paths": [
+          "CHANGELOG.md",
+          "README.md",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          ".venv/bin/python",
+          ".agents/skills/sk-mgm-task-state/scripts/run.py",
+          "prior-art",
+          "--task-id",
+          "20261011-startup-site-final-polish",
+          "--keywords",
+          "Claude Startups,About,Timeline,English pages,SEO,sitemap,privacy,terms,security audit"
+        ],
+        "executed_at": "2026-10-11T09:34:06.418351+00:00",
+        "input_snapshot": {
+          "after": "sha256:e089f288a554282f04fd35f9ab079b37b86f6ff54aca4c54dc0c2a08d799bddb",
+          "before": "sha256:e089f288a554282f04fd35f9ab079b37b86f6ff54aca4c54dc0c2a08d799bddb"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/prior_art_cli_3165e3c4d4d3.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/prior_art_cli_3165e3c4d4d3.receipt.json",
+        "returncode": 0,
+        "run_id": "3165e3c4d4d3",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "ocs: Founder·설립 시점·개발 Timeline과 Public 저장소 시작일을 공개 사이트에 명확히 표시 (task 20261011-public-startup-verifiability)\",\n        \"relation\": \"related\",\n        \"source\": \"CHANGELOG.md\"\n      }\n    ],\n    \"frozen_overlap\": [],\n    \"keywords\": [\n      \"Claude Startups\",\n      \"About\",\n      \"Timeline\",\n      \"English pages\",\n      \"SEO\",\n      \"sitemap\",\n      \"privacy\",\n      \"terms\",\n      \"security audit\"\n    ],\n    \"sources\": {\n      \"change_log\": \"CHANGELOG.md\",\n      \"module_index\": null,\n      \"sot\": null\n    },\n    \"task_id\": \"20261011-startup-site-final-polish\",\n    \"verdict\": \"caution\"\n  },\n  \"evidence\": {},\n  \"gate_outcome\": \"allow\",\n  \"generated_at\": \"2026-10-11T09:34:06.393017+00:00\",\n  \"reason_code\": \"verdict=caution\",\n  \"task_id\": \"20261011-startup-site-final-polish\",\n  \"version\": \"1\"\n}\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: \"generated_at\": \"2026-10-11T09:34:06.393017+00:00\",\n  \"reason_code\": \"verdict=caution\",\n  \"task_id\": \"20261011-startup-site-final-polish\",\n  \"version\": \"1\"\n}",
+      "recorded_at": "2026-10-11T09:34:06.421494+00:00",
+      "verification": "verified"
+    },
+    "qa_quick": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "qa_quick",
+        "computed_at": "2026-10-11T09:48:57.498105+00:00",
+        "file_count": 36,
+        "files": {
+          "AGENTS.md": "430ee5771d2d563639d2e4b01b5aab6c6987a1c8650716bf52b4cbdcf9f65ff1",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/manual/.review.json": "f8d46d4d1d62d30cb543b9e5437599ffe4cb54398c0c39f158010b320536e310",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+          "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "594b90e395e0f7cd864b4ab5121c04420635b56e9d696437e70ee11fdbec3f0c",
+          "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+          "docs/manual/mail.html": "2f291e7dffd3991e6d38be25c9e7fadf81c9e4e76acc9c490dfc69277e314e3c",
+          "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+          "docs/manual/website.html": "42ab6e6b19b2eb194e78947001d0f083f438efcc62ed9096ace87324d599f2f1",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "0236b3ff61b0a00fa7bb68944a849de5346c96a0933b5831fd9dbb0fff1a9f21",
+          "mail/provider-onboarding.md": "e50baeab44a0ad3c4f74aa9b9817db4730958d42bd641bb1eeb3bd0d054bf309",
+          "nginx/default.conf": "b3406d33efd99379cb9346a0b93ec8becf451d3863640965125bb6a0b64f3a09",
+          "scripts/check.sh": "ce5f5750be742684f776063ff74a1e580afdcc2da6a9b1e2992e0d86755d3bc1",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/manage/index.html": "be2c0492ce354999821f35c0aa265aadbbc4794878186f93ce85dde083deb846",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:a5723b6a4db28f9c60127138308989b26882840cfd3e93fc6e1c9971360ac05b",
+        "input_paths": [
+          "AGENTS.md",
+          "docker-compose.yml",
+          "docs/manual",
+          "mail",
+          "nginx",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-11T09:48:57.650749+00:00",
+        "input_snapshot": {
+          "after": "sha256:a5723b6a4db28f9c60127138308989b26882840cfd3e93fc6e1c9971360ac05b",
+          "before": "sha256:a5723b6a4db28f9c60127138308989b26882840cfd3e93fc6e1c9971360ac05b"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/qa_quick_81117e8120d9.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/qa_quick_81117e8120d9.receipt.json",
+        "returncode": 0,
+        "run_id": "81117e8120d9",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-11T09:48:57.658223+00:00",
+      "verification": "verified"
+    },
+    "unit_or_regression": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "unit_or_regression",
+        "computed_at": "2026-10-11T09:48:56.901922+00:00",
+        "file_count": 36,
+        "files": {
+          "AGENTS.md": "430ee5771d2d563639d2e4b01b5aab6c6987a1c8650716bf52b4cbdcf9f65ff1",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/manual/.review.json": "f8d46d4d1d62d30cb543b9e5437599ffe4cb54398c0c39f158010b320536e310",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+          "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "594b90e395e0f7cd864b4ab5121c04420635b56e9d696437e70ee11fdbec3f0c",
+          "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+          "docs/manual/mail.html": "2f291e7dffd3991e6d38be25c9e7fadf81c9e4e76acc9c490dfc69277e314e3c",
+          "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+          "docs/manual/website.html": "42ab6e6b19b2eb194e78947001d0f083f438efcc62ed9096ace87324d599f2f1",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "0236b3ff61b0a00fa7bb68944a849de5346c96a0933b5831fd9dbb0fff1a9f21",
+          "mail/provider-onboarding.md": "e50baeab44a0ad3c4f74aa9b9817db4730958d42bd641bb1eeb3bd0d054bf309",
+          "nginx/default.conf": "b3406d33efd99379cb9346a0b93ec8becf451d3863640965125bb6a0b64f3a09",
+          "scripts/check.sh": "ce5f5750be742684f776063ff74a1e580afdcc2da6a9b1e2992e0d86755d3bc1",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/manage/index.html": "be2c0492ce354999821f35c0aa265aadbbc4794878186f93ce85dde083deb846",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:a5723b6a4db28f9c60127138308989b26882840cfd3e93fc6e1c9971360ac05b",
+        "input_paths": [
+          "AGENTS.md",
+          "docker-compose.yml",
+          "docs/manual",
+          "mail",
+          "nginx",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-11T09:48:57.040321+00:00",
+        "input_snapshot": {
+          "after": "sha256:a5723b6a4db28f9c60127138308989b26882840cfd3e93fc6e1c9971360ac05b",
+          "before": "sha256:a5723b6a4db28f9c60127138308989b26882840cfd3e93fc6e1c9971360ac05b"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/unit_or_regression_f9f88f1a2384.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/unit_or_regression_f9f88f1a2384.receipt.json",
+        "returncode": 0,
+        "run_id": "f9f88f1a2384",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-11T09:48:57.046946+00:00",
+      "verification": "verified"
+    },
+    "user_manual": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "user_manual",
+        "computed_at": "2026-10-11T09:48:57.712778+00:00",
+        "file_count": 28,
+        "files": {
+          "README.md": "2c12484453b9c31960168492bf607abbaf5a0831230a8a8fbf07153a9efce7e5",
+          "docs/bomts-decision-public-readiness.md": "6fb80eca3c4d1b3560bc215f03ad49f364fd0c457bb2ea0f221bbe24a23c4276",
+          "docs/google-search-console.md": "de7c198c88fa7015f4778804dc2a3446b9c74c5746d10f6697af526b2cf9fd5b",
+          "docs/manual/.review.json": "f8d46d4d1d62d30cb543b9e5437599ffe4cb54398c0c39f158010b320536e310",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
+          "docs/manual/architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "594b90e395e0f7cd864b4ab5121c04420635b56e9d696437e70ee11fdbec3f0c",
+          "docs/manual/local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
+          "docs/manual/mail.html": "2f291e7dffd3991e6d38be25c9e7fadf81c9e4e76acc9c490dfc69277e314e3c",
+          "docs/manual/tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
+          "docs/manual/website.html": "42ab6e6b19b2eb194e78947001d0f083f438efcc62ed9096ace87324d599f2f1",
+          "scripts/check.sh": "ce5f5750be742684f776063ff74a1e580afdcc2da6a9b1e2992e0d86755d3bc1",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:62b7a1c629837e6eb9b0b3056070cf7f590dcb362f31c2ceccca3683afc88340",
+        "input_paths": [
+          "README.md",
+          "docs/bomts-decision-public-readiness.md",
+          "docs/google-search-console.md",
+          "docs/manual",
+          "scripts/check.sh",
+          "site/about/index.html",
+          "site/contact/index.html",
+          "site/en/about/index.html",
+          "site/en/contact/index.html",
+          "site/en/index.html",
+          "site/en/privacy/index.html",
+          "site/en/product/index.html",
+          "site/en/terms/index.html",
+          "site/index.html",
+          "site/privacy/index.html",
+          "site/product/index.html",
+          "site/sitemap.xml",
+          "site/terms/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "user_manual",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261011-startup-site-final-polish"
+        ],
+        "executed_at": "2026-10-11T09:48:58.010235+00:00",
+        "input_snapshot": {
+          "after": "sha256:62b7a1c629837e6eb9b0b3056070cf7f590dcb362f31c2ceccca3683afc88340",
+          "before": "sha256:62b7a1c629837e6eb9b0b3056070cf7f590dcb362f31c2ceccca3683afc88340"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/user_manual_eb9318847faf.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261011-startup-site-final-polish/evidence/user_manual_eb9318847faf.receipt.json",
+        "returncode": 0,
+        "run_id": "eb9318847faf",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "  \"name\": \"mail\",\n   \"title\": \"BOMTS 메일 운영\",\n   \"role\": \"feature\",\n   \"slides\": 15\n  },\n  {\n   \"file\": \"docs/manual/tunnel.html\",\n   \"name\": \"tunnel\",\n   \"title\": \"BOMTS Cloudflare Tunnel\",\n   \"role\": \"feature\",\n   \"slides\": 8\n  },\n  {\n   \"file\": \"docs/manual/website.html\",\n   \"name\": \"website\",\n   \"title\": \"BOMTS 웹사이트\",\n   \"role\": \"feature\",\n   \"slides\": 9\n  },\n  {\n   \"file\": \"docs/manual/architecture.html\",\n   \"name\": \"architecture\",\n   \"title\": \"BOMTS 시스템 구성\",\n   \"role\": \"architecture\",\n   \"slides\": 10\n  },\n  {\n   \"file\": \"docs/manual/admin.html\",\n   \"name\": \"admin\",\n   \"title\": \"BOMTS 운영·인수인계\",\n   \"role\": \"admin\",\n   \"slides\": 16\n  }\n ],\n \"slides\": 73,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/website.html\"\n ]\n}\nPASS: user_manual (7)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 3,
+      "input_independent": false,
+      "reason_code": "PASS: 6\n  }\n ],\n \"slides\": 73,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/website.html\"\n ]\n}\nPASS: user_manual (7)",
+      "recorded_at": "2026-10-11T09:48:58.015687+00:00",
+      "verification": "verified"
+    }
+  },
+  "status": "done",
+  "task_id": "20261011-startup-site-final-polish",
+  "updated_at": "2026-10-11T09:52:45.915733+00:00",
+  "work_type": "code"
+}

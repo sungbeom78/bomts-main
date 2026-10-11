@@ -1,0 +1,35 @@
+{
+  "task_id": "20261011-startup-site-final-polish",
+  "keywords": [
+    "Claude Startups",
+    "About",
+    "Timeline",
+    "English pages",
+    "SEO",
+    "sitemap",
+    "privacy",
+    "terms",
+    "security audit"
+  ],
+  "files": [],
+  "days": 30,
+  "checked_at": "2026-10-11T09:34:06.373746+00:00",
+  "sources": {
+    "change_log": "CHANGELOG.md",
+    "sot": null,
+    "module_index": null
+  },
+  "findings": [
+    {
+      "source": "CHANGELOG.md",
+      "line": "- 2026-10-11 docs: Founder·설립 시점·개발 Timeline과 Public 저장소 시작일을 공개 사이트에 명확히 표시 (task 20261011-public-startup-verifiability)",
+      "keywords": [
+        "Timeline"
+      ],
+      "relation": "related"
+    }
+  ],
+  "frozen_overlap": [],
+  "active_task_overlap": [],
+  "verdict": "caution"
+}
