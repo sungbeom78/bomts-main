@@ -1,25 +1,25 @@
 {
- "reviewed_at": "2026-10-11T06:40:04.879198+00:00",
- "pages": 71,
+ "reviewed_at": "2026-10-11T08:19:53.890037+00:00",
+ "pages": 72,
  "files": {
   "admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
   "architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
-  "index.html": "a094853f6e8bee1ddda3e83e2b2a9904fc7556200f3a4f80498c60bf51993e0b",
+  "index.html": "613cd2ecc9cb5223ea6af06b2ca5cb0ae9d9dd88deb7c6252042a64ad7ef25e1",
   "local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
   "mail.html": "2f291e7dffd3991e6d38be25c9e7fadf81c9e4e76acc9c490dfc69277e314e3c",
   "tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
-  "website.html": "ab4ee4012e54d736caaafb047458bbb7b6b407d030f852a56451a0778affd313",
+  "website.html": "25a726fe03b9aca87252238a11439e36168d0dcfc1962b950e958e6cc24db096",
   "assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
   "assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5"
  },
  "overflow": [],
  "sheets": [
-  "dist/manual-review-20261011-mail-ai-infra/index.png",
-  "dist/manual-review-20261011-mail-ai-infra/local-manual.png",
-  "dist/manual-review-20261011-mail-ai-infra/mail.png",
-  "dist/manual-review-20261011-mail-ai-infra/tunnel.png",
-  "dist/manual-review-20261011-mail-ai-infra/website.png",
-  "dist/manual-review-20261011-mail-ai-infra/architecture.png",
-  "dist/manual-review-20261011-mail-ai-infra/admin.png"
+  "dist/manual-review/index.png",
+  "dist/manual-review/local-manual.png",
+  "dist/manual-review/mail.png",
+  "dist/manual-review/tunnel.png",
+  "dist/manual-review/website.png",
+  "dist/manual-review/architecture.png",
+  "dist/manual-review/admin.png"
  ]
 }

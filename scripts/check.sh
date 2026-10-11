@@ -3,6 +3,7 @@ set -eu
 
 test -f site/index.html
 test -f site/en/index.html
+test -f site/en/about/index.html
 test -f site/privacy/index.html
 test -f site/terms/index.html
 test -f site/robots.txt
@@ -16,7 +17,7 @@ test -f docs/manual/admin.html
 sh -n scripts/check.sh
 sh -n dev-process/local/scripts/check-framework-sync.sh
 
-for page in site/index.html site/en/index.html site/about/index.html site/product/index.html site/contact/index.html site/privacy/index.html site/terms/index.html; do
+for page in site/index.html site/en/index.html site/en/about/index.html site/about/index.html site/product/index.html site/contact/index.html site/privacy/index.html site/terms/index.html; do
   grep -q '<meta name="viewport"' "$page"
   grep -q 'BOMTS' "$page"
 done
@@ -24,5 +25,9 @@ done
 grep -q 'founder@bomts.net' site/index.html
 grep -q 'founder@bomts.net' site/en/index.html
 grep -q 'https://www.bomts.net/en/' site/sitemap.xml
+grep -q 'https://www.bomts.net/en/about/' site/sitemap.xml
+grep -q '2026년 10월 9일' site/about/index.html
+grep -q 'October 9, 2026' site/en/about/index.html
+grep -q 'April 2026' README.md
 
 docker compose config --quiet

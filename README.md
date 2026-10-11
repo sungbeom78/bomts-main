@@ -1,12 +1,19 @@
-# BOMTS public website
+# BOMTS
 
-This repository contains the static website for BOMTS. It includes public product
-content, a logical architecture description, local development configuration, and
-non-secret examples.
+BOMTS is a bootstrapped, early-stage AI-assisted decision-support project founded
+in April 2026 in South Korea by Sungbeom Ahn. Development began with private
+prototypes in March 2026. This public repository was intentionally started with a
+new, sanitized history on October 9, 2026; that public release date is not the
+beginning of the project.
 
-Production infrastructure, host inventory, edge routing, mail infrastructure, firewall rules,
-backup locations, recovery procedures, and raw operational evidence are maintained in
-the private `bomts-infra` repository.
+- Website: [https://www.bomts.net/](https://www.bomts.net/)
+- Founder: Sungbeom Ahn (안숭범)
+- Public contact: [founder@bomts.net](mailto:founder@bomts.net)
+
+This repository contains the public static website, product documentation, logical
+architecture, local development configuration, and non-secret examples. Production
+credentials, host inventory, routing details, backup locations, recovery procedures,
+and raw operational evidence are maintained outside the public repository.
 
 ## Local development
 
