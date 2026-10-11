@@ -6,9 +6,10 @@
 <div class="manage-grid">
 <a class="manage-card" href="/manual/"><small>DOCUMENTATION</small><strong>운영 매뉴얼</strong><span>웹·터널·메일·시스템 구성과 장애 대응</span></a>
 <a class="manage-card" href="/manual/admin.html"><small>RUNBOOK</small><strong>관리 안내</strong><span>배포·로그·백업·인수인계 절차</span></a>
-<a class="manage-card" href="/webmail/"><small>ROUNDCUBE</small><strong>메일 확인·발송</strong><span>계정별 받은편지함과 메일 작성</span></a>
-<a class="manage-card" href="/admin/"><small>MAILU ADMIN</small><strong>계정·가져오기·자동 전달</strong><span>Mailbox, Fetchmail, 전달 대상 목록 관리</span></a>
+<a class="manage-card" href="/webmail/"><small>ROUNDCUBE</small><strong>메일 확인·발송</strong><span>직접 HTTPS로 전환 · 계정별 받은편지함과 메일 작성</span></a>
+<a class="manage-card" href="/admin/"><small>MAILU ADMIN</small><strong>계정·가져오기·자동 전달</strong><span>직접 HTTPS로 전환 · Mailbox, Fetchmail, 전달 목록 관리</span></a>
 </div>
+<p class="notice">메일 링크는 HTTP 관리 포털에서 인증하지 않고 Mailu의 직접 HTTPS 포트로 이동합니다. 주소에 <code>:3001</code>이 남아 있으면 사용하지 않습니다.</p>
 <h2>계정별 자동 전달</h2><ol class="steps"><li><b>메일 관리</b>에서 대상 사용자를 엽니다.</li><li><b>Auto-forward</b>를 켜고 Destination에 여러 주소를 쉼표로 입력합니다.</li><li>Mailbox에도 남기려면 <b>Keep a copy of the emails</b>를 켭니다.</li><li>저장 후 외부에서 시험 메일 한 건을 보내 원본 Mailbox와 전달 대상 모두를 확인합니다.</li></ol>
 <h2>Naver 등 외부 계정 가져오기</h2><ol class="steps"><li>외부 서비스에서 POP3/IMAP 사용과 앱 비밀번호를 활성화합니다.</li><li><b>메일 관리 → Fetched accounts</b>에서 서버·포트·TLS·사용자 이름을 등록합니다.</li><li>가져온 메일을 받을 BOMTS 사용자를 지정하고 원본 서버 보존 여부를 선택합니다.</li></ol>
 <h2>외부 메일 앱 연결</h2><p>서버는 <code>mail.bomts.net</code>, 사용자 이름은 전체 이메일 주소입니다. IMAP 993, POP3 995, SMTP 465(SSL/TLS) 또는 587(STARTTLS)을 사용합니다.</p>

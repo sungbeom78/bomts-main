@@ -9,22 +9,18 @@ mailboxes:
   - address: admin@bomts.net
     purpose: infrastructure notifications
     access: administrator-only
-  - address: accounts@bomts.net
-    purpose: external service registrations
-    access: restricted
-  - address: ott@bomts.net
-    purpose: shared-service verification mail
-    access: shared-service-users-only
+  - address: ott.disney@bomts.net
+    purpose: Disney service registration and verification mail
+    access: separate-user-only
+  - address: ott.netflix@bomts.net
+    purpose: Netflix service registration and verification mail
+    access: separate-user-only
 
 aliases:
   - address: contact@bomts.net
     destination: founder@bomts.net
-  - address: disney@bomts.net
-    destination: ott@bomts.net
-  - address: netflix@bomts.net
-    destination: ott@bomts.net
-  - address: prime@bomts.net
-    destination: ott@bomts.net
+  - address: abuse@bomts.net
+    destination: admin@bomts.net
 
 controls:
   founder_password_shared: false

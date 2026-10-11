@@ -56,7 +56,7 @@ Then perform the Gmail, Naver, and Outlook inbound/outbound matrix described in 
 
 ## 7. OTT isolation
 
-Sign out of founder Webmail, sign in as the OTT user, and verify that only the OTT mailbox is visible. Test an alias such as `disney@bomts.net`, then log out. Do not share the founder credential.
+Sign out of founder Webmail, sign in as the OTT user, and verify that only the OTT mailbox is visible. Test the independent mailbox `ott.disney@bomts.net`, then log out. Do not share the founder credential.
 
 ## Rollback
 

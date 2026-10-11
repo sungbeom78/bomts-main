@@ -23,8 +23,8 @@
 </section>
 <section class="slide" data-kind="config" data-title="주소마다 독립 로그인·quota·메일함을 사용합니다">
   <p class="kicker">계정 격리</p><h2>주소마다 독립 로그인·quota·메일함을 사용합니다</h2>
-  <div class="body"><table class="grid"><tr><th>주소</th><th>권한</th><th>검증</th></tr><tr><td><code>founder@bomts.net</code></td><td>일반 사용자 · 1GB</td><td>Gmail 외부 수신 확인</td></tr><tr><td><code>disney@bomts.net</code></td><td>일반 사용자 · 1GB</td><td>고유 메시지만 IMAP 조회</td></tr><tr><td><code>netflix@bomts.net</code></td><td>일반 사용자 · 1GB</td><td>고유 메시지만 IMAP 조회</td></tr><tr><td><code>admin@bomts.net</code></td><td>관리자</td><td>일반 메일 용도와 분리</td></tr></table><div class="callout">초기 비밀번호는 Git 밖의 제한된 파일에 있으며 첫 로그인 뒤 사용자별로 바꿉니다. Catch-all은 사용하지 않습니다.</div></div>
-  <aside class="notes">founder, disney, netflix는 alias가 아니라 실제 사용자입니다. 세 사용자는 각각 고유 암호 hash, quota, Maildir을 가지며 교차 로그인이나 교차 조회가 되지 않습니다. 로컬 Submission으로 각 사용자에게 고유 제목을 전달한 뒤 IMAP에서 자신에게 온 제목만 보이는 것으로 격리를 확인했습니다.</aside>
+  <div class="body"><table class="grid"><tr><th>주소</th><th>권한</th><th>검증</th></tr><tr><td><code>founder@bomts.net</code></td><td>일반 사용자 · 1GB</td><td>Gmail 외부 수신 확인</td></tr><tr><td><code>ott.disney@bomts.net</code></td><td>일반 사용자 · 1GB</td><td>고유 메시지만 IMAP 조회</td></tr><tr><td><code>ott.netflix@bomts.net</code></td><td>일반 사용자 · 1GB</td><td>고유 메시지만 IMAP 조회</td></tr><tr><td><code>admin@bomts.net</code></td><td>관리자</td><td>일반 메일 용도와 분리</td></tr></table><div class="callout">비밀번호는 Git 밖에서 관리합니다. 오작동한 브라우저 유출 횟수 검사는 비활성화했고 운영자가 고유한 무작위 비밀번호와 교체 주기를 관리합니다. Catch-all은 사용하지 않습니다.</div></div>
+  <aside class="notes">founder, ott.disney, ott.netflix는 alias가 아니라 실제 사용자입니다. 세 사용자는 각각 고유 암호 hash, quota, Maildir을 가지며 교차 로그인이나 교차 조회가 되지 않습니다. 로컬 Submission으로 각 사용자에게 고유 제목을 전달한 뒤 IMAP에서 자신에게 온 제목만 보이는 것으로 격리를 확인했습니다.</aside>
 </section>
 <section class="slide" data-kind="usage-step" data-title="메일 클라이언트는 암호화 포트로 연결합니다">
   <p class="kicker">사용 · 1 / 3</p><h2>메일 클라이언트는 암호화 포트로 연결합니다</h2>
@@ -33,8 +33,8 @@
 </section>
 <section class="slide" data-kind="usage-step" data-title="Webmail은 Roundcube에서 사용자별로 로그인합니다">
   <p class="kicker">사용 · 2 / 3</p><h2>Webmail은 Roundcube에서 사용자별로 로그인합니다</h2>
-  <div class="body"><div class="screen"><div class="top"><span class="t">BOMTS Mail</span><span class="tab on">Webmail</span><span class="tab">Admin</span></div><div class="in"><div class="field"><b>URL</b><span>내부 홈페이지 → 관리 → 메일 확인·발송</span></div><div class="field"><b>User</b><span>전체 이메일 주소</span></div><div class="field"><b>Password</b><span>사용자 고유 비밀번호</span></div><div class="field"><b>Logout</b><span>공용 장비에서 반드시 실행</span></div></div></div><div class="callout warn">내부 홈페이지의 관리 포털이 Webmail과 관리자 화면을 내부 요청에만 연결합니다. 외부 요청은 404입니다.</div></div>
-  <aside class="notes">Roundcube는 동일 Mailu 인증을 사용하므로 사용자는 자신의 Mailbox만 봅니다. LAN에서는 화면과 redirect를 확인했으며 공인 인증서도 적용했습니다. webmail.bomts.net의 외부 접속은 공유기 443 전달과 공개 DNS 설정 뒤 최종 확인해야 합니다. 관리자 경로를 일반 인터넷에 그대로 노출하지 않습니다.</aside>
+  <div class="body"><div class="screen"><div class="top"><span class="t">BOMTS Mail</span><span class="tab on">Webmail</span><span class="tab">Admin</span></div><div class="in"><div class="field"><b>URL</b><span>내부 홈페이지 → 관리 → 직접 HTTPS(443)</span></div><div class="field"><b>User</b><span>전체 이메일 주소</span></div><div class="field"><b>Password</b><span>사용자 고유 비밀번호</span></div><div class="field"><b>Logout</b><span>공용 장비에서 반드시 실행</span></div></div></div><div class="callout warn">메일 링크는 인증 전에 직접 HTTPS로 전환됩니다. 로그인 주소에 <code>:3001</code>이 남아 있으면 사용하지 않습니다.</div></div>
+  <aside class="notes">Roundcube는 동일 Mailu 인증을 사용하므로 사용자는 자신의 Mailbox만 봅니다. LAN에서는 HTTP 관리 포털에서 직접 HTTPS Mailu로 전환되는 경로를 확인합니다. webmail.bomts.net의 외부 접속은 공유기 443 전달과 공개 DNS 설정 뒤 최종 확인해야 합니다. 관리자 경로를 일반 인터넷에 그대로 노출하지 않습니다.</aside>
 </section>
 <section class="slide" data-kind="usage-step" data-title="외부 계정은 Fetchmail로 사용자 Mailbox에 가져옵니다">
   <p class="kicker">사용 · 3 / 3</p><h2>외부 계정은 Fetchmail로 사용자 Mailbox에 가져옵니다</h2>
@@ -43,7 +43,7 @@
 </section>
 <section class="slide" data-kind="operations" data-title="일관된 백업을 만들고 별도 위치에서 복구를 시험합니다">
   <p class="kicker">백업·복구</p><h2>일관된 백업을 만들고 별도 위치에서 복구를 시험합니다</h2>
-  <div class="body"><table class="grid"><tr><th>단계</th><th>대상·판정</th></tr><tr><td>일관 백업</td><td>계정 DB · Mailbox · DKIM/TLS · 필터 상태</td></tr><tr><td>무결성</td><td>아카이브 SHA-256 · 개별 파일 hash</td></tr><tr><td>복구 시험</td><td>임시 위치에 해제 · 계정과 Mailbox 확인 · 자동 정리</td></tr></table><div class="callout">2026-10-10 백업과 비파괴 복구 시험 통과 · 상세 절차는 Private 인프라 운영서에서 관리</div></div>
+  <div class="body"><table class="grid"><tr><th>단계</th><th>대상·판정</th></tr><tr><td>일관 백업</td><td>계정 DB · Mailbox · DKIM/TLS · 필터 상태</td></tr><tr><td>무결성</td><td>아카이브 SHA-256 · 개별 파일 hash</td></tr><tr><td>복구 시험</td><td>임시 위치에 해제 · 계정과 Mailbox 확인 · 자동 정리</td></tr></table><div class="callout">2026-10-11 계정 교체 후 백업과 SHA-256 검사 통과 · 상세 절차는 Private 인프라 운영서에서 관리</div></div>
   <aside class="notes">백업 스크립트는 Mailu를 잠깐 정지해 파일 시점을 맞춘 뒤 persistent storage와 호스트 설정을 묶고 즉시 재기동합니다. 복구 시험은 원본을 덮어쓰지 않고 임시 위치에 풀어 전체와 개별 파일 hash를 검사합니다. 실제 재해 복구 훈련에서는 격리 호스트에서 서비스 시작과 로그인까지 추가 확인합니다.</aside>
 </section>
 <section class="slide" data-kind="operations" data-title="수신 인증은 통과했고 발신은 relay 연결이 남았습니다">
@@ -59,7 +59,7 @@
 <section class="slide" data-kind="usage-step" data-title="내부 관리 포털에서 Webmail과 메일 설정을 엽니다">
   <p class="kicker">웹 관리</p><h2>내부 관리 포털에서 Webmail과 메일 설정을 엽니다</h2>
   <div class="body"><div class="screen"><div class="top"><span class="t">BOMTS 관리</span><span class="tab on">내부 전용</span></div><div class="in"><div class="field"><b>메일 확인·발송</b><span><code>/webmail/</code> · Roundcube</span></div><div class="field"><b>메일 관리</b><span><code>/admin/</code> · 계정·Fetchmail·전달</span></div><div class="field"><b>운영 문서</b><span><code>/manual/</code> · 매뉴얼</span></div><div class="field"><b>공개 요청</b><span>모든 관리 경로 404</span></div></div></div></div>
-  <aside class="notes">Mini PC의 LAN 홈페이지에서 관리 버튼을 누르면 운영 문서, Roundcube, Mailu Admin을 한 화면에서 엽니다. 웹사이트 Nginx가 Mailu의 HTTPS origin으로 proxy하며 공개 Cloudflare 요청에는 해당 경로를 제공하지 않습니다. Webmail 로그인은 각 Mailbox 계정, 메일 관리는 관리자 계정을 사용합니다.</aside>
+  <aside class="notes">Mini PC의 LAN 홈페이지에서 관리 버튼을 누르면 운영 문서, Roundcube, Mailu Admin을 한 화면에서 엽니다. 웹사이트 Nginx는 내부 요청만 Mailu의 직접 HTTPS 포트로 돌려보내고 공개 Cloudflare 요청에는 해당 경로를 제공하지 않습니다. Webmail 로그인은 각 Mailbox 계정, 메일 관리는 관리자 계정을 사용합니다.</aside>
 </section>
 <section class="slide" data-kind="usage-step" data-title="사용자별 전달 목록을 웹에서 관리합니다">
   <p class="kicker">자동 전달</p><h2>사용자별 전달 목록을 웹에서 관리합니다</h2>

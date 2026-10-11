@@ -1,12 +1,12 @@
 {
- "reviewed_at": "2026-10-10T17:43:39.625276+00:00",
+ "reviewed_at": "2026-10-11T06:06:17.379090+00:00",
  "pages": 70,
  "files": {
   "admin.html": "455e1627457d873fe6b2e82d3143f928def8388aad0a8579701c400ea51b2b15",
   "architecture.html": "f75d6e42aa65f168e1f082b1490ea0b838428648f7e171477fb0dd8c4d555b31",
-  "index.html": "d36a12a8032a1342f6dcbea6f12e425a69ca668a4975115e8564cced672659f8",
+  "index.html": "1fcebbe54f119de39b8fbc2ed9ab58bdb0efb88cf965189b204fe3710c3f2906",
   "local-manual.html": "d768dae36a625bc855af82d8d2291ab5b878cae83f76c46ed429536e022e1a99",
-  "mail.html": "7793eac113c0d26b06c2ab82575e36d6fd76d6c1aa25a6256135c62503204d12",
+  "mail.html": "ccee199fc75fd8a230e3fda63c451cae174fab80d72026e6cb7eb7add8e9274a",
   "tunnel.html": "469b2f1a22c6a3b8838570cb6dd670b8b1e5297b74bfac63ea583446d7e69888",
   "website.html": "ab4ee4012e54d736caaafb047458bbb7b6b407d030f852a56451a0778affd313",
   "assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
@@ -14,12 +14,12 @@
  },
  "overflow": [],
  "sheets": [
-  "dist/manual-review/index.png",
-  "dist/manual-review/local-manual.png",
-  "dist/manual-review/mail.png",
-  "dist/manual-review/tunnel.png",
-  "dist/manual-review/website.png",
-  "dist/manual-review/architecture.png",
-  "dist/manual-review/admin.png"
+  "dist/manual-review-20261011-mail-account/index.png",
+  "dist/manual-review-20261011-mail-account/local-manual.png",
+  "dist/manual-review-20261011-mail-account/mail.png",
+  "dist/manual-review-20261011-mail-account/tunnel.png",
+  "dist/manual-review-20261011-mail-account/website.png",
+  "dist/manual-review-20261011-mail-account/architecture.png",
+  "dist/manual-review-20261011-mail-account/admin.png"
  ]
 }

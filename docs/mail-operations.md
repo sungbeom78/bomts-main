@@ -11,12 +11,13 @@ The operational Compose files, backup procedures, and physical storage map are m
 | Address | Type | Quota and access |
 |---|---|---|
 | `founder@bomts.net` | Independent mailbox | 1 GB; founder only |
-| `disney@bomts.net` | Independent mailbox | 1 GB; separate login |
-| `netflix@bomts.net` | Independent mailbox | 1 GB; separate login |
+| `ott.disney@bomts.net` | Independent mailbox | 1 GB; separate login; empty replacement mailbox |
+| `ott.netflix@bomts.net` | Independent mailbox | 1 GB; separate login; empty replacement mailbox |
 | `admin@bomts.net` | Administrative mailbox | Infrastructure administration |
 | `contact@bomts.net` | Alias | Delivers to founder |
+| `abuse@bomts.net` | Alias | Delivers to admin |
 
-Catch-all is disabled. Passwords are unique, stored outside Git, and should be changed after the first login.
+Catch-all is disabled. Passwords are unique and stored outside Git. The Mailu 2024.06 browser-supplied breach-count gate is disabled because asynchronous paste checks produced false positives. The operator owns password quality and rotation; use password-manager-generated secrets. New accounts do not require the unreliable forced-change page.
 
 ## Client settings
 
@@ -28,7 +29,7 @@ Use the full email address as the username and `mail.bomts.net` as the server.
 | POP3 | 995 | Implicit TLS |
 | SMTP Submission | 465 | Implicit TLS |
 | SMTP Submission | 587 | STARTTLS |
-| Webmail | 443 | HTTPS at `https://webmail.bomts.net/webmail/` |
+| Webmail | 443 | Direct Mailu HTTPS endpoint; the internal portal redirects to the same host without port 3001 |
 
 Plaintext ports 110 and 143 are disabled. Internet clients require the corresponding ports to be forwarded through both routers and tested externally. Keep the administration path behind Cloudflare Access or a VPN.
 
@@ -46,7 +47,7 @@ Persistent mail data, account state, filtering state, DKIM/TLS material, and hos
 
 ## Internal management portal
 
-Open the BOMTS website through its LAN address and select **관리**. The internal-only page links to Webmail, Mailu Admin, and the operating manuals.
+Open the BOMTS website through its LAN address and select **관리**. Webmail and Mailu Admin links immediately hand off to the Mailu HTTPS listener on port 443. Do not enter credentials on a URL that still contains `:3001`; that HTTP proxy cannot retain Mailu secure-session cookies.
 
 ### Per-account forwarding
 
