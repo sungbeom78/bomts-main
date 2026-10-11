@@ -1,0 +1,44 @@
+{
+  "task_id": "20261011-public-startup-verifiability",
+  "keywords": [
+    "About",
+    "Founder",
+    "founded",
+    "timeline",
+    "public repository",
+    "Claude Startup"
+  ],
+  "files": [
+    "site/index.html",
+    "site/en/index.html",
+    "site/about/index.html",
+    "site/contact/index.html",
+    "site/product/index.html",
+    "site/assets/styles.css",
+    "site/sitemap.xml",
+    "site/robots.txt",
+    "README.md",
+    "docs/manual/website.html",
+    "docs/manual/index.html"
+  ],
+  "days": 30,
+  "checked_at": "2026-10-11T08:03:52.826824+00:00",
+  "sources": {
+    "change_log": "CHANGELOG.md",
+    "sot": null,
+    "module_index": null
+  },
+  "findings": [
+    {
+      "source": "CHANGELOG.md",
+      "line": "- 2026-10-11 docs: replace OTT mailboxes, fix HTTPS handoff, and add Claude Startup application plan (task 20261011-mail-account-policy-and-claude-plan)",
+      "keywords": [
+        "Claude Startup"
+      ],
+      "relation": "recurrence"
+    }
+  ],
+  "frozen_overlap": [],
+  "active_task_overlap": [],
+  "verdict": "caution"
+}
