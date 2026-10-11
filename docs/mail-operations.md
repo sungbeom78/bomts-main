@@ -11,8 +11,11 @@ The operational Compose files, backup procedures, and physical storage map are m
 | Address | Type | Quota and access |
 |---|---|---|
 | `founder@bomts.net` | Independent mailbox | 1 GB; founder only |
+| `ai.claude@bomts.net` | Independent mailbox | 1 GB; Claude service account |
+| `ai.openai@bomts.net` | Independent mailbox | 1 GB; OpenAI service account |
 | `ott.disney@bomts.net` | Independent mailbox | 1 GB; separate login; empty replacement mailbox |
 | `ott.netflix@bomts.net` | Independent mailbox | 1 GB; separate login; empty replacement mailbox |
+| `infra.cloudflare@bomts.net` | Independent mailbox | 1 GB; Cloudflare infrastructure account |
 | `admin@bomts.net` | Administrative mailbox | Infrastructure administration |
 | `contact@bomts.net` | Alias | Delivers to founder |
 | `abuse@bomts.net` | Alias | Delivers to admin |

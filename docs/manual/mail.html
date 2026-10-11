@@ -26,6 +26,11 @@
   <div class="body"><table class="grid"><tr><th>주소</th><th>권한</th><th>검증</th></tr><tr><td><code>founder@bomts.net</code></td><td>일반 사용자 · 1GB</td><td>Gmail 외부 수신 확인</td></tr><tr><td><code>ott.disney@bomts.net</code></td><td>일반 사용자 · 1GB</td><td>고유 메시지만 IMAP 조회</td></tr><tr><td><code>ott.netflix@bomts.net</code></td><td>일반 사용자 · 1GB</td><td>고유 메시지만 IMAP 조회</td></tr><tr><td><code>admin@bomts.net</code></td><td>관리자</td><td>일반 메일 용도와 분리</td></tr></table><div class="callout">비밀번호는 Git 밖에서 관리합니다. 오작동한 브라우저 유출 횟수 검사는 비활성화했고 운영자가 고유한 무작위 비밀번호와 교체 주기를 관리합니다. Catch-all은 사용하지 않습니다.</div></div>
   <aside class="notes">founder, ott.disney, ott.netflix는 alias가 아니라 실제 사용자입니다. 세 사용자는 각각 고유 암호 hash, quota, Maildir을 가지며 교차 로그인이나 교차 조회가 되지 않습니다. 로컬 Submission으로 각 사용자에게 고유 제목을 전달한 뒤 IMAP에서 자신에게 온 제목만 보이는 것으로 격리를 확인했습니다.</aside>
 </section>
+<section class="slide" data-kind="config" data-title="AI·인프라 서비스도 주소별 독립 Mailbox를 사용합니다">
+  <p class="kicker">서비스 계정 격리</p><h2>AI·인프라 서비스도 주소별 독립 Mailbox를 사용합니다</h2>
+  <div class="body"><table class="grid"><tr><th>주소</th><th>용도</th><th>검증</th></tr><tr><td><code>ai.claude@bomts.net</code></td><td>Claude 신청·알림</td><td>독립 IMAP 로그인 · 1GB</td></tr><tr><td><code>ai.openai@bomts.net</code></td><td>OpenAI 등록·알림</td><td>독립 IMAP 로그인 · 1GB</td></tr><tr><td><code>infra.cloudflare@bomts.net</code></td><td>Cloudflare 인프라 알림</td><td>독립 IMAP 로그인 · 1GB</td></tr></table><div class="callout">세 주소는 alias가 아니라 별도 비밀번호·quota·Maildir을 가진 실제 사용자입니다.</div></div>
+  <aside class="notes">AI 서비스와 인프라 제공자의 등록 메일을 개인 또는 OTT Mailbox와 섞지 않습니다. 세 계정은 각각 고유한 40자 무작위 비밀번호와 1GB quota를 가지며 IMAP 로그인을 실제로 확인했습니다. 비밀번호는 Git 밖의 0600 credential 파일에만 저장합니다. 서비스별 전달 목록이 필요하면 각 사용자 설정에서 별도로 관리합니다.</aside>
+</section>
 <section class="slide" data-kind="usage-step" data-title="메일 클라이언트는 암호화 포트로 연결합니다">
   <p class="kicker">사용 · 1 / 3</p><h2>메일 클라이언트는 암호화 포트로 연결합니다</h2>
   <div class="body"><table class="grid"><tr><th>기능</th><th>서버</th><th>포트·보안</th></tr><tr><td>IMAP</td><td><code>mail.bomts.net</code></td><td>993 · SSL/TLS</td></tr><tr><td>POP3</td><td><code>mail.bomts.net</code></td><td>995 · SSL/TLS</td></tr><tr><td>SMTP Submission</td><td><code>mail.bomts.net</code></td><td>465 · SSL/TLS 또는 587 · STARTTLS</td></tr><tr><td>사용자 이름</td><td colspan="2">전체 이메일 주소 · SMTP 인증 필수</td></tr></table><div class="callout warn">인터넷 클라이언트 사용 전 공유기에서 필요한 포트를 이중 NAT 양쪽에 전달해야 합니다. 평문 110·143은 제공하지 않습니다.</div></div>
@@ -43,7 +48,7 @@
 </section>
 <section class="slide" data-kind="operations" data-title="일관된 백업을 만들고 별도 위치에서 복구를 시험합니다">
   <p class="kicker">백업·복구</p><h2>일관된 백업을 만들고 별도 위치에서 복구를 시험합니다</h2>
-  <div class="body"><table class="grid"><tr><th>단계</th><th>대상·판정</th></tr><tr><td>일관 백업</td><td>계정 DB · Mailbox · DKIM/TLS · 필터 상태</td></tr><tr><td>무결성</td><td>아카이브 SHA-256 · 개별 파일 hash</td></tr><tr><td>복구 시험</td><td>임시 위치에 해제 · 계정과 Mailbox 확인 · 자동 정리</td></tr></table><div class="callout">2026-10-11 계정 교체 후 백업과 SHA-256 검사 통과 · 상세 절차는 Private 인프라 운영서에서 관리</div></div>
+  <div class="body"><table class="grid"><tr><th>단계</th><th>대상·판정</th></tr><tr><td>일관 백업</td><td>계정 DB · Mailbox · DKIM/TLS · 필터 상태</td></tr><tr><td>무결성</td><td>아카이브 SHA-256 · 개별 파일 hash</td></tr><tr><td>복구 시험</td><td>임시 위치에 해제 · 계정과 Mailbox 확인 · 자동 정리</td></tr></table><div class="callout">2026-10-11 계정 추가 후 상태 백업·SHA-256·격리 복구 읽기 검사 통과 · 상세 절차는 Private 인프라 운영서에서 관리</div></div>
   <aside class="notes">백업 스크립트는 Mailu를 잠깐 정지해 파일 시점을 맞춘 뒤 persistent storage와 호스트 설정을 묶고 즉시 재기동합니다. 복구 시험은 원본을 덮어쓰지 않고 임시 위치에 풀어 전체와 개별 파일 hash를 검사합니다. 실제 재해 복구 훈련에서는 격리 호스트에서 서비스 시작과 로그인까지 추가 확인합니다.</aside>
 </section>
 <section class="slide" data-kind="operations" data-title="수신 인증은 통과했고 발신은 relay 연결이 남았습니다">

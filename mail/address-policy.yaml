@@ -9,11 +9,20 @@ mailboxes:
   - address: admin@bomts.net
     purpose: infrastructure notifications
     access: administrator-only
+  - address: ai.claude@bomts.net
+    purpose: Claude service registration and notifications
+    access: separate-user-only
+  - address: ai.openai@bomts.net
+    purpose: OpenAI service registration and notifications
+    access: separate-user-only
   - address: ott.disney@bomts.net
     purpose: Disney service registration and verification mail
     access: separate-user-only
   - address: ott.netflix@bomts.net
     purpose: Netflix service registration and verification mail
+    access: separate-user-only
+  - address: infra.cloudflare@bomts.net
+    purpose: Cloudflare infrastructure notifications
     access: separate-user-only
 
 aliases:
