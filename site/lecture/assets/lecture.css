@@ -200,6 +200,76 @@ h1 {
   -webkit-user-select: text;
 }
 
+.gem-slide-content { height: min(80vh, 52rem); }
+
+.gem-intro { margin: .25rem 0 1rem; }
+
+.gem-grid {
+  width: min(92vw, 74rem);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(.8rem, 2vw, 1.5rem);
+}
+
+.gem-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(.8rem, 1.5vw, 1.25rem);
+  border: 1px solid rgba(20, 43, 82, .12);
+  border-radius: 1.2rem;
+  background: #fff;
+  box-shadow: 0 1rem 3rem rgba(20, 43, 82, .12);
+}
+
+.gem-heading {
+  min-height: 4.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  margin-bottom: .55rem;
+  font-size: clamp(1rem, 1.7vw, 1.35rem);
+  line-height: 1.2;
+}
+
+.gem-heading span {
+  display: grid;
+  width: 2.3rem;
+  height: 2.3rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 900;
+}
+
+.gem-qr-link {
+  display: block;
+  width: min(18vw, 15rem);
+  padding: .5rem;
+  border-radius: .8rem;
+  background: #fff;
+}
+
+.gem-qr-link img { display: block; width: 100%; height: auto; }
+
+.gem-qr-link:hover,
+.gem-qr-link:focus-visible {
+  outline: .25rem solid rgba(40, 127, 209, .3);
+  outline-offset: .1rem;
+}
+
+.gem-resource-link {
+  margin-top: .55rem;
+  color: var(--blue);
+  font-size: clamp(.9rem, 1.4vw, 1.1rem);
+  font-weight: 800;
+  text-underline-offset: .2em;
+}
+
 .brand {
   position: fixed;
   top: 2rem;
@@ -286,6 +356,22 @@ h1 {
   .download-card > span:not(.download-icon) { font-size: clamp(1rem, 4vw, 1.35rem); }
   .download-card small { margin-top: .25rem; font-size: .68rem; }
   .download-icon { width: 2.5rem; height: 2.5rem; font-size: 1.55rem; }
+  .gem-slide-content { height: 79svh; }
+  .gem-slide-content h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+  .gem-intro { margin: .1rem 0 .55rem; font-size: .8rem; }
+  .gem-grid { width: min(91vw, 30rem); grid-template-columns: 1fr; gap: .45rem; }
+  .gem-card {
+    min-height: 7.2rem;
+    display: grid;
+    grid-template-columns: 6.2rem 1fr;
+    grid-template-rows: 1fr auto;
+    column-gap: .8rem;
+    padding: .5rem .75rem;
+  }
+  .gem-heading { min-height: 0; justify-content: flex-start; margin: 0; font-size: 1rem; text-align: left; }
+  .gem-heading span { width: 1.9rem; height: 1.9rem; font-size: .85rem; }
+  .gem-qr-link { width: 6.2rem; grid-row: 1 / span 2; padding: .15rem; }
+  .gem-resource-link { align-self: start; justify-self: start; margin: 0; font-size: .85rem; }
   .brand { top: 1.4rem; left: 1.4rem; font-size: .9rem; }
   .hint { display: none; }
   .slide::before { inset: .6rem .6rem auto; height: .25rem; }

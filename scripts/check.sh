@@ -21,6 +21,9 @@ test -f site/lecture/assets/slide-02.png
 test ! -f site/lecture/assets/slide-03.png
 test -f site/lecture/assets/bomts-lecture-preparation-manual.pdf
 test -f site/lecture/assets/prompt-card-D2.html
+test -f site/lecture/assets/slide-03-gem-01.png
+test -f site/lecture/assets/slide-03-gem-02.png
+test -f site/lecture/assets/slide-03-gem-03.png
 test -f docs/architecture.md
 test -f docs/manual/index.html
 test -f docs/manual/website.html
@@ -59,10 +62,14 @@ grep -q 'server_name lecture.bomts.net' nginx/default.conf
 grep -q 'listen 80 default_server' nginx/default.conf
 grep -q 'data-slide="1"' site/lecture/index.html
 grep -q 'data-slide="2"' site/lecture/index.html
-! grep -q 'data-slide="3"' site/lecture/index.html
+grep -q 'data-slide="3"' site/lecture/index.html
+grep -q 'assets/lecture.css?v=20261012-gem-links' site/lecture/index.html
 grep -q '1Z70Bjg8t86v7Mh7w6-7gysei9kZTX0_j' site/lecture/index.html
 ! grep -q '1GDMMMpBlGVnkVhLjVy1ZvWV-rX5wLUc8' site/lecture/index.html
 grep -q 'Content-Disposition.*attachment' nginx/default.conf
+grep -q '1Ev3KzUNxfDWoHAZYL0TF8dn43g8t8MN2' site/lecture/index.html
+grep -q '1cXKRjjBsW4kYbMhv6_AWeHqvf40a23Ek' site/lecture/index.html
+grep -q '1vGOwypMsvVdzlizuallLFqNdflEhGOzQ' site/lecture/index.html
 grep -q 'ArrowRight' site/lecture/assets/lecture.js
 grep -q 'touchend' site/lecture/assets/lecture.js
 grep -q 'requestFullscreen' site/lecture/assets/lecture.js
@@ -77,6 +84,7 @@ class LectureParser(HTMLParser):
         self.qr_links = []
         self.downloads = []
         self.prompt_downloads = []
+        self.gem_links = []
         self.active_link = None
 
     def handle_starttag(self, tag, attrs):
@@ -90,6 +98,8 @@ class LectureParser(HTMLParser):
                 self.downloads.append(attrs)
             if attrs.get('href') == 'assets/prompt-card-D2.html':
                 self.prompt_downloads.append(attrs)
+            if 'gem-qr-link' in classes or 'gem-resource-link' in classes:
+                self.gem_links.append(attrs)
         elif tag == 'img' and self.active_link is not None:
             self.qr_links[-1]['images'] += 1
 
@@ -109,6 +119,12 @@ assert parser.downloads[0].get('href') == 'assets/bomts-lecture-preparation-manu
 assert 'download' in parser.downloads[0]
 assert len(parser.prompt_downloads) == 2, parser.prompt_downloads
 assert all(item.get('download') == 'prompt-card-D2.html' for item in parser.prompt_downloads)
+assert len(parser.gem_links) == 6, parser.gem_links
+assert all(item.get('target') == '_blank' for item in parser.gem_links)
+assert all('noopener' in item.get('rel', '') for item in parser.gem_links)
+gem_hrefs = [item['href'] for item in parser.gem_links]
+assert len(set(gem_hrefs)) == 3
+assert all(gem_hrefs.count(href) == 2 for href in set(gem_hrefs))
 
 pdf = Path('site/lecture/assets/bomts-lecture-preparation-manual.pdf').read_bytes()
 assert pdf.startswith(b'%PDF-')

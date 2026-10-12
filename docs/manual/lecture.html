@@ -4,31 +4,36 @@
 <body data-manual="BOMTS 운영 매뉴얼" data-index="index.html" data-chapters="index.html|처음;lecture.html|BOMTS 강의 QR 덱;local-manual.html|BOMTS 내부 매뉴얼;mail.html|BOMTS 메일 운영;tunnel.html|BOMTS Cloudflare Tunnel;website.html|BOMTS 웹사이트;architecture.html|BOMTS 시스템 구성;admin.html|BOMTS 운영·인수인계">
 <section class="slide" data-kind="cover" data-title="강의 QR 덱">
   <div class="body"><div class="cover-grid"><div><div class="brandline">BOMTS · 운영 매뉴얼 · 2026-10-12</div><div class="emoji">🎓</div><h1>강의 QR 덱</h1><p class="lead">프로젝터에 QR 자료를 한 장씩 크게 띄우고, 같은 주소를 수강생과 공유합니다.</p></div><div class="orbit"><b>LECTURE</b></div></div></div>
-  <aside class="notes">이 장은 lecture.bomts.net의 사용법과 확장 방법을 설명합니다. 강사는 키보드나 화면 클릭으로 QR을 한 장씩 넘기고 수강생은 휴대전화 카메라 또는 QR 이미지 클릭으로 자료를 엽니다. 첫 화면의 준비 매뉴얼은 큰 다운로드 버튼으로 바로 받을 수 있습니다.</aside>
+  <aside class="notes">이 장은 lecture.bomts.net의 사용법과 확장 방법을 설명합니다. 강사는 키보드나 화면 클릭으로 QR을 한 장씩 넘기고 수강생은 휴대전화 카메라 또는 QR 이미지 클릭으로 자료를 엽니다. 세 번째 화면에서는 공공데이터 탐색, 데이터 정제, 대시보드 제작용 Gem을 바로 선택합니다.</aside>
 </section>
-<section class="slide" data-kind="overview" data-title="두 화면에서 공유 자료와 로컬 실행 파일을 구분합니다">
-  <p class="kicker">사용 흐름</p><h2>두 화면에서 공유 자료와 로컬 실행 파일을 구분합니다</h2>
-  <div class="body"><div class="route cards"><div class="node active"><b>강사</b><small>lecture.bomts.net 접속</small></div><div class="arrow">→</div><div class="node"><b>프로젝터</b><small>QR 한 장 크게 표시</small></div><div class="arrow">→</div><div class="node"><b>수강생</b><small>자료 열기·파일 저장</small></div></div><div class="cards"><div class="card"><i>①</i><b>공유 자료</b><span>Google Drive·준비 PDF</span></div><div class="card"><i>②</i><b>프롬프트 카드</b><span>HTML 다운로드 후 로컬 실행</span></div></div></div>
-  <aside class="notes">강사는 하나의 웹 주소에서 두 화면만 넘깁니다. 첫 화면은 공유 드라이브와 준비 매뉴얼 PDF를 제공하고, 둘째 화면은 프롬프트 카드 HTML을 다운로드합니다. 같은 Drive 주소를 반복하던 화면은 제거했으며 프롬프트 카드는 서버에서 실행하지 않습니다.</aside>
+<section class="slide" data-kind="overview" data-title="세 화면에서 공유 자료·로컬 파일·Gem을 구분합니다">
+  <p class="kicker">사용 흐름</p><h2>세 화면에서 공유 자료·로컬 파일·Gem을 구분합니다</h2>
+  <div class="body"><div class="route cards"><div class="node active"><b>강사</b><small>lecture.bomts.net 접속</small></div><div class="arrow">→</div><div class="node"><b>프로젝터</b><small>QR 화면 표시</small></div><div class="arrow">→</div><div class="node"><b>수강생</b><small>자료·파일·Gem 선택</small></div></div><div class="cards"><div class="card"><i>①</i><b>공유 자료</b><span>Google Drive·준비 PDF</span></div><div class="card"><i>②</i><b>프롬프트 카드</b><span>HTML 다운로드 후 로컬 실행</span></div><div class="card"><i>③</i><b>D2 Gem</b><span>목적별 Gem 3개 바로가기</span></div></div></div>
+  <aside class="notes">강사는 하나의 웹 주소에서 세 화면을 넘깁니다. 첫 화면은 공유 드라이브와 준비 PDF, 둘째는 로컬 실행용 프롬프트 카드, 셋째는 세 종류의 Gemini Gem을 제공합니다. 각 화면은 용도를 분리해 수강생이 필요한 자료를 바로 고르게 합니다.</aside>
 </section>
 <section class="slide" data-kind="step" data-title="lecture.bomts.net을 열면 첫 QR에서 시작합니다">
-  <p class="kicker">사용 · 1 / 4</p><h2>lecture.bomts.net을 열면 첫 QR에서 시작합니다</h2>
-  <div class="body"><div class="screen"><div class="top"><span class="t">BOMTS LECTURE</span><span class="tab on">1 / 2</span></div><div class="in" style="align-items:center;text-align:center"><b style="font-size:1.5em">교안 PDF · 오늘 자료 받기</b><div style="display:flex;align-items:center;justify-content:center;gap:1em"><div style="width:8.3em;height:8.3em;background:repeating-conic-gradient(#142b52 0 25%,#fff 0 50%) 50%/1.3em 1.3em;border:.6em solid #fff;box-shadow:0 .4em 1em #ccd3dc"></div><div style="display:flex;flex-direction:column;justify-content:center;width:8em;height:7em;border-radius:.7em;background:#142b52;color:#fff;font-weight:800"><span>↓</span><span>준비 매뉴얼</span><span>다운 받기</span></div></div><span style="color:#287fd1;font-weight:700">공유 드라이브 열기 ↗</span></div></div><div class="callout">QR을 누르면 공유 자료가 열리고, 오른쪽 버튼은 준비 매뉴얼 PDF를 내려받습니다.</div></div>
+  <p class="kicker">사용 · 1 / 5</p><h2>lecture.bomts.net을 열면 첫 QR에서 시작합니다</h2>
+  <div class="body"><div class="screen"><div class="top"><span class="t">BOMTS LECTURE</span><span class="tab on">1 / 3</span></div><div class="in" style="align-items:center;text-align:center"><b style="font-size:1.5em">교안 PDF · 오늘 자료 받기</b><div style="display:flex;align-items:center;justify-content:center;gap:1em"><div style="width:8.3em;height:8.3em;background:repeating-conic-gradient(#142b52 0 25%,#fff 0 50%) 50%/1.3em 1.3em;border:.6em solid #fff;box-shadow:0 .4em 1em #ccd3dc"></div><div style="display:flex;flex-direction:column;justify-content:center;width:8em;height:7em;border-radius:.7em;background:#142b52;color:#fff;font-weight:800"><span>↓</span><span>준비 매뉴얼</span><span>다운 받기</span></div></div><span style="color:#287fd1;font-weight:700">공유 드라이브 열기 ↗</span></div></div><div class="callout">QR을 누르면 공유 자료가 열리고, 오른쪽 버튼은 준비 매뉴얼 PDF를 내려받습니다.</div></div>
   <aside class="notes">브라우저에서 lecture.bomts.net을 열면 첫 번째 QR이 선택됩니다. 발표 화면에는 클릭 가능한 QR과 준비 매뉴얼 다운로드 버튼이 나란히 보이며, 직접 링크도 아래에 남아 있습니다. 특정 화면으로 바로 시작하려면 주소 끝의 번호 해시를 사용하며 첫 화면은 #1입니다.</aside>
 </section>
 <section class="slide" data-kind="step" data-title="키보드·클릭·밀기로 앞뒤 화면을 이동합니다">
-  <p class="kicker">사용 · 2 / 4</p><h2>키보드·클릭·밀기로 앞뒤 화면을 이동합니다</h2>
-  <div class="body"><div class="cards screen"><div class="card"><i>⌨️</i><b>키보드</b><span>← → · PageUp/Down · Home/End · Space</span></div><div class="card"><i>🖱️</i><b>화면 클릭</b><span>왼쪽 절반은 이전, 오른쪽 절반은 다음</span></div><div class="card"><i>📱</i><b>모바일</b><span>좌우로 50px 이상 밀어 이동</span></div><div class="card"><i>⛶</i><b>전체 화면</b><span>하단 버튼으로 켜고 Esc로 종료</span></div></div><ol class="flow"><li><b>입력</b><span>키·클릭·터치</span></li><li><b>범위</b><span>1~2 제한</span></li><li><b>화면</b><span>현재 장 활성화</span></li><li class="on"><b>주소</b><span><code>#번호</code> 갱신</span></li></ol></div>
+  <p class="kicker">사용 · 2 / 5</p><h2>키보드·클릭·밀기로 앞뒤 화면을 이동합니다</h2>
+  <div class="body"><div class="cards screen"><div class="card"><i>⌨️</i><b>키보드</b><span>← → · PageUp/Down · Home/End · Space</span></div><div class="card"><i>🖱️</i><b>화면 클릭</b><span>왼쪽 절반은 이전, 오른쪽 절반은 다음</span></div><div class="card"><i>📱</i><b>모바일</b><span>좌우로 50px 이상 밀어 이동</span></div><div class="card"><i>⛶</i><b>전체 화면</b><span>하단 버튼으로 켜고 Esc로 종료</span></div></div><ol class="flow"><li><b>입력</b><span>키·클릭·터치</span></li><li><b>범위</b><span>1~3 제한</span></li><li><b>화면</b><span>현재 장 활성화</span></li><li class="on"><b>주소</b><span><code>#번호</code> 갱신</span></li></ol></div>
   <aside class="notes">노트북에서는 방향키나 페이지 키, 스페이스로 이동합니다. 리모컨이 마우스 클릭으로 동작하면 화면 오른쪽을 눌러 다음 장으로 넘길 수 있습니다. 휴대전화에서는 좌우 밀기를 사용하고 전체 화면 버튼은 브라우저가 지원할 때 동작합니다.</aside>
 </section>
 <section class="slide" data-kind="step" data-title="프롬프트 카드는 내려받은 파일을 로컬에서 실행합니다">
-  <p class="kicker">사용 · 3 / 4</p><h2>프롬프트 카드는 내려받은 파일을 로컬에서 실행합니다</h2>
+  <p class="kicker">사용 · 3 / 5</p><h2>프롬프트 카드는 내려받은 파일을 로컬에서 실행합니다</h2>
   <div class="body"><ol class="flow screen"><li><b>둘째 화면</b><span><code>#2</code>로 이동</span></li><li><b>파일 받기</b><span>QR 스캔 또는 링크 클릭</span></li><li><b>다운로드 폴더</b><span><code>prompt-card-D2.html</code> 확인</span></li><li class="on"><b>로컬 실행</b><span>파일을 브라우저로 열기</span></li></ol><div class="callout warn">서버 URL에서는 HTML이 실행되지 않고 항상 첨부 파일로 내려옵니다.</div></div>
   <aside class="notes">둘째 화면의 QR과 아래 링크는 같은 HTML 파일을 다운로드합니다. 응답은 attachment와 application/octet-stream으로 강제해 서버 주소에서 스크립트가 실행되지 않습니다. 다운로드 폴더에 저장된 파일을 브라우저로 열면 로컬 저장소도 서버 페이지와 분리됩니다.</aside>
 </section>
+<section class="slide" data-kind="step" data-title="3번 화면에서 목적에 맞는 D2 Gem을 선택합니다">
+  <p class="kicker">사용 · 4 / 5</p><h2>3번 화면에서 목적에 맞는 D2 Gem을 선택합니다</h2>
+  <div class="body"><div class="cards screen"><div class="card"><i>①</i><b>공공데이터 탐색·판별</b><span>데이터 후보를 찾고 출처를 판별</span></div><div class="card"><i>②</i><b>데이터 정제·검증</b><span>수집 데이터를 정리하고 품질 확인</span></div><div class="card"><i>③</i><b>대시보드 빌더</b><span>분석 결과를 시각화 화면으로 구성</span></div></div><ol class="flow"><li><b><code>#3</code> 이동</b><span>Gem 카드 3개 표시</span></li><li><b>QR·카드</b><span>필요한 도구 선택</span></li><li><b>새 탭</b><span>gemini.google.com 열기</span></li><li class="on"><b>Gem 사용</b><span>Google 계정에서 시작</span></li></ol></div>
+  <aside class="notes">세 번째 화면에는 PDF에서 추출하고 QR로 다시 검증한 Gem 링크 세 개가 표시됩니다. QR을 스캔하거나 카드 아래 링크를 누르면 같은 Gemini 주소가 새 탭에서 열립니다. 접근 권한이나 로그인 요청은 Gemini 계정 상태에서 확인합니다.</aside>
+</section>
 <section class="slide" data-kind="step" data-title="번호가 붙은 주소로 원하는 화면을 바로 공유합니다">
-  <p class="kicker">사용 · 4 / 4</p><h2>번호가 붙은 주소로 원하는 화면을 바로 공유합니다</h2>
-  <div class="body"><div class="compare screen"><div class="good"><h3>강의 시작 링크</h3><p><code>https://lecture.bomts.net/#1</code></p><small>교안과 오늘 자료 안내부터 시작</small></div><div class="good"><h3>프롬프트 링크</h3><p><code>https://lecture.bomts.net/#2</code></p><small>프롬프트 카드 다운로드 화면</small></div></div><ol class="flow"><li><b>URL 복사</b><span>현재 번호 포함</span></li><li><b>채팅 공유</b><span>수강생에게 전송</span></li><li><b>브라우저 열기</b><span>해시 번호 읽기</span></li><li class="on"><b>해당 QR</b><span>즉시 표시</span></li></ol></div>
+  <p class="kicker">사용 · 5 / 5</p><h2>번호가 붙은 주소로 원하는 화면을 바로 공유합니다</h2>
+  <div class="body"><div class="cards screen"><div class="card"><i>①</i><b><code>/#1</code></b><span>공유 자료·준비 PDF</span></div><div class="card"><i>②</i><b><code>/#2</code></b><span>프롬프트 카드 다운로드</span></div><div class="card"><i>③</i><b><code>/#3</code></b><span>D2 Gem 3개 바로가기</span></div></div><ol class="flow"><li><b>URL 복사</b><span>현재 번호 포함</span></li><li><b>채팅 공유</b><span>수강생에게 전송</span></li><li><b>브라우저 열기</b><span>해시 번호 읽기</span></li><li class="on"><b>해당 화면</b><span>즉시 표시</span></li></ol></div>
   <aside class="notes">페이지를 넘기면 주소의 해시 번호도 함께 바뀌므로 현재 화면을 그대로 복사할 수 있습니다. 수강생이 해당 주소를 열면 첫 화면을 거치지 않고 지정한 QR로 바로 이동합니다. 잘못된 번호나 번호 없는 주소는 안전하게 첫 화면으로 시작합니다.</aside>
 </section>
 <section class="slide" data-kind="internals" data-title="HTML은 다운로드로만 제공합니다">
@@ -37,12 +42,13 @@
 ├── index.html
 └── assets/
     ├── prompt-card-D2.html
-    └── slide-02.png</div><table class="grid"><tr><th>보호</th><th>효과</th></tr><tr><td>Content-Disposition</td><td>파일 다운로드 강제</td></tr><tr><td>octet-stream</td><td>HTML 렌더링 방지</td></tr><tr><td>CSP sandbox</td><td>직접 실행 경로 차단 보강</td></tr></table></div></div>
-  <aside class="notes">프롬프트 카드 URL에는 Nginx 정확 일치 규칙을 적용합니다. 응답 형식과 attachment 헤더가 브라우저 다운로드를 강제하고, sandbox 헤더가 서버 실행을 한 번 더 제한합니다. 다운로드된 파일에는 HTTP 응답 헤더가 남지 않으므로 사용자가 로컬에서 열면 원래 기능을 사용할 수 있습니다.</aside>
+    ├── slide-02.png
+    └── slide-03-gem-01..03.png</div><table class="grid"><tr><th>보호·검증</th><th>효과</th></tr><tr><td>Content-Disposition</td><td>HTML 다운로드 강제</td></tr><tr><td>CSP sandbox</td><td>서버 실행 차단 보강</td></tr><tr><td>QR 디코딩</td><td>Gem 원본 URL 대조</td></tr></table></div></div>
+  <aside class="notes">프롬프트 카드 URL에는 Nginx 다운로드 전용 규칙을 적용합니다. Gem QR 세 개는 PDF의 링크 주석과 QR 디코딩 결과를 대조한 뒤 별도 PNG로 생성합니다. 화면의 QR과 텍스트 링크는 같은 URL을 사용해 서로 어긋나지 않게 검사합니다.</aside>
 </section>
 <section class="slide" data-kind="troubleshoot" data-title="QR·화면·공개 경로를 순서대로 나누어 확인합니다">
   <p class="kicker">장애 대응</p><h2>QR·화면·공개 경로를 순서대로 나누어 확인합니다</h2>
-  <div class="body"><table class="grid"><tr><th>증상</th><th>원인 후보</th><th>조치</th></tr><tr><td>QR 인식 실패</td><td>화면 밝기·QR 이미지 오류</td><td>다운로드 URL과 QR 내용을 대조</td></tr><tr><td>HTML이 화면에서 열림</td><td>attachment 규칙 미적용</td><td>Content-Disposition·Content-Type 확인</td></tr><tr><td>다운로드 후 상태 이상</td><td>기존 로컬 저장 상태</td><td>다른 폴더·브라우저 프로필에서 실행</td></tr><tr><td>공개 404·502</td><td>DNS·Tunnel ingress·컨테이너</td><td>로컬 Host 응답부터 단계별 확인</td></tr></table><div class="callout warn">프롬프트 카드는 서버에서 실행하지 말고 내려받은 파일을 직접 엽니다.</div></div>
-  <aside class="notes">QR이 읽히지 않으면 공개 다운로드 URL과 QR 생성 값을 대조합니다. 직접 URL에서 HTML 화면이 보인다면 Nginx의 exact location과 attachment 헤더가 빠진 것입니다. 내려받은 파일의 상태가 예상과 다르면 기존 로컬 저장소 영향을 피하도록 다른 폴더나 새 브라우저 프로필에서 실행합니다.</aside>
+  <div class="body"><table class="grid"><tr><th>증상</th><th>원인 후보</th><th>조치</th></tr><tr><td>QR 인식 실패</td><td>화면 밝기·QR 이미지 오류</td><td>대상 URL과 QR 디코딩 결과 대조</td></tr><tr><td>HTML이 화면에서 열림</td><td>attachment 규칙 미적용</td><td>Content-Disposition·Content-Type 확인</td></tr><tr><td>Gem 접근 불가</td><td>Google 로그인·공유 권한</td><td>시크릿 창에서 원본 링크 시험</td></tr><tr><td>공개 404·502</td><td>DNS·Tunnel ingress·컨테이너</td><td>로컬 Host 응답부터 단계별 확인</td></tr></table><div class="callout warn">Gem 로그인·권한 오류는 강의 페이지가 아니라 Google 공유 설정에서 확인합니다.</div></div>
+  <aside class="notes">QR이 읽히지 않으면 공개 URL과 디코딩 결과를 대조합니다. 직접 URL에서 HTML 화면이 보인다면 다운로드 전용 헤더가 빠진 것입니다. Gem이 열리지 않으면 Google 로그인과 공유 권한을 시크릿 창에서 확인한 뒤 공개 경로 장애와 분리합니다.</aside>
 </section>
 </body></html>
