@@ -19,6 +19,7 @@ test -f site/lecture/assets/lecture.js
 test -f site/lecture/assets/slide-01.png
 test -f site/lecture/assets/slide-02.png
 test -f site/lecture/assets/slide-03.png
+test -f site/lecture/assets/bomts-lecture-preparation-manual.pdf
 test -f docs/architecture.md
 test -f docs/manual/index.html
 test -f docs/manual/website.html
@@ -63,6 +64,48 @@ grep -q '1GDMMMpBlGVnkVhLjVy1ZvWV-rX5wLUc8' site/lecture/index.html
 grep -q 'ArrowRight' site/lecture/assets/lecture.js
 grep -q 'touchend' site/lecture/assets/lecture.js
 grep -q 'requestFullscreen' site/lecture/assets/lecture.js
+
+python3 - <<'PY'
+from html.parser import HTMLParser
+from pathlib import Path
+
+class LectureParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.qr_links = []
+        self.downloads = []
+        self.active_link = None
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == 'a':
+            classes = attrs.get('class', '').split()
+            if 'qr-link' in classes:
+                self.active_link = attrs
+                self.qr_links.append({'attrs': attrs, 'images': 0})
+            if 'download-card' in classes:
+                self.downloads.append(attrs)
+        elif tag == 'img' and self.active_link is not None:
+            self.qr_links[-1]['images'] += 1
+
+    def handle_endtag(self, tag):
+        if tag == 'a' and self.active_link is not None:
+            self.active_link = None
+
+parser = LectureParser()
+parser.feed(Path('site/lecture/index.html').read_text(encoding='utf-8'))
+assert len(parser.qr_links) == 3, parser.qr_links
+assert all(item['images'] == 1 for item in parser.qr_links), parser.qr_links
+assert all(item['attrs'].get('target') == '_blank' for item in parser.qr_links)
+assert all('noopener' in item['attrs'].get('rel', '') for item in parser.qr_links)
+assert len(parser.downloads) == 1, parser.downloads
+assert parser.downloads[0].get('href') == 'assets/bomts-lecture-preparation-manual.pdf'
+assert 'download' in parser.downloads[0]
+
+pdf = Path('site/lecture/assets/bomts-lecture-preparation-manual.pdf').read_bytes()
+assert pdf.startswith(b'%PDF-')
+assert pdf.rstrip().endswith(b'%%EOF')
+PY
 
 python3 - <<'PY'
 from pathlib import Path
