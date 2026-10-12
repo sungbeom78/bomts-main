@@ -1,0 +1,1629 @@
+{
+  "acceptance": [
+    {
+      "no": 1,
+      "note": "PDF 주석과 QR 디코딩으로 검증한 Gemini Gem 3개를 site/lecture/index.html 3번 화면에 표시했고 공개 브라우저에서 카드 3개를 확인함",
+      "status": "met",
+      "text": "3번 화면에 PDF에서 검증한 Gem 링크 3개가 각각 표시된다",
+      "updated_at": "2026-10-12T13:49:15.101977+00:00"
+    },
+    {
+      "no": 2,
+      "note": "로컬 브라우저에서 QR 링크 3개, 공개 브라우저에서 텍스트 링크 3개를 클릭해 각 새 탭 URL이 PDF 원본과 정확히 일치함을 확인함",
+      "status": "met",
+      "text": "각 QR과 텍스트 링크가 같은 Gemini Gem 주소를 새 탭에서 연다",
+      "updated_at": "2026-10-12T13:49:15.338456+00:00"
+    },
+    {
+      "no": 3,
+      "note": "Playwright로 데스크톱 3열·모바일 3행, 1/3→2/3→3/3 이동, 가로 넘침 0, 브라우저 오류 0을 확인하고 PNG를 눈으로 검토함",
+      "status": "met",
+      "text": "데스크톱·모바일에서 3개 카드와 1/3~3/3 이동이 정상이다",
+      "updated_at": "2026-10-12T13:49:15.575748+00:00"
+    },
+    {
+      "no": 4,
+      "note": "매뉴얼 9쪽·필수 검사 8개 통과·운영 컨테이너 healthy·공개 HTTPS 검증 완료. finish --push로 작업 커밋을 push하고 기록 커밋도 후속 push하도록 확정함",
+      "status": "met",
+      "text": "매뉴얼·필수 검사·운영 배포·push가 완료된다",
+      "updated_at": "2026-10-12T13:49:15.815425+00:00"
+    }
+  ],
+  "approvals": [],
+  "baseline_commit": "19cc19e22410fd98555d225d4d5c801188071766",
+  "change_kind": {
+    "history": [],
+    "kind": "new_feature",
+    "reason": null,
+    "set_at": "2026-10-12T13:36:41.678606+00:00"
+  },
+  "completion": {
+    "changes_summary": "강의 덱 3번 화면에 D2 Gem 공유 링크 3개와 클릭 가능한 QR을 추가하고 운영 배포했다",
+    "commit": "2091220e9ef280feb1adad5f5a514aec5c7d001f",
+    "deploy": "not_in_scope",
+    "push": "pushed",
+    "release_scope": "in_scope",
+    "work": "done"
+  },
+  "created_at": "2026-10-12T13:36:41.678606+00:00",
+  "events": [
+    {
+      "check_name": "prior_art",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "verdict=clear",
+      "ts": "2026-10-12T13:36:41.925397+00:00",
+      "verification": "reported_only",
+      "verified": false
+    },
+    {
+      "check_name": "lecture_gem_links_smoke",
+      "evidence_fingerprint": "sha256:25845359ebcbb9683400f55deb3ea53cf38e9af1a78dc9b8b1452133ab35b5ef",
+      "execution": {
+        "command": [
+          ".venv/bin/python",
+          "/tmp/test_lecture_gems.py"
+        ],
+        "executed_at": "2026-10-12T13:42:02.559477+00:00",
+        "input_snapshot": {
+          "after": "sha256:25845359ebcbb9683400f55deb3ea53cf38e9af1a78dc9b8b1452133ab35b5ef",
+          "before": "sha256:25845359ebcbb9683400f55deb3ea53cf38e9af1a78dc9b8b1452133ab35b5ef"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lecture_gem_links_smoke_01242a2da6e6.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lecture_gem_links_smoke_01242a2da6e6.receipt.json",
+        "returncode": 0,
+        "run_id": "01242a2da6e6",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS lecture_gem_links_smoke\nslides=3 counter=1/3->2/3->3/3 desktop_cards=3 mobile_cards=3\nqr_popups=3 exact_urls=3 browser_errors=0 horizontal_overflow=0\ndesktop=dist/lecture-review/gem-links-desktop.png\nmobile=dist/lecture-review/gem-links-mobile.png\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: _popups=3 exact_urls=3 browser_errors=0 horizontal_overflow=0\ndesktop=dist/lecture-review/gem-links-desktop.png\nmobile=dist/lecture-review/gem-links-mobile.png",
+      "ts": "2026-10-12T13:42:02.561254+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "lint",
+      "evidence_fingerprint": "sha256:f5dcc4438bd6b68023e53b5fc7be22831cf77d34ae1764b917b59dc9466bd345",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "syntax",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:42:10.655215+00:00",
+        "input_snapshot": {
+          "after": "sha256:f5dcc4438bd6b68023e53b5fc7be22831cf77d34ae1764b917b59dc9466bd345",
+          "before": "sha256:f5dcc4438bd6b68023e53b5fc7be22831cf77d34ae1764b917b59dc9466bd345"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lint_dcfaab555c9b.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lint_dcfaab555c9b.receipt.json",
+        "returncode": 0,
+        "run_id": "dcfaab555c9b",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 18,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (18)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: {\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 18,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (18)",
+      "ts": "2026-10-12T13:42:10.662140+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "unit_or_regression",
+      "evidence_fingerprint": "sha256:a5f7032006d0f85dbe81710296e2a3a97536b45194778f0f42c2c805b830c718",
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-12T13:42:10.889948+00:00",
+        "input_snapshot": {
+          "after": "sha256:a5f7032006d0f85dbe81710296e2a3a97536b45194778f0f42c2c805b830c718",
+          "before": "sha256:a5f7032006d0f85dbe81710296e2a3a97536b45194778f0f42c2c805b830c718"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/unit_or_regression_937b9f2ad1e4.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/unit_or_regression_937b9f2ad1e4.receipt.json",
+        "returncode": 0,
+        "run_id": "937b9f2ad1e4",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-12T13:42:10.899883+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "encoding",
+      "evidence_fingerprint": "sha256:27e40092d97a348631c60da793e62101fcde6c6e95955c3960885e773c9237e6",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "encoding",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts,mail,docs",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:42:11.004377+00:00",
+        "input_snapshot": {
+          "after": "sha256:27e40092d97a348631c60da793e62101fcde6c6e95955c3960885e773c9237e6",
+          "before": "sha256:27e40092d97a348631c60da793e62101fcde6c6e95955c3960885e773c9237e6"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/encoding_8d0a4d9707a3.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/encoding_8d0a4d9707a3.receipt.json",
+        "returncode": 0,
+        "run_id": "8d0a4d9707a3",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 47,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (47)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: {\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 47,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (47)",
+      "ts": "2026-10-12T13:42:11.017000+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "identifier_audit",
+      "evidence_fingerprint": "sha256:9a649ba2938f84b744973a7aaab4374e654d3e180bc5ff832734738ce2004ab0",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "identifier_audit",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "scripts,glossary/dictionary",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:42:11.319338+00:00",
+        "input_snapshot": {
+          "after": "sha256:9a649ba2938f84b744973a7aaab4374e654d3e180bc5ff832734738ce2004ab0",
+          "before": "sha256:9a649ba2938f84b744973a7aaab4374e654d3e180bc5ff832734738ce2004ab0"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/identifier_audit_004183ea5044.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/identifier_audit_004183ea5044.receipt.json",
+        "returncode": 0,
+        "run_id": "004183ea5044",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"identifier_audit\",\n \"status\": \"PASS\",\n \"baseline_commit\": \"19cc19e22410fd98555d225d4d5c801188071766\",\n \"glossary_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"pinned_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"enforcement\": {\n  \"new_or_renamed\": \"strict\",\n  \"legacy\": \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit",
+      "ts": "2026-10-12T13:42:11.327183+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "qa_quick",
+      "evidence_fingerprint": "sha256:a5f7032006d0f85dbe81710296e2a3a97536b45194778f0f42c2c805b830c718",
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-12T13:42:11.584614+00:00",
+        "input_snapshot": {
+          "after": "sha256:a5f7032006d0f85dbe81710296e2a3a97536b45194778f0f42c2c805b830c718",
+          "before": "sha256:a5f7032006d0f85dbe81710296e2a3a97536b45194778f0f42c2c805b830c718"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/qa_quick_e1682056d944.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/qa_quick_e1682056d944.receipt.json",
+        "returncode": 0,
+        "run_id": "e1682056d944",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-12T13:42:11.594513+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "user_manual",
+      "evidence_fingerprint": "sha256:a2e525be232e2a055a1737d9e06c9f9be9728f7f303d5a2bb00d64ef90b9963b",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "user_manual",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:42:11.946273+00:00",
+        "input_snapshot": {
+          "after": "sha256:a2e525be232e2a055a1737d9e06c9f9be9728f7f303d5a2bb00d64ef90b9963b",
+          "before": "sha256:a2e525be232e2a055a1737d9e06c9f9be9728f7f303d5a2bb00d64ef90b9963b"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/user_manual_4c84488b7d52.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/user_manual_4c84488b7d52.receipt.json",
+        "returncode": 0,
+        "run_id": "4c84488b7d52",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "  \"name\": \"mail\",\n   \"title\": \"BOMTS 메일 운영\",\n   \"role\": \"feature\",\n   \"slides\": 15\n  },\n  {\n   \"file\": \"docs/manual/tunnel.html\",\n   \"name\": \"tunnel\",\n   \"title\": \"BOMTS Cloudflare Tunnel\",\n   \"role\": \"feature\",\n   \"slides\": 8\n  },\n  {\n   \"file\": \"docs/manual/website.html\",\n   \"name\": \"website\",\n   \"title\": \"BOMTS 웹사이트\",\n   \"role\": \"feature\",\n   \"slides\": 9\n  },\n  {\n   \"file\": \"docs/manual/architecture.html\",\n   \"name\": \"architecture\",\n   \"title\": \"BOMTS 시스템 구성\",\n   \"role\": \"architecture\",\n   \"slides\": 10\n  },\n  {\n   \"file\": \"docs/manual/admin.html\",\n   \"name\": \"admin\",\n   \"title\": \"BOMTS 운영·인수인계\",\n   \"role\": \"admin\",\n   \"slides\": 16\n  }\n ],\n \"slides\": 82,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/lecture.html\"\n ]\n}\nPASS: user_manual (8)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: 6\n  }\n ],\n \"slides\": 82,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/lecture.html\"\n ]\n}\nPASS: user_manual (8)",
+      "ts": "2026-10-12T13:42:11.950092+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "data_stance",
+      "evidence_fingerprint": "sha256:3065c5281a2848ef787f7242a465818765065d4deae54ea1d8643a3020bc4ad4",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_stance",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:42:12.212348+00:00",
+        "input_snapshot": {
+          "after": "sha256:3065c5281a2848ef787f7242a465818765065d4deae54ea1d8643a3020bc4ad4",
+          "before": "sha256:3065c5281a2848ef787f7242a465818765065d4deae54ea1d8643a3020bc4ad4"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/data_stance_17a2348ea65c.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/data_stance_17a2348ea65c.receipt.json",
+        "returncode": 0,
+        "run_id": "17a2348ea65c",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "son이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.  ref: https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\n저장소 흔적 0개 (ORM 모델·Prisma·마이그레이션·DB 파일·DB 컨테이너 없음)\n  결과: 이상 없음\n{\n \"check\": \"data_stance\",\n \"status\": \"PASS\",\n \"stance\": \"external\",\n \"reason\": \"bomts-main은 정적 사이트·운영 스크립트와 운영 로그만 보유한다. 업무 데이터 정본은 외부 서비스 저장소에 있다. dev-ai의 PostgreSQL·Qdrant 정본은 sungbeom78/dev-ai의 db/model.json이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.\",\n \"ref\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ef\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance",
+      "ts": "2026-10-12T13:42:12.214889+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "data_inventory",
+      "evidence_fingerprint": "sha256:65aa4961f41ad8ddc1d8f02b7b1fb1841e90cb002bf1b7eced7e3613a33ef5e2",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_inventory",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:42:12.535560+00:00",
+        "input_snapshot": {
+          "after": "sha256:65aa4961f41ad8ddc1d8f02b7b1fb1841e90cb002bf1b7eced7e3613a33ef5e2",
+          "before": "sha256:65aa4961f41ad8ddc1d8f02b7b1fb1841e90cb002bf1b7eced7e3613a33ef5e2"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/data_inventory_ccb051ce066b.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/data_inventory_ccb051ce066b.receipt.json",
+        "returncode": 0,
+        "run_id": "ccb051ce066b",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "데이터 카탈로그: data/catalog.json\n자산 7개, 데이터 흔적 0개, 개인정보: indirect web_log, provider_log, audit_evidence; personal service_policy; sensitive message_data, service_backup\n  결과: 이상 없음\n{\n \"check\": \"data_inventory\",\n \"status\": \"PASS\",\n \"system\": \"bomts-main\",\n \"assets\": 7,\n \"uncovered\": [],\n \"problems\": [],\n \"warnings\": [],\n \"pii\": {\n  \"none\": [\n   \"system_config\"\n  ],\n  \"indirect\": [\n   \"web_log\",\n   \"provider_log\",\n   \"audit_evidence\"\n  ],\n  \"personal\": [\n   \"service_policy\"\n  ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory",
+      "ts": "2026-10-12T13:42:12.538213+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "lecture_gem_links_smoke",
+      "evidence_fingerprint": "sha256:ca58dd5066613c4479e9578590e6921a9e97578f40c97f35d1d6fc7f4914d54e",
+      "execution": {
+        "command": [
+          ".venv/bin/python",
+          "/tmp/test_lecture_gems.py"
+        ],
+        "executed_at": "2026-10-12T13:47:27.268823+00:00",
+        "input_snapshot": {
+          "after": "sha256:ca58dd5066613c4479e9578590e6921a9e97578f40c97f35d1d6fc7f4914d54e",
+          "before": "sha256:ca58dd5066613c4479e9578590e6921a9e97578f40c97f35d1d6fc7f4914d54e"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lecture_gem_links_smoke_7691b01c297f.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lecture_gem_links_smoke_7691b01c297f.receipt.json",
+        "returncode": 0,
+        "run_id": "7691b01c297f",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS lecture_gem_links_smoke\nslides=3 counter=1/3->2/3->3/3 desktop_cards=3 mobile_cards=3\nqr_popups=3 exact_urls=3 browser_errors=0 horizontal_overflow=0\ndesktop=dist/lecture-review/gem-links-desktop.png\nmobile=dist/lecture-review/gem-links-mobile.png\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: _popups=3 exact_urls=3 browser_errors=0 horizontal_overflow=0\ndesktop=dist/lecture-review/gem-links-desktop.png\nmobile=dist/lecture-review/gem-links-mobile.png",
+      "ts": "2026-10-12T13:47:27.270575+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "lecture_public_gem_links",
+      "evidence_fingerprint": "sha256:7777d842d944046fe95362272999de744f834f8c949ea772b180acdbc09f073e",
+      "execution": {
+        "command": [
+          ".venv/bin/python",
+          "/tmp/test_lecture_gems_public2.py"
+        ],
+        "executed_at": "2026-10-12T13:48:09.789029+00:00",
+        "input_snapshot": {
+          "after": "sha256:7777d842d944046fe95362272999de744f834f8c949ea772b180acdbc09f073e",
+          "before": "sha256:7777d842d944046fe95362272999de744f834f8c949ea772b180acdbc09f073e"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lecture_public_gem_links_b1afabdc3061.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lecture_public_gem_links_b1afabdc3061.receipt.json",
+        "returncode": 0,
+        "run_id": "b1afabdc3061",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS lecture_public_gem_links\nhttps_status=200 slide=3/3 cards=3 text_link_popups=3 exact_urls=3 browser_errors=0\nscreenshot=dist/lecture-review/gem-links-public.png\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ecture_public_gem_links\nhttps_status=200 slide=3/3 cards=3 text_link_popups=3 exact_urls=3 browser_errors=0\nscreenshot=dist/lecture-review/gem-links-public.png",
+      "ts": "2026-10-12T13:48:09.790647+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "lint",
+      "evidence_fingerprint": "sha256:cfc51bf0d177ddfe9fca6a60e955e9ae7ad37255b57b8663a9aa780295b4ad1f",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "syntax",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:48:34.862196+00:00",
+        "input_snapshot": {
+          "after": "sha256:cfc51bf0d177ddfe9fca6a60e955e9ae7ad37255b57b8663a9aa780295b4ad1f",
+          "before": "sha256:cfc51bf0d177ddfe9fca6a60e955e9ae7ad37255b57b8663a9aa780295b4ad1f"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lint_13ba39988903.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lint_13ba39988903.receipt.json",
+        "returncode": 0,
+        "run_id": "13ba39988903",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 18,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (18)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: {\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 18,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (18)",
+      "ts": "2026-10-12T13:48:34.868901+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "unit_or_regression",
+      "evidence_fingerprint": "sha256:69e3fd4b90a4aea5083ff8251187d64f104140a30fc0612e425f3a83ee4f2705",
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-12T13:48:35.102788+00:00",
+        "input_snapshot": {
+          "after": "sha256:69e3fd4b90a4aea5083ff8251187d64f104140a30fc0612e425f3a83ee4f2705",
+          "before": "sha256:69e3fd4b90a4aea5083ff8251187d64f104140a30fc0612e425f3a83ee4f2705"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/unit_or_regression_4d00f1bf3429.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/unit_or_regression_4d00f1bf3429.receipt.json",
+        "returncode": 0,
+        "run_id": "4d00f1bf3429",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-12T13:48:35.112543+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "encoding",
+      "evidence_fingerprint": "sha256:0769f3770be5dadff2f9a0e69cd72970a035f773b429e769e56669a9e8b08f54",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "encoding",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts,mail,docs",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:48:35.215736+00:00",
+        "input_snapshot": {
+          "after": "sha256:0769f3770be5dadff2f9a0e69cd72970a035f773b429e769e56669a9e8b08f54",
+          "before": "sha256:0769f3770be5dadff2f9a0e69cd72970a035f773b429e769e56669a9e8b08f54"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/encoding_2bed7765cd48.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/encoding_2bed7765cd48.receipt.json",
+        "returncode": 0,
+        "run_id": "2bed7765cd48",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 47,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (47)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: {\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 47,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (47)",
+      "ts": "2026-10-12T13:48:35.226528+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "identifier_audit",
+      "evidence_fingerprint": "sha256:1a3e9f881aa3cf0f589f3fcbdbbf3dc4d50cf2ea39b7de0b17a765560526fce7",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "identifier_audit",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "scripts,glossary/dictionary",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:48:35.518994+00:00",
+        "input_snapshot": {
+          "after": "sha256:1a3e9f881aa3cf0f589f3fcbdbbf3dc4d50cf2ea39b7de0b17a765560526fce7",
+          "before": "sha256:1a3e9f881aa3cf0f589f3fcbdbbf3dc4d50cf2ea39b7de0b17a765560526fce7"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/identifier_audit_2a94e6a10e23.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/identifier_audit_2a94e6a10e23.receipt.json",
+        "returncode": 0,
+        "run_id": "2a94e6a10e23",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"identifier_audit\",\n \"status\": \"PASS\",\n \"baseline_commit\": \"19cc19e22410fd98555d225d4d5c801188071766\",\n \"glossary_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"pinned_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"enforcement\": {\n  \"new_or_renamed\": \"strict\",\n  \"legacy\": \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit",
+      "ts": "2026-10-12T13:48:35.526866+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "qa_quick",
+      "evidence_fingerprint": "sha256:69e3fd4b90a4aea5083ff8251187d64f104140a30fc0612e425f3a83ee4f2705",
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-12T13:48:35.784663+00:00",
+        "input_snapshot": {
+          "after": "sha256:69e3fd4b90a4aea5083ff8251187d64f104140a30fc0612e425f3a83ee4f2705",
+          "before": "sha256:69e3fd4b90a4aea5083ff8251187d64f104140a30fc0612e425f3a83ee4f2705"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/qa_quick_e66ba8342942.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/qa_quick_e66ba8342942.receipt.json",
+        "returncode": 0,
+        "run_id": "e66ba8342942",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ok",
+      "ts": "2026-10-12T13:48:35.794391+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "user_manual",
+      "evidence_fingerprint": "sha256:77d31f4d493a915954277f33e6ff87961b4b16be5e038a177915f65ddfd699f8",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "user_manual",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:48:36.155897+00:00",
+        "input_snapshot": {
+          "after": "sha256:77d31f4d493a915954277f33e6ff87961b4b16be5e038a177915f65ddfd699f8",
+          "before": "sha256:77d31f4d493a915954277f33e6ff87961b4b16be5e038a177915f65ddfd699f8"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/user_manual_a4327c53614d.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/user_manual_a4327c53614d.receipt.json",
+        "returncode": 0,
+        "run_id": "a4327c53614d",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "  \"name\": \"mail\",\n   \"title\": \"BOMTS 메일 운영\",\n   \"role\": \"feature\",\n   \"slides\": 15\n  },\n  {\n   \"file\": \"docs/manual/tunnel.html\",\n   \"name\": \"tunnel\",\n   \"title\": \"BOMTS Cloudflare Tunnel\",\n   \"role\": \"feature\",\n   \"slides\": 8\n  },\n  {\n   \"file\": \"docs/manual/website.html\",\n   \"name\": \"website\",\n   \"title\": \"BOMTS 웹사이트\",\n   \"role\": \"feature\",\n   \"slides\": 9\n  },\n  {\n   \"file\": \"docs/manual/architecture.html\",\n   \"name\": \"architecture\",\n   \"title\": \"BOMTS 시스템 구성\",\n   \"role\": \"architecture\",\n   \"slides\": 10\n  },\n  {\n   \"file\": \"docs/manual/admin.html\",\n   \"name\": \"admin\",\n   \"title\": \"BOMTS 운영·인수인계\",\n   \"role\": \"admin\",\n   \"slides\": 16\n  }\n ],\n \"slides\": 82,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/lecture.html\"\n ]\n}\nPASS: user_manual (8)\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: 6\n  }\n ],\n \"slides\": 82,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/lecture.html\"\n ]\n}\nPASS: user_manual (8)",
+      "ts": "2026-10-12T13:48:36.159618+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "data_stance",
+      "evidence_fingerprint": "sha256:3dab975274ebecfa18d6f69b977da831e79c3e6762af110aafc6d6bef118fdf0",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_stance",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:48:36.402054+00:00",
+        "input_snapshot": {
+          "after": "sha256:3dab975274ebecfa18d6f69b977da831e79c3e6762af110aafc6d6bef118fdf0",
+          "before": "sha256:3dab975274ebecfa18d6f69b977da831e79c3e6762af110aafc6d6bef118fdf0"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/data_stance_7e091f23c645.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/data_stance_7e091f23c645.receipt.json",
+        "returncode": 0,
+        "run_id": "7e091f23c645",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "son이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.  ref: https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\n저장소 흔적 0개 (ORM 모델·Prisma·마이그레이션·DB 파일·DB 컨테이너 없음)\n  결과: 이상 없음\n{\n \"check\": \"data_stance\",\n \"status\": \"PASS\",\n \"stance\": \"external\",\n \"reason\": \"bomts-main은 정적 사이트·운영 스크립트와 운영 로그만 보유한다. 업무 데이터 정본은 외부 서비스 저장소에 있다. dev-ai의 PostgreSQL·Qdrant 정본은 sungbeom78/dev-ai의 db/model.json이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.\",\n \"ref\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ef\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance",
+      "ts": "2026-10-12T13:48:36.404561+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "data_inventory",
+      "evidence_fingerprint": "sha256:88230bf43bb64cac5351eddb68990b05f53afc228507c346dc62b688239b359b",
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_inventory",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:48:36.744870+00:00",
+        "input_snapshot": {
+          "after": "sha256:88230bf43bb64cac5351eddb68990b05f53afc228507c346dc62b688239b359b",
+          "before": "sha256:88230bf43bb64cac5351eddb68990b05f53afc228507c346dc62b688239b359b"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/data_inventory_2e23e8c7ce41.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/data_inventory_2e23e8c7ce41.receipt.json",
+        "returncode": 0,
+        "run_id": "2e23e8c7ce41",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "데이터 카탈로그: data/catalog.json\n자산 7개, 데이터 흔적 0개, 개인정보: indirect web_log, provider_log, audit_evidence; personal service_policy; sensitive message_data, service_backup\n  결과: 이상 없음\n{\n \"check\": \"data_inventory\",\n \"status\": \"PASS\",\n \"system\": \"bomts-main\",\n \"assets\": 7,\n \"uncovered\": [],\n \"problems\": [],\n \"warnings\": [],\n \"pii\": {\n  \"none\": [\n   \"system_config\"\n  ],\n  \"indirect\": [\n   \"web_log\",\n   \"provider_log\",\n   \"audit_evidence\"\n  ],\n  \"personal\": [\n   \"service_policy\"\n  ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory\n"
+      },
+      "gate_outcome": "allow",
+      "kind": "check",
+      "reason_code": "PASS: ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory",
+      "ts": "2026-10-12T13:48:36.747544+00:00",
+      "verification": "verified",
+      "verified": true
+    },
+    {
+      "check_name": "acceptance#1",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "PDF 주석과 QR 디코딩으로 검증한 Gemini Gem 3개를 site/lecture/index.html 3번 화면에 표시했고 공개 브라우저에서 카드 3개를 확인함",
+      "ts": "2026-10-12T13:49:15.101999+00:00",
+      "verification": null,
+      "verified": false
+    },
+    {
+      "check_name": "acceptance#2",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "로컬 브라우저에서 QR 링크 3개, 공개 브라우저에서 텍스트 링크 3개를 클릭해 각 새 탭 URL이 PDF 원본과 정확히 일치함을 확인함",
+      "ts": "2026-10-12T13:49:15.338478+00:00",
+      "verification": null,
+      "verified": false
+    },
+    {
+      "check_name": "acceptance#3",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "Playwright로 데스크톱 3열·모바일 3행, 1/3→2/3→3/3 이동, 가로 넘침 0, 브라우저 오류 0을 확인하고 PNG를 눈으로 검토함",
+      "ts": "2026-10-12T13:49:15.575771+00:00",
+      "verification": null,
+      "verified": false
+    },
+    {
+      "check_name": "acceptance#4",
+      "evidence_fingerprint": null,
+      "execution": null,
+      "gate_outcome": "met",
+      "kind": "acceptance",
+      "reason_code": "매뉴얼 9쪽·필수 검사 8개 통과·운영 컨테이너 healthy·공개 HTTPS 검증 완료. finish --push로 작업 커밋을 push하고 기록 커밋도 후속 push하도록 확정함",
+      "ts": "2026-10-12T13:49:15.815447+00:00",
+      "verification": null,
+      "verified": false
+    }
+  ],
+  "glossary_rev": null,
+  "goal": "D2 Gem 공유 링크 3개를 강의 덱 3번 화면에 추가한다",
+  "incidents": {
+    "lecture-css-cache-stale": {
+      "cause": "own_change",
+      "cause_history": [
+        {
+          "cause": "own_change",
+          "evidence": "운영 HTML은 새 3번 화면이지만 동일한 lecture.css URL에 7일 immutable 캐시가 남아 새 gem-* 규칙이 전달되지 않았다. 로컬 CSS SHA256 05dc6a... 8948 bytes, 공개 CSS 0da129... 4605 bytes로 불일치한다.",
+          "investigation": {
+            "data_changes": "DB·업무 데이터 변화 없음. origin CSS 파일은 새 버전이며 Cloudflare edge에 같은 URL의 이전 응답만 캐시됨.",
+            "logs": "dist/lecture-review/gem-links-public.png: QR 카드가 스타일 없이 확대됨. curl 응답 첫 원인 증거: cf-cache-status HIT, age 3828, last-modified 2026-10-12T12:14:08Z, public CSS에 gem-grid 없음.",
+            "recent_changes": "이번 diff에서 lecture.css에 gem-* 규칙을 추가했지만 index.html의 stylesheet URL assets/lecture.css는 그대로 유지했다. nginx는 css에 max-age=604800, immutable을 설정한다.",
+            "search": "기존 task와 backlog에서 동일한 immutable CSS/stale CSS 사건 기록 없음. curl 헤더와 공개 파일 본문 비교로 캐시 원인을 확인함.",
+            "system_state": "bomts_public_website running healthy, restart 0, 새 컨테이너 시작 2026-10-12T13:42:29Z. /var/lib/docker 파일시스템 44% 사용. origin healthz 200."
+          },
+          "ts": "2026-10-12T13:46:36.450114+00:00"
+        }
+      ],
+      "closed_at": "2026-10-12T13:48:10.275407+00:00",
+      "created_at": "2026-10-12T13:46:10.428184+00:00",
+      "error_signature": "public lecture page loaded stale immutable CSS and rendered Gem QR cards oversized",
+      "events": [
+        {
+          "by_task": "20261012-lecture-gem-links",
+          "kind": "classify_",
+          "ts": "2026-10-12T13:46:36.450135+00:00"
+        }
+      ],
+      "incident_id": "lecture-css-cache-stale",
+      "linked_tasks": [],
+      "max_rounds": 3,
+      "owner_task_id": "20261012-lecture-gem-links",
+      "rounds": [
+        {
+          "action": "index.html의 stylesheet URL에 이번 릴리스 버전 쿼리를 붙여 새 캐시 키로 CSS를 로드한다",
+          "budget_exception": null,
+          "diff_ref": null,
+          "evidence": "공개 CSS는 4605 bytes·CF HIT·age 3828이고 gem-grid가 없지만 origin CSS는 8948 bytes이며 gem-grid 규칙이 있다",
+          "expected_result": "공개 CSS 요청이 신규 8948-byte 내용을 반환하고 3번 화면이 데스크톱 3열 카드로 렌더링된다",
+          "hypothesis": "같은 lecture.css URL에 immutable 캐시를 유지한 것이 공개 화면의 신규 gem 스타일 누락 원인이다",
+          "hypothesis_hash": "62a88e8e83829511",
+          "phase": "current_change",
+          "plan_no": 1,
+          "proposed_by_task": "20261012-lecture-gem-links",
+          "result": "stylesheet URL 버전 처리 후 공개 CSS SHA256이 origin과 일치했고 공개 화면이 3열 카드로 정상 렌더링되며 3개 링크가 정확히 열림",
+          "result_ts": "2026-10-12T13:48:10.033278+00:00",
+          "round_no": 1,
+          "status": "confirmed",
+          "ts": "2026-10-12T13:46:36.824405+00:00",
+          "verification_check": "lecture_public_gem_links",
+          "verification_run_id": "b1afabdc3061",
+          "verification_task": "20261012-lecture-gem-links",
+          "verified": true
+        }
+      ],
+      "rounds_used": 1,
+      "status": "resolved"
+    }
+  },
+  "last_host": {
+    "host": "unknown",
+    "surface": "unknown",
+    "version": "unknown"
+  },
+  "linked_incidents": [],
+  "open_waits": [],
+  "policy_version": "sha256:3323a3f8dd8e8397",
+  "revision": 34,
+  "rollbacks": [],
+  "schema_version": "1",
+  "stage": "report",
+  "stages": {
+    "data_inventory": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "data_inventory",
+        "computed_at": "2026-10-12T13:48:36.480749+00:00",
+        "file_count": 11,
+        "files": {
+          "data/catalog.json": "e39bbeabc4097f6e5aebe493fe5f6fd7d304f5c1e669df4b4b48942c7c367bf3",
+          "docs/manual/.review.json": "03a8e292bebddeb569269c3034387c64afbd15b8a499c88564bb9fd915eba3d3",
+          "docs/manual/index.html": "f2ca26428491a8719dba2e266344e9dad1bd2650b9d2627f80b756e2303ddb95",
+          "docs/manual/lecture.html": "ba5e26b80087af6ce54223973cb204a0b95e2566f8a40e74e86c4105b406bbdb",
+          "project.policy.yaml": "f0c7aa60c1675786317b5099146cc83ba1e6d6ce63f8da9ca1c166593c2a9bdf",
+          "scripts/check.sh": "0d54ab118014175d95854dd3c4b52520980cb246689dccf3f6aa5f1dcc1287dd",
+          "site/lecture/assets/lecture.css": "05dc6a1694510f8dd3c0177a662912c4329eb257144acf49cae88bdca1546dd9",
+          "site/lecture/assets/slide-03-gem-01.png": "adf5350173738554edfa882e505a9fd245f4b61506c84ab9b9fc8b6b4b5bdaa3",
+          "site/lecture/assets/slide-03-gem-02.png": "86d6f1b7f408ef67128b0a0a0cb757c93ef65f050cb3665d8de6ac056d23c3dd",
+          "site/lecture/assets/slide-03-gem-03.png": "f1556de4d5e2ea17a4025aefc645f5d5ced14c04e01b986a0ac8a367cf548e17",
+          "site/lecture/index.html": "14e43beba8f4ba9cdc8e6af4406a338f2d3b5d2c612a8f602124f90d2eaba1b3"
+        },
+        "fingerprint": "sha256:88230bf43bb64cac5351eddb68990b05f53afc228507c346dc62b688239b359b",
+        "input_paths": [
+          "data/catalog.json",
+          "docs/manual/.review.json",
+          "docs/manual/index.html",
+          "docs/manual/lecture.html",
+          "project.policy.yaml",
+          "scripts/check.sh",
+          "site/lecture/assets/lecture.css",
+          "site/lecture/assets/slide-03-gem-01.png",
+          "site/lecture/assets/slide-03-gem-02.png",
+          "site/lecture/assets/slide-03-gem-03.png",
+          "site/lecture/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_inventory",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:48:36.744870+00:00",
+        "input_snapshot": {
+          "after": "sha256:88230bf43bb64cac5351eddb68990b05f53afc228507c346dc62b688239b359b",
+          "before": "sha256:88230bf43bb64cac5351eddb68990b05f53afc228507c346dc62b688239b359b"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/data_inventory_2e23e8c7ce41.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/data_inventory_2e23e8c7ce41.receipt.json",
+        "returncode": 0,
+        "run_id": "2e23e8c7ce41",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "데이터 카탈로그: data/catalog.json\n자산 7개, 데이터 흔적 0개, 개인정보: indirect web_log, provider_log, audit_evidence; personal service_policy; sensitive message_data, service_backup\n  결과: 이상 없음\n{\n \"check\": \"data_inventory\",\n \"status\": \"PASS\",\n \"system\": \"bomts-main\",\n \"assets\": 7,\n \"uncovered\": [],\n \"problems\": [],\n \"warnings\": [],\n \"pii\": {\n  \"none\": [\n   \"system_config\"\n  ],\n  \"indirect\": [\n   \"web_log\",\n   \"provider_log\",\n   \"audit_evidence\"\n  ],\n  \"personal\": [\n   \"service_policy\"\n  ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: ],\n  \"sensitive\": [\n   \"message_data\",\n   \"service_backup\"\n  ],\n  \"unique_id\": []\n },\n \"catalog\": \"data/catalog.json\",\n \"exists\": true\n}\nPASS: data_inventory",
+      "recorded_at": "2026-10-12T13:48:36.747544+00:00",
+      "verification": "verified"
+    },
+    "data_stance": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "data_stance",
+        "computed_at": "2026-10-12T13:48:36.208717+00:00",
+        "file_count": 10,
+        "files": {
+          "docs/manual/.review.json": "03a8e292bebddeb569269c3034387c64afbd15b8a499c88564bb9fd915eba3d3",
+          "docs/manual/index.html": "f2ca26428491a8719dba2e266344e9dad1bd2650b9d2627f80b756e2303ddb95",
+          "docs/manual/lecture.html": "ba5e26b80087af6ce54223973cb204a0b95e2566f8a40e74e86c4105b406bbdb",
+          "project.policy.yaml": "f0c7aa60c1675786317b5099146cc83ba1e6d6ce63f8da9ca1c166593c2a9bdf",
+          "scripts/check.sh": "0d54ab118014175d95854dd3c4b52520980cb246689dccf3f6aa5f1dcc1287dd",
+          "site/lecture/assets/lecture.css": "05dc6a1694510f8dd3c0177a662912c4329eb257144acf49cae88bdca1546dd9",
+          "site/lecture/assets/slide-03-gem-01.png": "adf5350173738554edfa882e505a9fd245f4b61506c84ab9b9fc8b6b4b5bdaa3",
+          "site/lecture/assets/slide-03-gem-02.png": "86d6f1b7f408ef67128b0a0a0cb757c93ef65f050cb3665d8de6ac056d23c3dd",
+          "site/lecture/assets/slide-03-gem-03.png": "f1556de4d5e2ea17a4025aefc645f5d5ced14c04e01b986a0ac8a367cf548e17",
+          "site/lecture/index.html": "14e43beba8f4ba9cdc8e6af4406a338f2d3b5d2c612a8f602124f90d2eaba1b3"
+        },
+        "fingerprint": "sha256:3dab975274ebecfa18d6f69b977da831e79c3e6762af110aafc6d6bef118fdf0",
+        "input_paths": [
+          "docs/manual/.review.json",
+          "docs/manual/index.html",
+          "docs/manual/lecture.html",
+          "project.policy.yaml",
+          "scripts/check.sh",
+          "site/lecture/assets/lecture.css",
+          "site/lecture/assets/slide-03-gem-01.png",
+          "site/lecture/assets/slide-03-gem-02.png",
+          "site/lecture/assets/slide-03-gem-03.png",
+          "site/lecture/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "data_stance",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:48:36.402054+00:00",
+        "input_snapshot": {
+          "after": "sha256:3dab975274ebecfa18d6f69b977da831e79c3e6762af110aafc6d6bef118fdf0",
+          "before": "sha256:3dab975274ebecfa18d6f69b977da831e79c3e6762af110aafc6d6bef118fdf0"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/data_stance_7e091f23c645.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/data_stance_7e091f23c645.receipt.json",
+        "returncode": 0,
+        "run_id": "7e091f23c645",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "son이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.  ref: https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\n저장소 흔적 0개 (ORM 모델·Prisma·마이그레이션·DB 파일·DB 컨테이너 없음)\n  결과: 이상 없음\n{\n \"check\": \"data_stance\",\n \"status\": \"PASS\",\n \"stance\": \"external\",\n \"reason\": \"bomts-main은 정적 사이트·운영 스크립트와 운영 로그만 보유한다. 업무 데이터 정본은 외부 서비스 저장소에 있다. dev-ai의 PostgreSQL·Qdrant 정본은 sungbeom78/dev-ai의 db/model.json이고, bomts-decision의 SQLite 스키마 정본은 sungbeom78/bomts-decision의 prisma/schema.prisma이다. Mailu 데이터 지도와 백업 선언은 Private sungbeom78/bomts-infra에서 관리한다.\",\n \"ref\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: ef\": \"https://github.com/sungbeom78/dev-ai/blob/main/db/model.json\",\n \"engine\": \"postgresql\",\n \"signals\": [],\n \"problems\": [],\n \"notes\": []\n}\nPASS: data_stance",
+      "recorded_at": "2026-10-12T13:48:36.404561+00:00",
+      "verification": "verified"
+    },
+    "encoding": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "encoding",
+        "computed_at": "2026-10-12T13:48:35.149245+00:00",
+        "file_count": 55,
+        "files": {
+          "docs/architecture.md": "474fef6a7f0cbfe177007d1550ba3c5590ac1a9a70391ddd7756a39dc5e8d9b8",
+          "docs/bomts-decision-public-readiness.md": "6fb80eca3c4d1b3560bc215f03ad49f364fd0c457bb2ea0f221bbe24a23c4276",
+          "docs/claude-startup-application.md": "523dce220f2b437c29ba6ed244494de4813d011f38d0b6aa27079e9464c9bb4e",
+          "docs/deployment.md": "23a875a820024b8030efb7c160f2d3ea2b2056c78eb1404cb24ee326d9566275",
+          "docs/dns.md": "9c3076662d83bb49a63a747332c8c053afc5489a4c69ae016df16dec406763a7",
+          "docs/google-search-console.md": "c3e090f6eb67fc856482b0d2b2ec6ca2c720259504a6f2a930289a5d526fecb5",
+          "docs/mail-operations.md": "828164481557d81431b33750aa98c0a5f78af586bd2bbe8bf1d65bbb3fa62552",
+          "docs/mail-stack-comparison.md": "e30c4795f72f439c877f3f6c764f82cfd2ab9542413c694fe71091d1be144d17",
+          "docs/manual/.review.json": "03a8e292bebddeb569269c3034387c64afbd15b8a499c88564bb9fd915eba3d3",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "59c92b08e556e08ed6ce11b803c83e602a04a916b0044676873489cedb3ad687",
+          "docs/manual/architecture.html": "d38bf90390d7cd9bc62e2766bc2fd8241fa78fbede272b57b0ed7e1e464962fe",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "f2ca26428491a8719dba2e266344e9dad1bd2650b9d2627f80b756e2303ddb95",
+          "docs/manual/lecture.html": "ba5e26b80087af6ce54223973cb204a0b95e2566f8a40e74e86c4105b406bbdb",
+          "docs/manual/local-manual.html": "ed4e1605f2a1d5ffde69d828f5db2d5858adefcffb57812c85f858b6d620de30",
+          "docs/manual/mail.html": "779f5d73a11c5d2f80455e1202c6abd63fd8ee90c09dd71cf4ea74a262ff9a34",
+          "docs/manual/tunnel.html": "1969ce196844897fb7b84dc30e20125640abe1b78325cd595f4c13b099e16271",
+          "docs/manual/website.html": "3e2a3906e1dc59cf59b460d5d609b9add158d6a6b6ae37c3b1b95201328456d1",
+          "docs/public-repository-security.md": "fdebd9e021a01b751e9395cad72bb0ad33cda338e7a0f50f9d8222b18e9ef0e7",
+          "docs/security.md": "bba918ee4466e5522d736957407a5eb05951d7ff48fee5b753b4764358279e63",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "0236b3ff61b0a00fa7bb68944a849de5346c96a0933b5831fd9dbb0fff1a9f21",
+          "mail/provider-onboarding.md": "e50baeab44a0ad3c4f74aa9b9817db4730958d42bd641bb1eeb3bd0d054bf309",
+          "scripts/check.sh": "0d54ab118014175d95854dd3c4b52520980cb246689dccf3f6aa5f1dcc1287dd",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/lecture/assets/bomts-lecture-preparation-manual.pdf": "a2ec0bc366dd3af1c6272eebacbbc68f6a9093f9283ceeecd4e65f88d1e8d5c5",
+          "site/lecture/assets/lecture.css": "05dc6a1694510f8dd3c0177a662912c4329eb257144acf49cae88bdca1546dd9",
+          "site/lecture/assets/lecture.js": "12941c2b9767a1d1f1778bd96360d974437e60942b862c44cd3ca1351b5bea0b",
+          "site/lecture/assets/prompt-card-D2.html": "6e2c2c96485c2c2136ee001b742f66bc2d0a21aa47884c5116ce333554d3a5a1",
+          "site/lecture/assets/slide-01.png": "949c3034bb06b628e1aa394cfc49db428e89f34cff5964c80feb11666e22b8a7",
+          "site/lecture/assets/slide-02.png": "b4f1d085c712a735475d2cda613de952a7f9d525678f1a431f4bd59ecd3947db",
+          "site/lecture/assets/slide-03-gem-01.png": "adf5350173738554edfa882e505a9fd245f4b61506c84ab9b9fc8b6b4b5bdaa3",
+          "site/lecture/assets/slide-03-gem-02.png": "86d6f1b7f408ef67128b0a0a0cb757c93ef65f050cb3665d8de6ac056d23c3dd",
+          "site/lecture/assets/slide-03-gem-03.png": "f1556de4d5e2ea17a4025aefc645f5d5ced14c04e01b986a0ac8a367cf548e17",
+          "site/lecture/index.html": "14e43beba8f4ba9cdc8e6af4406a338f2d3b5d2c612a8f602124f90d2eaba1b3",
+          "site/manage/index.html": "be2c0492ce354999821f35c0aa265aadbbc4794878186f93ce85dde083deb846",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:0769f3770be5dadff2f9a0e69cd72970a035f773b429e769e56669a9e8b08f54",
+        "input_paths": [
+          "docs",
+          "mail",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "encoding",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts,mail,docs",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:48:35.215736+00:00",
+        "input_snapshot": {
+          "after": "sha256:0769f3770be5dadff2f9a0e69cd72970a035f773b429e769e56669a9e8b08f54",
+          "before": "sha256:0769f3770be5dadff2f9a0e69cd72970a035f773b429e769e56669a9e8b08f54"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/encoding_2bed7765cd48.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/encoding_2bed7765cd48.receipt.json",
+        "returncode": 0,
+        "run_id": "2bed7765cd48",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 47,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (47)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: {\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 47,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (47)",
+      "recorded_at": "2026-10-12T13:48:35.226528+00:00",
+      "verification": "verified"
+    },
+    "identifier_audit": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "identifier_audit",
+        "computed_at": "2026-10-12T13:48:35.259175+00:00",
+        "file_count": 12,
+        "files": {
+          "glossary/dictionary/areas.json": "d53d9f69b6e35f03257adaad3e524f2b36e66a0d0940666e703268ebfe10bd2c",
+          "glossary/dictionary/banned.json": "dd202b9aeda9c61cf59001295c3813aaa84a229308dbbaafbc3ede5129e866fd",
+          "glossary/dictionary/compounds.json": "fc0c5d5688bb7cf289c23443fc24a416ff97ca6340686c8b4730e99d503280ac",
+          "glossary/dictionary/drafts.json": "c59effa1d6f42d1426ed919a5f02643229e23ee018e5252a68acc9c18c53a35b",
+          "glossary/dictionary/pending_words.json": "e52f0d0a7eb548de632aa2282b5ce1b5c21bbfb3433220a77dc086ffd047fe1e",
+          "glossary/dictionary/tech_abbreviations.json": "bcbd3292e0affd52abe551ee8c3dc0145853f7b57b28c587037b7d7351379d28",
+          "glossary/dictionary/terms.json": "a5d5b4a0c766128f2c4a3d5b679cbf107f66f57088af6f3d2b9778368368e142",
+          "glossary/dictionary/terms_legacy.json": "b04da63a1213456df7552364c2e10945d4531d6c73e5a7090576bb537e6470ac",
+          "glossary/dictionary/unit_tokens.json": "f5b12bc6445c04cd6ceca6b78f02047c0e09f95b3a4631615dfb3b0b6c65b48a",
+          "glossary/dictionary/words.json": "ec18782a7a5f641bcd3bb446957f89f205bc235fbc62a57d6faa8fa20a211032",
+          "glossary/dictionary/words__derived_terms.json": "e5fd7aa65fb825e0bce9c786c3769f6ca699437e8c266b064538ba545ee993bc",
+          "scripts/check.sh": "0d54ab118014175d95854dd3c4b52520980cb246689dccf3f6aa5f1dcc1287dd"
+        },
+        "fingerprint": "sha256:1a3e9f881aa3cf0f589f3fcbdbbf3dc4d50cf2ea39b7de0b17a765560526fce7",
+        "input_paths": [
+          "glossary/dictionary",
+          "scripts"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "identifier_audit",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "scripts,glossary/dictionary",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:48:35.518994+00:00",
+        "input_snapshot": {
+          "after": "sha256:1a3e9f881aa3cf0f589f3fcbdbbf3dc4d50cf2ea39b7de0b17a765560526fce7",
+          "before": "sha256:1a3e9f881aa3cf0f589f3fcbdbbf3dc4d50cf2ea39b7de0b17a765560526fce7"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/identifier_audit_2a94e6a10e23.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/identifier_audit_2a94e6a10e23.receipt.json",
+        "returncode": 0,
+        "run_id": "2a94e6a10e23",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"identifier_audit\",\n \"status\": \"PASS\",\n \"baseline_commit\": \"19cc19e22410fd98555d225d4d5c801188071766\",\n \"glossary_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"pinned_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"enforcement\": {\n  \"new_or_renamed\": \"strict\",\n  \"legacy\": \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit",
+      "recorded_at": "2026-10-12T13:48:35.526866+00:00",
+      "verification": "verified"
+    },
+    "lecture_gem_links_smoke": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "lecture_gem_links_smoke",
+        "computed_at": "2026-10-12T13:47:24.429988+00:00",
+        "file_count": 6,
+        "files": {
+          "site/lecture/assets/lecture.css": "05dc6a1694510f8dd3c0177a662912c4329eb257144acf49cae88bdca1546dd9",
+          "site/lecture/assets/lecture.js": "12941c2b9767a1d1f1778bd96360d974437e60942b862c44cd3ca1351b5bea0b",
+          "site/lecture/assets/slide-03-gem-01.png": "adf5350173738554edfa882e505a9fd245f4b61506c84ab9b9fc8b6b4b5bdaa3",
+          "site/lecture/assets/slide-03-gem-02.png": "86d6f1b7f408ef67128b0a0a0cb757c93ef65f050cb3665d8de6ac056d23c3dd",
+          "site/lecture/assets/slide-03-gem-03.png": "f1556de4d5e2ea17a4025aefc645f5d5ced14c04e01b986a0ac8a367cf548e17",
+          "site/lecture/index.html": "14e43beba8f4ba9cdc8e6af4406a338f2d3b5d2c612a8f602124f90d2eaba1b3"
+        },
+        "fingerprint": "sha256:ca58dd5066613c4479e9578590e6921a9e97578f40c97f35d1d6fc7f4914d54e",
+        "input_paths": [
+          "site/lecture/assets/lecture.css",
+          "site/lecture/assets/lecture.js",
+          "site/lecture/assets/slide-03-gem-01.png",
+          "site/lecture/assets/slide-03-gem-02.png",
+          "site/lecture/assets/slide-03-gem-03.png",
+          "site/lecture/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          ".venv/bin/python",
+          "/tmp/test_lecture_gems.py"
+        ],
+        "executed_at": "2026-10-12T13:47:27.268823+00:00",
+        "input_snapshot": {
+          "after": "sha256:ca58dd5066613c4479e9578590e6921a9e97578f40c97f35d1d6fc7f4914d54e",
+          "before": "sha256:ca58dd5066613c4479e9578590e6921a9e97578f40c97f35d1d6fc7f4914d54e"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lecture_gem_links_smoke_7691b01c297f.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lecture_gem_links_smoke_7691b01c297f.receipt.json",
+        "returncode": 0,
+        "run_id": "7691b01c297f",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS lecture_gem_links_smoke\nslides=3 counter=1/3->2/3->3/3 desktop_cards=3 mobile_cards=3\nqr_popups=3 exact_urls=3 browser_errors=0 horizontal_overflow=0\ndesktop=dist/lecture-review/gem-links-desktop.png\nmobile=dist/lecture-review/gem-links-mobile.png\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: _popups=3 exact_urls=3 browser_errors=0 horizontal_overflow=0\ndesktop=dist/lecture-review/gem-links-desktop.png\nmobile=dist/lecture-review/gem-links-mobile.png",
+      "recorded_at": "2026-10-12T13:47:27.270575+00:00",
+      "verification": "verified"
+    },
+    "lecture_public_gem_links": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "lecture_public_gem_links",
+        "computed_at": "2026-10-12T13:48:08.232504+00:00",
+        "file_count": 5,
+        "files": {
+          "site/lecture/assets/lecture.css": "05dc6a1694510f8dd3c0177a662912c4329eb257144acf49cae88bdca1546dd9",
+          "site/lecture/assets/slide-03-gem-01.png": "adf5350173738554edfa882e505a9fd245f4b61506c84ab9b9fc8b6b4b5bdaa3",
+          "site/lecture/assets/slide-03-gem-02.png": "86d6f1b7f408ef67128b0a0a0cb757c93ef65f050cb3665d8de6ac056d23c3dd",
+          "site/lecture/assets/slide-03-gem-03.png": "f1556de4d5e2ea17a4025aefc645f5d5ced14c04e01b986a0ac8a367cf548e17",
+          "site/lecture/index.html": "14e43beba8f4ba9cdc8e6af4406a338f2d3b5d2c612a8f602124f90d2eaba1b3"
+        },
+        "fingerprint": "sha256:7777d842d944046fe95362272999de744f834f8c949ea772b180acdbc09f073e",
+        "input_paths": [
+          "site/lecture/assets/lecture.css",
+          "site/lecture/assets/slide-03-gem-01.png",
+          "site/lecture/assets/slide-03-gem-02.png",
+          "site/lecture/assets/slide-03-gem-03.png",
+          "site/lecture/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          ".venv/bin/python",
+          "/tmp/test_lecture_gems_public2.py"
+        ],
+        "executed_at": "2026-10-12T13:48:09.789029+00:00",
+        "input_snapshot": {
+          "after": "sha256:7777d842d944046fe95362272999de744f834f8c949ea772b180acdbc09f073e",
+          "before": "sha256:7777d842d944046fe95362272999de744f834f8c949ea772b180acdbc09f073e"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lecture_public_gem_links_b1afabdc3061.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lecture_public_gem_links_b1afabdc3061.receipt.json",
+        "returncode": 0,
+        "run_id": "b1afabdc3061",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS lecture_public_gem_links\nhttps_status=200 slide=3/3 cards=3 text_link_popups=3 exact_urls=3 browser_errors=0\nscreenshot=dist/lecture-review/gem-links-public.png\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "PASS: ecture_public_gem_links\nhttps_status=200 slide=3/3 cards=3 text_link_popups=3 exact_urls=3 browser_errors=0\nscreenshot=dist/lecture-review/gem-links-public.png",
+      "recorded_at": "2026-10-12T13:48:09.790647+00:00",
+      "verification": "verified"
+    },
+    "lint": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "lint",
+        "computed_at": "2026-10-12T13:48:34.657676+00:00",
+        "file_count": 30,
+        "files": {
+          "scripts/check.sh": "0d54ab118014175d95854dd3c4b52520980cb246689dccf3f6aa5f1dcc1287dd",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/lecture/assets/bomts-lecture-preparation-manual.pdf": "a2ec0bc366dd3af1c6272eebacbbc68f6a9093f9283ceeecd4e65f88d1e8d5c5",
+          "site/lecture/assets/lecture.css": "05dc6a1694510f8dd3c0177a662912c4329eb257144acf49cae88bdca1546dd9",
+          "site/lecture/assets/lecture.js": "12941c2b9767a1d1f1778bd96360d974437e60942b862c44cd3ca1351b5bea0b",
+          "site/lecture/assets/prompt-card-D2.html": "6e2c2c96485c2c2136ee001b742f66bc2d0a21aa47884c5116ce333554d3a5a1",
+          "site/lecture/assets/slide-01.png": "949c3034bb06b628e1aa394cfc49db428e89f34cff5964c80feb11666e22b8a7",
+          "site/lecture/assets/slide-02.png": "b4f1d085c712a735475d2cda613de952a7f9d525678f1a431f4bd59ecd3947db",
+          "site/lecture/assets/slide-03-gem-01.png": "adf5350173738554edfa882e505a9fd245f4b61506c84ab9b9fc8b6b4b5bdaa3",
+          "site/lecture/assets/slide-03-gem-02.png": "86d6f1b7f408ef67128b0a0a0cb757c93ef65f050cb3665d8de6ac056d23c3dd",
+          "site/lecture/assets/slide-03-gem-03.png": "f1556de4d5e2ea17a4025aefc645f5d5ced14c04e01b986a0ac8a367cf548e17",
+          "site/lecture/index.html": "14e43beba8f4ba9cdc8e6af4406a338f2d3b5d2c612a8f602124f90d2eaba1b3",
+          "site/manage/index.html": "be2c0492ce354999821f35c0aa265aadbbc4794878186f93ce85dde083deb846",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:cfc51bf0d177ddfe9fca6a60e955e9ae7ad37255b57b8663a9aa780295b4ad1f",
+        "input_paths": [
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "syntax",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:48:34.862196+00:00",
+        "input_snapshot": {
+          "after": "sha256:cfc51bf0d177ddfe9fca6a60e955e9ae7ad37255b57b8663a9aa780295b4ad1f",
+          "before": "sha256:cfc51bf0d177ddfe9fca6a60e955e9ae7ad37255b57b8663a9aa780295b4ad1f"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lint_13ba39988903.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/lint_13ba39988903.receipt.json",
+        "returncode": 0,
+        "run_id": "13ba39988903",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 18,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (18)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: {\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 18,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (18)",
+      "recorded_at": "2026-10-12T13:48:34.868901+00:00",
+      "verification": "verified"
+    },
+    "prior_art": {
+      "detail": {
+        "artifact": "dev-process/task/20261012-lecture-gem-links/artifact/prior_art_report.json",
+        "findings": 0,
+        "frozen_overlap": 0
+      },
+      "evidence_record": null,
+      "execution": null,
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "verdict=clear",
+      "recorded_at": "2026-10-12T13:36:41.925397+00:00",
+      "verification": "reported_only"
+    },
+    "qa_quick": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "qa_quick",
+        "computed_at": "2026-10-12T13:48:35.576591+00:00",
+        "file_count": 48,
+        "files": {
+          "AGENTS.md": "430ee5771d2d563639d2e4b01b5aab6c6987a1c8650716bf52b4cbdcf9f65ff1",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/manual/.review.json": "03a8e292bebddeb569269c3034387c64afbd15b8a499c88564bb9fd915eba3d3",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "59c92b08e556e08ed6ce11b803c83e602a04a916b0044676873489cedb3ad687",
+          "docs/manual/architecture.html": "d38bf90390d7cd9bc62e2766bc2fd8241fa78fbede272b57b0ed7e1e464962fe",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "f2ca26428491a8719dba2e266344e9dad1bd2650b9d2627f80b756e2303ddb95",
+          "docs/manual/lecture.html": "ba5e26b80087af6ce54223973cb204a0b95e2566f8a40e74e86c4105b406bbdb",
+          "docs/manual/local-manual.html": "ed4e1605f2a1d5ffde69d828f5db2d5858adefcffb57812c85f858b6d620de30",
+          "docs/manual/mail.html": "779f5d73a11c5d2f80455e1202c6abd63fd8ee90c09dd71cf4ea74a262ff9a34",
+          "docs/manual/tunnel.html": "1969ce196844897fb7b84dc30e20125640abe1b78325cd595f4c13b099e16271",
+          "docs/manual/website.html": "3e2a3906e1dc59cf59b460d5d609b9add158d6a6b6ae37c3b1b95201328456d1",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "0236b3ff61b0a00fa7bb68944a849de5346c96a0933b5831fd9dbb0fff1a9f21",
+          "mail/provider-onboarding.md": "e50baeab44a0ad3c4f74aa9b9817db4730958d42bd641bb1eeb3bd0d054bf309",
+          "nginx/default.conf": "a7c5fa89b85e56bdc69023a5efca7949f2d135f0ba512c4c6435b1b631dcb321",
+          "scripts/check.sh": "0d54ab118014175d95854dd3c4b52520980cb246689dccf3f6aa5f1dcc1287dd",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/lecture/assets/bomts-lecture-preparation-manual.pdf": "a2ec0bc366dd3af1c6272eebacbbc68f6a9093f9283ceeecd4e65f88d1e8d5c5",
+          "site/lecture/assets/lecture.css": "05dc6a1694510f8dd3c0177a662912c4329eb257144acf49cae88bdca1546dd9",
+          "site/lecture/assets/lecture.js": "12941c2b9767a1d1f1778bd96360d974437e60942b862c44cd3ca1351b5bea0b",
+          "site/lecture/assets/prompt-card-D2.html": "6e2c2c96485c2c2136ee001b742f66bc2d0a21aa47884c5116ce333554d3a5a1",
+          "site/lecture/assets/slide-01.png": "949c3034bb06b628e1aa394cfc49db428e89f34cff5964c80feb11666e22b8a7",
+          "site/lecture/assets/slide-02.png": "b4f1d085c712a735475d2cda613de952a7f9d525678f1a431f4bd59ecd3947db",
+          "site/lecture/assets/slide-03-gem-01.png": "adf5350173738554edfa882e505a9fd245f4b61506c84ab9b9fc8b6b4b5bdaa3",
+          "site/lecture/assets/slide-03-gem-02.png": "86d6f1b7f408ef67128b0a0a0cb757c93ef65f050cb3665d8de6ac056d23c3dd",
+          "site/lecture/assets/slide-03-gem-03.png": "f1556de4d5e2ea17a4025aefc645f5d5ced14c04e01b986a0ac8a367cf548e17",
+          "site/lecture/index.html": "14e43beba8f4ba9cdc8e6af4406a338f2d3b5d2c612a8f602124f90d2eaba1b3",
+          "site/manage/index.html": "be2c0492ce354999821f35c0aa265aadbbc4794878186f93ce85dde083deb846",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:69e3fd4b90a4aea5083ff8251187d64f104140a30fc0612e425f3a83ee4f2705",
+        "input_paths": [
+          "AGENTS.md",
+          "docker-compose.yml",
+          "docs/manual",
+          "mail",
+          "nginx",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-12T13:48:35.784663+00:00",
+        "input_snapshot": {
+          "after": "sha256:69e3fd4b90a4aea5083ff8251187d64f104140a30fc0612e425f3a83ee4f2705",
+          "before": "sha256:69e3fd4b90a4aea5083ff8251187d64f104140a30fc0612e425f3a83ee4f2705"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/qa_quick_e66ba8342942.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/qa_quick_e66ba8342942.receipt.json",
+        "returncode": 0,
+        "run_id": "e66ba8342942",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-12T13:48:35.794391+00:00",
+      "verification": "verified"
+    },
+    "unit_or_regression": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "unit_or_regression",
+        "computed_at": "2026-10-12T13:48:34.904015+00:00",
+        "file_count": 48,
+        "files": {
+          "AGENTS.md": "430ee5771d2d563639d2e4b01b5aab6c6987a1c8650716bf52b4cbdcf9f65ff1",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/manual/.review.json": "03a8e292bebddeb569269c3034387c64afbd15b8a499c88564bb9fd915eba3d3",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "59c92b08e556e08ed6ce11b803c83e602a04a916b0044676873489cedb3ad687",
+          "docs/manual/architecture.html": "d38bf90390d7cd9bc62e2766bc2fd8241fa78fbede272b57b0ed7e1e464962fe",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "f2ca26428491a8719dba2e266344e9dad1bd2650b9d2627f80b756e2303ddb95",
+          "docs/manual/lecture.html": "ba5e26b80087af6ce54223973cb204a0b95e2566f8a40e74e86c4105b406bbdb",
+          "docs/manual/local-manual.html": "ed4e1605f2a1d5ffde69d828f5db2d5858adefcffb57812c85f858b6d620de30",
+          "docs/manual/mail.html": "779f5d73a11c5d2f80455e1202c6abd63fd8ee90c09dd71cf4ea74a262ff9a34",
+          "docs/manual/tunnel.html": "1969ce196844897fb7b84dc30e20125640abe1b78325cd595f4c13b099e16271",
+          "docs/manual/website.html": "3e2a3906e1dc59cf59b460d5d609b9add158d6a6b6ae37c3b1b95201328456d1",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "0236b3ff61b0a00fa7bb68944a849de5346c96a0933b5831fd9dbb0fff1a9f21",
+          "mail/provider-onboarding.md": "e50baeab44a0ad3c4f74aa9b9817db4730958d42bd641bb1eeb3bd0d054bf309",
+          "nginx/default.conf": "a7c5fa89b85e56bdc69023a5efca7949f2d135f0ba512c4c6435b1b631dcb321",
+          "scripts/check.sh": "0d54ab118014175d95854dd3c4b52520980cb246689dccf3f6aa5f1dcc1287dd",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/lecture/assets/bomts-lecture-preparation-manual.pdf": "a2ec0bc366dd3af1c6272eebacbbc68f6a9093f9283ceeecd4e65f88d1e8d5c5",
+          "site/lecture/assets/lecture.css": "05dc6a1694510f8dd3c0177a662912c4329eb257144acf49cae88bdca1546dd9",
+          "site/lecture/assets/lecture.js": "12941c2b9767a1d1f1778bd96360d974437e60942b862c44cd3ca1351b5bea0b",
+          "site/lecture/assets/prompt-card-D2.html": "6e2c2c96485c2c2136ee001b742f66bc2d0a21aa47884c5116ce333554d3a5a1",
+          "site/lecture/assets/slide-01.png": "949c3034bb06b628e1aa394cfc49db428e89f34cff5964c80feb11666e22b8a7",
+          "site/lecture/assets/slide-02.png": "b4f1d085c712a735475d2cda613de952a7f9d525678f1a431f4bd59ecd3947db",
+          "site/lecture/assets/slide-03-gem-01.png": "adf5350173738554edfa882e505a9fd245f4b61506c84ab9b9fc8b6b4b5bdaa3",
+          "site/lecture/assets/slide-03-gem-02.png": "86d6f1b7f408ef67128b0a0a0cb757c93ef65f050cb3665d8de6ac056d23c3dd",
+          "site/lecture/assets/slide-03-gem-03.png": "f1556de4d5e2ea17a4025aefc645f5d5ced14c04e01b986a0ac8a367cf548e17",
+          "site/lecture/index.html": "14e43beba8f4ba9cdc8e6af4406a338f2d3b5d2c612a8f602124f90d2eaba1b3",
+          "site/manage/index.html": "be2c0492ce354999821f35c0aa265aadbbc4794878186f93ce85dde083deb846",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:69e3fd4b90a4aea5083ff8251187d64f104140a30fc0612e425f3a83ee4f2705",
+        "input_paths": [
+          "AGENTS.md",
+          "docker-compose.yml",
+          "docs/manual",
+          "mail",
+          "nginx",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-12T13:48:35.102788+00:00",
+        "input_snapshot": {
+          "after": "sha256:69e3fd4b90a4aea5083ff8251187d64f104140a30fc0612e425f3a83ee4f2705",
+          "before": "sha256:69e3fd4b90a4aea5083ff8251187d64f104140a30fc0612e425f3a83ee4f2705"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/unit_or_regression_4d00f1bf3429.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/unit_or_regression_4d00f1bf3429.receipt.json",
+        "returncode": 0,
+        "run_id": "4d00f1bf3429",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-12T13:48:35.112543+00:00",
+      "verification": "verified"
+    },
+    "user_manual": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "user_manual",
+        "computed_at": "2026-10-12T13:48:35.836848+00:00",
+        "file_count": 18,
+        "files": {
+          "docs/manual/.review.json": "03a8e292bebddeb569269c3034387c64afbd15b8a499c88564bb9fd915eba3d3",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "59c92b08e556e08ed6ce11b803c83e602a04a916b0044676873489cedb3ad687",
+          "docs/manual/architecture.html": "d38bf90390d7cd9bc62e2766bc2fd8241fa78fbede272b57b0ed7e1e464962fe",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "f2ca26428491a8719dba2e266344e9dad1bd2650b9d2627f80b756e2303ddb95",
+          "docs/manual/lecture.html": "ba5e26b80087af6ce54223973cb204a0b95e2566f8a40e74e86c4105b406bbdb",
+          "docs/manual/local-manual.html": "ed4e1605f2a1d5ffde69d828f5db2d5858adefcffb57812c85f858b6d620de30",
+          "docs/manual/mail.html": "779f5d73a11c5d2f80455e1202c6abd63fd8ee90c09dd71cf4ea74a262ff9a34",
+          "docs/manual/tunnel.html": "1969ce196844897fb7b84dc30e20125640abe1b78325cd595f4c13b099e16271",
+          "docs/manual/website.html": "3e2a3906e1dc59cf59b460d5d609b9add158d6a6b6ae37c3b1b95201328456d1",
+          "scripts/check.sh": "0d54ab118014175d95854dd3c4b52520980cb246689dccf3f6aa5f1dcc1287dd",
+          "site/lecture/assets/lecture.css": "05dc6a1694510f8dd3c0177a662912c4329eb257144acf49cae88bdca1546dd9",
+          "site/lecture/assets/slide-03-gem-01.png": "adf5350173738554edfa882e505a9fd245f4b61506c84ab9b9fc8b6b4b5bdaa3",
+          "site/lecture/assets/slide-03-gem-02.png": "86d6f1b7f408ef67128b0a0a0cb757c93ef65f050cb3665d8de6ac056d23c3dd",
+          "site/lecture/assets/slide-03-gem-03.png": "f1556de4d5e2ea17a4025aefc645f5d5ced14c04e01b986a0ac8a367cf548e17",
+          "site/lecture/index.html": "14e43beba8f4ba9cdc8e6af4406a338f2d3b5d2c612a8f602124f90d2eaba1b3"
+        },
+        "fingerprint": "sha256:77d31f4d493a915954277f33e6ff87961b4b16be5e038a177915f65ddfd699f8",
+        "input_paths": [
+          "docs/manual",
+          "scripts/check.sh",
+          "site/lecture/assets/lecture.css",
+          "site/lecture/assets/slide-03-gem-01.png",
+          "site/lecture/assets/slide-03-gem-02.png",
+          "site/lecture/assets/slide-03-gem-03.png",
+          "site/lecture/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "user_manual",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261012-lecture-gem-links"
+        ],
+        "executed_at": "2026-10-12T13:48:36.155897+00:00",
+        "input_snapshot": {
+          "after": "sha256:77d31f4d493a915954277f33e6ff87961b4b16be5e038a177915f65ddfd699f8",
+          "before": "sha256:77d31f4d493a915954277f33e6ff87961b4b16be5e038a177915f65ddfd699f8"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261012-lecture-gem-links/evidence/user_manual_a4327c53614d.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261012-lecture-gem-links/evidence/user_manual_a4327c53614d.receipt.json",
+        "returncode": 0,
+        "run_id": "a4327c53614d",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "  \"name\": \"mail\",\n   \"title\": \"BOMTS 메일 운영\",\n   \"role\": \"feature\",\n   \"slides\": 15\n  },\n  {\n   \"file\": \"docs/manual/tunnel.html\",\n   \"name\": \"tunnel\",\n   \"title\": \"BOMTS Cloudflare Tunnel\",\n   \"role\": \"feature\",\n   \"slides\": 8\n  },\n  {\n   \"file\": \"docs/manual/website.html\",\n   \"name\": \"website\",\n   \"title\": \"BOMTS 웹사이트\",\n   \"role\": \"feature\",\n   \"slides\": 9\n  },\n  {\n   \"file\": \"docs/manual/architecture.html\",\n   \"name\": \"architecture\",\n   \"title\": \"BOMTS 시스템 구성\",\n   \"role\": \"architecture\",\n   \"slides\": 10\n  },\n  {\n   \"file\": \"docs/manual/admin.html\",\n   \"name\": \"admin\",\n   \"title\": \"BOMTS 운영·인수인계\",\n   \"role\": \"admin\",\n   \"slides\": 16\n  }\n ],\n \"slides\": 82,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/lecture.html\"\n ]\n}\nPASS: user_manual (8)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 2,
+      "input_independent": false,
+      "reason_code": "PASS: 6\n  }\n ],\n \"slides\": 82,\n \"manual_changed\": [\n  \"docs/manual/.review.json\",\n  \"docs/manual/index.html\",\n  \"docs/manual/lecture.html\"\n ]\n}\nPASS: user_manual (8)",
+      "recorded_at": "2026-10-12T13:48:36.159618+00:00",
+      "verification": "verified"
+    }
+  },
+  "status": "done",
+  "task_id": "20261012-lecture-gem-links",
+  "updated_at": "2026-10-12T13:49:25.445775+00:00",
+  "work_type": "code"
+}
