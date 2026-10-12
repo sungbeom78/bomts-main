@@ -1,0 +1,18 @@
+{
+  "concept": "download",
+  "context": "강의 QR 자료와 준비 매뉴얼 PDF 다운로드 UI 식별자",
+  "decision": "reuse",
+  "chosen": "download",
+  "basis": "exact",
+  "rounds": [
+    {
+      "round": 1,
+      "perspective": "exact_term",
+      "candidates": [
+        "download"
+      ],
+      "note": "등록 단어와 정확 일치"
+    }
+  ],
+  "glossary_revision": "2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd"
+}

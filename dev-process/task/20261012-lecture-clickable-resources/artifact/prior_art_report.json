@@ -1,0 +1,25 @@
+{
+  "task_id": "20261012-lecture-clickable-resources",
+  "keywords": [
+    "lecture QR PDF download clickable resource"
+  ],
+  "files": [
+    "site/lecture/index.html",
+    "site/lecture/assets/lecture.css",
+    "site/nginx.conf",
+    "scripts/check.sh",
+    "docs/manual/lecture.html",
+    "docs/manual/index.html"
+  ],
+  "days": 30,
+  "checked_at": "2026-10-12T12:50:55.798418+00:00",
+  "sources": {
+    "change_log": "CHANGELOG.md",
+    "sot": null,
+    "module_index": null
+  },
+  "findings": [],
+  "frozen_overlap": [],
+  "active_task_overlap": [],
+  "verdict": "clear"
+}
