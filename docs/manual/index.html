@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BOMTS 운영 매뉴얼</title><link rel="stylesheet" href="assets/manual.css"><script defer src="assets/manual.js"></script></head>
-<body data-manual="BOMTS 운영 매뉴얼" data-index="index.html" data-chapters="index.html|처음;local-manual.html|BOMTS 내부 매뉴얼;mail.html|BOMTS 메일 운영;tunnel.html|BOMTS Cloudflare Tunnel;website.html|BOMTS 웹사이트;architecture.html|BOMTS 시스템 구성;admin.html|BOMTS 운영·인수인계">
+<body data-manual="BOMTS 운영 매뉴얼" data-index="index.html" data-chapters="index.html|처음;lecture.html|BOMTS 강의 QR 덱;local-manual.html|BOMTS 내부 매뉴얼;mail.html|BOMTS 메일 운영;tunnel.html|BOMTS Cloudflare Tunnel;website.html|BOMTS 웹사이트;architecture.html|BOMTS 시스템 구성;admin.html|BOMTS 운영·인수인계">
 <section class="slide" data-kind="cover" data-title="BOMTS 운영 매뉴얼">
   <div class="body"><div class="cover-grid"><div><div class="brandline">BOMTS · 운영 매뉴얼 · 2026-10-11</div><div class="emoji">🧭</div><h1>BOMTS 운영 매뉴얼</h1><p class="lead">공개 웹사이트·터널·Self-hosted 메일을 검증된 운영 절차와 함께 인수인계합니다.</p></div><div class="orbit"><b>BOMTS</b></div></div></div>
   <aside class="notes">이 매뉴얼은 BOMTS 공개 서비스의 현재 상태를 설명합니다. 웹사이트와 decision 서비스에 더해 Mailu가 외부 SMTP를 직접 수신합니다. 실제 호스트 구조와 비밀번호, 토큰, 개인키는 Public 매뉴얼에 기록하지 않습니다.</aside>
@@ -30,7 +30,7 @@ curl -o /dev/null -w '%{http_code}' https://www.bomts.net/</pre><div class="resu
 </section>
 <section class="slide" data-kind="chapters" data-title="업무별 장에서 바로 시작합니다">
   <p class="kicker">장 목록</p><h2>업무별 장에서 바로 시작합니다</h2>
-  <div class="body"><div class="cards"><a class="card" href="website.html"><i>🌐</i><b>웹사이트</b><span>페이지·배포·health</span></a><a class="card" href="tunnel.html"><i>🔗</i><b>터널</b><span>라우팅·검증·복구</span></a><a class="card" href="mail.html"><i>✉️</i><b>메일</b><span>계정·접속·백업·relay</span></a><a class="card" href="local-manual.html"><i>📚</i><b>내부 매뉴얼</b><span>LAN 메뉴·접근 통제</span></a><a class="card" href="architecture.html"><i>🧩</i><b>시스템 구성</b><span>흐름·경계·정본</span></a><a class="card" href="admin.html"><i>🛠️</i><b>운영·인수인계</b><span>설치·백업·장애 대응</span></a></div></div>
+  <div class="body"><div class="cards"><a class="card" href="website.html"><i>🌐</i><b>웹사이트</b><span>페이지·배포·health</span></a><a class="card" href="lecture.html"><i>🎓</i><b>강의 QR 덱</b><span>화면 전환·자료 추가</span></a><a class="card" href="tunnel.html"><i>🔗</i><b>터널</b><span>라우팅·검증·복구</span></a><a class="card" href="mail.html"><i>✉️</i><b>메일</b><span>계정·접속·백업·relay</span></a><a class="card" href="local-manual.html"><i>📚</i><b>내부 매뉴얼</b><span>LAN 메뉴·접근 통제</span></a><a class="card" href="architecture.html"><i>🧩</i><b>시스템 구성</b><span>흐름·경계·정본</span></a><a class="card" href="admin.html"><i>🛠️</i><b>운영·인수인계</b><span>설치·백업·장애 대응</span></a></div></div>
   <aside class="notes">웹사이트 장은 공개 페이지를 운영하거나 내용을 바꿀 때 사용합니다. 터널 장은 로컬은 정상인데 공개 접속이 실패할 때 보고, 메일 장은 계정 사용, 외부 계정 가져오기, 백업, 발신 relay 상태를 설명합니다. 시스템 구성과 운영 장은 인수인계 시 함께 읽습니다.</aside>
 </section>
 <section class="slide" data-kind="limits" data-title="현재 제한을 먼저 확인해야 오해가 없습니다">
@@ -40,7 +40,7 @@ curl -o /dev/null -w '%{http_code}' https://www.bomts.net/</pre><div class="resu
 </section>
 <section class="slide" data-kind="changes" data-title="내부 홈페이지에서 운영 매뉴얼을 바로 엽니다">
   <p class="kicker">변경 이력</p><h2>내부 홈페이지에서 운영 매뉴얼을 바로 엽니다</h2>
-  <div class="body"><table class="grid"><tr><th>날짜</th><th>변경</th><th>작업</th></tr><tr><td>2026-10-11</td><td>Google Search Console HTML 소유권 확인 파일 배포</td><td><code>20261011-search-console-verification</code></td></tr><tr><td>2026-10-11</td><td>About Timeline 정리·영문 Product/Contact/Privacy/Terms·Search Console 절차 추가</td><td><code>20261011-startup-site-final-polish</code></td></tr><tr><td>2026-10-11</td><td>Founder·설립 시점·개발 Timeline·공개 GitHub 정보 추가</td><td><code>20261011-public-startup-verifiability</code></td></tr><tr><td>2026-10-11</td><td>Claude·OpenAI·Cloudflare용 독립 Mailbox 3개 추가</td><td><code>20261011-mail-ai-infra-accounts</code></td></tr><tr><td>2026-10-11</td><td>OTT 계정 교체·기존 데이터 삭제·비밀번호 검사 및 HTTPS 경로 정정</td><td><code>20261011-mail-account-policy-and-claude-plan</code></td></tr></table></div>
+  <div class="body"><table class="grid"><tr><th>날짜</th><th>변경</th><th>작업</th></tr><tr><td>2026-10-12</td><td>lecture.bomts.net 강의 QR 슬라이드와 확장·운영 안내 추가</td><td><code>20261012-lecture-qr-deck</code></td></tr><tr><td>2026-10-11</td><td>Google Search Console HTML 소유권 확인 파일 배포</td><td><code>20261011-search-console-verification</code></td></tr><tr><td>2026-10-11</td><td>About Timeline 정리·영문 Product/Contact/Privacy/Terms·Search Console 절차 추가</td><td><code>20261011-startup-site-final-polish</code></td></tr><tr><td>2026-10-11</td><td>Founder·설립 시점·개발 Timeline·공개 GitHub 정보 추가</td><td><code>20261011-public-startup-verifiability</code></td></tr><tr><td>2026-10-11</td><td>Claude·OpenAI·Cloudflare용 독립 Mailbox 3개 추가</td><td><code>20261011-mail-ai-infra-accounts</code></td></tr></table></div>
   <aside class="notes">이번 변경은 Google Search Console이 공개 URL에서 읽는 HTML 소유권 확인 파일을 사이트 루트에 배포했습니다. 검증 파일의 HTTP 200과 정확한 문자열을 확인한 뒤 Search Console에서 확인을 누르고 sitemap.xml을 제출합니다. 소유권을 유지하는 동안 검증 파일을 삭제하거나 이름과 내용을 바꾸지 않습니다.</aside>
 </section>
 </body></html>

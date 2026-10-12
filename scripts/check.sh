@@ -13,11 +13,18 @@ test -f site/terms/index.html
 test -f site/robots.txt
 test -f site/sitemap.xml
 test -f site/google16ad3deed6bb0ce2.html
+test -f site/lecture/index.html
+test -f site/lecture/assets/lecture.css
+test -f site/lecture/assets/lecture.js
+test -f site/lecture/assets/slide-01.png
+test -f site/lecture/assets/slide-02.png
+test -f site/lecture/assets/slide-03.png
 test -f docs/architecture.md
 test -f docs/manual/index.html
 test -f docs/manual/website.html
 test -f docs/manual/architecture.html
 test -f docs/manual/admin.html
+test -f docs/manual/lecture.html
 
 sh -n scripts/check.sh
 sh -n dev-process/local/scripts/check-framework-sync.sh
@@ -46,6 +53,16 @@ test "$(cat site/google16ad3deed6bb0ce2.html)" = 'google-site-verification: goog
 ! grep -q 'Private development records show\|Public verification\|does not claim unverified' site/en/about/index.html
 grep -q 'Initial prototype development began.' site/en/about/index.html
 grep -q '초기 프로토타입 개발을 시작했습니다.' site/about/index.html
+grep -q 'server_name lecture.bomts.net' nginx/default.conf
+grep -q 'listen 80 default_server' nginx/default.conf
+grep -q 'data-slide="1"' site/lecture/index.html
+grep -q 'data-slide="2"' site/lecture/index.html
+grep -q 'data-slide="3"' site/lecture/index.html
+grep -q '1Z70Bjg8t86v7Mh7w6-7gysei9kZTX0_j' site/lecture/index.html
+grep -q '1GDMMMpBlGVnkVhLjVy1ZvWV-rX5wLUc8' site/lecture/index.html
+grep -q 'ArrowRight' site/lecture/assets/lecture.js
+grep -q 'touchend' site/lecture/assets/lecture.js
+grep -q 'requestFullscreen' site/lecture/assets/lecture.js
 
 python3 - <<'PY'
 from pathlib import Path
