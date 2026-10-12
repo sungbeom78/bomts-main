@@ -1,0 +1,39 @@
+{
+  "task_id": "20261012-lecture-qr-deck",
+  "keywords": [
+    "lecture",
+    "QR",
+    "slide",
+    "Cloudflare",
+    "subdomain"
+  ],
+  "files": [
+    "site/lecture/index.html",
+    "site/lecture/assets/slide-01.png",
+    "site/lecture/assets/slide-02.png",
+    "site/lecture/assets/slide-03.png",
+    "nginx/default.conf",
+    "docs/manual/lecture.html",
+    "docs/manual/index.html"
+  ],
+  "days": 30,
+  "checked_at": "2026-10-12T12:10:59.761960+00:00",
+  "sources": {
+    "change_log": "CHANGELOG.md",
+    "sot": null,
+    "module_index": null
+  },
+  "findings": [
+    {
+      "source": "CHANGELOG.md",
+      "line": "- 2026-10-11 feat(mail): add Claude, OpenAI, and Cloudflare service mailboxes (task 20261011-mail-ai-infra-accounts)",
+      "keywords": [
+        "Cloudflare"
+      ],
+      "relation": "related"
+    }
+  ],
+  "frozen_overlap": [],
+  "active_task_overlap": [],
+  "verdict": "caution"
+}

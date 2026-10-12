@@ -5,7 +5,8 @@ dev-process/**/*.lock
 dev-process/.incident_registry.lock
 dev-process/backup/
 dev-process/local/manual-evidence/
-dev-process/report/
+dev-process/report/*
+!dev-process/report/final/
 
 # Generated output and local environments
 .venv/
