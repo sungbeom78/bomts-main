@@ -18,8 +18,9 @@ test -f site/lecture/assets/lecture.css
 test -f site/lecture/assets/lecture.js
 test -f site/lecture/assets/slide-01.png
 test -f site/lecture/assets/slide-02.png
-test -f site/lecture/assets/slide-03.png
+test ! -f site/lecture/assets/slide-03.png
 test -f site/lecture/assets/bomts-lecture-preparation-manual.pdf
+test -f site/lecture/assets/prompt-card-D2.html
 test -f docs/architecture.md
 test -f docs/manual/index.html
 test -f docs/manual/website.html
@@ -58,9 +59,10 @@ grep -q 'server_name lecture.bomts.net' nginx/default.conf
 grep -q 'listen 80 default_server' nginx/default.conf
 grep -q 'data-slide="1"' site/lecture/index.html
 grep -q 'data-slide="2"' site/lecture/index.html
-grep -q 'data-slide="3"' site/lecture/index.html
+! grep -q 'data-slide="3"' site/lecture/index.html
 grep -q '1Z70Bjg8t86v7Mh7w6-7gysei9kZTX0_j' site/lecture/index.html
-grep -q '1GDMMMpBlGVnkVhLjVy1ZvWV-rX5wLUc8' site/lecture/index.html
+! grep -q '1GDMMMpBlGVnkVhLjVy1ZvWV-rX5wLUc8' site/lecture/index.html
+grep -q 'Content-Disposition.*attachment' nginx/default.conf
 grep -q 'ArrowRight' site/lecture/assets/lecture.js
 grep -q 'touchend' site/lecture/assets/lecture.js
 grep -q 'requestFullscreen' site/lecture/assets/lecture.js
@@ -74,6 +76,7 @@ class LectureParser(HTMLParser):
         super().__init__()
         self.qr_links = []
         self.downloads = []
+        self.prompt_downloads = []
         self.active_link = None
 
     def handle_starttag(self, tag, attrs):
@@ -85,6 +88,8 @@ class LectureParser(HTMLParser):
                 self.qr_links.append({'attrs': attrs, 'images': 0})
             if 'download-card' in classes:
                 self.downloads.append(attrs)
+            if attrs.get('href') == 'assets/prompt-card-D2.html':
+                self.prompt_downloads.append(attrs)
         elif tag == 'img' and self.active_link is not None:
             self.qr_links[-1]['images'] += 1
 
@@ -94,17 +99,25 @@ class LectureParser(HTMLParser):
 
 parser = LectureParser()
 parser.feed(Path('site/lecture/index.html').read_text(encoding='utf-8'))
-assert len(parser.qr_links) == 3, parser.qr_links
+assert len(parser.qr_links) == 2, parser.qr_links
 assert all(item['images'] == 1 for item in parser.qr_links), parser.qr_links
-assert all(item['attrs'].get('target') == '_blank' for item in parser.qr_links)
-assert all('noopener' in item['attrs'].get('rel', '') for item in parser.qr_links)
+assert parser.qr_links[0]['attrs'].get('target') == '_blank'
+assert 'noopener' in parser.qr_links[0]['attrs'].get('rel', '')
+assert parser.qr_links[1]['attrs'].get('download') == 'prompt-card-D2.html'
 assert len(parser.downloads) == 1, parser.downloads
 assert parser.downloads[0].get('href') == 'assets/bomts-lecture-preparation-manual.pdf'
 assert 'download' in parser.downloads[0]
+assert len(parser.prompt_downloads) == 2, parser.prompt_downloads
+assert all(item.get('download') == 'prompt-card-D2.html' for item in parser.prompt_downloads)
 
 pdf = Path('site/lecture/assets/bomts-lecture-preparation-manual.pdf').read_bytes()
 assert pdf.startswith(b'%PDF-')
 assert pdf.rstrip().endswith(b'%%EOF')
+
+prompt_card = Path('site/lecture/assets/prompt-card-D2.html').read_bytes()
+assert len(prompt_card) == 139044
+assert __import__('hashlib').sha256(prompt_card).hexdigest() == '6e2c2c96485c2c2136ee001b742f66bc2d0a21aa47884c5116ce333554d3a5a1'
+assert b'localStorage' in prompt_card
 PY
 
 python3 - <<'PY'

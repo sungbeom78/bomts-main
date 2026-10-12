@@ -1,5 +1,6 @@
 # Changelog
 
+- 2026-10-12 feat: 중복 강의 화면 제거 및 프롬프트 카드 로컬 다운로드 전환 (task 20261012-lecture-deduplicate-and-local-download)
 - 2026-10-12 feat: 강의 QR 이미지 링크와 준비 매뉴얼 PDF 다운로드 추가 (task 20261012-lecture-clickable-resources)
 - 2026-10-12 feat: lecture.bomts.net 강의 QR 슬라이드와 운영 매뉴얼 추가 (task 20261012-lecture-qr-deck)
 - 2026-10-11 feat: Google Search Console HTML 소유권 확인 파일 배포 (task 20261011-search-console-verification)

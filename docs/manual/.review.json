@@ -1,11 +1,11 @@
 {
- "reviewed_at": "2026-10-12T12:53:40.564816+00:00",
+ "reviewed_at": "2026-10-12T13:31:09.238282+00:00",
  "pages": 81,
  "files": {
   "admin.html": "59c92b08e556e08ed6ce11b803c83e602a04a916b0044676873489cedb3ad687",
   "architecture.html": "d38bf90390d7cd9bc62e2766bc2fd8241fa78fbede272b57b0ed7e1e464962fe",
-  "index.html": "254a1c50e904d92d97613a837c209dd288710191fe1f9386f8b11b23fe212ea7",
-  "lecture.html": "85fbac2898050f19bc02ed8171639d9d4ec56cde4a6c0e8bd5eae904ce2b55e5",
+  "index.html": "6435fb2805ac6e7e4f251554c7ae5394e25a7673bc67435742ed617ebfdaeaf2",
+  "lecture.html": "8846092f0e6c5ce9af2da83714386f8043636bfe2d3e51240ca8cd796eabb77b",
   "local-manual.html": "ed4e1605f2a1d5ffde69d828f5db2d5858adefcffb57812c85f858b6d620de30",
   "mail.html": "779f5d73a11c5d2f80455e1202c6abd63fd8ee90c09dd71cf4ea74a262ff9a34",
   "tunnel.html": "1969ce196844897fb7b84dc30e20125640abe1b78325cd595f4c13b099e16271",

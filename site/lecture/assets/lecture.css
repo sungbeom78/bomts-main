@@ -186,8 +186,7 @@ h1 {
 }
 
 .qr-crop-1 img { width: 123.48%; left: -12.15%; top: -27.94%; }
-.qr-crop-2 img { width: 234.83%; left: -13.86%; top: -16.10%; }
-.qr-crop-3 img { width: 231.97%; left: -12.64%; top: -14.87%; }
+.qr-crop-2 img { width: 100%; left: 0; top: 0; }
 
 .resource-link {
   margin-top: .4rem;
