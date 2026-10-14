@@ -1,0 +1,643 @@
+{
+  "acceptance": [
+    {
+      "no": 1,
+      "note": "운영 Mailu 2024.06 소스의 domain user list → user_settings route를 확인하고 매뉴얼 14쪽에 관리 → 메일 관리 → Mail domains → Users → Settings 경로를 기록함",
+      "status": "met",
+      "text": "메일 운영 매뉴얼에 Mailu Admin에서 대상 사용자 Settings까지 들어가는 실제 클릭 경로가 있다",
+      "updated_at": "2026-10-14T03:58:48.236044+00:00"
+    },
+    {
+      "no": 2,
+      "note": "매뉴얼 15쪽에 Enable forwarding, 쉼표 Destination, Keep a copy, Submit과 외부 시험 메일의 원본·전달 대상 확인을 별도 단계로 작성함",
+      "status": "met",
+      "text": "Destination·Keep a copy 입력과 저장 후 원본·전달 대상 검증 방법이 분리된 단계로 설명된다",
+      "updated_at": "2026-10-14T03:58:48.476880+00:00"
+    },
+    {
+      "no": 3,
+      "note": "내부 관리 페이지에 /manual/mail.html#14 바로가기를 추가하고 Playwright 클릭으로 목적지와 14·15쪽 내용을 확인함",
+      "status": "met",
+      "text": "내부 관리 페이지에서 자동 전달 상세 매뉴얼을 바로 열 수 있다",
+      "updated_at": "2026-10-14T03:58:48.716408+00:00"
+    },
+    {
+      "no": 4,
+      "note": "manual-review 83쪽 overflow 0, 필수 검사 5개와 운영 브라우저 검사 통과, 운영 컨테이너 healthy. finish --push로 공개 저장소 반영을 수행하도록 확정함",
+      "status": "met",
+      "text": "매뉴얼 렌더링 넘침 0과 필수 검사가 통과하고 공개 저장소에 반영된다",
+      "updated_at": "2026-10-14T03:58:48.955760+00:00"
+    }
+  ],
+  "approvals": [],
+  "change_kind": {
+    "history": [],
+    "kind": "fix",
+    "reason": "기존 자동 전달 기능과 사용법은 그대로이며, 축약된 운영 문서의 경로·검증 설명을 보완한다",
+    "set_at": "2026-10-14T03:54:50.690811+00:00"
+  },
+  "completion": {
+    "changes_summary": "메일 자동 전달의 실제 Mailu 메뉴 경로와 입력·검증 절차를 보완하고 내부 관리 페이지에 바로가기를 추가했다",
+    "commit": "149e4e24b8df2334e37f03031a9231bf85e3d62a",
+    "deploy": "not_in_scope",
+    "push": "pushed",
+    "release_scope": "in_scope",
+    "work": "done"
+  },
+  "generated_at": "2026-10-14T03:58:52.942967+00:00",
+  "incidents": [
+    {
+      "cause": "own_change",
+      "disposition": null,
+      "incident_id": "mail-forwarding-runtime-check",
+      "linked": false,
+      "max_rounds": 3,
+      "owner_task_id": "20261014-mail-forwarding-guide",
+      "plans": 1,
+      "retries": 0,
+      "rounds": [
+        {
+          "hypothesis": "검증 스크립트가 Auto-forward 템플릿의 따옴표 형식을 잘못 가정했다",
+          "result": "따옴표 독립 검사로 수정 후 Mailu user settings route·Auto-forward·forward_keep·forward_destination·Settings 링크와 문서 16쪽·직접 링크가 모두 통과함",
+          "round_no": 1,
+          "status": "confirmed",
+          "verified": true
+        }
+      ],
+      "rounds_used": 1,
+      "status": "resolved",
+      "waiting": null
+    }
+  ],
+  "result_state": "completed",
+  "rollbacks": [],
+  "stages": {
+    "encoding": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "encoding",
+        "computed_at": "2026-10-14T03:58:30.626309+00:00",
+        "file_count": 55,
+        "files": {
+          "docs/architecture.md": "474fef6a7f0cbfe177007d1550ba3c5590ac1a9a70391ddd7756a39dc5e8d9b8",
+          "docs/bomts-decision-public-readiness.md": "6fb80eca3c4d1b3560bc215f03ad49f364fd0c457bb2ea0f221bbe24a23c4276",
+          "docs/claude-startup-application.md": "523dce220f2b437c29ba6ed244494de4813d011f38d0b6aa27079e9464c9bb4e",
+          "docs/deployment.md": "23a875a820024b8030efb7c160f2d3ea2b2056c78eb1404cb24ee326d9566275",
+          "docs/dns.md": "9c3076662d83bb49a63a747332c8c053afc5489a4c69ae016df16dec406763a7",
+          "docs/google-search-console.md": "c3e090f6eb67fc856482b0d2b2ec6ca2c720259504a6f2a930289a5d526fecb5",
+          "docs/mail-operations.md": "828164481557d81431b33750aa98c0a5f78af586bd2bbe8bf1d65bbb3fa62552",
+          "docs/mail-stack-comparison.md": "e30c4795f72f439c877f3f6c764f82cfd2ab9542413c694fe71091d1be144d17",
+          "docs/manual/.review.json": "6c60b99f677669215d25eb580de5e527b280b8492da9905160475e0a9ac939b3",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "59c92b08e556e08ed6ce11b803c83e602a04a916b0044676873489cedb3ad687",
+          "docs/manual/architecture.html": "d38bf90390d7cd9bc62e2766bc2fd8241fa78fbede272b57b0ed7e1e464962fe",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "01769caecbf0524b06506dbf6db8690d37e21247d6bbdb288e35ee04b554e965",
+          "docs/manual/lecture.html": "ba5e26b80087af6ce54223973cb204a0b95e2566f8a40e74e86c4105b406bbdb",
+          "docs/manual/local-manual.html": "ed4e1605f2a1d5ffde69d828f5db2d5858adefcffb57812c85f858b6d620de30",
+          "docs/manual/mail.html": "0c4155d8829a2aaa83e173ae8107e546286a9545c32d4e230f64673b3b00428f",
+          "docs/manual/tunnel.html": "1969ce196844897fb7b84dc30e20125640abe1b78325cd595f4c13b099e16271",
+          "docs/manual/website.html": "3e2a3906e1dc59cf59b460d5d609b9add158d6a6b6ae37c3b1b95201328456d1",
+          "docs/public-repository-security.md": "fdebd9e021a01b751e9395cad72bb0ad33cda338e7a0f50f9d8222b18e9ef0e7",
+          "docs/security.md": "bba918ee4466e5522d736957407a5eb05951d7ff48fee5b753b4764358279e63",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "0236b3ff61b0a00fa7bb68944a849de5346c96a0933b5831fd9dbb0fff1a9f21",
+          "mail/provider-onboarding.md": "e50baeab44a0ad3c4f74aa9b9817db4730958d42bd641bb1eeb3bd0d054bf309",
+          "scripts/check.sh": "e54a55ee0012a4c4f94b33adf92882484ec84f63a36c0ee3a7657ac5188b9c97",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/lecture/assets/bomts-lecture-preparation-manual.pdf": "a2ec0bc366dd3af1c6272eebacbbc68f6a9093f9283ceeecd4e65f88d1e8d5c5",
+          "site/lecture/assets/lecture.css": "05dc6a1694510f8dd3c0177a662912c4329eb257144acf49cae88bdca1546dd9",
+          "site/lecture/assets/lecture.js": "12941c2b9767a1d1f1778bd96360d974437e60942b862c44cd3ca1351b5bea0b",
+          "site/lecture/assets/prompt-card-D2.html": "6e2c2c96485c2c2136ee001b742f66bc2d0a21aa47884c5116ce333554d3a5a1",
+          "site/lecture/assets/slide-01.png": "949c3034bb06b628e1aa394cfc49db428e89f34cff5964c80feb11666e22b8a7",
+          "site/lecture/assets/slide-02.png": "b4f1d085c712a735475d2cda613de952a7f9d525678f1a431f4bd59ecd3947db",
+          "site/lecture/assets/slide-03-gem-01.png": "adf5350173738554edfa882e505a9fd245f4b61506c84ab9b9fc8b6b4b5bdaa3",
+          "site/lecture/assets/slide-03-gem-02.png": "86d6f1b7f408ef67128b0a0a0cb757c93ef65f050cb3665d8de6ac056d23c3dd",
+          "site/lecture/assets/slide-03-gem-03.png": "f1556de4d5e2ea17a4025aefc645f5d5ced14c04e01b986a0ac8a367cf548e17",
+          "site/lecture/index.html": "14e43beba8f4ba9cdc8e6af4406a338f2d3b5d2c612a8f602124f90d2eaba1b3",
+          "site/manage/index.html": "265fab3f256f0aa42f2a85d4207ebe9d8908e2a2ef824670a130ddf7a7f0c6ba",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:151a85d0cf6a2ef2788378d1e00dc896f90721968398abf166606b8ff2510d09",
+        "input_paths": [
+          "docs",
+          "mail",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "encoding",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts,mail,docs",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261014-mail-forwarding-guide"
+        ],
+        "executed_at": "2026-10-14T03:58:30.695211+00:00",
+        "input_snapshot": {
+          "after": "sha256:151a85d0cf6a2ef2788378d1e00dc896f90721968398abf166606b8ff2510d09",
+          "before": "sha256:151a85d0cf6a2ef2788378d1e00dc896f90721968398abf166606b8ff2510d09"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/encoding_8b8ef8a67379.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/encoding_8b8ef8a67379.receipt.json",
+        "returncode": 0,
+        "run_id": "8b8ef8a67379",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 47,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (47)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 4,
+      "input_independent": false,
+      "reason_code": "PASS: {\n \"check\": \"encoding\",\n \"status\": \"PASS\",\n \"checked_files\": 47,\n \"require_lf\": true,\n \"problems\": []\n}\nPASS: encoding (47)",
+      "recorded_at": "2026-10-14T03:58:30.709352+00:00",
+      "verification": "verified"
+    },
+    "identifier_audit": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "identifier_audit",
+        "computed_at": "2026-10-14T03:58:30.749894+00:00",
+        "file_count": 12,
+        "files": {
+          "glossary/dictionary/areas.json": "d53d9f69b6e35f03257adaad3e524f2b36e66a0d0940666e703268ebfe10bd2c",
+          "glossary/dictionary/banned.json": "dd202b9aeda9c61cf59001295c3813aaa84a229308dbbaafbc3ede5129e866fd",
+          "glossary/dictionary/compounds.json": "fc0c5d5688bb7cf289c23443fc24a416ff97ca6340686c8b4730e99d503280ac",
+          "glossary/dictionary/drafts.json": "c59effa1d6f42d1426ed919a5f02643229e23ee018e5252a68acc9c18c53a35b",
+          "glossary/dictionary/pending_words.json": "e52f0d0a7eb548de632aa2282b5ce1b5c21bbfb3433220a77dc086ffd047fe1e",
+          "glossary/dictionary/tech_abbreviations.json": "bcbd3292e0affd52abe551ee8c3dc0145853f7b57b28c587037b7d7351379d28",
+          "glossary/dictionary/terms.json": "a5d5b4a0c766128f2c4a3d5b679cbf107f66f57088af6f3d2b9778368368e142",
+          "glossary/dictionary/terms_legacy.json": "b04da63a1213456df7552364c2e10945d4531d6c73e5a7090576bb537e6470ac",
+          "glossary/dictionary/unit_tokens.json": "f5b12bc6445c04cd6ceca6b78f02047c0e09f95b3a4631615dfb3b0b6c65b48a",
+          "glossary/dictionary/words.json": "ec18782a7a5f641bcd3bb446957f89f205bc235fbc62a57d6faa8fa20a211032",
+          "glossary/dictionary/words__derived_terms.json": "e5fd7aa65fb825e0bce9c786c3769f6ca699437e8c266b064538ba545ee993bc",
+          "scripts/check.sh": "e54a55ee0012a4c4f94b33adf92882484ec84f63a36c0ee3a7657ac5188b9c97"
+        },
+        "fingerprint": "sha256:97d28b43654a8816e3a03005589f944c32d8885048ccb898dee14dd14ffaf579",
+        "input_paths": [
+          "glossary/dictionary",
+          "scripts"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "identifier_audit",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "scripts,glossary/dictionary",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261014-mail-forwarding-guide"
+        ],
+        "executed_at": "2026-10-14T03:58:31.029207+00:00",
+        "input_snapshot": {
+          "after": "sha256:97d28b43654a8816e3a03005589f944c32d8885048ccb898dee14dd14ffaf579",
+          "before": "sha256:97d28b43654a8816e3a03005589f944c32d8885048ccb898dee14dd14ffaf579"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/identifier_audit_e961d79e4dd1.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/identifier_audit_e961d79e4dd1.receipt.json",
+        "returncode": 0,
+        "run_id": "e961d79e4dd1",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"identifier_audit\",\n \"status\": \"PASS\",\n \"baseline_commit\": \"47730b84c36dcad4decf17badd89773fc825b714\",\n \"glossary_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"pinned_revision\": \"2f3aa5abf1fbcb48446f5f9d22b4846df4cc9afd\",\n \"enforcement\": {\n  \"new_or_renamed\": \"strict\",\n  \"legacy\": \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 4,
+      "input_independent": false,
+      "reason_code": "PASS: \"advisory\"\n },\n \"new_declarations\": 0,\n \"legacy_declarations\": 0,\n \"new_violations\": [],\n \"legacy_advisories\": [],\n \"verdict\": \"PASS\"\n}\nPASS: identifier_audit",
+      "recorded_at": "2026-10-14T03:58:31.039679+00:00",
+      "verification": "verified"
+    },
+    "lint": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "lint",
+        "computed_at": "2026-10-14T03:58:30.142383+00:00",
+        "file_count": 30,
+        "files": {
+          "scripts/check.sh": "e54a55ee0012a4c4f94b33adf92882484ec84f63a36c0ee3a7657ac5188b9c97",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/lecture/assets/bomts-lecture-preparation-manual.pdf": "a2ec0bc366dd3af1c6272eebacbbc68f6a9093f9283ceeecd4e65f88d1e8d5c5",
+          "site/lecture/assets/lecture.css": "05dc6a1694510f8dd3c0177a662912c4329eb257144acf49cae88bdca1546dd9",
+          "site/lecture/assets/lecture.js": "12941c2b9767a1d1f1778bd96360d974437e60942b862c44cd3ca1351b5bea0b",
+          "site/lecture/assets/prompt-card-D2.html": "6e2c2c96485c2c2136ee001b742f66bc2d0a21aa47884c5116ce333554d3a5a1",
+          "site/lecture/assets/slide-01.png": "949c3034bb06b628e1aa394cfc49db428e89f34cff5964c80feb11666e22b8a7",
+          "site/lecture/assets/slide-02.png": "b4f1d085c712a735475d2cda613de952a7f9d525678f1a431f4bd59ecd3947db",
+          "site/lecture/assets/slide-03-gem-01.png": "adf5350173738554edfa882e505a9fd245f4b61506c84ab9b9fc8b6b4b5bdaa3",
+          "site/lecture/assets/slide-03-gem-02.png": "86d6f1b7f408ef67128b0a0a0cb757c93ef65f050cb3665d8de6ac056d23c3dd",
+          "site/lecture/assets/slide-03-gem-03.png": "f1556de4d5e2ea17a4025aefc645f5d5ced14c04e01b986a0ac8a367cf548e17",
+          "site/lecture/index.html": "14e43beba8f4ba9cdc8e6af4406a338f2d3b5d2c612a8f602124f90d2eaba1b3",
+          "site/manage/index.html": "265fab3f256f0aa42f2a85d4207ebe9d8908e2a2ef824670a130ddf7a7f0c6ba",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:095d34a174c201c2144eafb2ca45a4865c27b0a70cbf458f054a549a421052ff",
+        "input_paths": [
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/project/bomts-main-public-sync/.venv/bin/python",
+          "/project/bomts-main-public-sync/dev-process-framework/runtime/src/devprocess/builtin_checks.py",
+          "syntax",
+          "--project-root",
+          "/project/bomts-main-public-sync",
+          "--inputs",
+          "site,scripts",
+          "--require-lf",
+          "true",
+          "--task-id",
+          "20261014-mail-forwarding-guide"
+        ],
+        "executed_at": "2026-10-14T03:58:30.333622+00:00",
+        "input_snapshot": {
+          "after": "sha256:095d34a174c201c2144eafb2ca45a4865c27b0a70cbf458f054a549a421052ff",
+          "before": "sha256:095d34a174c201c2144eafb2ca45a4865c27b0a70cbf458f054a549a421052ff"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/lint_df64da354b0f.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/lint_df64da354b0f.receipt.json",
+        "returncode": 0,
+        "run_id": "df64da354b0f",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "{\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 18,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (18)\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 4,
+      "input_independent": false,
+      "reason_code": "PASS: {\n \"check\": \"syntax\",\n \"status\": \"PASS\",\n \"checked_files\": 18,\n \"errors\": [],\n \"unchecked_js\": [],\n \"note\": \"\"\n}\nPASS: syntax (18)",
+      "recorded_at": "2026-10-14T03:58:30.340259+00:00",
+      "verification": "verified"
+    },
+    "mail_forwarding_guide": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "mail_forwarding_guide",
+        "computed_at": "2026-10-14T03:58:27.949739+00:00",
+        "file_count": 4,
+        "files": {
+          "docs/manual/index.html": "01769caecbf0524b06506dbf6db8690d37e21247d6bbdb288e35ee04b554e965",
+          "docs/manual/mail.html": "0c4155d8829a2aaa83e173ae8107e546286a9545c32d4e230f64673b3b00428f",
+          "scripts/check.sh": "e54a55ee0012a4c4f94b33adf92882484ec84f63a36c0ee3a7657ac5188b9c97",
+          "site/manage/index.html": "265fab3f256f0aa42f2a85d4207ebe9d8908e2a2ef824670a130ddf7a7f0c6ba"
+        },
+        "fingerprint": "sha256:692e4bdda9044ad91acfd56e78c5324bf31251db9bfa67110696c2de4b62b0f8",
+        "input_paths": [
+          "docs/manual/index.html",
+          "docs/manual/mail.html",
+          "scripts/check.sh",
+          "site/manage/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "/tmp/check_mail_forwarding_guide.sh",
+          "."
+        ],
+        "executed_at": "2026-10-14T03:58:28.221938+00:00",
+        "input_snapshot": {
+          "after": "sha256:692e4bdda9044ad91acfd56e78c5324bf31251db9bfa67110696c2de4b62b0f8",
+          "before": "sha256:692e4bdda9044ad91acfd56e78c5324bf31251db9bfa67110696c2de4b62b0f8"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/mail_forwarding_guide_d5b326eea1b5.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/mail_forwarding_guide_d5b326eea1b5.receipt.json",
+        "returncode": 0,
+        "run_id": "d5b326eea1b5",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS mail_forwarding_guide\nmanual_slides=16 detailed_steps=2 direct_link=/manual/mail.html#14\nmailu_runtime=user_settings_route+auto_forward_fields+admin_settings_link\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 4,
+      "input_independent": false,
+      "reason_code": "PASS: l_forwarding_guide\nmanual_slides=16 detailed_steps=2 direct_link=/manual/mail.html#14\nmailu_runtime=user_settings_route+auto_forward_fields+admin_settings_link",
+      "recorded_at": "2026-10-14T03:58:28.225817+00:00",
+      "verification": "verified"
+    },
+    "mail_forwarding_live": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "mail_forwarding_live",
+        "computed_at": "2026-10-14T03:58:28.470731+00:00",
+        "file_count": 4,
+        "files": {
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/mail.html": "0c4155d8829a2aaa83e173ae8107e546286a9545c32d4e230f64673b3b00428f",
+          "site/manage/index.html": "265fab3f256f0aa42f2a85d4207ebe9d8908e2a2ef824670a130ddf7a7f0c6ba"
+        },
+        "fingerprint": "sha256:dd6b1a1f10d1732faac105259b59838c64a0f4c10dc3d47404930c801ef305ae",
+        "input_paths": [
+          "docs/manual/assets/manual.css",
+          "docs/manual/assets/manual.js",
+          "docs/manual/mail.html",
+          "site/manage/index.html"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          ".venv/bin/python",
+          "/tmp/test_mail_forwarding_live.py"
+        ],
+        "executed_at": "2026-10-14T03:58:29.842429+00:00",
+        "input_snapshot": {
+          "after": "sha256:dd6b1a1f10d1732faac105259b59838c64a0f4c10dc3d47404930c801ef305ae",
+          "before": "sha256:dd6b1a1f10d1732faac105259b59838c64a0f4c10dc3d47404930c801ef305ae"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/mail_forwarding_live_634844c9d919.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/mail_forwarding_live_634844c9d919.receipt.json",
+        "returncode": 0,
+        "run_id": "634844c9d919",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": "PASS mail_forwarding_live\nmanage_status=200 direct_link=/manual/mail.html#14\nstep14=admin/user settings path step15=destination/keep-copy/test\noverflow=0 browser_errors=0\nscreenshots=dist/mail-forwarding-review/mail-forwarding-step-{1,2}.png\n"
+      },
+      "gate_outcome": "allow",
+      "history_count": 3,
+      "input_independent": false,
+      "reason_code": "PASS: 4=admin/user settings path step15=destination/keep-copy/test\noverflow=0 browser_errors=0\nscreenshots=dist/mail-forwarding-review/mail-forwarding-step-{1,2}.png",
+      "recorded_at": "2026-10-14T03:58:29.843887+00:00",
+      "verification": "verified"
+    },
+    "prior_art": {
+      "detail": {
+        "artifact": "dev-process/task/20261014-mail-forwarding-guide/artifact/prior_art_report.json",
+        "findings": 0,
+        "frozen_overlap": 0
+      },
+      "evidence_record": null,
+      "execution": null,
+      "gate_outcome": "allow",
+      "history_count": 1,
+      "input_independent": false,
+      "reason_code": "verdict=clear",
+      "recorded_at": "2026-10-14T03:54:50.950663+00:00",
+      "verification": "reported_only"
+    },
+    "qa_quick": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "qa_quick",
+        "computed_at": "2026-10-14T03:58:31.072700+00:00",
+        "file_count": 48,
+        "files": {
+          "AGENTS.md": "430ee5771d2d563639d2e4b01b5aab6c6987a1c8650716bf52b4cbdcf9f65ff1",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/manual/.review.json": "6c60b99f677669215d25eb580de5e527b280b8492da9905160475e0a9ac939b3",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "59c92b08e556e08ed6ce11b803c83e602a04a916b0044676873489cedb3ad687",
+          "docs/manual/architecture.html": "d38bf90390d7cd9bc62e2766bc2fd8241fa78fbede272b57b0ed7e1e464962fe",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "01769caecbf0524b06506dbf6db8690d37e21247d6bbdb288e35ee04b554e965",
+          "docs/manual/lecture.html": "ba5e26b80087af6ce54223973cb204a0b95e2566f8a40e74e86c4105b406bbdb",
+          "docs/manual/local-manual.html": "ed4e1605f2a1d5ffde69d828f5db2d5858adefcffb57812c85f858b6d620de30",
+          "docs/manual/mail.html": "0c4155d8829a2aaa83e173ae8107e546286a9545c32d4e230f64673b3b00428f",
+          "docs/manual/tunnel.html": "1969ce196844897fb7b84dc30e20125640abe1b78325cd595f4c13b099e16271",
+          "docs/manual/website.html": "3e2a3906e1dc59cf59b460d5d609b9add158d6a6b6ae37c3b1b95201328456d1",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "0236b3ff61b0a00fa7bb68944a849de5346c96a0933b5831fd9dbb0fff1a9f21",
+          "mail/provider-onboarding.md": "e50baeab44a0ad3c4f74aa9b9817db4730958d42bd641bb1eeb3bd0d054bf309",
+          "nginx/default.conf": "a7c5fa89b85e56bdc69023a5efca7949f2d135f0ba512c4c6435b1b631dcb321",
+          "scripts/check.sh": "e54a55ee0012a4c4f94b33adf92882484ec84f63a36c0ee3a7657ac5188b9c97",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/lecture/assets/bomts-lecture-preparation-manual.pdf": "a2ec0bc366dd3af1c6272eebacbbc68f6a9093f9283ceeecd4e65f88d1e8d5c5",
+          "site/lecture/assets/lecture.css": "05dc6a1694510f8dd3c0177a662912c4329eb257144acf49cae88bdca1546dd9",
+          "site/lecture/assets/lecture.js": "12941c2b9767a1d1f1778bd96360d974437e60942b862c44cd3ca1351b5bea0b",
+          "site/lecture/assets/prompt-card-D2.html": "6e2c2c96485c2c2136ee001b742f66bc2d0a21aa47884c5116ce333554d3a5a1",
+          "site/lecture/assets/slide-01.png": "949c3034bb06b628e1aa394cfc49db428e89f34cff5964c80feb11666e22b8a7",
+          "site/lecture/assets/slide-02.png": "b4f1d085c712a735475d2cda613de952a7f9d525678f1a431f4bd59ecd3947db",
+          "site/lecture/assets/slide-03-gem-01.png": "adf5350173738554edfa882e505a9fd245f4b61506c84ab9b9fc8b6b4b5bdaa3",
+          "site/lecture/assets/slide-03-gem-02.png": "86d6f1b7f408ef67128b0a0a0cb757c93ef65f050cb3665d8de6ac056d23c3dd",
+          "site/lecture/assets/slide-03-gem-03.png": "f1556de4d5e2ea17a4025aefc645f5d5ced14c04e01b986a0ac8a367cf548e17",
+          "site/lecture/index.html": "14e43beba8f4ba9cdc8e6af4406a338f2d3b5d2c612a8f602124f90d2eaba1b3",
+          "site/manage/index.html": "265fab3f256f0aa42f2a85d4207ebe9d8908e2a2ef824670a130ddf7a7f0c6ba",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:01db02685370eb213a14e6938950897945a658552395a0b72033a157cde21aaf",
+        "input_paths": [
+          "AGENTS.md",
+          "docker-compose.yml",
+          "docs/manual",
+          "mail",
+          "nginx",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-14T03:58:31.278095+00:00",
+        "input_snapshot": {
+          "after": "sha256:01db02685370eb213a14e6938950897945a658552395a0b72033a157cde21aaf",
+          "before": "sha256:01db02685370eb213a14e6938950897945a658552395a0b72033a157cde21aaf"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/qa_quick_b40ec6d8faa2.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/qa_quick_b40ec6d8faa2.receipt.json",
+        "returncode": 0,
+        "run_id": "b40ec6d8faa2",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 4,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-14T03:58:31.287713+00:00",
+      "verification": "verified"
+    },
+    "unit_or_regression": {
+      "detail": {},
+      "evidence_record": {
+        "check_name": "unit_or_regression",
+        "computed_at": "2026-10-14T03:58:30.375435+00:00",
+        "file_count": 48,
+        "files": {
+          "AGENTS.md": "430ee5771d2d563639d2e4b01b5aab6c6987a1c8650716bf52b4cbdcf9f65ff1",
+          "docker-compose.yml": "a2e817c183ade876d2dceeba654667fa760dda56d92c73f50f8a147c3eb71be5",
+          "docs/manual/.review.json": "6c60b99f677669215d25eb580de5e527b280b8492da9905160475e0a9ac939b3",
+          "docs/manual/README.md": "0b00f5813b0a7a74471e797f80728eb771ee43d2beaa238f6b1f59fe7a6dfdb3",
+          "docs/manual/admin.html": "59c92b08e556e08ed6ce11b803c83e602a04a916b0044676873489cedb3ad687",
+          "docs/manual/architecture.html": "d38bf90390d7cd9bc62e2766bc2fd8241fa78fbede272b57b0ed7e1e464962fe",
+          "docs/manual/assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",
+          "docs/manual/assets/manual.js": "c278c102520708e56d7cd15d6694c474cc0c8aff29b82a81aee781167eca0fa5",
+          "docs/manual/index.html": "01769caecbf0524b06506dbf6db8690d37e21247d6bbdb288e35ee04b554e965",
+          "docs/manual/lecture.html": "ba5e26b80087af6ce54223973cb204a0b95e2566f8a40e74e86c4105b406bbdb",
+          "docs/manual/local-manual.html": "ed4e1605f2a1d5ffde69d828f5db2d5858adefcffb57812c85f858b6d620de30",
+          "docs/manual/mail.html": "0c4155d8829a2aaa83e173ae8107e546286a9545c32d4e230f64673b3b00428f",
+          "docs/manual/tunnel.html": "1969ce196844897fb7b84dc30e20125640abe1b78325cd595f4c13b099e16271",
+          "docs/manual/website.html": "3e2a3906e1dc59cf59b460d5d609b9add158d6a6b6ae37c3b1b95201328456d1",
+          "mail/README.md": "bac2632958c49b462b303735d5faf25afb04ab10f3049d204123efaf8c7eef4f",
+          "mail/address-policy.yaml": "0236b3ff61b0a00fa7bb68944a849de5346c96a0933b5831fd9dbb0fff1a9f21",
+          "mail/provider-onboarding.md": "e50baeab44a0ad3c4f74aa9b9817db4730958d42bd641bb1eeb3bd0d054bf309",
+          "nginx/default.conf": "a7c5fa89b85e56bdc69023a5efca7949f2d135f0ba512c4c6435b1b631dcb321",
+          "scripts/check.sh": "e54a55ee0012a4c4f94b33adf92882484ec84f63a36c0ee3a7657ac5188b9c97",
+          "site/about/index.html": "f2f46c6f25df25cac6bc88ce03dcc17cc752805db73ef14d89768836f82e6ec4",
+          "site/assets/main.js": "fe81f267ebfd8b6ec7cd2eae8d7480b181b4081626ae2a0be0114e988760d65d",
+          "site/assets/og-card.svg": "96b4a50460cde950b87fdf5726a9738a4af4f7b6dd2233eea41d725b1923421e",
+          "site/assets/styles.css": "7e78e6440561af2c727eca01928172b5ff86af77a84f3714d8ec212a9352323a",
+          "site/contact/index.html": "7500ae3e2ace4b64c79fb0335ea716b4ef6f564739799c2d74e8f52acc057a77",
+          "site/en/about/index.html": "834eb21c5c86e0e2ae112a2b1e32c4ba0687c70d235f4dfef171b6411fe21e61",
+          "site/en/contact/index.html": "4b7c12fc25714070a03d9e91232e906b1aea780fb2a6d3569104a431b55199cb",
+          "site/en/index.html": "e3fe81af27f1a7991fa41d61dae6696fc803448fc6cedd0e7a303e7f7fa69c95",
+          "site/en/privacy/index.html": "fe736b6abc5d819b2da2fbeb27ad8973b596829ad29554c1d3185c60f3356641",
+          "site/en/product/index.html": "fdf1838d0ce2c0405efa47ec334394eee5cd95d211b2555575d5b37dc4949e5d",
+          "site/en/terms/index.html": "b83085502b33eec5aaf1497b25b5ae5835ea05b206c700125f75ba38f1320c4a",
+          "site/google16ad3deed6bb0ce2.html": "5cd339658bf30090eb47342403ad5aa7f876add18b0c0e36437e48b397a618e0",
+          "site/index.html": "65985e4bb32e5dd3f2515bbfec9b4ee6d8178eb6f1a0849721fd2c4e788e2cc7",
+          "site/lecture/assets/bomts-lecture-preparation-manual.pdf": "a2ec0bc366dd3af1c6272eebacbbc68f6a9093f9283ceeecd4e65f88d1e8d5c5",
+          "site/lecture/assets/lecture.css": "05dc6a1694510f8dd3c0177a662912c4329eb257144acf49cae88bdca1546dd9",
+          "site/lecture/assets/lecture.js": "12941c2b9767a1d1f1778bd96360d974437e60942b862c44cd3ca1351b5bea0b",
+          "site/lecture/assets/prompt-card-D2.html": "6e2c2c96485c2c2136ee001b742f66bc2d0a21aa47884c5116ce333554d3a5a1",
+          "site/lecture/assets/slide-01.png": "949c3034bb06b628e1aa394cfc49db428e89f34cff5964c80feb11666e22b8a7",
+          "site/lecture/assets/slide-02.png": "b4f1d085c712a735475d2cda613de952a7f9d525678f1a431f4bd59ecd3947db",
+          "site/lecture/assets/slide-03-gem-01.png": "adf5350173738554edfa882e505a9fd245f4b61506c84ab9b9fc8b6b4b5bdaa3",
+          "site/lecture/assets/slide-03-gem-02.png": "86d6f1b7f408ef67128b0a0a0cb757c93ef65f050cb3665d8de6ac056d23c3dd",
+          "site/lecture/assets/slide-03-gem-03.png": "f1556de4d5e2ea17a4025aefc645f5d5ced14c04e01b986a0ac8a367cf548e17",
+          "site/lecture/index.html": "14e43beba8f4ba9cdc8e6af4406a338f2d3b5d2c612a8f602124f90d2eaba1b3",
+          "site/manage/index.html": "265fab3f256f0aa42f2a85d4207ebe9d8908e2a2ef824670a130ddf7a7f0c6ba",
+          "site/privacy/index.html": "4bbfa4b0866d009ae1379d3bc1adee91d0f64750d36f52a9d3bbeebeaea1c2ae",
+          "site/product/index.html": "9b51c38681ba90101e610b1b894c53d6e98ce622f7f717da58ffe4198002b7ee",
+          "site/robots.txt": "9d1d6df30d8a1f0add7148e4d8d8d5829a7d62b51ff0e93e1a180214ceac3c44",
+          "site/sitemap.xml": "3ef9e423525d988a287961ba31d37c9e315681fdb60ec2bed5bf6182afea54f0",
+          "site/terms/index.html": "806ab68d55a476b787eb4ee2442a5c91d680f98760bbb43d98ca4716df87a34c"
+        },
+        "fingerprint": "sha256:01db02685370eb213a14e6938950897945a658552395a0b72033a157cde21aaf",
+        "input_paths": [
+          "AGENTS.md",
+          "docker-compose.yml",
+          "docs/manual",
+          "mail",
+          "nginx",
+          "scripts",
+          "site"
+        ],
+        "missing_paths": []
+      },
+      "execution": {
+        "command": [
+          "./scripts/check.sh"
+        ],
+        "executed_at": "2026-10-14T03:58:30.575011+00:00",
+        "input_snapshot": {
+          "after": "sha256:01db02685370eb213a14e6938950897945a658552395a0b72033a157cde21aaf",
+          "before": "sha256:01db02685370eb213a14e6938950897945a658552395a0b72033a157cde21aaf"
+        },
+        "inputs_changed_during_run": false,
+        "log_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/unit_or_regression_3598b29c0da5.log",
+        "policy_scope_hash": "sha256:806dbeb9496f4241",
+        "receipt_ref": "dev-process/task/20261014-mail-forwarding-guide/evidence/unit_or_regression_3598b29c0da5.receipt.json",
+        "returncode": 0,
+        "run_id": "3598b29c0da5",
+        "sealed": true,
+        "stderr_tail": "",
+        "stdout_tail": ""
+      },
+      "gate_outcome": "allow",
+      "history_count": 4,
+      "input_independent": false,
+      "reason_code": "PASS: ok",
+      "recorded_at": "2026-10-14T03:58:30.586194+00:00",
+      "verification": "verified"
+    }
+  },
+  "summary": {
+    "actual_changes": "메일 자동 전달의 실제 Mailu 메뉴 경로와 입력·검증 절차를 보완하고 내부 관리 페이지에 바로가기를 추가했다",
+    "business_meaning": "메일 자동 전달 설정을 실제 관리 화면 경로와 검증 절차까지 찾기 쉽게 문서화한다",
+    "change_and_recovery_history": "mail-forwarding-runtime-check(owner=20261014-mail-forwarding-guide): 원인=own_change, 계획 1, 라운드 1, 재시도 0, status=resolved",
+    "operational_status": "work=done, commit=149e4e24b8df2334e37f03031a9231bf85e3d62a, push=pushed, deploy=not_in_scope",
+    "remaining_issues": "없음",
+    "user_manual": "해당 없음 -- 버그 수정(사용법 같음): 기존 자동 전달 기능과 사용법은 그대로이며, 축약된 운영 문서의 경로·검증 설명을 보완한다",
+    "verification_evidence": "encoding=allow[verified]; identifier_audit=allow[verified]; lint=allow[verified]; mail_forwarding_guide=allow[verified]; mail_forwarding_live=allow[verified]; prior_art=allow[reported_only]; qa_quick=allow[verified]; unit_or_regression=allow[verified]"
+  },
+  "task_id": "20261014-mail-forwarding-guide",
+  "verdict": {
+    "open_incidents": [],
+    "open_waits": [],
+    "stale_checks": [],
+    "unverified_checks": []
+  }
+}
