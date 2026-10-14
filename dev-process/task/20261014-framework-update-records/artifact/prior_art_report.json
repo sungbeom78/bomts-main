@@ -1,0 +1,21 @@
+{
+  "task_id": "20261014-framework-update-records",
+  "keywords": [
+    "update_framework nested glossary upstream request"
+  ],
+  "files": [
+    "dev-process/local/upstream-requests.md",
+    "dev-process-framework/tools/update_framework.py"
+  ],
+  "days": 30,
+  "checked_at": "2026-10-14T12:34:40.137259+00:00",
+  "sources": {
+    "change_log": "CHANGELOG.md",
+    "sot": null,
+    "module_index": null
+  },
+  "findings": [],
+  "frozen_overlap": [],
+  "active_task_overlap": [],
+  "verdict": "clear"
+}
