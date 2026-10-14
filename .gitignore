@@ -54,3 +54,8 @@ pgpass.conf
 # dev-process-framework (init_project)
 glossary/build/
 dist/manual-review/
+
+dev-process/log/L2/
+dev-process/log/L3/
+dev-process/log/L4/
+dev-process/portal/
