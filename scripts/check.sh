@@ -70,6 +70,11 @@ grep -q 'Content-Disposition.*attachment' nginx/default.conf
 grep -q '1Ev3KzUNxfDWoHAZYL0TF8dn43g8t8MN2' site/lecture/index.html
 grep -q '1cXKRjjBsW4kYbMhv6_AWeHqvf40a23Ek' site/lecture/index.html
 grep -q '1vGOwypMsvVdzlizuallLFqNdflEhGOzQ' site/lecture/index.html
+grep -q '/manual/mail.html#14' site/manage/index.html
+grep -q 'Mail domains' docs/manual/mail.html
+grep -q 'Enable forwarding' docs/manual/mail.html
+grep -q 'Keep a copy' docs/manual/mail.html
+grep -q '20261014-mail-forwarding-guide' docs/manual/index.html
 grep -q 'ArrowRight' site/lecture/assets/lecture.js
 grep -q 'touchend' site/lecture/assets/lecture.js
 grep -q 'requestFullscreen' site/lecture/assets/lecture.js

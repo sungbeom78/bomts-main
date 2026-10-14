@@ -1,13 +1,13 @@
 {
- "reviewed_at": "2026-10-12T13:39:35.600637+00:00",
- "pages": 82,
+ "reviewed_at": "2026-10-14T03:58:03.934334+00:00",
+ "pages": 83,
  "files": {
   "admin.html": "59c92b08e556e08ed6ce11b803c83e602a04a916b0044676873489cedb3ad687",
   "architecture.html": "d38bf90390d7cd9bc62e2766bc2fd8241fa78fbede272b57b0ed7e1e464962fe",
-  "index.html": "f2ca26428491a8719dba2e266344e9dad1bd2650b9d2627f80b756e2303ddb95",
+  "index.html": "01769caecbf0524b06506dbf6db8690d37e21247d6bbdb288e35ee04b554e965",
   "lecture.html": "ba5e26b80087af6ce54223973cb204a0b95e2566f8a40e74e86c4105b406bbdb",
   "local-manual.html": "ed4e1605f2a1d5ffde69d828f5db2d5858adefcffb57812c85f858b6d620de30",
-  "mail.html": "779f5d73a11c5d2f80455e1202c6abd63fd8ee90c09dd71cf4ea74a262ff9a34",
+  "mail.html": "0c4155d8829a2aaa83e173ae8107e546286a9545c32d4e230f64673b3b00428f",
   "tunnel.html": "1969ce196844897fb7b84dc30e20125640abe1b78325cd595f4c13b099e16271",
   "website.html": "3e2a3906e1dc59cf59b460d5d609b9add158d6a6b6ae37c3b1b95201328456d1",
   "assets/manual.css": "bbbfb63b0ffc79115c239b8d14f0294ec4676d86b15354fd6dde6cdcd1f36c95",

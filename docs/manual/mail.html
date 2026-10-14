@@ -66,10 +66,15 @@
   <div class="body"><div class="screen"><div class="top"><span class="t">BOMTS 관리</span><span class="tab on">내부 전용</span></div><div class="in"><div class="field"><b>메일 확인·발송</b><span><code>/webmail/</code> · Roundcube</span></div><div class="field"><b>메일 관리</b><span><code>/admin/</code> · 계정·Fetchmail·전달</span></div><div class="field"><b>운영 문서</b><span><code>/manual/</code> · 매뉴얼</span></div><div class="field"><b>공개 요청</b><span>모든 관리 경로 404</span></div></div></div></div>
   <aside class="notes">Mini PC의 LAN 홈페이지에서 관리 버튼을 누르면 운영 문서, Roundcube, Mailu Admin을 한 화면에서 엽니다. 웹사이트 Nginx는 내부 요청만 Mailu의 직접 HTTPS 포트로 돌려보내고 공개 Cloudflare 요청에는 해당 경로를 제공하지 않습니다. Webmail 로그인은 각 Mailbox 계정, 메일 관리는 관리자 계정을 사용합니다.</aside>
 </section>
-<section class="slide" data-kind="usage-step" data-title="사용자별 전달 목록을 웹에서 관리합니다">
-  <p class="kicker">자동 전달</p><h2>사용자별 전달 목록을 웹에서 관리합니다</h2>
-  <div class="body"><ol class="flow"><li><b>사용자 선택</b><span>Mailu Admin</span></li><li><b>Auto-forward</b><span>활성화</span></li><li><b>Destination</b><span>쉼표 목록</span></li><li class="on"><b>Keep copy</b><span>원본 보관 선택</span></li></ol><div class="callout">한 Mailbox에 도착한 메일을 여러 외부 주소로 전달하면서 Mini PC Mailbox에도 원본을 남길 수 있습니다.</div></div>
-  <aside class="notes">Mailu의 사용자 설정에는 기본 Auto-forward 기능이 있습니다. Destination은 여러 이메일 주소를 쉼표로 받으며, Keep a copy를 켜면 전달 후에도 원본 Mailbox에 메일이 남습니다. 계정별로 서로 다른 목록을 저장할 수 있습니다. 전달 대상 주소와 외부 계정 비밀번호는 운영 DB에만 저장하고 Git이나 evidence에는 기록하지 않습니다.</aside>
+<section class="slide" data-kind="usage-step" data-title="사용자 Settings에서 자동 전달을 엽니다">
+  <p class="kicker">자동 전달 · 1 / 2</p><h2>사용자 Settings에서 자동 전달을 엽니다</h2>
+  <div class="body"><ol class="flow"><li><b>관리 → 메일 관리</b><span><code>/admin/</code> · 관리자 계정</span></li><li><b>Mail domains</b><span><code>bomts.net</code>의 Users 아이콘</span></li><li><b>대상 사용자</b><span>메일 주소 행의 Settings 렌치</span></li><li class="on"><b>Auto-forward</b><span>전달 설정 카드 열기</span></li></ol><div class="callout">자기 계정만 바꿀 때는 그 메일 주소로 <b>Sign in Admin</b>을 선택하면 바로 User settings를 열 수 있습니다.</div></div>
+  <aside class="notes">내부 홈페이지에서 관리, 메일 관리 순서로 들어가 Mailu Admin에 관리자 계정으로 로그인합니다. Mail domains에서 bomts.net의 사용자 목록 아이콘을 누르고, 전달할 계정 행의 렌치 모양 Settings를 선택합니다. 일반 사용자는 자신의 전체 이메일 주소로 Sign in Admin을 선택해 자기 설정만 바꿀 수도 있습니다. 비밀번호는 매뉴얼이나 Git에 기록하지 않습니다.</aside>
+</section>
+<section class="slide" data-kind="usage-step" data-title="전달 주소를 쉼표로 넣고 원본 보관까지 시험합니다">
+  <p class="kicker">자동 전달 · 2 / 2</p><h2>전달 주소를 쉼표로 넣고 원본 보관까지 시험합니다</h2>
+  <div class="body"><ol class="flow"><li><b>Enable forwarding</b><span>자동 전달 켜기</span></li><li><b>Destination</b><span><code>a@example.com, b@example.com</code></span></li><li><b>Keep a copy</b><span>원본 Mailbox에도 남기기</span></li><li class="on"><b>Submit</b><span>외부 시험 메일로 양쪽 확인</span></li></ol><table class="grid"><tr><th>확인 위치</th><th>정상 결과</th></tr><tr><td>원본 Webmail</td><td>Keep a copy를 켰으면 같은 메일 존재</td></tr><tr><td>전달 대상</td><td>입력한 모든 주소에 한 건씩 도착</td></tr></table><div class="callout warn">자기 주소나 서로를 가리키는 주소를 Destination에 넣어 전달 루프를 만들지 않습니다.</div></div>
+  <aside class="notes">Enable forwarding을 켜고 Destination에 여러 주소를 쉼표로 구분해 입력합니다. Mini PC의 원본 Mailbox에도 메일을 남기려면 Keep a copy of the emails를 함께 켠 뒤 Submit으로 저장합니다. 외부 계정에서 고유한 제목의 시험 메일을 보내 원본 Webmail과 모든 전달 대상에서 같은 메일을 확인해야 완료입니다. 중지할 때는 Enable forwarding을 끄고 다시 저장합니다.</aside>
 </section>
 <section class="slide" data-kind="troubleshoot" data-title="현재 남은 두 작업을 운영 제한으로 관리합니다">
   <p class="kicker">제한·다음 조치</p><h2>현재 남은 두 작업을 운영 제한으로 관리합니다</h2>
